@@ -267,6 +267,15 @@ The source tree~$S(R)$ and target tree~$T(R)$ are \defn{twin binary trees}, mean
 
 The insertion fiber of a rectangulation~$R$ precisely consists in the linear extensions of the strong poset.
 
+%For a permutation~$\sigma$ of~$[n]$ and~$i \in [n]$, we define
+%\begin{alignat*}{2}
+%pv(i, \sigma) & \eqdef p(i) \cap v(i, \sigma), &
+%pV(i, \sigma) & \eqdef p(i) \cap V(i, \sigma), \\
+%Pv(i, \sigma) & \eqdef P(i) \cap v(i, \sigma) & \qquad\text{and}\qquad
+%PV(i, \sigma) & \eqdef P(i) \cap V(i, \sigma).
+%\end{alignat*}
+%where~$p(i) \eqdef [i-1]$ while~$P(i) \eqdef [n] \ssm [i]$, and~$v(i, \sigma) \eqdef \sigma([i-1])$ while $V(i, \sigma) \eqdef \sigma([n] \ssm [i])$.
+
 %%%%%%%%%%%%
 
 \subsection{Diagonal rectangulations}
@@ -274,20 +283,32 @@ The insertion fiber of a rectangulation~$R$ precisely consists in the linear ext
 
 \begin{figure}
 	\centerline{\includegraphics[scale=.7]{weakRectangulation} \qquad \includegraphics[scale=.7]{weakRectangulationTrees}}
-	\caption{A weak rectangulation (left) and its pair of separated twin trees (right). The corresponding cotwisted Baxter permutation is $[7,14,15,16,8,11,13,10,5,6,1,4,9,2,3,12]$ and its inverse is $[11, 14, 15, 12, 9, 10, 1, 5, 13, 8, 6, 16, 7, 2, 3, 4]$.}
+	\caption{A weak rectangulation (left) and its pair of separated twin trees (right). The corresponding twisted Baxter permutation is $[7, 5, 1, 14, 8, 6, 4, 2, 11, 10, 9, 3, 15, 16, 13, 12]$ and its inverse is $[3, 8, 12, 7, 2, 6, 1, 5, 11, 10, 9, 16, 15, 4, 13, 14]$.}
 \end{figure}
 
-We call \defn{antidiagonal} the segment joining the top left corner to the bottom right corner.
+We call \defn{diagonal} the segment joining the top left corner to the bottom right corner.
 A rectangulation~$R$ is \defn{diagonal} (or \defn{weak}) if it satisfies the following equivalent conditions:
 \begin{enumerate}[(i)]
-\item all rectangles of~$R$ meet the antidiagonal,
-\item the source~$s(r)$ (resp.~target~$t(r)$) of each rectangle~$r$ of~$R$ is below (resp.~above) the antidiagonal,
-\item the source tree~$S(R)$ (resp.~target tree~$T(R)$) remains below (resp.~above) the antidiagonal,
+\item all rectangles of~$R$ meet the diagonal,
+\item the source~$s(r)$ (resp.~target~$t(r)$) of each rectangle~$r$ of~$R$ is below (resp.~above) the diagonal,
+\item the source tree~$S(R)$ (resp.~target tree~$T(R)$) remains below (resp.~above) the diagonal,
 \item the source tree~$S(R)$ and the target tree~$T(R)$ do not overlap along a segment of~$R$,
 \item $R$ avoids the patterns \horizontalPattern{} and \verticalPattern{},
 \item the $2$-clumped permutation~$\projDown(R)$ avoids the patterns~$2413$ and~$3412$,
 \item the co-$2$-clumped permutation~$\projDown(R)$ avoids the patterns~$2143$ and~$3142$,
 \end{enumerate}
+
+\begin{proposition}
+The weak rectangulation insertion of any permutation~$\sigma$ of~$[n]$ is given by the rectangles~$[w\ell(i, \sigma), wr(i, \sigma)-1] \times [n-wd(i, \sigma)+1, n-wu(i, \sigma)]$ for~$i \in [n]$ where
+\begin{align*}
+w\ell(i, \sigma) & \eqdef \max \; \{0\} \cup \set{j}{j < i \text{ and } \sigma^{-1}(j) < \sigma^{-1}(i)} \\
+wr(i, \sigma) & \eqdef \min \; \{n+1\} \cup \set{j}{i < j \text{ and } \sigma^{-1}(i) < \sigma^{-1}(j)} \\
+wd(i, \sigma) & \eqdef \min \; \{n+1\} \cup \set{j}{i < j \text{ and } \sigma^{-1}(j) < \sigma^{-1}(i)} \\
+\text{and} \qquad
+wu(i, \sigma) & \eqdef \max \; \{0\} \cup \set{j}{j < i \text{ and } \sigma^{-1}(i) < \sigma^{-1}(j)}.
+\end{align*}
+\end{proposition}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
