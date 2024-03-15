@@ -1,0 +1,18 @@
+\begin{tikzpicture}[very thick]
+    \draw (0,8) rectangle (1,16);
+    \draw (1,13) rectangle (2,16);
+    \draw (2,13) rectangle (13,16);
+    \draw (1,8) rectangle (8,13);
+    \draw (0,5) rectangle (5,8);
+    \draw (5,5) rectangle (8,8);
+    \draw (0,0) rectangle (7,5);
+    \draw (7,3) rectangle (8,5);
+    \draw (8,10) rectangle (13,13);
+    \draw (8,7) rectangle (13,10);
+    \draw (8,3) rectangle (13,7);
+    \draw (13,12) rectangle (16,16);
+    \draw (13,3) rectangle (16,12);
+    \draw (7,0) rectangle (11,3);
+    \draw (11,0) rectangle (15,3);
+    \draw (15,0) rectangle (16,3);
+\end{tikzpicture}

@@ -1,0 +1,8 @@
+\begin{tikzpicture}[very thick, scale=.5]
+    \draw (0,5) rectangle (6,6);
+    \draw (0,1) rectangle (2,5);
+    \draw (2,3) rectangle (4,5);
+    \draw (2,1) rectangle (4,3);
+    \draw (4,1) rectangle (6,5);
+    \draw (0,0) rectangle (6,1);
+\end{tikzpicture}

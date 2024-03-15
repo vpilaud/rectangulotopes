@@ -1,0 +1,192 @@
+\begin{tikzpicture}[very thick, scale=.5]
+    \draw (0,0) rectangle (1,4);
+    \draw (1,0) rectangle (2,4);
+    \draw (2,0) rectangle (3,4);
+    \draw (3,0) rectangle (4,4);
+    \node at (2.00000000000000,-.5) {1234};
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[very thick, scale=.5]
+    \draw (0,0) rectangle (1,4);
+    \draw (1,0) rectangle (2,4);
+    \draw (2,1) rectangle (4,4);
+    \draw (2,0) rectangle (4,1);
+    \node at (2.00000000000000,-.5) {1243};
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[very thick, scale=.5]
+    \draw (0,0) rectangle (1,4);
+    \draw (1,1) rectangle (2,4);
+    \draw (2,1) rectangle (4,4);
+    \draw (1,0) rectangle (4,1);
+    \node at (2.00000000000000,-.5) {1423};
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[very thick, scale=.5]
+    \draw (0,1) rectangle (1,4);
+    \draw (1,1) rectangle (2,4);
+    \draw (2,1) rectangle (4,4);
+    \draw (0,0) rectangle (4,1);
+    \node at (2.00000000000000,-.5) {4123};
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[very thick, scale=.5]
+    \draw (0,0) rectangle (1,4);
+    \draw (1,2) rectangle (3,4);
+    \draw (1,0) rectangle (3,2);
+    \draw (3,0) rectangle (4,4);
+    \node at (2.00000000000000,-.5) {1324};
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[very thick, scale=.5]
+    \draw (0,0) rectangle (1,4);
+    \draw (1,2) rectangle (4,4);
+    \draw (1,0) rectangle (3,2);
+    \draw (3,0) rectangle (4,2);
+    \node at (2.00000000000000,-.5) {1342};
+\end{tikzpicture}
+\\[.3cm]
+\begin{tikzpicture}[very thick, scale=.5]
+    \draw (0,0) rectangle (1,4);
+    \draw (1,2) rectangle (4,4);
+    \draw (1,1) rectangle (4,2);
+    \draw (1,0) rectangle (4,1);
+    \node at (2.00000000000000,-.5) {1432};
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[very thick, scale=.5]
+    \draw (0,1) rectangle (1,4);
+    \draw (1,2) rectangle (4,4);
+    \draw (1,1) rectangle (4,2);
+    \draw (0,0) rectangle (4,1);
+    \node at (2.00000000000000,-.5) {4132};
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[very thick, scale=.5]
+    \draw (0,2) rectangle (1,4);
+    \draw (1,2) rectangle (3,4);
+    \draw (0,0) rectangle (3,2);
+    \draw (3,0) rectangle (4,4);
+    \node at (2.00000000000000,-.5) {3124};
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[very thick, scale=.5]
+    \draw (0,2) rectangle (1,4);
+    \draw (1,2) rectangle (4,4);
+    \draw (0,0) rectangle (3,2);
+    \draw (3,0) rectangle (4,2);
+    \node at (2.00000000000000,-.5) {3142};
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[very thick, scale=.5]
+    \draw (0,2) rectangle (5/2,4);
+    \draw (5/2,2) rectangle (4,4);
+    \draw (0,0) rectangle (3/2,2);
+    \draw (3/2,0) rectangle (4,2);
+    \node at (2.00000000000000,-.5) {3412};
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[very thick, scale=.5]
+    \draw (0,2) rectangle (1,4);
+    \draw (1,2) rectangle (4,4);
+    \draw (0,1) rectangle (4,2);
+    \draw (0,0) rectangle (4,1);
+    \node at (2.00000000000000,-.5) {4312};
+\end{tikzpicture}
+\\[.3cm]
+\begin{tikzpicture}[very thick, scale=.5]
+    \draw (0,3) rectangle (2,4);
+    \draw (0,0) rectangle (2,3);
+    \draw (2,0) rectangle (3,4);
+    \draw (3,0) rectangle (4,4);
+    \node at (2.00000000000000,-.5) {2134};
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[very thick, scale=.5]
+    \draw (0,3/2) rectangle (2,4);
+    \draw (0,0) rectangle (2,3/2);
+    \draw (2,5/2) rectangle (4,4);
+    \draw (2,0) rectangle (4,5/2);
+    \node at (2.00000000000000,-.5) {2143};
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[very thick, scale=.5]
+    \draw (0,3) rectangle (2,4);
+    \draw (0,0) rectangle (2,3);
+    \draw (2,1) rectangle (4,4);
+    \draw (2,0) rectangle (4,1);
+    \node at (2.00000000000000,-.5) {2413};
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[very thick, scale=.5]
+    \draw (0,3) rectangle (2,4);
+    \draw (0,1) rectangle (2,3);
+    \draw (2,1) rectangle (4,4);
+    \draw (0,0) rectangle (4,1);
+    \node at (2.00000000000000,-.5) {4213};
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[very thick, scale=.5]
+    \draw (0,3) rectangle (3,4);
+    \draw (0,0) rectangle (2,3);
+    \draw (2,0) rectangle (3,3);
+    \draw (3,0) rectangle (4,4);
+    \node at (2.00000000000000,-.5) {2314};
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[very thick, scale=.5]
+    \draw (0,3) rectangle (4,4);
+    \draw (0,0) rectangle (2,3);
+    \draw (2,0) rectangle (3,3);
+    \draw (3,0) rectangle (4,3);
+    \node at (2.00000000000000,-.5) {2341};
+\end{tikzpicture}
+\\[.3cm]
+\begin{tikzpicture}[very thick, scale=.5]
+    \draw (0,3) rectangle (4,4);
+    \draw (0,0) rectangle (2,3);
+    \draw (2,1) rectangle (4,3);
+    \draw (2,0) rectangle (4,1);
+    \node at (2.00000000000000,-.5) {2431};
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[very thick, scale=.5]
+    \draw (0,3) rectangle (4,4);
+    \draw (0,1) rectangle (2,3);
+    \draw (2,1) rectangle (4,3);
+    \draw (0,0) rectangle (4,1);
+    \node at (2.00000000000000,-.5) {4231};
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[very thick, scale=.5]
+    \draw (0,3) rectangle (3,4);
+    \draw (0,2) rectangle (3,3);
+    \draw (0,0) rectangle (3,2);
+    \draw (3,0) rectangle (4,4);
+    \node at (2.00000000000000,-.5) {3214};
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[very thick, scale=.5]
+    \draw (0,3) rectangle (4,4);
+    \draw (0,2) rectangle (3,3);
+    \draw (0,0) rectangle (3,2);
+    \draw (3,0) rectangle (4,3);
+    \node at (2.00000000000000,-.5) {3241};
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[very thick, scale=.5]
+    \draw (0,3) rectangle (4,4);
+    \draw (0,2) rectangle (4,3);
+    \draw (0,0) rectangle (3,2);
+    \draw (3,0) rectangle (4,2);
+    \node at (2.00000000000000,-.5) {3421};
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[very thick, scale=.5]
+    \draw (0,3) rectangle (4,4);
+    \draw (0,2) rectangle (4,3);
+    \draw (0,1) rectangle (4,2);
+    \draw (0,0) rectangle (4,1);
+    \node at (2.00000000000000,-.5) {4321};
+\end{tikzpicture}
+\\[.3cm]
