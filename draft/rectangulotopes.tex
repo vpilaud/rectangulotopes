@@ -270,7 +270,7 @@ The source tree~$S(R)$ (resp.~target tree~$T(R)$) is a binary tree, rooted at th
 \begin{comment}
 \begin{proof}
 By symmetry, we only prove the statement for the source tree~$S(R)$.
-As the triangulation is generic, each source~$s(r)$ distinct from the bottom left corner of~$R$ is either on the top edge of a rectangle~$r'$ or on the right edge of a rectangle~$r'$ (but not both).
+As the rectangulation is generic, each source~$s(r)$ distinct from the bottom left corner of~$R$ is either on the top edge of a rectangle~$r'$ or on the right edge of a rectangle~$r'$ (but not both).
 This shows that~$r$ distinct from the bottom left rectangle of~$R$ has a unique parent~$r'$ in~$S(R)$, so that~$S(R)$ is indeed a tree on~$[n]$.
 This tree is binary as each node has at most one vertical child and one horizontal child, and no other children.
 \end{proof}
@@ -285,6 +285,8 @@ For any rectangle~$r$ of~$R$, the inorder label of the source~$s(r)$ in~$S(R)$ c
 
 This enables to unambiguously label the rectangles of~$R$ by the inorder 
 The resulting labeling coincides with the NW--SE labeling of~\cite{AsinowskiCardinalFelsnerFusy}.
+From now on, the labels of the rectangles in a rectangulations are the inorder labels, and the two trees $T(R)$ and $S(R)$ are defined on the vertex set $[n]$ accordingly.
+For each $i\in [n]$, we refer to its two subtrees in $T(R)$ as the \defn{horizontal} and \defn{vertical subtrees}, and similarly for $S(R)$. 
 
 \subsection{Weak rectangulation polytopes}
 
@@ -317,16 +319,16 @@ Two leaves of the trees $T(R)$ and $S(R)$ are said to be \defn{common leaves} if
   \[
   \yin{w}_{i,j} := 
   \begin{cases}
-    h(T(R), i) \cdot cv (T(R), S(R), i, j)\cdot h(S(R), j) & \text{ if neither } i|j \text{ nor } \frac{\ j\ }i \\
-    0 & \text{ otherwise }
+    h(T(R), i) \cdot cv (T(R), S(R), i, j)\cdot h(S(R), j) & \text{ if neither } i|j \text{ nor } \frac{\ j\ }i, \\
+    0 & \text{ otherwise.}
   \end{cases}
   \]
   and
     \[
   \yang{w}_{i,j} := 
   \begin{cases}
-    v(S(R), j) \cdot ch (T(R), S(R), i, j)\cdot v(T(R), i) & \text{ if neither } j|i \text{ nor } \frac{\ i\ }j \\
-    0 & \text{ otherwise }
+    v(S(R), j) \cdot ch (T(R), S(R), i, j)\cdot v(T(R), i) & \text{ if neither } j|i \text{ nor } \frac{\ i\ }j, \\
+    0 & \text{ otherwise.}
   \end{cases}
   \]
 
@@ -368,10 +370,12 @@ Then $\SRP (n)$ is a realization of the $(n-1)$-dimensional strong rectangulatio
 %%%%%%%%%%%%
 \subsection{The Baxter congruence}
 
-Define the weak poset $P_w(R)$ of a rectangulation $R$ as the union of two partial orders defined by the twin binary trees
+Given a rectangulation $R$, the two trees $T(R)$ and $S(R)$, where the horizontal edges are oriented from left to right and the vertical edges are oriented from bottom to top,
+define two partial orders on $[n]$.
+We define the \defn{weak poset} $P_w(R)=([n],\prec_w)$ of a rectangulation $R$ as the transitive closure of the union of the two partial orders defined by the intertwining binary trees $T(R)$ and $S(R)$.
 
 \begin{theorem}
-  The subsets $\{\mathcal{L}(P_w(R)) : R \text{ is a rectangulation} \}$ of $\f{S}_n$ 
+  The subsets $\mathcal{L}(P_w(R))$ of $\f{S}_n$, for all rectangulations $R$ on $n$ rectangles, 
   are equivalence classes of a congruence relation on the weak Bruhat order on $\f{S}_n$.
   The minimal elements of each equivalence classes are twisted Baxter permutations, and the maximal
   elements are co-twisted Baxter permutations.
@@ -382,17 +386,36 @@ Define the weak poset $P_w(R)$ of a rectangulation $R$ as the union of two parti
 	\caption{A diagonal rectangulation (left) and its pair of separated twin trees (right). The corresponding twisted Baxter permutation is $[7, 5, 1, 14, 8, 6, 4, 2, 11, 10, 9, 3, 15, 16, 13, 12]$ and its inverse is $[3, 8, 12, 7, 2, 6, 1, 5, 11, 10, 9, 16, 15, 4, 13, 14]$.}
 \end{figure}
 
-We call this congruence the \emph{Baxter congruence}.
+We call this congruence the \defn{Baxter congruence}.
 The weak rectangulation polytope $\WRP(n)$ is the quotientope of the Baxter congruence of the weak Bruhat order on $\f{S}_n$.
 
 \subsection{Loday and anti-Loday arcs}
 
 The Baxter congruence is defined by forbidding arcs that cross the horizontal line.
-Therefore, the quotientope is defined by a Minkowski sum of the shard polytopes defined by two families of arcs: the Loday and the anti-Loday arcs.
+Therefore, the quotientope is defined by a Minkowski sum of the shard polytopes defined by two families of arcs: the \defn{Loday arcs} and the \defn{anti-Loday arcs}, that go respectively above and below all elements of an interval $I$ of $[n]$.
+
+\begin{lemma}
+  Given a Loday arc $A$ defined by an interval $I$, the Loday shard polytope $\SP(A)$ is defined as the standard simplex $\conv \{ \mathbf{e}_i : i\in I \}$.
+\end{lemma}
+
+\begin{lemma}
+  Given an anti-Loday arc $A$ defined by an interval $I$, the anti-Loday shard polytope $\SP(A)$ is defined as the negative standard simplex $\conv \{ - \mathbf{e}_i : i\in I \}$.
+\end{lemma}
+
+\begin{lemma}
+  The weak rectangulation polytope $\WRP(n)$ is realized by the Minkowski sum of all Loday and anti-Loday shard polytopes. In particular, it is the Minkowski sum of two opposite Loday associahedra.
+\end{lemma}
 
 \subsection{Loday-type coordinates for weak rectangulation polytopes}
 
-We now prove our first main result.
+\begin{lemma}
+  Let $R$ be a rectangulation on $n$ rectangles and $p(R)$ the vertex of $\WRP(n)$ associated with $R$.
+  Given $i\in [n]$, the number of Loday arcs $A$ such that $\mathbf{e}_i$ is the extremal vertex of $\SP(A)$ contributing to $p(R)$ is
+  \[
+  \loday{w}_i =  h(T(R), i)\cdot v(T(R),i),
+  \]
+   where $h(T,i)$ and $v(T,i)$ denote respectively the number of leaves in the horizontal and vertical subtrees of $i$ in the tree $T$.
+\end{lemma}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -402,10 +425,11 @@ We now prove our first main result.
 %%%%%%%%%%%%
 \subsection{The strong rectangulation congruence}
 
-Define the strong poset $P_s(R)$ of a rectangulation $R$. Can we use the intertwined binary trees?
+We define the \defn{strong poset} $P_s(R)=([n],\prec_s)$ of a rectangulation $R$.
+For a poset $P$ on $[n]$, we define $\mathcal{L}(P)$ as the set of permutations of $\f{S}_n$ corresponding to linear extensions of $P$.
 
 \begin{theorem}
-  The subsets $\{\mathcal{L}(P_s(R)) : R \text{ is a rectangulation} \}$ of $\f{S}_n$ 
+  The subsets $\mathcal{L}(P_s(R))$ of $\f{S}_n$, for all rectangulations $R$ on $n$ rectangles, 
   are equivalence classes of a congruence relation on the weak Bruhat order on $\f{S}_n$.
   The minimal elements of each equivalence classes are 2-clumped permutations, and the maximal
   elements are co-2-clumped permutations.
@@ -417,33 +441,44 @@ The strong rectangulation polytope $\SRP(n)$ is the quotientope of the congruenc
 
 \subsection{Yin and yang arcs}
 
-The congruence is defined by forbidding the arcs that cross the horizontal line more than once.
-The quotientope is therefore the Minkowski sum of the shard polytopes corresponding to four families of arcs:
-\begin{itemize}
-\item the Loday and anti-Loday arcs, like in the weak case,
-\item the yin and yang arcs.
-\end{itemize}
+The strong rectangulation congruence is defined by forbidding the arcs that cross the horizontal line more than once. We classify the remaining arcs into two families, depending on whether the arcs cross from above or below.
 
-\subsection{Shard polytopes of yin and yang arcs}
+A \defn{yin arc} is defined by two consecutive nonempty intervals $I$ and $J$ of $[n]$ such that the arc goes above all elements of $I$ and
+below all elements of $J$. Note that the Loday arc are obtained when $|J|=1$ and the anti-Loday arc are obtained with $|I|=1$.
+A \defn{yang arc} is defined similarly, except that the arc goes below the elements of $I$ and above the elements of $J$. Note that Loday and anti-Loday arcs are also yang arcs.
 
-While the shard polytopes of Loday and anti-Loday arcs are simplices, the shard polytopes of the yin and yang arcs are pyramids. 
+\begin{lemma}
+  Given a yin arc $A=(I,J)$, the shard polytope $\SP(A)$ is defined as the convex hull of the points
+  $\{\mathbf{0} \}\cup \{ \mathbf{e}_i - \mathbf{e}_j : (i,j)\in I\times J\}$.
+  %  \SP(A) = \conv (\{\mathbf{0} \}\cup \{ \mathbf{e}_i - \mathbf{e}_j : (i,j)\in I\times J\})
+\end{lemma}
+
+\begin{lemma}
+  Given a yang arc $A=(I,J)$, the shard polytope $\SP(A)$ is defined as the convex hull of the points
+  $\{\mathbf{0} \}\cup \{ \mathbf{e}_j - \mathbf{e}_i : (i,j)\in I\times J\}$.
+  %  \SP(A) = \conv (\{\mathbf{0} \}\cup \{ \mathbf{e}_j - \mathbf{e}_i : (i,j)\in I\times J\})
+\end{lemma}
+
+The following is a direct application of the main result of Padrol, Pilaud, and Ritter~\cite{}.
+
+\begin{lemma}
+  The strong rectangulation polytope $\SRP(n)$ is realized by the Minkowski sum of all shard polytopes of yin and yang arcs.
+\end{lemma}
+
+Note that since Loday and anti-Loday arcs are both yin and yang, each Loday and anti-Loday shard polytope is summed twice in the proposed realization. This does not change the combinatorial type of the polytope.
 
 \subsection{Loday-type coordinates for strong rectangulation polytopes}
 
-Proof of our second main result:
-\begin{itemize}
-\item Identify what are the yin summands contributing to a given pair $\mathbf{e}_i - \mathbf{e}_j$,
-\item prove that the count is the triple product of numbers of leaves of the trees,
-\item argue about what pairs $i,j$ are to be considered,
-\item argue symmetrically about yang arcs and conclude.
-\end{itemize}
+For every rectangulation $R$, we wish to give the coordinates of a point $p(R)\in\R^n$ such that
+$\SRP(n)$ is the convex hull of the points $p(R)$ for all rectangulations $R$.
+We first consider the contributions, to these coordinates, of the Minkowski summand $\SP(A)$ for all yin arcs $A$.
 
 \begin{lemma}
   \label{lem:yinminmax}
-  Let $\pi\in\f{S}_n$ and consider a yin arc $A$ composed of two intervals $I$ and $J$.
+  Let $\pi\in\f{S}_n$ and consider a yin arc $A=(I,J)$.
   Let $i := \arg\max_{k\in I} \pi^{-1}(k)$ and $j := \arg\min_{k\in J} \pi^{-1}(k)$.
-  The vertex of $\SP(A)$ that is extreme with respect to the direction $\pi^{-1}$
-  is $\mathbf{e}_i-\mathbf{e}_j$ if $\pi^{-1}(i)>\pi^{-1}(j)$, and $0$ otherwise.
+  The unique vertex of $\SP(A)$ that is extreme with respect to the direction $\pi^{-1}$
+  is $\mathbf{e}_i-\mathbf{e}_j$ if $\pi^{-1}(i)>\pi^{-1}(j)$, and $\mathbf{0}$ otherwise.
 \end{lemma}
 
 \begin{lemma}
