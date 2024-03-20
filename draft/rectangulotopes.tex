@@ -1,7 +1,7 @@
-\documentclass{amsart}
+\documentclass[12pt]{amsart}
 
 \usepackage[T1]{fontenc}
-\usepackage{enumerate, amsmath, amsfonts, amssymb, amsthm, mathrsfs, wasysym, graphics, graphicx, xcolor, url, hyperref, hypcap, shuffle, xargs, multicol, overpic, pdflscape, multirow, hvfloat, minibox, accents, array, multido, xifthen, a4wide, ae, aecompl, blkarray, pifont, mathtools, etoolbox, dsfont}
+\usepackage{enumerate, amsmath, amsfonts, amssymb, amsthm, mathrsfs, wasysym, graphics, graphicx, xcolor, url, hyperref, hypcap, shuffle, xargs, multicol, overpic, pdflscape, multirow, hvfloat, minibox, accents, array, multido, xifthen, a4wide, ae, aecompl, blkarray, pifont, mathtools, etoolbox, dsfont, verbatim}
 \usepackage{marginnote}
 \hypersetup{colorlinks=true, citecolor=darkblue, linkcolor=darkblue}
 \usepackage[all]{xy}
@@ -42,7 +42,7 @@
 \newtheorem{assumption}[theorem]{Assumption}
 \crefname{notation}{Notation}{Notations}
 \crefname{problem}{Problem}{Problems}
- 
+
 % math special letters
 \newcommand{\R}{\mathbb{R}} % reals
 \newcommand{\N}{\mathbb{N}} % naturals
@@ -136,8 +136,8 @@
 
 % specific rectangulotope
 \newcommand{\Asso}{\polytope{A}\mathsf{sso}} % associahedron
-\newcommand{\WRP}{\polytope{WRP}} % weak rectangulation polytope
-\newcommand{\SRP}{\polytope{SRP}} % strong rectangulation polytope
+\newcommand{\WRP}{\polytope{WR}} % weak rectangulation polytope
+\newcommand{\SRP}{\polytope{SR}} % strong rectangulation polytope
 \newcommand{\horizontalPattern}{\smash{\raisebox{-.15cm}{\includegraphics[scale=.5]{horizontalPattern}}}} % horizontal pattern
 \newcommand{\verticalPattern}{\smash{\raisebox{-.25cm}{\includegraphics[scale=.5]{verticalPattern}}}} % vertical pattern
 
@@ -161,7 +161,7 @@
 \thanks{VP was partially supported by the Spanish grant PID2022-137283NB-C21 of MCIN/AEI/10.13039/501100011033 / FEDER, UE, by Departament de Recerca i Universitats de la Generalitat de Catalunya (2021 SGR 00697), by the French grant CHARMS (ANR-19-CE40-0017), and by the French--Austrian projects PAGCAP (ANR-21-CE48-0020 \& FWF I 5788).}
 
 \author{Jean Cardinal}
-\address{Université Libre de Bruxelles}
+\address{Université libre de Bruxelles (ULB)}
 \email{jean.cardinal@ulb.be}
 \urladdr{\url{https://jean.cardinal.web.ulb.be}}
 
@@ -175,6 +175,8 @@
 \begin{document}
 
 \begin{abstract}
+  Rectangulations are decompositions of a square into finitely many axis-aligned rectangles.
+  We give simple realizations of $(n-1)$-dimensional polytopes associated with rectangulations composed of $n$ rectangles. They correspond to quotientopes of natural congruence relations on the weak Bruhat order on permutations in $\f{S}_n$, and their skeleta are flip graphs on rectangulations. We give  elementary formulas for computing the coordinates of each vertex of the polytope, in the spirit of Loday's realization of the associahedra.
 \end{abstract}
 
 \maketitle
@@ -185,120 +187,275 @@
 
 \section{Introduction}
 
-\Vincent{
-weak and strong classes of quadrangulations.
-Source and target tree. Only definition. Only depend on the weak class.
-Formulas with no explanation.
-Proofs and connection to quotientopes later.
-}
+\subsection{Polytopes of permutations, triangulations, and rectangulations}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{itemize}
+\item Permutohedra
+\item Associahedra
+\item Generalized permutohedra
+\item Quotientopes
+\item Quotientopes of rectangulations, natural successors to associahedra; Definitions
+\item Flip graphs on rectangulations
+\item Loday popularized a simple realization of the associahedron
+\item We give a Loday-style description of two classes of rectangulation polytopes
+\item This intro states the main results; proofs are in the following sections.
+\end{itemize}
 
-\newpage
-\section{Rectangulations}
-\label{sec:rectangulations}
+\subsection{permutohedra}
 
-%%%%%%%%%%%%
+\begin{theorem}
+  Let $\polytope{P} (n)$ be the convex hull of the points
+  $\sum_{i\in [n]} \pi^{-1}(i)\cdot \mathbf{e}_i$, 
+  for all permutations $\pi\in\f{S}_n$.
+  Then $\polytope{P} (n)$ is a realization of the $(n-1)$-dimensional permutohedron.
+  \end{theorem}
 
-\subsection{Combinatorics of (generic) rectangulations}
-\label{subsec:rectangulations}
 
-\Vincent{
-Note that there seem to be a canonical integer drawing of~$R$ described as follows.
-For vertical segment~$v$ of~$R$, consider the path~$p$ passing through~$v$ with maximal slope.
-The abscissa of~$v$ is then the number of rectangle on the left of~$p$ plus the number of \horizontalPattern{} patterns along~$p$ before~$v$ minus the number of \horizontalPattern{} patterns along~$p$ after~$v$.
-The ordinate of an horizontal segment~$h$ of~$R$ is defined symmetrically.
-}
+\subsection{Loday's associahedra}
 
-%%%%%%%%%%%%
+In 2004, Loday published the following elegant realization of the ubiquitous associahedron~\cite{}.
+
+\begin{theorem}
+  Let $\Asso (n)$ be the convex hull of the points
+  $\sum_{i\in [n]} w_i\cdot \mathbf{e}_i$, where
+  \[
+  w_i := \ell(T, i)\cdot r(T,i),
+  \]
+  for all binary trees $T$ on $n$ internal nodes, where $\ell(T,i)$ and $r(T,i)$ denote respectively the number of leaves in the left and right subtrees of $i$ in $T$.
+  Then $\Asso (n)$ is a realization of the $(n-1)$-dimensional associahedron.
+  \end{theorem}
+
+\subsection{Weak and strong rectangulations}
+
+\begin{itemize}
+\item Terminology: Rectangles, vertices, segments
+\item Wall slides
+\item Two equivalence classes: weak equivalence preserving rectangle-segment adjacencies, and strong equivalence preserving rectangle-rectangle adjacencies.
+\item Weak equivalence classes have a \emph{diagonal} representative.
+\end{itemize}
 
 \subsection{Source and target trees of a rectangulation}
 \label{subsec:sourceTargetTrees}
 
+\jean{Here only give the definitions allowing to state the results.}
+
 \begin{figure}
 	\centerline{\includegraphics[scale=.7]{strongRectangulation} \qquad \includegraphics[scale=.7]{strongRectangulationTrees}}
-	\caption{A strong rectangulation (left) and its pair of intertwining twin trees (right). The corresponding $2$-clumped permutation is $[7,5,14,8,1,6,15,11,4,10,16,2,9,13,3,12]$ and its inverse is $[5, 12, 15, 9, 2, 6, 1, 4, 13, 10, 8, 16, 14, 3, 7, 11]$. Example from \cite{AsinowskiCardinalFelsnerFusy}.}
+	\caption{\label{fig:sourceTargetTrees}A strong rectangulation (left) and its pair of intertwining binary trees (right). Example from \cite{AsinowskiCardinalFelsnerFusy}.}
+        % The corresponding $2$-clumped permutation is $[7,5,14,8,1,6,15,11,4,10,16,2,9,13,3,12]$ and its inverse is $[5, 12, 15, 9, 2, 6, 1, 4, 13, 10, 8, 16, 14, 3, 7, 11]$.
 \end{figure}
 
 Fix a rectangulation~$R$ with $n$ rectangles, and consider the directed graph~$D(R)$ whose vertex set is the set of all vertices of~$R$, and whose edges are obtained as follows.
-For each rectangle~$r$ of~$R$, we include in~$D(R)$ four edges joining the vertices of~$r$, where the horizontal edges are oriented from left to right if they are horizontal, and the vertical edges are oriented from bottom to top if they are vertical.
+For each rectangle~$r$ of~$R$, we include in~$D(R)$ four edges joining the vertices of~$r$, where the horizontal edges are oriented from left to right, and the vertical edges are oriented from bottom to top.
 Hence, the bottom left corner of~$r$ is its source~$s(r)$, while its top right corner is its target~$t(r)$.
 Note that since~$R$ is generic, the sources~$\set{s(r)}{r \in [n]}$ and the targets~$\set{t(r)}{r \in [n]}$ are disjoint.
 The \defn{source tree}~$S(R)$ (resp.~\defn{target tree}~$T(R)$) is the subgraph of~$D(R)$ induced by the sources~$\set{s(r)}{r \in [n]}$ (resp.~by the targets~$\set{t(r)}{r \in [n]}$).
 See \cref{fig:sourceTargetTrees}.
 
-\Vincent{Source and target trees only depend on the weak class. All proofs are done by wall slides.}
-
 \begin{lemma}
 The source tree~$S(R)$ (resp.~target tree~$T(R)$) is a binary tree, rooted at the bottom left (resp.~top right) corner of~$R$, and oriented from (resp.~towards) its root.
 \end{lemma}
 
+\begin{comment}
 \begin{proof}
 By symmetry, we only prove the statement for the source tree~$S(R)$.
 As the triangulation is generic, each source~$s(r)$ distinct from the bottom left corner of~$R$ is either on the top edge of a rectangle~$r'$ or on the right edge of a rectangle~$r'$ (but not both).
 This shows that~$r$ distinct from the bottom left rectangle of~$R$ has a unique parent~$r'$ in~$S(R)$, so that~$S(R)$ is indeed a tree on~$[n]$.
 This tree is binary as each node has at most one vertical child and one horizontal child, and no other children.
 \end{proof}
+\end{comment}
 
-We complete each node of~$S(R)$ and~$T(R)$ with a vertical (resp.~horizontal) leaf if it has no vertical (resp.~horizontal) child.
-See \cref{fig:sourceTargetTrees}.
+We complete each node of~$S(R)$ and~$T(R)$ with a vertical (resp.~horizontal) leaf if it has no vertical (resp.~horizontal) child, see \cref{fig:sourceTargetTrees}.
 Recall that the \defn{inorder labeling} of a binary tree~$T$ is the labeling of the nodes of~$T$ such that the label of each node~$t$ of~$T$ is larger than all labels in the left subtree of~$t$ and larger than all labels in the right subtree of~$t$.
 
 \begin{lemma}
 For any rectangle~$r$ of~$R$, the inorder label of the source~$s(r)$ in~$S(R)$ coincides with the inorder label of the target~$t(r)$ in~$T(R)$.
 \end{lemma}
 
-\begin{proof}
-\end{proof}
-
 This enables to unambiguously label the rectangles of~$R$ by the inorder 
 The resulting labeling coincides with the NW--SE labeling of~\cite{AsinowskiCardinalFelsnerFusy}.
-We prefer our presentation with~$S(R)$ and~$T(R)$ here as we will actually use these two binary trees.
+
+\subsection{Weak rectangulation polytopes}
+
+We are now ready to give our first main result on the realizations of weak rectangulation polytopes.
+
+\begin{theorem}
+  Let $\WRP (n)$ be the convex hull of the points
+  $\sum_{i\in [n]} w_i\cdot \mathbf{e}_i$,
+  where
+  \[
+  \begin{split}
+    w_i := \quad & h(T(R), i)\cdot v(T(R),i) \\
+           \quad & - h(S(R), i)\cdot v(S(R),i),
+  \end{split}
+  \]
+  for all weak rectangulations $R$ on $n$ rectangles, where $h(T,i)$ and $v(T,i)$ denote respectively the number of leaves in the horizontal and vertical subtrees of $i$ in the tree $T$.
+  Then $\WRP (n)$ is a realization of the $(n-1)$-dimensional weak rectangulation polytope.
+\end{theorem}
+
+\subsection{Strong rectangulation polytopes}
+
+Our second main result on the realizations of the strong rectangulation polytopes does not require any additional definition. It is, however, slightly more involved.
+
+\begin{theorem}
+  Let $\SRP (n)$ be the convex hull of the points
+  \[
+  \sum_{i,j\in [n]} w_{i,j}\cdot (\mathbf{e}_i - \mathbf{e}_j),
+  \]
+  with
+  \[
+  \begin{split}
+  w_{i,j} := \quad & h(T(R), i) \cdot cv (T(R), S(R), i, j)\cdot h(S(R), j) \\
+            \quad & - v(S(R), j) \cdot ch (T(R), S(R), i, j)\cdot v(T(R), i)
+  \end{split}
+  \]
+  \jean{Write the correct formula here, and sum only on the suitable pairs $i,j$.}
+  for all strong rectangulations $R$ on $n$ rectangles, where:
+  \begin{itemize}
+  \item $h(T,i)$ and $v(T,i)$ denote respectively the number of leaves in the horizontal and vertical subtrees of $i$ in the tree $T$,
+  \item $ch (T,S,i,j)$ and $cv (T,S,i,j)$ denote respectively the number of \emph{common leaves} to the horizontal (vertical) subtree of $i$ in $T$ and the horizontal (vertical) subtree of $j$ in $S$
+  \end{itemize}
+Then $\SRP (n)$ is a realization of the $(n-1)$-dimensional strong rectangulation polytope.  
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Quotientopes}
+\label{sec:quotientopes}
+
+\subsection{Quotients of the weak Bruhat order on permutations}
+
+\subsection{Arc diagrams}
+
+\jean{State the main results that we will use. I just give sloppy statements for now.}
+
+\begin{theorem}
+  Congruences on the weak Bruhat order are one-to-one with arc ideals.
+\end{theorem}
+
+\subsection{Shard polytopes}
+
+\begin{theorem}
+  The quotientope of a congruence $\equiv$ on the weak Bruhat order is realized by the Minkowski sum of the shard polytopes corresponding to the arcs in the arc ideal defining $\equiv$.
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Weak rectangulation polytopes}
+\label{sec:weakRectangulationPolytopes}
+
+%%%%%%%%%%%%
+\subsection{The Baxter congruence}
+
+Define the weak poset $P_w(R)$ of a rectangulation $R$ as the intersection of two partial orders defined by the twin binary trees
+
+\begin{theorem}
+  The following subsets of $\f{S}_n$ 
+  \[
+  \{\mathcal{L}(P_w(R)) : R \text{ is a weak rectangulation} \}
+  \]
+  are equivalence classes of a congruence relation on the weak Bruhat order on $\f{S}_n$.
+  The minimal elements of each equivalence classes are twisted Baxter permutations, and the maximal
+  elements are co-twisted Baxter permutations.
+\end{theorem}
+
+\begin{figure}
+	\centerline{\includegraphics[scale=.7]{weakRectangulation} \qquad \includegraphics[scale=.7]{weakRectangulationTrees}}
+	\caption{A diagonal rectangulation (left) and its pair of separated twin trees (right). The corresponding twisted Baxter permutation is $[7, 5, 1, 14, 8, 6, 4, 2, 11, 10, 9, 3, 15, 16, 13, 12]$ and its inverse is $[3, 8, 12, 7, 2, 6, 1, 5, 11, 10, 9, 16, 15, 4, 13, 14]$.}
+\end{figure}
+
+We call this congruence the \emph{Baxter congruence}.
+The weak rectangulation polytope $\WRP(n)$ is the quotientope of the Baxter congruence of the weak Bruhat order on permutations.
+
+\subsection{Loday and anti-Loday arcs}
+
+The Baxter congruence is defined by forbidding arcs that cross the horizontal line.
+Therefore, the quotientope is defined by a Minkowski sum of the shard polytopes defined by two families of arcs: the Loday and the anti-Loday arcs.
+
+\subsection{Loday-type coordinates for weak rectangulation polytopes}
+
+We now prove our first main result.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Strong rectangulation polytopes}
+\label{sec:strongRectangulationPolytopes}
+
+%%%%%%%%%%%%
+\subsection{The strong rectangulation congruence}
+
+Define the strong poset $P_s(R)$ of a rectangulation $R$ using the intertwined binary trees.
+
+\begin{theorem}
+  The following subsets of $\f{S}_n$ 
+  \[
+  \{\mathcal{L}(P_s(R)) : R \text{ is a strong rectangulation} \}
+  \]
+  are equivalence classes of a congruence relation on the weak Bruhat order on $\f{S}_n$.
+  The minimal elements of each equivalence classes are 2-clumped permutations, and the maximal
+  elements are co-2-clumped permutations.
+\end{theorem}
+
+The strong rectangulation polytope $\SRP(n)$ is the quotientope of the congruence of the weak Bruhat order on permutations that is defined by the 2-clumped permutations.
+
+\jean{Does the congruence have a little name?}
+
+\subsection{Yin and yang arcs}
+
+The congruence is defined by forbidding the arcs that cross the horizontal line more than once.
+The quotientope is therefore the Minkowski sum of the shard polytopes corresponding to four families of arcs:
+\begin{itemize}
+\item the Loday and anti-Loday arcs, like in the weak case,
+\item the Yin and yang arcs.
+\end{itemize}
+
+\subsection{Shard polytopes of yin and yang arcs}
+
+While the shard polytopes of Loday and anti-Loday arcs are simplices, the shard polytopes of the yin and yang arcs are pyramids. 
+
+\subsection{Loday-type coordinates for strong rectangulation polytopes}
+
+Proof of our second main result:
+\begin{itemize}
+\item Identify what are the vertices of each yin summands that contribute to a given rectangulation,
+\item group the contributions for each pair of rectangles $i,j$,
+\item prove that the count is the triple product of numbers of leaves of the trees,
+\item argue about what pairs $i,j$ are to be considered,
+\item argue symmetrically about yang arcs and conclude.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\clearpage
+\addtocontents{toc}{ \vspace{.1cm} }
+\bibliographystyle{alpha}
+\bibliography{rectangulotopes}
+\label{sec:biblio}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%
+\newpage
+\appendix
+\section{Material}
+
+Properties/results we may need along the way.
+
+\subsection{Twin binary trees.}
 
 \begin{lemma}
 The source tree~$S(R)$ and target tree~$T(R)$ are \defn{twin binary trees}, meaning that they satisfy the following equivalent conditions:
 \begin{enumerate}[(i)]
 \item $S$ and~$T$ admit a common linear extension,
 \item for any~$i \in [n-1]$, the node~$i$ is in the left subtree of the node~$i+1$ in~$S$ if and only if the node~$i+1$ is in the right subtree of the node~$i$ in~$R$,
-\item for any~$i \in [n-1]$, the $(i+1)$-st leaf of~$S$ is a left leaf if and only if the $(i+1)$-st leaf of~$R$ is a right leaf.
+\item for any~$i \in [n-1]$, the $(i+1)$th leaf of~$S$ is a left leaf if and only if the $(i+1)$th leaf of~$R$ is a right leaf.
 \end{enumerate}
 \end{lemma}
 
-\begin{proof}
-\end{proof}
-
-%%%%%%%%%%%%
-
-\subsection{Rectangulation insertion of permutations}
-\label{subsec:insertion}
-
-\Vincent{If my canonical drawing indeed makes sense, I would love to describe the insertion map directly on rectangles.}
-
-\Vincent{Describe the strong poset here?}
-
-The insertion fiber of a rectangulation~$R$ precisely consists in the linear extensions of the strong poset.
-
-%For a permutation~$\sigma$ of~$[n]$ and~$i \in [n]$, we define
-%\begin{alignat*}{2}
-%pv(i, \sigma) & \eqdef p(i) \cap v(i, \sigma), &
-%pV(i, \sigma) & \eqdef p(i) \cap V(i, \sigma), \\
-%Pv(i, \sigma) & \eqdef P(i) \cap v(i, \sigma) & \qquad\text{and}\qquad
-%PV(i, \sigma) & \eqdef P(i) \cap V(i, \sigma).
-%\end{alignat*}
-%where~$p(i) \eqdef [i-1]$ while~$P(i) \eqdef [n] \ssm [i]$, and~$v(i, \sigma) \eqdef \sigma([i-1])$ while $V(i, \sigma) \eqdef \sigma([n] \ssm [i])$.
-
-%%%%%%%%%%%%
-
-\subsection{Diagonal rectangulations}
-\label{subsec:diagonalRectangulations}
-
-\begin{figure}
-	\centerline{\includegraphics[scale=.7]{weakRectangulation} \qquad \includegraphics[scale=.7]{weakRectangulationTrees}}
-	\caption{A weak rectangulation (left) and its pair of separated twin trees (right). The corresponding twisted Baxter permutation is $[7, 5, 1, 14, 8, 6, 4, 2, 11, 10, 9, 3, 15, 16, 13, 12]$ and its inverse is $[3, 8, 12, 7, 2, 6, 1, 5, 11, 10, 9, 16, 15, 4, 13, 14]$.}
-\end{figure}
+\subsection{Properties of diagonal rectangulations.}
 
 We call \defn{diagonal} the segment joining the top left corner to the bottom right corner.
-A rectangulation~$R$ is \defn{diagonal} (or \defn{weak}) if it satisfies the following equivalent conditions:
+A rectangulation~$R$ is \defn{diagonal} if it satisfies the following equivalent conditions:
 \begin{enumerate}[(i)]
 \item all rectangles of~$R$ meet the diagonal,
 \item the source~$s(r)$ (resp.~target~$t(r)$) of each rectangle~$r$ of~$R$ is below (resp.~above) the diagonal,
@@ -308,6 +465,7 @@ A rectangulation~$R$ is \defn{diagonal} (or \defn{weak}) if it satisfies the fol
 \item the $2$-clumped permutation~$\projDown(R)$ avoids the patterns~$2413$ and~$3412$,
 \item the co-$2$-clumped permutation~$\projDown(R)$ avoids the patterns~$2143$ and~$3142$,
 \end{enumerate}
+
 
 \begin{proposition}
 The weak rectangulation insertion of any permutation~$\sigma$ of~$[n]$ is given by the rectangles~$[w\ell(i, \sigma), wr(i, \sigma)-1] \times [n-wd(i, \sigma)+1, n-wu(i, \sigma)]$ for~$i \in [n]$ where
@@ -321,52 +479,30 @@ wu(i, \sigma) & \eqdef \max \; \{0\} \cup \set{j}{j < i \text{ and } \sigma^{-1}
 \end{proposition}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Vincent{
+Note that there seem to be a canonical integer drawing of~$R$ described as follows.
+For vertical segment~$v$ of~$R$, consider the path~$p$ passing through~$v$ with maximal slope.
+The abscissa of~$v$ is then the number of rectangle on the left of~$p$ plus the number of \horizontalPattern{} patterns along~$p$ before~$v$ minus the number of \horizontalPattern{} patterns along~$p$ after~$v$.
+The ordinate of an horizontal segment~$h$ of~$R$ is defined symmetrically.
+}
 
-\section{Quotientopes}
-\label{sec:quotientopes}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Weak rectangulation polytope}
-\label{sec:weakRectangulationPolytope}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Strong rectangulation polytope}
-\label{sec:weakRectangulationPolytope}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%\clearpage
-\addtocontents{toc}{ \vspace{.1cm} }
-\bibliographystyle{alpha}
-\bibliography{rectangulotopes}
-\label{sec:biblio}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\begin{comment}
 \newpage
-
 \noindent
 \input{figures/rectangulations2.tikz}
-
 \vspace{1cm}
 \noindent
 \input{figures/rectangulations3.tikz}
-
 \vspace{1cm}
 \noindent
 \input{figures/rectangulations4.tikz}
-
 \newpage
 \noindent
 \input{figures/rectangulations5.tikz}
-
 \newpage
 \noindent
 \input{figures/rectangulations6.tikz}
-
 \clearpage
+\end{comment}
 
 \end{document}
