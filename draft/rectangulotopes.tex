@@ -1,7 +1,7 @@
 \documentclass{amsart}
 
 \usepackage[T1]{fontenc}
-\usepackage{enumerate, amsmath, amsfonts, amssymb, amsthm, mathrsfs, wasysym, graphics, graphicx, xcolor, url, hyperref, hypcap, shuffle, xargs, multicol, overpic, pdflscape, multirow, hvfloat, minibox, accents, array, multido, xifthen, a4wide, ae, aecompl, blkarray, pifont, mathtools, etoolbox, dsfont, verbatim}
+\usepackage{enumerate, amsmath, amsfonts, amssymb, amsthm, mathrsfs, wasysym, graphics, graphicx, xcolor, url, hyperref, hypcap, shuffle, xargs, multicol, overpic, pdflscape, multirow, hvfloat, minibox, accents, array, multido, xifthen, a4wide, ae, aecompl, blkarray, pifont, mathtools, etoolbox, dsfont, verbatim, stackrel}
 \usepackage{marginnote}
 \hypersetup{colorlinks=true, citecolor=darkblue, linkcolor=darkblue}
 \usepackage[all]{xy}
@@ -134,15 +134,18 @@
 \newcommandx{\Fan}[1][1=D]{\mathcal{F}_{#1}} % fan
 \newcommand{\polytope}[1]{\mathds{#1}} % font polytope
 
-% specific rectangulotope
+% polytopes
 \newcommand{\Asso}{\polytope{A}\mathsf{sso}} % associahedron
+% rectangulotopes
 \newcommand{\WRP}{\polytope{WR}} % weak rectangulation polytope
 \newcommand{\SRP}{\polytope{SR}} % strong rectangulation polytope
-\newcommand{\horizontalPattern}{\smash{\raisebox{-.15cm}{\includegraphics[scale=.5]{horizontalPattern}}}} % horizontal pattern
-\newcommand{\verticalPattern}{\smash{\raisebox{-.25cm}{\includegraphics[scale=.5]{verticalPattern}}}} % vertical pattern
-
 % shard polytopes
 \newcommand{\SP}{\polytope{SP}}
+
+% horizontal pattern
+\newcommand{\horizontalPattern}{\smash{\raisebox{-.15cm}{\includegraphics[scale=.5]{horizontalPattern}}}} 
+% vertical pattern
+\newcommand{\verticalPattern}{\smash{\raisebox{-.25cm}{\includegraphics[scale=.5]{verticalPattern}}}} 
 
 % Loday and anti-Loday accents (?)
 \newcommand{\loday}[1]{\overset{\frown}{#1}}
@@ -150,6 +153,9 @@
 % yin and yang accents (?)
 \newcommand{\yang}[1]{\overset{\backsim}{#1}}
 \newcommand{\yin}[1]{\overset{\sim}{#1}}
+% weak (Baxter) and strong equivalence on S_n
+\newcommand{\baxtereq}{\asymp}%{\stackrel{\frown}{\smile}}
+\newcommand{\strongeq}{\simeq}% % J: I would like to stack \backsim and \sim instead
 
 % formating the table of contents
 \setcounter{tocdepth}{4}
@@ -200,31 +206,15 @@
 
 \subsection{Polytopes of permutations, triangulations, and rectangulations}
 
-\begin{itemize}
-\item Permutohedra
-\item Associahedra
-\item Generalized permutohedra
-\item Quotientopes
-\item Quotientopes of rectangulations, natural successors to associahedra; Definitions
-\item Flip graphs on rectangulations
-\item Loday popularized a simple realization of the associahedron
-\item We give a Loday-style description of two classes of rectangulation polytopes
-\item This intro states the main results; proofs are in the following sections.
-\end{itemize}
+The encoding of combinatorial objects in the form of a polyhedral structure is a recurrent theme in geometric and algebraic combinatorics, matroid and polymatroid theory, and combinatorial optimization.
 
-\subsection{permutohedra}
+A striking yet elementary example of this idea is the \defn{permutahedron} $\polytope{P} (n)$, defined as the convex hull of the points $\sum_{i\in [n]} \pi^{-1}(i)\cdot \mathbf{e}_i$, for all permutations $\pi\in\f{S}_n$. The facets of $\polytope{P} (n)$ are indexed by the nonempty and nontrivial subsets of $[n]$, while its skeleton is the Cayley graph of the symmetric group for the generators consisting of adjacent transpositions.
 
-\begin{theorem}
-  Let $\polytope{P} (n)$ be the convex hull of the points
-  $\sum_{i\in [n]} \pi^{-1}(i)\cdot \mathbf{e}_i$, 
-  for all permutations $\pi\in\f{S}_n$.
-  Then $\polytope{P} (n)$ is a realization of the $(n-1)$-dimensional permutohedron.
-  \end{theorem}
+The \defn{associahedron} is an ubiquitous polytope, first defined by Tamari~\cite{}, then studied by Stasheff in a topological context~\cite{}, that has since then found applications in various areas of mathematics~\cite{}. It was first defined as a combinatorial object, before geometric realizations were shown to exist~\cite{}.
 
+The face lattice of the $(n-1)$-dimensional associahedron is the reverse inclusion poset of nonintersecting diagonals of a convex $(n+3)$-gon. In particular, it skeleton is the \defn{flip graph} on \defn{triangulations} of the $(n+3)$-gon, or equivalently -- via a standard Catalan bijection -- the \defn{rotation graph} on \defn{binary trees} with $n$ internal nodes, whose structure has been the subject of many investigations, with applications in computer science~\cite{}.
 
-\subsection{Loday's associahedra}
-
-In 2004, Loday published the following elegant realization of the ubiquitous associahedron~\cite{}.
+In 2004, Loday published the following elegant realization of the associahedron~\cite{}.
 
 \begin{theorem}
   Let $\Asso (n)$ be the convex hull of the points
@@ -234,15 +224,25 @@ In 2004, Loday published the following elegant realization of the ubiquitous ass
   \]
   for all binary trees $T$ on $n$ internal nodes, where $\ell(T,i)$ and $r(T,i)$ denote respectively the number of leaves in the left and right subtrees of $i$ in $T$.
   Then $\Asso (n)$ is a realization of the $(n-1)$-dimensional associahedron.
-  \end{theorem}
+\end{theorem}
+
+
+\begin{itemize}
+\item \defn{Generalized (deformed) permutahedra}
+\item \defn{Quotientopes}
+\item Quotientopes of rectangulations, natural successors to associahedra; Definitions
+\item We give a Loday-style description of two classes of rectangulation polytopes
+\item This intro states the main results; proofs are in the following sections.
+\end{itemize}
 
 \subsection{Weak and strong rectangulations}
 
 \begin{itemize}
-\item Terminology: rectangles, vertices, segments, generic rectangulation
-\item Wall slides
+\item Terminology: rectangles, \defn{vertices}, \defn{segments}, \defn{generic} rectangulation
+\item \defn{Wall slides}
 \item Two equivalence classes: \defn{weak equivalence} preserving rectangle-segment adjacencies, and \defn{strong equivalence} preserving rectangle-rectangle adjacencies.
 \item Weak equivalence classes have a \defn{diagonal} representative.
+\item \defn{Flip graphs} on rectangulations
 \end{itemize}
 
 \subsection{Source and target trees of a rectangulation}
@@ -341,7 +341,7 @@ Two leaves of the trees $T(R)$ and $S(R)$ are said to be \defn{common leaves} if
 Then $\SRP (n)$ is a realization of the $(n-1)$-dimensional strong rectangulation polytope.  
 \end{theorem}
 
-\Jean{Is there a more concise way to write this down/compute? Here we do not take advantage of the fact that at most one of the two factors $yin{w}_{i,j}$ and $\yang{w}_{i,j}$ is nonzero.}
+\Jean{Is there a more concise way to write this down/compute? Here we do not take advantage of the fact that at most one of the two factors $\yin{w}_{i,j}$ and $\yang{w}_{i,j}$ is nonzero.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -370,15 +370,22 @@ Then $\SRP (n)$ is a realization of the $(n-1)$-dimensional strong rectangulatio
 %%%%%%%%%%%%
 \subsection{The Baxter congruence}
 
+\jean{Clash of terminology: weak vs. Baxter?}
+
 Given a rectangulation $R$, the two trees $T(R)$ and $S(R)$, where the horizontal edges are oriented from left to right and the vertical edges are oriented from bottom to top,
 define two partial orders on $[n]$.
-We define the \defn{weak poset} $P_w(R)=([n],\prec_w)$ of a rectangulation $R$ as the transitive closure of the union of the two partial orders defined by the intertwining binary trees $T(R)$ and $S(R)$.
+We define the \defn{weak poset} $P_w(R)=([n],\prec_w)$ of a rectangulation $R$ as the transitive closure of the union of the two partial orders defined by the intertwining binary trees $T(R)$ and $S(R)$. The weak poset is a two-dimensional lattice, whose minimum is the root of $S(R)$ and the maximum is the root of $T(R)$.
 
 \begin{theorem}
   The subsets $\mathcal{L}(P_w(R))$ of $\f{S}_n$, for all rectangulations $R$ on $n$ rectangles, 
-  are equivalence classes of a congruence relation on the weak Bruhat order on $\f{S}_n$.
-  The minimal elements of each equivalence classes are twisted Baxter permutations, and the maximal
-  elements are co-twisted Baxter permutations.
+  are equivalence classes of a congruence relation $\baxtereq$ on the weak Bruhat order on $\f{S}_n$.
+  Furthermore:
+  \begin{itemize}
+  \item The congruence classes are one-to-one with weak rectangulations,  
+  \item the minimal elements of each congruence class are the twisted Baxter permutations,
+  \item the maximal elements are the co-twisted Baxter permutations,
+  \item the congruence classes each contain a single Baxter permutation, and are one-to-one with Baxter permutations.
+  \end{itemize}
 \end{theorem}
 
 \begin{figure}
@@ -387,19 +394,24 @@ We define the \defn{weak poset} $P_w(R)=([n],\prec_w)$ of a rectangulation $R$ a
 \end{figure}
 
 We call this congruence the \defn{Baxter congruence}.
-The weak rectangulation polytope $\WRP(n)$ is the quotientope of the Baxter congruence of the weak Bruhat order on $\f{S}_n$.
+The \defn{weak rectangulation polytope} $\WRP(n)$ is the quotientope of the Baxter congruence $\baxtereq$ on the weak Bruhat order on $\f{S}_n$.
 
 \subsection{Loday and anti-Loday arcs}
 
-The Baxter congruence is defined by forbidding arcs that cross the horizontal line.
-Therefore, the quotientope is defined by a Minkowski sum of the shard polytopes defined by two families of arcs: the \defn{Loday arcs} and the \defn{anti-Loday arcs}, that go respectively above and below all elements of an interval $I$ of $[n]$.
+\begin{lemma}
+The Baxter congruence $\baxtereq$ on $\f{S}_n$ is defined by the arc ideal composed of arcs that do not cross the horizontal line.
+\end{lemma}
+
+Therefore, the quotientope is realized by a Minkowski sum of the shard polytopes defined by two families of arcs: the \defn{Loday arcs} and the \defn{anti-Loday arcs}, that go respectively above and below all elements of an interval $I$ of $[n]$.
 
 \begin{lemma}
-  Given a Loday arc $A$ defined by an interval $I$, the Loday shard polytope $\SP(A)$ is defined as the standard simplex $\conv \{ \mathbf{e}_i : i\in I \}$.
+  \label{lem:lodaysp}
+  Given a Loday arc $A$ defined by an interval $I$, the Loday shard polytope $\SP(A)$ is a translate of the standard simplex $\conv \{ \mathbf{e}_i : i\in I \}$.
 \end{lemma}
 
 \begin{lemma}
-  Given an anti-Loday arc $A$ defined by an interval $I$, the anti-Loday shard polytope $\SP(A)$ is defined as the negative standard simplex $\conv \{ - \mathbf{e}_i : i\in I \}$.
+  \label{lem:antilodaysp}
+  Given an anti-Loday arc $A$ defined by an interval $I$, the anti-Loday shard polytope $\SP(A)$ is a translate of the negative standard simplex $\conv \{ - \mathbf{e}_i : i\in I \}$.
 \end{lemma}
 
 \begin{lemma}
@@ -407,6 +419,24 @@ Therefore, the quotientope is defined by a Minkowski sum of the shard polytopes 
 \end{lemma}
 
 \subsection{Loday-type coordinates for weak rectangulation polytopes}
+
+For every rectangulation $R$, we wish to give the coordinates of a point $p(R)\in\R^n$ such that $\WRP(n)$ is the convex hull of the points $p(R)$ for all rectangulations $R$.
+Recall that in a Minkowski sum of polytopes, the vertex that is extremal in a generic direction is the sum of the vertices of the summands that are extremal in this direction.
+We therefore need to understand which vertices of the translates of the shard polytopes defined in Lemmas~\ref{lem:lodaysp} and~\ref{lem:antilodaysp} are extremal for a direction given by a permutation.
+
+\begin{lemma}
+  \label{lem:lodaymax}
+  Let $\pi\in\f{S}_n$ and consider a Loday arc $A$ defined by an interval $I$.
+  The unique vertex of $\SP(A)$ that is extreme with respect to the direction $\pi^{-1}$
+  is $\mathbf{e}_i$, where $i := \arg\max_{j\in I} \pi^{-1}(j)$.
+  Similarly, if $A$ is an anti-Loday arc defined by $I$, the unique vertex of $\SP(A)$ that is extreme with respect to the direction $\pi^{-1}$
+  is $-\mathbf{e}_i$, where $i := \arg\min_{j\in I} \pi^{-1}(j)$.
+\end{lemma}
+
+Note that this extremal vertex should only depend on the Baxter congruence class of $\pi$.
+This, in passing, gives us an alternative characterization of the Baxter congruence:
+$\pi\baxtereq\sigma$ if and only if for any interval $I$ of $[n]$, $\arg\max_{j\in I} \pi^{-1}(j)=\arg\max_{j\in I} \sigma^{-1}(j)$, and
+$\arg\min_{j\in I} \pi^{-1}(j)=\arg\min_{j\in I} \sigma^{-1}(j)$.
 
 \begin{lemma}
   Let $R$ be a rectangulation on $n$ rectangles and $p(R)$ the vertex of $\WRP(n)$ associated with $R$.
@@ -430,48 +460,64 @@ For a poset $P$ on $[n]$, we define $\mathcal{L}(P)$ as the set of permutations 
 
 \begin{theorem}
   The subsets $\mathcal{L}(P_s(R))$ of $\f{S}_n$, for all rectangulations $R$ on $n$ rectangles, 
-  are equivalence classes of a congruence relation on the weak Bruhat order on $\f{S}_n$.
-  The minimal elements of each equivalence classes are 2-clumped permutations, and the maximal
-  elements are co-2-clumped permutations.
+  are equivalence classes of a congruence relation $\strongeq$ on the weak Bruhat order on $\f{S}_n$.
+    Furthermore:
+  \begin{itemize}
+  \item The congruence classes are one-to-one with strong rectangulations,  
+  \item the minimal elements of each congruence class are the 2-clumped permutations,
+  \item the maximal elements are the co-2-clumped permutations.
+  \end{itemize}
 \end{theorem}
 
-The strong rectangulation polytope $\SRP(n)$ is the quotientope of the congruence of the weak Bruhat order on $\f{S}_n$ that is defined by the 2-clumped permutations.
+We call the congruence $\strongeq$ the \defn{strong rectangulation congruence}.
+The \defn{strong rectangulation polytope} $\SRP(n)$ is the quotientope of the strong rectangulation congruence $\strongeq$.
 
 \jean{Does the congruence have a name?}
 
 \subsection{Yin and yang arcs}
 
-The strong rectangulation congruence is defined by forbidding the arcs that cross the horizontal line more than once. We classify the remaining arcs into two families, depending on whether the arcs cross from above or below.
+\begin{lemma}
+  The strong rectangulation congruence $\strongeq$ on $\f{S}_n$ is defined by the arc ideal composed of arcs that cross the horizontal line at most once.
+\end{lemma}
 
-A \defn{yin arc} is defined by two consecutive nonempty intervals $I$ and $J$ of $[n]$ such that the arc goes above all elements of $I$ and
-below all elements of $J$. Note that the Loday arc are obtained when $|J|=1$ and the anti-Loday arc are obtained with $|I|=1$.
-A \defn{yang arc} is defined similarly, except that the arc goes below the elements of $I$ and above the elements of $J$. Note that Loday and anti-Loday arcs are also yang arcs.
+We classify the arcs into two families, depending on whether the arcs cross from above or below.
+A \defn{yin arc} is defined by two consecutive nonempty intervals $I$ and $J$ of $[n]$ such that the arc goes above all elements of $I$ and below all elements of $J$.
+A \defn{yang arc} is defined similarly, except that the arc goes below the elements of $I$ and above the elements of $J$. 
 
 \begin{lemma}
-  Given a yin arc $A=(I,J)$, the shard polytope $\SP(A)$ is defined as the convex hull of the points
+  \label{lem:yinsp}
+  Given a yin arc $A=(I,J)$, the yin shard polytope $\SP(A)$ is defined as the convex hull of the points
   $\{\mathbf{0} \}\cup \{ \mathbf{e}_i - \mathbf{e}_j : (i,j)\in I\times J\}$.
-  %  \SP(A) = \conv (\{\mathbf{0} \}\cup \{ \mathbf{e}_i - \mathbf{e}_j : (i,j)\in I\times J\})
 \end{lemma}
 
 \begin{lemma}
-  Given a yang arc $A=(I,J)$, the shard polytope $\SP(A)$ is defined as the convex hull of the points
+  \label{lem:yangsp}
+  Given a yang arc $A=(I,J)$, the yang shard polytope $\SP(A)$ is a translate of the convex hull of the points
   $\{\mathbf{0} \}\cup \{ \mathbf{e}_j - \mathbf{e}_i : (i,j)\in I\times J\}$.
-  %  \SP(A) = \conv (\{\mathbf{0} \}\cup \{ \mathbf{e}_j - \mathbf{e}_i : (i,j)\in I\times J\})
 \end{lemma}
+
+Note that yin shard polytopes are translates of the Loday shard polytopes when $|J|=1$, and of the anti-Loday shard polytopes when $|I|=1$.
+similarly, Loday and anti-Loday shard polytopes are translates of some yang shard polytopes.
 
 The following is a direct application of the main result of Padrol, Pilaud, and Ritter~\cite{}.
 
 \begin{lemma}
+  \label{lem:strongsum}
   The strong rectangulation polytope $\SRP(n)$ is realized by the Minkowski sum of all shard polytopes of yin and yang arcs.
 \end{lemma}
 
-Note that since Loday and anti-Loday arcs are both yin and yang, each Loday and anti-Loday shard polytope is summed twice in the proposed realization. This does not change the combinatorial type of the polytope.
+Since the combinatorial type of a Minkowski sum is invariant to translation of the summands, we can use the polytopes defined in Lemmas~\ref{lem:yinsp} and~\ref{lem:yangsp} as a definition of the yin and yang shard polytopes.
+Also note that since Loday and anti-Loday shard polytopes are, up to a translation, both yin and yang, each Loday and anti-Loday shard polytope is summed twice in the proposed realization.
+This, again, does not change the combinatorial type of the polytope.
+
+Lemma~\ref{lem:strongsum} gives us an alternative description of $\SRP(n)$ as the sum of two opposite quotientopes defined by the \defn{yin} and \defn{yang congruences} respectively, where the yin congruence is defined by the arc ideal consisting of all yin arcs, and the yang congruence is defined by the yang arcs.
 
 \subsection{Loday-type coordinates for strong rectangulation polytopes}
 
-For every rectangulation $R$, we wish to give the coordinates of a point $p(R)\in\R^n$ such that
-$\SRP(n)$ is the convex hull of the points $p(R)$ for all rectangulations $R$.
+For every rectangulation $R$, we wish to give the coordinates of a point $p(R)\in\R^n$ such that $\SRP(n)$ is the convex hull of the points $p(R)$ for all rectangulations $R$.
 We first consider the contributions, to these coordinates, of the Minkowski summand $\SP(A)$ for all yin arcs $A$.
+Recall that in a Minkowski sum of polytopes, the vertex that is extremal in a generic direction is the sum of the vertices of the summands that are extremal in this direction.
+We therefore need to understand which vertices of the translates of the yin shard polytopes defined in Lemmas~\ref{lem:yinsp} are extremal for a direction given by a permutation.
 
 \begin{lemma}
   \label{lem:yinminmax}
@@ -480,6 +526,8 @@ We first consider the contributions, to these coordinates, of the Minkowski summ
   The unique vertex of $\SP(A)$ that is extreme with respect to the direction $\pi^{-1}$
   is $\mathbf{e}_i-\mathbf{e}_j$ if $\pi^{-1}(i)>\pi^{-1}(j)$, and $\mathbf{0}$ otherwise.
 \end{lemma}
+
+Note again that by definition, this extremal vertex should only depend on the strong congruence class of $\pi$.
 
 \begin{lemma}
   Let $R$ be a rectangulation on $n$ rectangles and $p(R)$ the vertex of $\SRP(n)$ associated with $R$.
