@@ -24,10 +24,13 @@ def up_down_yangs(n):
     return Arcs(n, arcs=Set(list(permutree_congruence([-1]*n)) + list(permutree_congruence([1]*n)) + list(yangs(n))))
 
 def up_down_yinyangs(n):
-    return Arcs(n, arcs=Set(list(up_down_yins(n)) + list(up_down_yangs)))
+    return Arcs(n, arcs=list(up_down_yins(n)) + list(up_down_yangs(n)))
 
 def up_down_yins_quotientope(n):
     return up_down_yins(n).quotientope(essential=False)
+
+def up_down_yangs_quotientope(n):
+    return up_down_yangs(n).quotientope(essential=False)
 
 def up_down_yinyangs_quotientope(n):
     return up_down_yinyangs(n).quotientope(essential=False)
@@ -69,13 +72,13 @@ def vertex_2_clumped_permutation_bis(perm):
     """
     Yins = [0] + [[0] + [max(0, len(HT[u]) * (min(max(VT[u]), v-1) - max(min(VS[v])-1, u) + 1) * len(HS[v])) for u in range(1, v)] for v in range(1, n+1)]
     Yangs = [0] + [[0] + [max(0, len(VS[u]) * (min(max(HS[u]), v-1) - max(min(HT[v])-1, u) + 1) * len(VT[v])) for u in range(1, v)] for v in range(1, n+1)]
-    vertex = vector([0]*n) # vector([len(HT[u]) * len(VT[u]) - len(HS[u]) * len(VS[u]) for u in range(1,n+1)]) # no need for Loday and antiLoday
+    vertex = vector(range(binomial(n,2), -binomial(n,2)-1, -n)) # vector([len(HT[u]) * len(VT[u]) - len(HS[u]) * len(VS[u]) for u in range(1,n+1)]) # no need for Loday and antiLoday
     for v in range(1, n+1):
         for u in range(1, v):
             if perm_inv(u) > perm_inv(v):
                 vertex = vertex + Yins[v][u] * vector([0]*(u-1) + [1] + [0]*(v-u-1) + [-1] + [0]*(n-v))
             else:
-                vertex = vertex #- Yangs[v][u] * vector([0]*(u-1) + [1] + [0]*(v-u-1) + [-1] + [0]*(n-v))
+                vertex = vertex - Yangs[v][u] * vector([0]*(u-1) + [1] + [0]*(v-u-1) + [-1] + [0]*(n-v))
     return vertex
 
 @cached_function
@@ -83,7 +86,11 @@ def up_down_yins_quotientope_ter(n):
     return Polyhedron([vertex_2_clumped_permutation_bis(perm) for perm in up_down_yins(n).quotient()])
 
 @cached_function
-def up_down_yinyangs_quotientope(n):
+def up_down_yangs_quotientope_ter(n):
+    return Polyhedron([vertex_2_clumped_permutation_bis(perm) for perm in up_down_yangs(n).quotient()])
+
+@cached_function
+def up_down_yinyangs_quotientope_bis(n):
     return Polyhedron([vertex_2_clumped_permutation_bis(perm) for perm in rectangulations_congruence(n).quotient()])
 
 ### SOURCE AND TARGET TREES
