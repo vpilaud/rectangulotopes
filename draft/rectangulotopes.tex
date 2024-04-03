@@ -116,8 +116,8 @@
 
 % marginal comments
 \usepackage{todonotes}
-\newcommand{\vincent}[1]{\todo[color=blue!30]{\rm #1 \\ \hfill --- V.}}
-\newcommand{\Vincent}[1]{\todo[inline, color=blue!30]{\rm #1 \\ \hfill --- V.}}
+\newcommand{\vincent}[1]{\todo[size=\scriptsize, color=blue!30]{\rm #1 \\ \hfill --- V.}}
+\newcommand{\Vincent}[1]{\todo[inline, size=\scriptsize, color=blue!30]{\rm #1 \\ \hfill --- V.}}
 \newcommand{\jean}[2][]{\todo[size=\scriptsize, color=orange!30,#1]{\rm #2 \\ \hfill --- J.}}
 \newcommand{\Jean}[2][]{\todo[inline, size=\scriptsize, color=orange!30,#1]{\rm #2 \\ \hfill --- J.}}
 
@@ -481,6 +481,8 @@ Therefore, the quotientope is realized by a Minkowski sum of the shard polytopes
 
 \subsection{Submodular functions of weak rectangulotopes}
 
+\jean{You may want to use another notation here, feel free.}
+
 Recall that every deformed permutahedra can be defined as
   \[
   \{x\in\R^n : \sum_{i\in S} x_i \leq f(S)\ \forall S\subseteq [n], S\not=\emptyset, \text { and } \sum_{i\in [n]} x_i = f([n])\},
@@ -608,7 +610,7 @@ similarly, Loday and anti-Loday shard polytopes are translates of some yang shar
 The following is a direct application of the main result of Padrol, Pilaud, and Ritter~\cite{MR4584712}.
 
 \begin{lemma}
-  \label{lem:strongsum}
+  \label{lem:strongMinkowski}
   The strong rectangulotope $\SRP(n)$ is realized by the Minkowski sum of all shard polytopes of yin and yang arcs.
 \end{lemma}
 
@@ -620,7 +622,34 @@ Lemma~\ref{lem:strongsum} gives us an alternative description of $\SRP(n)$ as th
 
 \subsection{Submodular functions of strong rectangulotopes}
 
-\jean{Compute the submodular functions of each yin and yang shard polytopes and sum them.}
+\jean{That seems to work.}
+
+The submodular function corresponding to our realization of $\SRP(n)$ can be obtained as before by summing the functions defining the yin and yang shard polytopes in Lemmas~\ref{lem:yinsp} and~\ref{lem:yangsp}.
+
+\begin{lemma}
+  The strong rectangulotope $\SRP(n)$ is realized by the following submodular function:
+  \[
+  f(S) := |\{ I, J : I\cap S\not=\emptyset \wedge J\cap ([n]\setminus S) \not= \emptyset \}| +
+  |\{ I, J : J\cap S\not=\emptyset \wedge I\cap ([n]\setminus S) \not= \emptyset \}|,
+  \]
+  where $I, J$ are pairs of consecutive and nonempty intervals of $[n]$.
+\end{lemma}
+
+\begin{proof}
+  From Lemmas~\ref{lem:strongMinkowski} and~\ref{lem:submodsum}, the submodular function defining the realization of $\WRP(n)$ is the sum of the submodular functions defining the yin and yang shard polytope in Lemmas~\ref{lem:yinsp} and~\ref{lem:yangsp}. For a yin arc $A$ defined by consecutive intervals $I, J$ of $[n]$, we have that its shard polytope $\SP(A)$ is realized by the submodular function
+  \[
+  \yin{f}_{I,J}(S) := \llbracket S\cap I\not=\emptyset \wedge S\not\supseteq J \rrbracket .
+  \]
+  Similarly, for a yang arc, the shard polytope $\SP(A)$ is defined by the following submodular function:
+  \[
+  \yang{f}_{I,J}(S) := \llbracket S\cap J\not=\emptyset \wedge S\not\supseteq I \rrbracket .
+  \]
+  Their sum
+  \[
+  f(S) := \sum_{I,J} \yin{f}_{I,J}(S) + \yang{f}_{I,J}(S)
+  \]
+  is therefore as claimed.
+\end{proof}
 
 \subsection{Loday-type coordinates for strong rectangulotopes}
 
