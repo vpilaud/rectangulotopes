@@ -196,7 +196,7 @@
   Rectangulations are decompositions of a square into finitely many axis-aligned rectangles.
   We describe realizations of $(n-1)$-dimensional polytopes associated with rectangulations composed of $n$ rectangles.
   They are defined as quotientopes of natural congruence relations on the weak Bruhat order on permutations in $\f{S}_n$, and their skeleta are flip graphs on rectangulations.
-  We give a thorough description of geometric realizations of these polytopes, including elementary formulas for computing the coordinates of each vertex of the polytope, in the spirit of Loday's realization of the associahedron.
+  We give simple geometric realizations of these polytopes, including elementary formulas for computing the coordinates of each vertex of the polytope, in the spirit of Loday's realization of the associahedron.
 \end{abstract}
 
 \maketitle
@@ -352,6 +352,7 @@ In order to exhibit a similar realization for the strong rectangulotopes, we nee
 Two leaves of the trees $T(R)$ and $S(R)$ are said to be \defn{common leaves} if the edges to their parents lie on the same segment of $R$.
 We denote by %$i|j$ and $\frac{\ j\ }i$
 $i \, \backslash \, j$ the situation where the rectangle labeled $i$ touches the rectangle labeled $j$ either from the left or from below in $R$. %, respectively.
+We also use the Iverson bracket $\llbracket \varphi\rrbracket$, which is equal to 1 if $\varphi$ holds, and 0 otherwise.
 
 \begin{theorem}
   The $(n-1)$-dimensional strong rectangulotope is realized by the convex hull~$\SRP (n)$ of the points
@@ -389,9 +390,7 @@ For instance, the $4$th coordinate is $???$.
 
 \subsection{Plan of the paper}
 
-Section~\ref{sec:quotientopes} is dedicated to the background on quotientopes and their realizations as Minkowski sums of \defn{shard polytopes}, due to Padrol, Pilaud, and Ritter~\cite{MR4584712}, which will be our main tool throughout.
-Section~\ref{sec:wr} details the case of weak rectangulations, while Section~\ref{sec:sr} deals with strong rectangulations.
-In both cases, in addition to the vertex coordinates, we give the description of the face lattices and the submodular functions defining the polytopes.
+Section~\ref{sec:quotientopes} is dedicated to the background on quotientopes and their realizations as Minkowski sums of \defn{shard polytopes}, due to Padrol, Pilaud, and Ritter~\cite{MR4584712}, which will be our main tool throughout. Section~\ref{sec:wr} details the case of weak rectangulations, while Section~\ref{sec:sr} deals with strong rectangulations. In both cases, in addition to the vertex coordinates, we also give the submodular functions defining the polytopes.
 
 \subsection*{Acknowledgments}
 
@@ -535,14 +534,15 @@ Therefore, the quotientope is realized by a Minkowski sum of the shard polytopes
 
 \subsection{Submodular functions of weak rectangulotopes}
 
-Weak rectangulotopes are deformed permutahedra, hence are defined by a \defn{submodular} set function $f:2^{[n]}\mapsto \R$. The description of the weak rectangulotope $\WRP(n)$ as a Minkowski sum in Lemma~\ref{lem:weakMinkowski} allows us to easily compute the submodular function defining it.
+Recall that every deformed permutahedra can be defined as
+  \[
+  \{x\in\R^n : \sum_{i\in S} x_i \leq f(S)\ \forall S\subseteq [n], S\not=\emptyset, \text { and } \sum_{i\in [n]} x_i = f([n])\},
+  \]
+where $f$ is a \defn{submodular} set function $f:2^{[n]}\mapsto \R$.
+The description of the weak rectangulotope $\WRP(n)$ as a Minkowski sum in Lemma~\ref{lem:weakMinkowski} allows us to easily compute the submodular function defining it.
 
 \begin{lemma}
-  The weak rectangulotope $\WRP(n)$ is realized as
-  \[
-  \{x\in\R^n : \sum_{i\in S} x_i \leq f(S) \text { and } \sum_{i\in [n]} x_i = f([n])\},
-  \]
-  where $f:2^{[n]}\mapsto \R$ is the following submodular function:
+  The weak rectangulotope $\WRP(n)$ is realized by the following submodular function:
   \[
   f(S) := |\{ I\text{ interval of } [n] : I\cap S\not=\emptyset \text{ and } I\cap ([n]\setminus S) \not= \emptyset \}|.
   \]
@@ -557,17 +557,14 @@ The proof relies on the following simple lemma stating that the submodular funct
 \end{lemma}
 
 \begin{proof}
-  From Lemmas~\ref{lem:weakMinkowski} and~\ref{lem:submodsum}, the submodular function defining the realization of $\WRP(n)$ is the sum of the submodular functions defining the Loday and anti-Loday shard polytope in Lemmas~\ref{lem:lodaysp} and~\ref{lem:antilodaysp}. For a Loday arc $A$ defined by an interval $I$ of $[n]$, we have
-  \[
-  \SP(A) = \{ x\in\R^n : \sum_{i\in S} x_i \leq \loday{f}_I(S) \text { and } \sum_{i\in [n]} x_i = \loday{f}_I([n]) \},
-  \]
-  where
+  From Lemmas~\ref{lem:weakMinkowski} and~\ref{lem:submodsum}, the submodular function defining the realization of $\WRP(n)$ is the sum of the submodular functions defining the Loday and anti-Loday shard polytope in Lemmas~\ref{lem:lodaysp} and~\ref{lem:antilodaysp}. For a Loday arc $A$ defined by an interval $I$ of $[n]$, we have that its shard polytope $\SP(A)$ is realized by the submodular function
   \[
   \loday{f}_I(S) := \llbracket S\cap I\not=\emptyset \rrbracket .
   \]
+  (Recall that $\llbracket \varphi\rrbracket$ is equal to 1 if $\varphi$ holds, and 0 otherwise.)
   Similarly, for an anti-Loday arc $A$ defined by an interval $I$, the shard polytope $\SP(A)$ is defined by the following submodular function:
   \[
-  \antiloday{f}_I(S) := - \llbracket S\subseteq I \rrbracket .
+  \antiloday{f}_I(S) := - \llbracket I\subseteq S \rrbracket .
   \]
   Their sum
   \[
