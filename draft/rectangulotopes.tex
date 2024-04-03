@@ -196,7 +196,7 @@
   Rectangulations are decompositions of a square into finitely many axis-aligned rectangles.
   We describe realizations of $(n-1)$-dimensional polytopes associated with rectangulations composed of $n$ rectangles.
   They are defined as quotientopes of natural congruence relations on the weak Bruhat order on permutations in $\f{S}_n$, and their skeleta are flip graphs on rectangulations.
-  We give a thorough description of these polytopes, including elementary formulas for computing the coordinates of each vertex of the polytope, in the spirit of Loday's realization of the associahedron.
+  We give a thorough description of geometric realizations of these polytopes, including elementary formulas for computing the coordinates of each vertex of the polytope, in the spirit of Loday's realization of the associahedron.
 \end{abstract}
 
 \maketitle
@@ -473,6 +473,7 @@ Therefore, the quotientope is realized by a Minkowski sum of the shard polytopes
 \end{lemma}
 
 \begin{lemma}
+  \label{lem:weakMinkowski}
   The weak rectangulotope $\WRP(n)$ is realized by the Minkowski sum of all Loday and anti-Loday shard polytopes.
   In particular, it is the Minkowski sum of two opposite Loday associahedra.
 \end{lemma}
@@ -481,15 +482,46 @@ Therefore, the quotientope is realized by a Minkowski sum of the shard polytopes
 
 \subsection{Submodular functions of weak rectangulotopes}
 
+Weak rectangulotopes are deformed permutahedra, hence are defined by a \defn{submodular} set function $f:2^{[n]}\mapsto \R$. The description of the weak rectangulotope $\WRP(n)$ as a Minkowski sum in Lemma~\ref{lem:weakMinkowski} allows us to easily compute the submodular function defining it.
+
 \begin{lemma}
   The weak rectangulotope $\WRP(n)$ is realized as
   \[
   \{x\in\R^n : \sum_{i\in S} x_i \leq f(S) \text { and } \sum_{i\in [n]} x_i = f([n])\},
   \]
-  where $f:2^{[n]}\mapsto \R$ is the submodular function that maps $S$ to the number of intervals
-  $I$ of $[n]$ such that $I\cap S\not=\emptyset$ and $I\not\subseteq S$.
+  where $f:2^{[n]}\mapsto \R$ is the following submodular function:
+  \[
+  f(S) := |\{ I\text{ interval of } [n] : I\cap S\not=\emptyset \text{ and } I\cap ([n]\setminus S) \not= \emptyset \}|.
+  \]
+  %that maps $S$ to the number of intervals $I$ of $[n]$ such that $I\cap S\not=\emptyset$ and $I\not\subseteq S$. 
 \end{lemma}
 
+The proof relies on the following simple lemma stating that the submodular function of a Minkowski sum of deformed permutahedra is the sum of the submodular function of the summands.
+
+\begin{lemma}
+  \label{lem:submodsum}
+  Consider a collection $\polytope{P}_1, \polytope{P}_2,\ldots ,\polytope{P}_k$ of deformed permutahedra defined by the submodular functions $f_1,f_2,\ldots ,f_k$. Then the Minkowski sum $\sum_i \polytope{P}_i$ is defined by the submodular function $f:=\sum_i f_i$.
+\end{lemma}
+
+\begin{proof}
+  From Lemmas~\ref{lem:weakMinkowski} and~\ref{lem:submodsum}, the submodular function defining the realization of $\WRP(n)$ is the sum of the submodular functions defining the Loday and anti-Loday shard polytope in Lemmas~\ref{lem:lodaysp} and~\ref{lem:antilodaysp}. For a Loday arc $A$ defined by an interval $I$ of $[n]$, we have
+  \[
+  \SP(A) = \{ x\in\R^n : \sum_{i\in S} x_i \leq \loday{f}_I(S) \text { and } \sum_{i\in [n]} x_i = \loday{f}_I([n]) \},
+  \]
+  where
+  \[
+  \loday{f}_I(S) := \llbracket S\cap I\not=\emptyset \rrbracket .
+  \]
+  Similarly, for an anti-Loday arc $A$ defined by an interval $I$, the shard polytope $\SP(A)$ is defined by the following submodular function:
+  \[
+  \antiloday{f}_I(S) := - \llbracket S\subseteq I \rrbracket .
+  \]
+  Their sum
+  \[
+  f(S) := \sum_{I\text{ interval of }[n]} \loday{f}_I(S) + \antiloday{f}_I(S)
+  \]
+  is therefore exactly the number of intervals of $I$ that intersect $S$ but are not contained in $S$, hence the number of intervals intersecting both $S$ and its complement.
+\end{proof}
 
 \subsection{Loday-type coordinates for weak rectangulotopes}
 
@@ -549,15 +581,11 @@ We define the \defn{strong poset} $P_s(R)=([n],\prec_s)$ of a rectangulation $R$
 We call the congruence $\strongeq$ the \defn{strong rectangulation congruence}.
 The \defn{strong rectangulotope} $\SRP(n)$ is the quotientope of the strong rectangulation congruence $\strongeq$.
 
-% jean:{Does the congruence have a name?}
-
 \subsection{Yin and yang arcs}
 
 \begin{lemma}
   The strong rectangulation congruence $\strongeq$ on $\f{S}_n$ is defined by the arc ideal composed of arcs that cross the horizontal line at most once.
 \end{lemma}
-
-% jean:{From this, do we directly have a description of the face lattice of $\SRP(n)$?}
 
 We classify the arcs into two families, depending on whether the arcs cross from above or below.
 A \defn{yin arc} is defined by two consecutive nonempty intervals $I$ and $J$ of $[n]$ such that the arc goes above all elements of $I$ and below all elements of $J$.
@@ -595,7 +623,7 @@ Lemma~\ref{lem:strongsum} gives us an alternative description of $\SRP(n)$ as th
 
 \subsection{Submodular functions of strong rectangulotopes}
 
-% jean:{From this, do we directly have the submodular function defining $\SRP(n)$?}
+\jean{Compute the submodular functions of each yin and yang shard polytopes and sum them.}
 
 \subsection{Loday-type coordinates for strong rectangulotopes}
 
