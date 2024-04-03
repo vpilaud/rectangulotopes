@@ -333,6 +333,7 @@ For instance, the $4$th coordinate is $h(T, 4) \cdot v(T, 4) - h(S, 4) \cdot v(S
 In order to exhibit a similar realization for the strong rectangulotopes, we need to count subsets of leaves that lie in some subtrees of both the source and target trees of a rectangulation.
 Two leaves of the trees $T(R)$ and $S(R)$ are said to be \defn{common leaves} if the edges to their parents lie on the same segment of $R$. We denote by %$i|j$ and $\frac{\ j\ }i$
 $i\backslash j$ the situation where the rectangle labeled $i$ touches the rectangle labeled $j$ either from the left or from below in $R$. %, respectively.
+We also use the Iverson bracket $\llbracket \varphi\rrbracket$, which is equal to 1 if $\varphi$ holds, and 0 otherwise.
 
 \begin{theorem}
   Let $\SRP (n)$ be the convex hull of the points
@@ -362,7 +363,7 @@ $i\backslash j$ the situation where the rectangle labeled $i$ touches the rectan
   \begin{itemize}
   \item $T \eqdef T(R)$ and $S \eqdef S(R)$,
   \item $h(T,i)$ and $v(T,i)$ denote respectively the number of leaves in the horizontal and vertical subtrees of $i$ in the tree $T$,
-  \item $ch (T,S,i,j)$ and $cv (T,S,i,j)$ denote respectively the number of common leaves of the horizontal (vertical) subtree of $i$ in $T$ and the horizontal (vertical) subtree of $j$ in $S$
+  \item $ch (T,S,i,j)$ and $cv (T,S,i,j)$ denote respectively the number of common leaves of the horizontal (vertical) subtree of $i$ in $T$ and the horizontal (vertical) subtree of $j$ in $S$.
   \end{itemize}
 Then $\SRP (n)$ is a realization of the $(n-1)$-dimensional strong rectangulotope.  
 \end{theorem}
@@ -380,7 +381,7 @@ For instance, the $4$th coordinate is $???$.
 
 \subsection{Plan of the paper}
 
-Section~\ref{sec:quotientopes} is dedicated to the background on quotientopes and their realizations as Minkowski sums of \defn{shard polytopes}, due to Padrol, Pilaud, and Ritter~\cite{MR4584712}, which will be our main tool throughout. Section~\ref{sec:wr} details the case of weak rectangulations, while Section~\ref{sec:sr} deals with strong rectangulations. In both cases, in addition to the vertex coordinates, we give the description of the face lattices and the submodular functions defining the polytopes.
+Section~\ref{sec:quotientopes} is dedicated to the background on quotientopes and their realizations as Minkowski sums of \defn{shard polytopes}, due to Padrol, Pilaud, and Ritter~\cite{MR4584712}, which will be our main tool throughout. Section~\ref{sec:wr} details the case of weak rectangulations, while Section~\ref{sec:sr} deals with strong rectangulations. In both cases, in addition to the vertex coordinates, we also give the submodular functions defining the polytopes.
 
 \subsection*{Acknowledgments}
 
@@ -504,9 +505,10 @@ The proof relies on the following simple lemma stating that the submodular funct
   \[
   \loday{f}_I(S) := \llbracket S\cap I\not=\emptyset \rrbracket .
   \]
+  (Recall that $\llbracket \varphi\rrbracket$ is equal to 1 if $\varphi$ holds, and 0 otherwise.)
   Similarly, for an anti-Loday arc $A$ defined by an interval $I$, the shard polytope $\SP(A)$ is defined by the following submodular function:
   \[
-  \antiloday{f}_I(S) := - \llbracket S\subseteq I \rrbracket .
+  \antiloday{f}_I(S) := - \llbracket I\subseteq S \rrbracket .
   \]
   Their sum
   \[
