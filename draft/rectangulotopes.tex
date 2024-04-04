@@ -294,12 +294,14 @@ It is simple to check that every weak rectangulation has a diagonal representati
 \subsection{Weak and strong rectangulotopes}
 
 Weak and strong rectangulations of size $n$ have been shown to define congruences of the weak Bruhat order on $\f{S}_n$.
-The \defn{weak rectangulation congruence} (or \defn{Baxter congruence}) was first explicitly studied by S.~Law and N.~Reading~\cite{MR2871762}.
-Its classes are one-to-one with weak rectangulations, but also with \defn{twin binary trees}~\cite{Giraudo}, and with \defn{Baxter permutations}~\cite{}. % more baxter refs
+
+The \defn{weak rectangulation congruence} (or \defn{Baxter congruence}) was first explicitly studied by S.~Law and N.~Reading~\cite{MR2871762} and revisited in~\cite[Thm.~1.1 \& Exm.~4.10]{Reading-arcDiagrams}.
+Its classes are in bijection with with weak rectangulations, but also with \defn{twin binary trees}~\cite{Giraudo}, and with \defn{Baxter permutations}~\cite{}. % more baxter refs
 The corresponding quotientopes will be referred to as the \defn{weak rectangulotopes} and denoted by $\WRP(n)$.
 %The skeleton of $\WRP(n)$ is isomorphic to the flip graph of weak rectangulations of size $n$ defined by Law and Reading~\cite{MR2871762}.
-On the other hand, the \defn{strong rectangulation congruence}, whose classes are in bijection with strong rectangulations~\cite{MR2864445}.
-The latter is mentioned by N.~Reading~\cite{Reading-arcDiagrams} (see for instance in Theorem 1.2, and Example 4.11), and studied more recently by A.~Asinowski, J.~Cardinal, S.~Felsner, and É.~Fusy~\cite{ACFF24}.
+
+The \defn{strong rectangulation congruence} was introduced by N.~Reading~\cite{MR2864445}, revisited in~\cite[Thm.~1.2 \& Exm.~4.11]{Reading-arcDiagrams}, and studied more recently by A.~Asinowski, J.~Cardinal, S.~Felsner, and É.~Fusy~\cite{ACFF24}.
+Its classes are in bijection with strong rectangulations.
 The corresponding quotientopes will be referred to as the \defn{strong rectangulotopes} and denoted by $\SRP(n)$.
 
 An important motivation for studying these quotientopes is the informative structure of their skeleta, which are \defn{flip graphs} on the rectangulations.
@@ -316,8 +318,9 @@ We refer to S.~Law and N.~Reading~\cite{MR2871762}, J.~Cardinal, V.~Sacrist\'an,
 Just like associahedra encode the rotation graphs on binary trees, the rectangulotopes directly yield flip graphs on rectangulations.
 
 \begin{lemma}
-  The skeleton of $\WRP(n)$ is isomorphic to the flip graph on weak rectangulations of size $n$.
-  Similarly, the skeleton of $\SRP(n)$ is isomorphic to the flip graph on strong rectangulations of size $n$.
+%  The skeleton of $\WRP(n)$ is isomorphic to the flip graph on weak rectangulations of size~$n$.
+%  Similarly, the skeleton of $\SRP(n)$ is isomorphic to the flip graph on strong rectangulations of size~$n$.
+  The skeleton of $\WRP(n)$ (resp.~of $\SRP(n)$) is isomorphic to the flip graph on weak (resp.~strong) rectangulations of size~$n$.
 \end{lemma}
 
 Rectangulotopes enrich the family of natural quotientopes, alongside associahedra, permutreehedra~\cite{MR3856522}, certain brick polytopes~\cite{PilaudSantos-brickPolytopes, PilaudStump-brickPolytopes, Pilaud-brickAlgebra}, and certain graphical zonotopes~\cite{Pilaud-brickAlgebra, Pilaud-acyclicReorientationLattices}, providing instructive examples of application of the theory of lattice congruences to concrete combinatorial objects.
@@ -347,7 +350,7 @@ We now give the necessary definitions for precisely stating these vertex and fac
         \label{fig:strongRectangulation}
 \end{figure}
 
-Fix a rectangulation~$R$ with $n$ rectangles, and consider the directed graph~$D(R)$ whose vertex set is the set of all vertices of~$R$, and whose edges are obtained as follows.
+Fix a rectangulation~$R$ of size~$n$, and consider the directed graph~$D(R)$ whose vertex set is the set of all vertices of~$R$, and whose edges are obtained as follows.
 For each rectangle~$r$ of~$R$, we include in~$D(R)$ four edges joining the vertices of~$r$, where the horizontal edges are oriented from left to right, and the vertical edges are oriented from bottom to top.
 Hence, the bottom left corner of~$r$ is its source~$s(r)$, while its top right corner is its target~$t(r)$.
 Note that since~$R$ is generic, the sources~$\set{s(r)}{r \in [n]}$ and the targets~$\set{t(r)}{r \in [n]}$ are disjoint.
@@ -393,7 +396,7 @@ This materializes the result of Law and Reading that the weak rectangulotopes ar
   The weak rectangulotope is realized by the polytope~$\WRP (n) \subset \R^n\!$ defined equivalently~as
   \begin{enumerate}[(i)]
   \item the convex hull of the points
-  $\sum_{i\in [n]} (\loday{w}^R_i - \antiloday{w}^R_i)\cdot \b{e}_i$ for all weak rectangulations $R$ on $n$ rectangles,
+  $\sum_{i\in [n]} (\loday{w}^R_i - \antiloday{w}^R_i)\cdot \b{e}_i$ for all weak rectangulations $R$ of size~$n$,
   with
   \[
 %  \begin{split}
@@ -435,7 +438,7 @@ We also use the Iverson bracket $\llbracket \varphi\rrbracket$, which is equal t
   \[
   \sum_{i,j\in [n], i< j} (\yin{w}^R_{i,j} - \yang{w}^R_{i,j})\cdot (\b{e}_i - \b{e}_j),
   \]
-   for all strong rectangulations $R$ on $n$ rectangles, with
+   for all strong rectangulations $R$ of size~$n$, with
   \[
 %  \begin{split}
 %    \yin{w}_{i,j} \eqdef & h(T, i) \cdot cv (T, S, i, j)\cdot h(S, j)\cdot \llbracket \neg i\backslash j \rrbracket \\% \text { if not } i\backslash j, \text{and } 0\text{ otherwise.} \\ % \neg i|j \text{ and } \neg \frac{\ j\ }i ] \\
@@ -643,7 +646,7 @@ We define the set~$\mathcal{L}(P_w(R))$ as the linear extensions of the weak pos
 \]
 
 \begin{theorem}[\cite{LawReading}]
-  The subsets $\mathcal{L}(P_w(R))$ of $\f{S}_n$, for all rectangulations $R$ on $n$ rectangles, 
+  The subsets $\mathcal{L}(P_w(R))$ of $\f{S}_n$, for all rectangulations $R$ of size~$n$, 
   are equivalence classes of a congruence relation $\weakeq$ on the weak Bruhat order on $\f{S}_n$.
   Furthermore:
   \begin{itemize}
@@ -755,7 +758,7 @@ $\arg\max_{j\in I} \pi^{-1}(j)=\arg\max_{j\in I} \sigma^{-1}(j)$, and
 $\arg\min_{j\in I} \pi^{-1}(j)=\arg\min_{j\in I} \sigma^{-1}(j)$.
 
 \begin{lemma}
-  Let $R$ be a rectangulation on~$n$ rectangles, with source and target trees~$S$ and~$T$, and let $\b{p}(R)$ the vertex of $\WRP(n)$ associated with $R$.
+  Let $R$ be a rectangulation of size~$n$, with source and target trees~$S$ and~$T$, and let $\b{p}(R)$ the vertex of $\WRP(n)$ associated with $R$.
   Given $i\in [n]$, the number of up arcs~$\upArc{I}$ such that $\b{e}_i$ is the extremal vertex of $\SP(\upArc{I})$ contributing to~$\b{p}(R)$ is
   \[
   \loday{w}_i =  h^{T}_i\cdot v^{T}_i,
@@ -780,7 +783,7 @@ We define the \defn{strong poset} $P_s(R)=([n],\prec_s)$ of a rectangulation $R$
 \]
 
 \begin{theorem}[\cite{Reading}]
-  The subsets $\mathcal{L}(P_s(R))$ of $\f{S}_n$, for all rectangulations $R$ on $n$ rectangles, 
+  The subsets $\mathcal{L}(P_s(R))$ of $\f{S}_n$, for all rectangulations $R$ of size~$n$, 
   are equivalence classes of a congruence relation $\strongeq$ on the weak Bruhat order on $\f{S}_n$.
     Furthermore:
   \begin{itemize}
@@ -892,7 +895,7 @@ As in \cref{subsec:LodayWeakRectangulotopes}, we need to understand which vertic
 Note again that by definition, this extremal vertex should only depend on the strong congruence class of $\pi$.
 
 \begin{lemma}
-  Let $R$ be a strong rectangulation on $n$ rectangles, $S$ and $T$ be its source and target trees, $([n],\prec_s)$ be its strong order, and $\b{p}(R)$ be the vertex of $\SRP(n)$ corresponding to $R$.
+  Let $R$ be a strong rectangulation of size~$n$, let~$S$ and $T$ be its source and target trees, let~$([n],\prec_s)$ be its strong order, and let~$\b{p}(R)$ be the vertex of $\SRP(n)$ corresponding to $R$.
   Given a pair $i,j\in [n]$ with $i<j$, the number of yin arcs $A$ such that $\b{e}_i-\b{e}_j$ is the extremal vertex of $\SP(A)$ contributing to $p(R)$ is
   \[
     h^T_i \cdot cv^{T,S}_{i,j}\cdot h^S_j 
@@ -914,7 +917,7 @@ Note again that by definition, this extremal vertex should only depend on the st
 It remains to observe that the only case where this product is nonzero and $i,j$ is not an inversion in $\pi$ is when $i \, \backslash \, j$.
 
 \begin{lemma}
-  Let $R$ be a rectangulation on $n$ rectangles, $S$ and $T$ be its source and target trees, and $([n],\prec_s)$ be the associated strong order.
+  Let $R$ be a rectangulation of size~$n$, let $S$ and $T$ be its source and target trees, and let~$([n],\prec_s)$ be the associated strong order.
   Given a pair $i,j\in [n]$ such that $i<j$ and $i\prec_s j$, we have
   \[
     cv^{T,S}_{i,j} > 0 \quad \Longrightarrow \quad i \, \backslash \, j.
