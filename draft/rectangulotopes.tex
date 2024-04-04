@@ -164,21 +164,12 @@
 \newcommand{\upArc}[1]{\smash{\raisebox{.05cm}{$\uset[0ex]{#1}{\frown}$}}}
 \newcommand{\downArc}[1]{\smash{\raisebox{-.05cm}{$\oset[.2ex]{#1}{\smile}$}}}
 % yin and yang accents (?)
-\newcommand{\yang}[1]{\smash{\overset{\backsim}{#1}}}
 \newcommand{\yin}[1]{\smash{\overset{\sim}{#1}}}
+\newcommand{\yang}[1]{\smash{\overset{\backsim}{#1}}}
+\newcommand{\yinArc}[2]{\smash{\raisebox{.05cm}{$\uset[0ex]{#1}{\frown}$}\hspace{-.3ex}\raisebox{-.03cm}{$\oset[.2ex]{#2}{\smile}$}}}
+\newcommand{\yangArc}[2]{\smash{\raisebox{-.03cm}{$\oset[.2ex]{#1}{\smile}$}\hspace{-.3ex}\raisebox{.05cm}{$\uset[0ex]{#2}{\frown}$}}}
 % weak and strong equivalence on S_n
-\newcommand{
-\weakeq}{\asymp}
-%\makeatletter
-%\DeclareRobustCommand{\strongeq}{%
-%  \mathbin{\mathpalette\scaletoplus@{\mkern1mu \smash{\begin{smallmatrix} \backsim \\[-.3cm] \sim \end{smallmatrix}} \mkern1mu}}%
-%}
-%\newcommand{\scaletoplus@}[2]{%
-%  \vcenter{%
-%    \hbox{\sbox\z@{$\m@th#1+$}\resizebox{\wd\z@}{!}{$\m@th#1#2$}}%
-%  }%
-%}
-%\makeatother
+\newcommand{\weakeq}{\asymp}
 \newcommand{\strongeq}{\mathbin{\smash{\begin{smallmatrix} \backsim \\[-.3cm] \sim \end{smallmatrix}}}}% % J: I would like to stack \backsim and \sim instead
 
 % formating the table of contents
@@ -559,9 +550,19 @@ The weak rectangulation congruence $
 \weakeq$ on $\f{S}_n$ is defined by the arc ideal composed of arcs that do not cross the horizontal line.
 \end{lemma}
 
+These arcs can be classified into two families of arcs: the up arcs and the down arcs.
+For an interval $I$ of $[n]$ of size at least~$2$, the \defn{up arc}~$\upArc{I}$ (resp.~\defn{down arc}~$\downArc{I}$) is the arc that starts at~$\min(I)$ and ends at~$\max(I)$, and passes above (resp.~below) all remaining elements of~$I$, that is
+\begin{align*}
+\upArc{I} & \eqdef \big( \min(I), \max(I), I \ssm \{\min(I), \max(I)\}, \varnothing \big) \\
+\qquad\text{and}\qquad
+\downArc{I} & \eqdef \big( \min(I), \max(I), \varnothing, I \ssm \{\min(I), \max(I)\} \big).
+\end{align*}
+Note that the basic arc~$(i, i+1, \varnothing, \varnothing)$ is both an up and down arc.
+
 \subsection{Shard polytopes of up and down arcs}
 
-Therefore, the quotientope is realized by a Minkowski sum of the shard polytopes defined by two families of arcs: the \defn{up arcs}~$\upArc{I}$ and the \defn{down arcs}~$\downArc{I}$, that go respectively above and below all elements of an interval $I$ of $[n]$.
+Therefore, the quotientope is realized by a Minkowski sum of the shard polytopes of the up arcs and the down arcs.
+These quotientopes are very basic ones.
 
 \begin{lemma}
   \label{lem:lodaysp}
@@ -672,7 +673,7 @@ We define the \defn{strong poset} $P_s(R)=([n],\prec_s)$ of a rectangulation $R$
 \end{theorem}
 
 We call the congruence $\strongeq$ the \defn{strong rectangulation congruence}.
-The \defn{strong rectangulotope} $\SRP(n)$ is the quotientope of the strong rectangulation congruence $\strongeq$.
+The \defn{strong rectangulotope} $\SRP(n)$ is the quotientope of the strong rectangulation congruence~${\strongeq}$.
 
 \subsection{Yin and yang arcs}
 
@@ -681,43 +682,43 @@ The \defn{strong rectangulotope} $\SRP(n)$ is the quotientope of the strong rect
 \end{lemma}
 
 We classify the arcs into two families, depending on whether the arcs cross from above or below.
-A \defn{yin arc} is defined by two consecutive nonempty intervals $I$ and $J$ of $[n]$ such that the arc goes above all elements of $I$ and below all elements of $J$.
-A \defn{yang arc} is defined similarly, except that the arc goes below the elements of $I$ and above the elements of $J$.
+For two consecutive intervals~$I$ and~$J$ of~$[n]$, the \defn{yin arc}~$\yinArc{I}{J}$ (resp.~\defn{yang arc}~$\yangArc{I}{J}$) is the arc starts at~$\min(I)$ and ends at~$\max(J)$, and goes above (resp.~below) the remaining elements of $I$ and below (resp.~above) the remaining elements of $J$, that is,
+\begin{align*}
+\yinArc{I}{J} & \eqdef \big( \min(I), \max(J), I \ssm \{\min(I)\}, J \ssm \{\max(J)\} \big) \\
+\qquad\text{and}\qquad
+\yangArc{I}{J} & \eqdef \big( \min(I), \max(J), J \ssm \{\max(J)\}, I \ssm \{\min(I)\} \big).
+\end{align*}
 Note that all up arcs and down arcs are both yin arcs and yang arcs.
 
 \subsection{Shard polytopes of yin and yang arcs}
 
 \begin{lemma}
   \label{lem:yinsp}
-  Given a yin arc $A=(I,J)$, the yin shard polytope $\SP(A)$ is defined as the convex hull of the points
-  $\{\b{0}\} \cup \set{\b{e}_i - \b{e}_j}{(i,j)\in I\times J}$.
+  The yin shard polytope $\SP(\yinArc{I}{J})$ is $\conv \{\b{0}\} \cup \set{\b{e}_i - \b{e}_j}{i \in I, \; j \in J}$.
 \end{lemma}
 
 \begin{lemma}
   \label{lem:yangsp}
-  Given a yang arc $A=(I,J)$, the yang shard polytope $\SP(A)$ is a translate of the convex hull of the points
-  $\{\b{0}\} \cup \set{\b{e}_j - \b{e}_i}{(i,j)\in I\times J}$.
+  The yang shard polytope $\SP(\yangArc{I}{J})$ is a translate of~$\conv \{\b{0}\} \cup \set{\b{e}_j - \b{e}_i}{i \in I,\; j \in J}$.
 \end{lemma}
 
-Note that yin shard polytopes are translates of the Loday shard polytopes when $|J|=1$, and of the anti-Loday shard polytopes when $|I|=1$.
-Similarly, Loday and anti-Loday shard polytopes are translates of some yang shard polytopes.
+%Note that yin shard polytopes are translates of the up shard polytopes when $|J|=1$, and of the down shard polytopes when $|I|=1$.
+%Similarly, up and down shard polytopes are translates of some yang shard polytopes.
 
 The following is a direct application of the main result of A.~Padrol, V.~Pilaud, and J.~Ritter~\cite{MR4584712}.
 
 \begin{lemma}
   \label{lem:strongMinkowski}
-  The strong rectangulotope $\SRP(n)$ is realized by the Minkowski sum of all shard polytopes of yin and yang arcs.
+  The strong rectangulotope $\SRP(n)$ is realized by the Minkowski sum of all yin and yang shard polytopes.
 \end{lemma}
 
 Since the combinatorial type of a Minkowski sum is invariant to translation of the summands, we can use the polytopes defined in \cref{lem:yinsp,lem:yangsp} as a definition of the yin and yang shard polytopes.
-Also note that since Loday and anti-Loday shard polytopes are, up to a translation, both yin and yang, each Loday and anti-Loday shard polytope is summed twice in the proposed realization.
+Also note that since the up and down shard polytopes are, up to a translation, both yin and yang, each up and down shard polytope is summed twice in the proposed realization.
 This, again, does not change the combinatorial type of the polytope.
 
-\cref{lem:strongsum} gives us an alternative description of $\SRP(n)$ as the sum of two opposite quotientopes defined by the \defn{yin} and \defn{yang congruences} respectively, where the yin congruence is defined by the arc ideal consisting of all yin arcs, and the yang congruence is defined by the yang arcs.
+\cref{lem:strongMinkowski} gives us an alternative description of $\SRP(n)$ as the sum of two opposite quotientopes defined by the \defn{yin} and \defn{yang congruences} respectively, where the yin congruence is defined by the arc ideal consisting of all yin arcs, and the yang congruence is defined by the yang arcs.
 
 \subsection{Submodular functions of strong rectangulotopes}
-
-\jean{That seems to work.}
 
 The submodular function corresponding to our realization of $\SRP(n)$ can be obtained as before by summing the functions defining the yin and yang shard polytopes in \cref{lem:yinsp,lem:yangsp}.
 
