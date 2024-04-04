@@ -253,49 +253,80 @@ We note that the inequality description of the same polytope was actually provid
   \end{enumerate}
 \end{theorem}
 
-
 A natural object associated with the associahedron is the \defn{Tamari lattice}, the cover graph of which is isomorphic to the skeleton of the associahedron.
 The Tamari lattice is known to be the quotient of the weak Bruhat order by a \defn{lattice congruence} relation called the \defn{sylvester congruence}.
 Answering a question of N.~Reading~\cite{MR2142177}, V.~Pilaud and F.~Santos~\cite{MR3964495} proved that with \emph{every} lattice congruence of the weak Bruhat order, one can associate a polytope whose skeleton is the cover graph of the lattice quotient, and more precisely whose normal fan is the \defn{quotient fan} defined by gluing the cones of the \defn{braid fan} (the type $A$ Coxeter arrangement) that belong to the same congruence class.
 Those polytopes are deformed permutahedra that they called \defn{quotientopes}.
 Associahedra are therefore the quotientopes of the sylvester congruence of the weak Bruhat order whose classes are in bijection with triangulations.
 
-The goal of this paper is to describe the quotientopes of congruences of the weak Bruhat order whose classes are in bijection with (equivalence classes of) \defn{rectangulations}, defined as decompositions of a square into finitely many axis-aligned rectangles.
-The combinatorics of rectangulations has been studied for decades~\cite{MR2233287,MR2871762,MR2864445,MR2763051,MR3084577,MR3878132,MR4598046}, and the order-theoretic take on these structures has already proved useful.
-%, in particular in the context of electronic engineering applications~\cite{}.
-\vincent{More citations on electronic engineering...}
-There are two relevant lattice congruences related with rectangulations.
-%
-On the one hand, the \defn{weak rectangulation congruence} (or \defn{Baxter congruence}), studied by S.~Law and N.~Reading~\cite{MR2871762}, and whose classes are one-to-one with \defn{weak rectangulations} (or \defn{diagonal rectangulations}), with \defn{twin binary trees}~\cite{Giraudo}, and with \defn{Baxter permutations}. \vincent{Give more Baxter references here.}
+The goal of this paper is to describe the quotientopes of congruences of the weak Bruhat order whose classes are in bijection with equivalence classes of rectangulations, defined as decompositions of a square into rectangles.
+
+\subsection{Weak and strong rectangulations}
+
+The combinatorics of rectangulations has been studied for decades~\cite{MR2233287,MR2871762,MR2864445,MR2763051,MR3084577,MR3878132,MR4598046}.
+Interestingly, many combinatorial results were initially motivated by applications to the design of \defn{floorplans} for very large scale integrated circuits, and published in electrical engineering journals~\cite{}.
+The recent order-theoretic take on these structures has proved fruitful.
+
+We define a \defn{rectangulation} of size $n$ as a decomposition of the square into $n$ axis-parallel rectangles with disjoint interiors.
+The \defn{segments} of a rectangulation are the inclusionwise maximal line segments composed of edges of the rectangles, excluding the edges of the decomposed square.
+We suppose throughout that no four rectangles have a common vertex, hence that the rectangulations are \defn{generic} in that sense.
+In order to focus on the combinatorial structure of a rectangulation, we introduce two equivalence relations between rectangulations.
+First, we say that a rectangle $r$ is \defn{above} another rectangle $s$ (and $s$ is \defn{below} $r$) if either the bottom edge of $r$ lies in the same segment as the top edge of $s$, or if $r$ is above another rectangle $t$ that is above $s$.
+Similarly, a rectangle $r$ is \defn{on the left of} another rectangle $s$ (and $s$ is \defn{on the right of} $r$) if either the right edge of $r$ lies in the same segment as the left edge of $s$, or if $r$ is on the left of another rectangle $t$ that is on the left of $s$.
+
+Two rectangulations are said to be \defn{weakly equivalent} if there exists a bijection between their rectangles that preserves the above-below and left-right relations between the rectangles.
+Weak equivalence classes of rectangulations will be referred to as \defn{weak rectangulations}.
+(Note that this is a slight, yet convenient abuse of terminology, as weak rectangulations are really sets of rectangulations.)
+On the other hand, two rectangulations are said to be \defn{strongly equivalent} when there exists a bijection between their rectangles that not only preserves the above-below and left-right relations, but also the adjacency relation between rectangles.
+We will naturally refer to strong equivalence classes of rectangulations as \defn{strong rectangulations}.
+
+In order to make sense of these definitions, it is useful to consider \defn{wall slides} in a rectangulation: the local changes consisting of shifting a horizontal segment vertically, or a vertical segment horizontally, while extending or shortening the incident segments accordingly.
+Performing a wall slide in a rectangulation $R$ leads to a rectangulation that is always weakly equivalent to $R$.
+However, if the wall slide changes the adjacency relation between the rectangles, then the resulting rectangulation is not strongly equivalent to $R$ anymore.
+This is illustrated in Figure~\ref{fig:rectequiv}.
+A \defn{diagonal rectangulation} is a rectangulation in which every rectangle intersects the top-left to bottom-right diagonal of the square.
+It is simple to check that every weak rectangulation has a diagonal representative, hence weak rectangulations can also be thought of as diagonal rectangulations.
+
+\begin{figure}
+  \caption{\label{fig:rectequiv}Weak and strong equivalence between rectangulations.}
+\end{figure}
+
+\subsection{Weak and strong rectangulotopes}
+
+Weak and strong rectangulations of size $n$ have been shown to define congruences of the weak Bruhat order on $\f{S}_n$.
+The \defn{weak rectangulation congruence} (or \defn{Baxter congruence}) was first explicitly studied by S.~Law and N.~Reading~\cite{MR2871762}.
+Its classes are one-to-one with weak rectangulations, but also with \defn{twin binary trees}~\cite{Giraudo}, and with \defn{Baxter permutations}~\cite{}. % more baxter refs
 The corresponding quotientopes will be referred to as the \defn{weak rectangulotopes} and denoted by $\WRP(n)$.
-The skeleton of $\WRP(n)$ is isomorphic to the flip graph of weak rectangulations of size $n$ defined by Law and Reading~\cite{MR2871762}.
-%
-On the other hand, the \defn{strong rectangulation congruence}, whose classes are in bijection with \defn{strong rectangulations}~\cite{MR2864445}.
+%The skeleton of $\WRP(n)$ is isomorphic to the flip graph of weak rectangulations of size $n$ defined by Law and Reading~\cite{MR2871762}.
+On the other hand, the \defn{strong rectangulation congruence}, whose classes are in bijection with strong rectangulations~\cite{MR2864445}.
 The latter is mentioned by N.~Reading~\cite{Reading-arcDiagrams} (see for instance in Theorem 1.2, and Example 4.11), and studied more recently by A.~Asinowski, J.~Cardinal, S.~Felsner, and É.~Fusy~\cite{ACFF24}.
 The corresponding quotientopes will be referred to as the \defn{strong rectangulotopes} and denoted by $\SRP(n)$.
-The skeleton of $\SRP(n)$ is isomorphic to the flip graph of strong rectangulations of size $n$ defined by Meehan~\cite{MR3697823} (see also~\cite{ACFF24}).
+
+An important motivation for studying these quotientopes is the informative structure of their skeleta, which are \defn{flip graphs} on the rectangulations.
+A flip is a local, reversible change in the structure of the rectangulation.
+Flips in rectangulations come in three flavors:
+\begin{description}
+\item[Simple flips] replace a vertical segment incident to exactly two rectangles by a horizontal segment, and vice-versa.
+\item[Pivoting] operations transform a pair of adjacent rectangles whose union is not a rectangle, changing a left-right pair into an above-below pair, and vice-versa.
+\item[Wall slide] flips are wall slides that modify the adjacency of the rectangles, removing exactly one adjacency and adding exactly one. These flips are only relevant in strong rectangulations.
+\end{description}
+
+The various types of flips are illustrated in Figure~\ref{fig:flips}.
+We refer to S.~Law and N.~Reading~\cite{MR2871762}, J.~Cardinal, V.~Sacrist\'an, and R.~Silveira~\cite{}, E.~Meehan~\cite{MR3697823}, and A.~Asinowski, J.~Cardinal, S.~Felsner, and \'E.~Fusy~\cite{ACFF24} for detailed descriptions of the flip graphs on both weak and strong rectangulations.
+Just like associahedra encode the rotation graphs on binary trees, the rectangulotopes directly yield flip graphs on rectangulations.
+
+\begin{lemma}
+  The skeleton of $\WRP(n)$ is isomorphic to the flip graph on weak rectangulations of size $n$.
+  Similarly, the skeleton of $\SRP(n)$ is isomorphic to the flip graph on strong rectangulations of size $n$.
+\end{lemma}
 
 Rectangulotopes enrich the family of natural quotientopes, alongside associahedra, permutreehedra~\cite{MR3856522}, certain brick polytopes~\cite{PilaudSantos-brickPolytopes, PilaudStump-brickPolytopes, Pilaud-brickAlgebra}, and certain graphical zonotopes~\cite{Pilaud-brickAlgebra, Pilaud-acyclicReorientationLattices}, providing instructive examples of application of the theory of lattice congruences to concrete combinatorial objects.
 Our main results are elementary vertex and facet descriptions of both families of quotientopes.
 For vertices, we describe the coordinates of the vertex corresponding to a weak or strong rectangulation with simple product formulas in the spirit of J.-L.~Loday's realization in~\cref{thm:loday}.
 As mentioned in~\cite{PilaudSantosZiegler}, there is no such formula for arbitrary quotientopes, which makes rectangulotopes join the restricted club of Loday type quotientopes, jointly with associahedra and permutreehedra~\cite{MR3856522}.
 For facets, we show that both weak and strong rectangulotopes have $2^n-2$ facets (the maximal possible number of facets of a deformed permutahedron), and provide simple formulas for the right hand side of the inequality corresponding to a given proper nonempty subset of~$[n]$.
+
 We now give the necessary definitions for precisely stating these vertex and facet descriptions of the weak and strong rectangulotopes.
-
-%%%%%%%%%%%%%
-
-\subsection{Weak and strong rectangulations}
-\label{subsec:weakStrongRectangulations}
-
-\begin{itemize}
-\item Terminology: rectangles, \defn{vertices}, \defn{segments}, \defn{generic} rectangulation
-\item \defn{Wall slides}
-\item Two equivalence classes: \defn{weak equivalence} preserving rectangle-segment adjacencies, and \defn{strong equivalence} preserving rectangle-rectangle adjacencies.
-\item Weak equivalence classes have a \defn{diagonal} representative.
-\item \defn{Flip graphs} on rectangulations
-\end{itemize}
-
-%%%%%%%%%%%%%
 
 \subsection{Source and target trees of a rectangulation}
 \label{subsec:sourceTargetTrees}
@@ -587,6 +618,11 @@ By definition, any quotientope is a deformed permutahedron, and can thus be writ
 where~$f$ is a \defn{submodular} set function $f:2^{[n]}\mapsto \R$ (\ie such that~$f(X \cup Y) + f(X \cap Y) \le f(X) + f(Y)$ for any~$X, Y \subseteq [n]$).
 Recall that the submodular function of a Minkowski sum of deformed permutahedra is just the sum of the submodular functions of the Minkowski summands.
 
+\begin{lemma}
+  \label{lem:submodsum}
+  Consider a collection $\polytope{P}_1, \polytope{P}_2,\ldots ,\polytope{P}_k$ of deformed permutahedra defined by the submodular functions $f_1,f_2,\ldots ,f_k$. Then the Minkowski sum $\sum_i \polytope{P}_i$ is defined by the submodular function $f \eqdef \sum_i f_i$.
+\end{lemma}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -622,8 +658,6 @@ We call this congruence the \defn{weak rectangulation congruence} (it is sometim
 The \defn{weak rectangulotope} $\WRP(n)$ is the quotientope of the weak rectangulation congruence $
 \weakeq$ on the weak Bruhat order on $\f{S}_n$.
 
-%%%%%%%%%%%%%
-
 \subsection{Up and down arcs}
 \label{subsec:upDownArcs}
 
@@ -641,8 +675,6 @@ For an interval $I$ of $[n]$ of size at least~$2$, the \defn{up arc}~$\upArc{I}$
 \end{align*}
 Note that the basic arc~$(i, i+1, \varnothing, \varnothing)$ is both an up and down arc.
 
-%%%%%%%%%%%%%
-
 \subsection{Shard polytopes of up and down arcs}
 \label{subsec:upDownShardPolytopes}
 
@@ -657,7 +689,6 @@ These quotientopes are very basic ones.
 
 \begin{lemma}
   \label{lem:antilodaysp}
-%  Given a down arc~$\alpha$ defined by an interval $I$, the down shard polytope $\SP(\alpha)$ is a translate of the negative standard simplex~$\conv \set{ - \b{e}_i }{ i\in I }$.
   The down shard polytope $\SP(\downArc{I})$ is a translate of the negative simplex~$\conv \set{ - \b{e}_i }{ i\in I }$.
 \end{lemma}
 
@@ -682,16 +713,9 @@ The description of the weak rectangulotope~$\WRP(n)$ as a Minkowski sum in \cref
   %that maps $S$ to the number of intervals $I$ of $[n]$ such that $I\cap S\not=\emptyset$ and $I\not\subseteq S$. 
 \end{lemma}
 
-%The proof relies on the following simple lemma stating that the submodular function of a Minkowski sum of deformed permutahedra is the sum of the submodular function of the summands.
-%
-%\begin{lemma}
-%  \label{lem:submodsum}
-%  Consider a collection $\polytope{P}_1, \polytope{P}_2,\ldots ,\polytope{P}_k$ of deformed permutahedra defined by the submodular functions $f_1,f_2,\ldots ,f_k$. Then the Minkowski sum $\sum_i \polytope{P}_i$ is defined by the submodular function $f \eqdef \sum_i f_i$.
-%\end{lemma}
-
 \begin{proof}
-  %From \cref{lem:weakMinkowski,lem:submodsum},
-  The submodular function defining the realization of $\WRP(n)$ is the sum of the submodular functions defining the up and down shard polytope in \cref{lem:lodaysp,lem:antilodaysp}. The shard polytope~$\SP(\upArc{I})$ of an up arc~$\upArc{I}$ is given by the submodular function
+  The submodular function defining the realization of $\WRP(n)$ is the sum of the submodular functions defining the up and down shard polytope in \cref{lem:lodaysp,lem:antilodaysp}.
+  The shard polytope~$\SP(\upArc{I})$ of an up arc~$\upArc{I}$ is given by the submodular function
   \[
   f_{\upArc{I}}(S) \eqdef \llbracket S\cap I\not=\emptyset \rrbracket .
   \]
