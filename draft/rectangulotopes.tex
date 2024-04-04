@@ -676,8 +676,8 @@ We therefore need to understand which vertices of the translates of the shard po
 
 \begin{lemma}
   \label{lem:lodaymax}
-  Let $\pi \in \f{S}_n$ and $I$ be a subset of~$[n]$.
-  The unique vertex of the up shard polytope~$\SP(\upArc{I})$ (resp.~down shard polytope~$\SP(\downArc{I})$) that is extreme with respect to the direction $\pi^{-1}$ is $\b{e}_i$, where $i \eqdef \arg\max_{j\in I} \pi^{-1}(j)$ (resp.~where~$i \eqdef \arg\min_{j\in I} \pi^{-1}(j)$).
+  Let $\pi \in \f{S}_n$ and $I$ be an interval of~$[n]$ of size at least~$2$.
+  The unique vertex of the up shard polytope~$\SP(\upArc{I})$ (resp.~of the translated down shard polytope~$\SP(\downArc{I})$) that is extreme with respect to the direction $\pi^{-1}$ is $\b{e}_i$, where $i \eqdef \arg\max_{j\in I} \pi^{-1}(j)$ (resp.~where~$i \eqdef \arg\min_{j\in I} \pi^{-1}(j)$).
 \end{lemma}
 
 Note that this extremal vertex should only depend on the weak rectangulation congruence class of $\pi$.
@@ -815,31 +815,26 @@ The submodular function corresponding to our realization of $\SRP(n)$ can be obt
 \subsection{Loday coordinates of strong rectangulotopes}
 \label{subsec:LodayStrongRectangulotopes}
 
-For every strong rectangulation $R$, we wish to give the coordinates of a point $\b{p}(R)\in\R^n$ such that $\SRP(n)$ is the convex hull of the points $\b{p}(R)$ for all strong rectangulations $R$.
-We first consider the contributions, to these coordinates, of the Minkowski summand $\SP(A)$ for all yin arcs $A$.
-%Recall that in a Minkowski sum of polytopes, the vertex that is extremal in a generic direction is the sum of the vertices of the summands that are extremal in this direction.
-We need to understand which vertices of the translates of the yin shard polytopes defined in \cref{lem:yinsp} are extremal for a direction given by a permutation.
+As in \cref{subsec:LodayWeakRectangulotopes}, we need to understand which vertices of the translates of the yin and yang shard polytopes defined in \cref{lem:yinsp,lem:yangsp} are extremal for a direction given by a permutation.
 
 \begin{lemma}
   \label{lem:yinminmax}
-  Let $\pi\in\f{S}_n$ and consider a yin arc $A=(I,J)$.
-  Let $i \eqdef \arg\max_{k\in I} \pi^{-1}(k)$ and $j \eqdef \arg\min_{k\in J} \pi^{-1}(k)$.
-  The unique vertex of $\SP(A)$ that is extreme with respect to the direction $\pi^{-1}$
-  is $\b{e}_i-\b{e}_j$ if $\pi^{-1}(i)>\pi^{-1}(j)$, and $\b{0}$ otherwise.
+  Let $\pi\in\f{S}_n$, let~$I$ and~$J$ be two consecutive intervals of~$[n]$, and let $i \eqdef \arg\max_{k\in I} \pi^{-1}(k)$ and $j \eqdef \arg\min_{k\in J} \pi^{-1}(k)$.
+  The unique vertex of the yin shard polytope~$\SP(\yinArc{I}{J})$ that is extreme with respect to the direction $\pi^{-1}$ is $\b{e}_i-\b{e}_j$ if $\pi^{-1}(i)>\pi^{-1}(j)$, and $\b{0}$ otherwise.
 \end{lemma}
 
 Note again that by definition, this extremal vertex should only depend on the strong congruence class of $\pi$.
 
 \begin{lemma}
-  Let $R$ be a rectangulation on $n$ rectangles, $([n],\prec_s)$ the associated strong order, and $p(R)$ the vertex of $\SRP(n)$ corresponding to $R$.
-  Given a pair $i,j\in [n]$ with $i<j$, the number of yin arcs $A$ such that $\b{e}_i-\b{e}_j$
-  is the extremal vertex of $\SP(A)$ contributing to $p(R)$ is
+  Let $R$ be a strong rectangulation on $n$ rectangles, $S$ and $T$ be its source and target trees, $([n],\prec_s)$ be its strong order, and $\b{p}(R)$ be the vertex of $\SRP(n)$ corresponding to $R$.
+  Given a pair $i,j\in [n]$ with $i<j$, the number of yin arcs $A$ such that $\b{e}_i-\b{e}_j$ is the extremal vertex of $\SP(A)$ contributing to $p(R)$ is
   \[
-    h(T(R), i) \cdot cv (T(R), S(R), i, j)\cdot h(S(R), j) 
+    h^T_i \cdot cv^{T,S}_{i,j}\cdot h^S_j 
   \]
   if $i\succ_s j$, and $0$ otherwise.
 \end{lemma}
 \begin{proof}
+  \vincent{I still need to work out this proof...}
   Let $\pi$ be the 2-clumped permutation corresponding to $R$, hence the minimal element of $\mathcal{L}(P_s(R))$ in the weak Bruhat order.
   From \cref{lem:yinminmax}, for a pair $i<j \in [n]$, there exists a yin arc $A$ whose shard polytope $\SP(A)$ contributes to $\b{e}_i-\b{e}_j$ only if
   $\pi^{-1}(i)>\pi^{-1}(j)$, hence if $i\succ_s j$.
@@ -850,13 +845,13 @@ Note again that by definition, this extremal vertex should only depend on the st
   at $i$ and $j$, respectively, and the number of leaves of the subtree of $S(R)$ rooted at $j$.
 \end{proof}
 
-It remains to observe that the only case where this product is nonzero and $i,j$ is not an inversion in $\pi$ is when $i\backslash j$.
+It remains to observe that the only case where this product is nonzero and $i,j$ is not an inversion in $\pi$ is when $i \, \backslash \, j$.
 
 \begin{lemma}
-  Let $R$ be a rectangulation on $n$ rectangles and $([n],\prec_s)$ the associated strong order.
+  Let $R$ be a rectangulation on $n$ rectangles, $S$ and $T$ be its source and target trees, and $([n],\prec_s)$ be the associated strong order.
   Given a pair $i,j\in [n]$ such that $i<j$ and $i\prec_s j$, we have
   \[
-    cv (T(R), S(R), i, j) > 0 \implies i\backslash j.
+    cv^{T,S}_{i,j} > 0 \quad \Longrightarrow \quad i \, \backslash \, j.
   \]
 \end{lemma}
 
