@@ -223,65 +223,54 @@
 The encoding of combinatorial objects in the form of a polyhedral structure is a recurrent theme in geometric and algebraic combinatorics.
 An elementary yet striking example of this idea is the \defn{permutahedron} $\Perm (n)$, defined as the convex hull of the points $\sum_{i\in [n]} \pi^{-1}(i)\cdot \mathbf{e}_i$, for all permutations $\pi\in\f{S}_n$.
 It is an $(n-1)$-dimensional polytope, whose facets are indexed by the proper nonempty subsets of $[n]$, and whose skeleton is the Cayley graph of the symmetric group for the generators consisting of adjacent transpositions.
-The many generalizations and extensions of the permutahedra gave rise to a flourishing theory of \defn{generalized permutahedra}~\cite{Postnikov} (or \defn{deformed permutahedra}).
+The many generalizations and extensions of the permutahedra gave rise to a flourishing theory of \defn{generalized permutahedra}~\cite{Postnikov} (that we prefer to call \defn{deformed permutahedra}).
 
-Among those, the \defn{associahedron} is a classical, ubiquitous polytope, first defined by Tamari~\cite{T51}, then studied by Stasheff in a topological context~\cite{S63}, that has since then found applications in various areas of mathematics, including topology, operads, cluster algebras, combinatorial Hopf algebras, and physics~\cite{MR4675114}.
+Among those, the \defn{associahedron} is a classical, ubiquitous polytope, first defined combinatorially by D.~Tamari~\cite{T51} and by J.~Stasheff in a topological context~\cite{S63}.
+It has since then found applications in various areas of mathematics, including topology, operads, cluster algebras, combinatorial Hopf algebras, and physics~\cite{PilaudSantosZiegler}.
 It was first defined as a combinatorial object, before various families of geometric realizations were shown to exist~\cite{MR1022776,MR1941227,MR2108555,MR3437894}.
 The face lattice of the $(n-1)$-dimensional associahedron is the reverse inclusion poset of nonintersecting diagonals of a convex $(n+3)$-gon.
-In particular, it skeleton is the \defn{flip graph} on \defn{triangulations} of the $(n+3)$-gon, or equivalently -- via a standard Catalan bijection -- the \defn{rotation graph} on \defn{binary trees} with $n$ internal nodes, the structure of which has been the subject of many investigations, with applications in computer science~\cite{MR928904,MR3197650}.
-
-\Vincent{I would change this theorem...}
-In 2004, Loday published the following elegant realization of the associahedron~\cite{MR2108555}, giving a recipe for computing the coordinates of a vertex given the corresponding binary tree.
-
-\begin{theorem}
-  \label{thm:loday}
-  The $(n-1)$-dimensional associahedron is realized by the convex hull~$\Asso (n)$ of the points
-  $\sum_{i\in [n]} w^T_i \cdot \mathbf{e}_i$ for all binary trees $T$ on $n$ internal nodes, with
-  \[
-  w^T_i \eqdef \ell^T_i\cdot r^T_i,
-  \]
-  where $\ell^T_i$ and $r^T_i$ respectively denote the number of leaves in the left and right subtrees of $i$ in $T$.
-\end{theorem}
-
-\Vincent{... as follows}
-
+In particular, its skeleton is the \defn{flip graph} on \defn{triangulations} of the $(n+3)$-gon, or equivalently -- via a standard Catalan bijection -- the \defn{rotation graph} on \defn{binary trees} with $n$ internal nodes, the structure of which has been the subject of many investigations, with applications in computer science~\cite{MR928904,MR3197650}.
+In 2004, J.-L.~Loday published the following elegant description of the associahedron~\cite{MR2108555}, giving a recipe for computing the coordinates of a vertex given the corresponding binary tree.
+We note that the inequality description of the same polytope was actually provided in 1993 by S.~Shnider and S.~Sternberg~\cite{ShniderSternberg}, but Loday's vertex description largely popularized this realization.
 
 \begin{theorem}
   \label{thm:loday}
   The associahedron is realized by the polytope~$\Asso (n)$ in~$\R^n$ defined equivalently as
   \begin{enumerate}[(i)]
-  \item the convex hull of the points~$\sum_{i\in [n]} \ell^T_i\cdot r^T_i \cdot \mathbf{e}_i$ for all binary trees~$T$ with $n$ internal nodes, where $\ell^T_i$ and $r^T_i$ denote the number of leaves in the left and right subtrees of $i$ in $T$,
-  \item the intersection of the hyperplane defined by~$\sum_{i \in [n]} x_i = \binom{n+1}{2}$ with the halfspaces defined by~$\sum_{i \in S} x_i \le \#\set{I \text{ interval of } [n]}{S \cap I \ne \varnothing}$.
+  \item the convex hull of the points~$\sum_{i\in [n]} \ell^T_i\cdot r^T_i \cdot \mathbf{e}_i$ for all binary trees~$T$ with $n$ internal nodes, where $\ell^T_i$ and $r^T_i$ denote the number of leaves in the left and right subtrees of $i$ in $T$, see~\cite{MR2108555},
+  \item the intersection of the hyperplane defined by~$\sum_{i \in [n]} x_i = \binom{n+1}{2}$ with the halfspaces defined by~$\sum_{i \in I} x_i \le \#\set{J \text{ interval of } [n]}{I \cap J \ne \varnothing}$ for all intervals~$I \subseteq [n]$, see~\cite{ShniderSternberg}.
   \end{enumerate}
 \end{theorem}
 
 
 A natural object associated with the associahedron is the \defn{Tamari lattice}, the cover graph of which is isomorphic to the skeleton of the associahedron.
 The Tamari lattice is known to be the quotient of the weak Bruhat order by a \defn{lattice congruence} relation called the \defn{sylvester congruence}.
-Pilaud and Santos~\cite{MR3964495}, answering a question of Reading~\cite{MR2142177}, proved that with \emph{every} lattice congruence of the weak Bruhat order, one can associate a polytope whose skeleton is the cover graph of the lattice quotient, and more precisely whose normal fan is the \defn{quotient fan} defined by gluing the cones of the \defn{braid fan} (the type $A$ Coxeter arrangement) that belong to the same congruence class.
-Those polytopes are generalized permutahedra that they called \defn{quotientopes}.
+Answering a question of N.~Reading~\cite{MR2142177}, V.~Pilaud and F.~Santos~\cite{MR3964495} proved that with \emph{every} lattice congruence of the weak Bruhat order, one can associate a polytope whose skeleton is the cover graph of the lattice quotient, and more precisely whose normal fan is the \defn{quotient fan} defined by gluing the cones of the \defn{braid fan} (the type $A$ Coxeter arrangement) that belong to the same congruence class.
+Those polytopes are deformed permutahedra that they called \defn{quotientopes}.
 Associahedra are therefore the quotientopes of a congruence of the weak Bruhat order whose classes are in bijection with triangulations.
 
 The goal of this paper is to describe the quotientopes of congruences of the weak Bruhat order whose classes are in bijection with (equivalence classes of) \defn{rectangulations}, defined as decompositions of a square into finitely many axis-aligned rectangles.
 The combinatorics of rectangulations has been studied for decades~\cite{MR2233287,MR2871762,MR2864445,MR2763051,MR3084577,MR3878132,MR4598046}, and the order-theoretic take on these structures has already proved useful.
 %, in particular in the context of electronic engineering applications~\cite{}.
+There are two relevant lattice congruences related with rectangulations.
 
-The relevant lattice congruences are the \defn{weak rectangulation congruence} (or \defn{Baxter congruence}) on one hand, studied by Law and Reading~\cite{MR2871762}, and whose classes are one-to-one with \defn{weak rectangulations} (or \defn{diagonal rectangulations}) and \defn{Baxter permutations}, and the \defn{strong rectangulation congruence}, whose classes are in bijection with \defn{strong rectangulations}~\cite{MR2864445}.
-The latter is mentioned by Reading~\cite{MR3335492} (see for instance in Theorem 1.2, and Example 4.11), and studied more recently by Asinowski, Cardinal, Felsner, and Fusy~\cite{ACFF24}.
-
-One of our main results is an elementary description of the vertex coordinates of a realization of both families of quotientopes, in the spirit of Loday's realization in Theorem~\ref{thm:loday}.
-The quotientopes corresponding to the weak rectangulation congruence will be referred to as the \defn{weak rectangulotopes} and denoted by $\WRP(n)$.
+On the one hand, the \defn{weak rectangulation congruence} (or \defn{Baxter congruence}), studied by S.~Law and N.~Reading~\cite{MR2871762}, and whose classes are one-to-one with \defn{weak rectangulations} (or \defn{diagonal rectangulations}), with \defn{twin binary trees}~\cite{Giraudo}, and with \defn{Baxter permutations}. \vincent{Give more Baxter references here.}
+The corresponding quotientopes will be referred to as the \defn{weak rectangulotopes} and denoted by $\WRP(n)$.
 The skeleton of $\WRP(n)$ is isomorphic to the flip graph of weak rectangulations of size $n$ defined by Law and Reading~\cite{MR2871762}.
-Similarly, the quotientopes corresponding to the strong rectangulation congruence will be called the \defn{strong rectangulotopes} and denoted by $\SRP(n)$.
+
+On the other hand, the \defn{strong rectangulation congruence}, whose classes are in bijection with \defn{strong rectangulations}~\cite{MR2864445}.
+The latter is mentioned by N.~Reading~\cite{MR3335492} (see for instance in Theorem 1.2, and Example 4.11), and studied more recently by A.~Asinowski, J.~Cardinal, S.~Felsner, and É.~Fusy~\cite{ACFF24}.
+The corresponding quotientopes will be referred to as the \defn{strong rectangulotopes} and denoted by $\SRP(n)$.
 The skeleton of $\SRP(n)$ is isomorphic to the flip graph of strong rectangulations of size $n$ defined by Meehan~\cite{MR3697823} (see also~\cite{ACFF24}).
 
-Rectangulotopes enrich the family of natural quotientopes, alongside associahedra and permutreehedra~\cite{MR3856522}, and are instructive examples of application of the theory of lattice congruences to concrete combinatorial objects.
-
-% jean:{Vincent, you may want to say more about permutreehedra, incl. the Loday coordinates.}
+Rectangulotopes enrich the family of natural quotientopes, alongside associahedra, permutreehedra~\cite{MR3856522}, brick polytopes~\cite{Pilaud-brickAlgebra}, and certain graphical zonotopes~\cite{}, providing instructive examples of application of the theory of lattice congruences to concrete combinatorial objects.
+Our main results are elementary vertex and facet descriptions of both families of quotientopes.
+For vertices, we describe the coordinates of the vertex corresponding to a weak or strong rectangulation with simple product formulas in the spirit of J.-L.~Loday's realization in~\cref{thm:loday}.
+As mentioned in~\cite{PilaudSantosZiegler}, there is no such formula for arbitrary quotientopes, which makes rectangulotopes join the restricted club of Loday type quotientopes, jointly with associahedra and permutreehedra~\cite{MR3856522}.
+For facets, we show that both weak and strong rectangulotopes have $2^n-2$ facets (the maximal possible number of facets of a deformed permutahedron), and provide simple formulas for the right hand side of the inequality corresponding to a given proper nonempty subset of~$[n]$.
+We now give the necessary definitions for precisely stating these vertex and facet descriptions of the weak and strong rectangulotopes.
 
 \subsection{Weak and strong rectangulations}
-
-We give the necessary definitions for stating our results on the vertex description of the weak and strong rectangulotopes.
 
 \begin{itemize}
 \item Terminology: rectangles, \defn{vertices}, \defn{segments}, \defn{generic} rectangulation
@@ -416,7 +405,7 @@ For instance, the $4$th coordinate is $???$.
 
 \subsection{Plan of the paper}
 
-Section~\ref{sec:quotientopes} is dedicated to the background on quotientopes and their realizations as Minkowski sums of \defn{shard polytopes}, due to Padrol, Pilaud, and Ritter~\cite{MR4584712}, which will be our main tool throughout. Section~\ref{sec:wr} details the case of weak rectangulations, while Section~\ref{sec:sr} deals with strong rectangulations. In both cases, in addition to the vertex coordinates, we also give the submodular functions defining the polytopes.
+\cref{sec:quotientopes} is dedicated to the background on quotientopes and their realizations as Minkowski sums of \defn{shard polytopes}, due to Padrol, Pilaud, and Ritter~\cite{MR4584712}, which will be our main tool throughout. \cref{sec:wr} details the case of weak rectangulations, while \cref{sec:sr} deals with strong rectangulations. In both cases, in addition to the vertex coordinates, we also give the submodular functions defining the polytopes.
 
 \subsection*{Acknowledgments}
 
@@ -428,16 +417,16 @@ The authors thank Namrata and Torsten M\"utze for the organization and the other
 \section{Quotientopes}
 \label{sec:quotientopes}
 
-We now briefly recall some results on the weak order and its quotients, both from a lattice and geometric perspectives.
+We now briefly recall some results on the weak Bruhat order and its quotients, both from a lattice and geometric perspectives.
 We refer to \cite{Reading-arcDiagrams, Reading-Chapters, PadrolPilaudRitter} for details.
 
 \subsection{Weak order and noncrossing arc diagrams}
 
 Denote by~$\f{S}_n$ the set of permutations of~$[n]$.
 The \defn{inversion set} of~$\sigma \in \f{S}_n$ is~$\inv(\sigma) \eqdef \set{(\sigma_i, \sigma_j)}{1 \le i < j \le n \text{ and } \sigma_i > \sigma_j}$.
-The \defn{weak order} is the lattice on the permutations of~$\f{S}_n$ defined by the inclusion of their inversion sets.
-Note that the cover relations in the weak order are given by the transpositions of two adjacent letters.
-%The weak order is known to be a congruence uniform lattice~\cite{}.
+The \defn{weak Bruhat order}\footnote{The weak Bruhat order is usually just referred to as the weak order. In this paper, we prefer to use weak Bruhat order to avoid any confusion with the weak poset defined on weak rectangulations.} is the lattice on the permutations of~$\f{S}_n$ defined by the inclusion of their inversion sets.
+Note that the cover relations in the weak Bruhat order are given by the transpositions of two adjacent letters.
+%The weak Bruhat order is known to be a congruence uniform lattice~\cite{}.
 %In particular, it is join semidistributive, so that any permutation admits a canonical join representation.
 
 An \defn{arc} on~$[n]$ is a quadruple~$(a, b, A, B)$ where~$1 \le a < b \le n$ and~$A \sqcup B$ forms a partition of the interval~${]a,b[} \eqdef \{a+1, \dots, b-1\}$.
@@ -447,17 +436,17 @@ A \defn{noncrossing arc diagram} on~$[n]$ is a collection of arcs on~$[n]$ where
 In~\cite{Reading-arcDiagrams}, N.~Reading defined an elegant bijection between permutations of~$[n]$ and noncrossing arc diagrams on~$[n]$.
 It sends a permutation~$\sigma$ to the noncrossing arc diagram with an arc~$(\sigma_{j+1}, \sigma_j, A_j, B_j)$ for each descent~$j \in [n-1]$ of~$\sigma$ (\ie with~$\sigma_j > \sigma_{j+1}$), where \linebreak $A_j \eqdef \set{\sigma_i}{1 \le i < j \text{ and } \sigma_{j+1} < \sigma_i < \sigma_j}$ and~$B_j \eqdef \set{\sigma_k}{j+1 < k \le n \text{ and } \sigma_{j+1} < \sigma_k < \sigma_j}$. \linebreak
 This can also been visualized by representing the table~$(\sigma_j,j)$ of the permutation~$\sigma$, drawing the segments corresponding to the descents of~$\sigma$, and letting all points fall on the horizontal axis, allowing the segments to bend but not to cross each other nor to pass through a point.
-The single arcs correspond to permutations with a single descent, that is, to join irreducible permutations of the weak order.
-In general, the noncrossing arc diagram of a permutation~$\sigma$ actually encodes the canonical join representation of~$\sigma$ in the weak order (which was known to exist, as the weak order is join semidistributive).
+The single arcs correspond to permutations with a single descent, that is, to join irreducible permutations of the weak Bruhat order.
+In general, the noncrossing arc diagram of a permutation~$\sigma$ actually encodes the canonical join representation of~$\sigma$ in the weak Bruhat order (which was known to exist, as the weak Bruhat order is join semidistributive).
 See~\cite{Reading-arcDiagrams} for details.
 
 \subsection{Quotients and arc ideals}
 
-A \defn{lattice congruence} of the weak order is an equivalence relation~$\equiv$ on~$\f{S}_n$ that respects the meet and join operations, \ie such that $x \equiv x'$ and~$y \equiv y'$ implies $x \meet y \, \equiv \, x' \meet y'$ and~$x \join y \, \equiv \, x' \join y'$.
+A \defn{lattice congruence} of the weak Bruhat order is an equivalence relation~$\equiv$ on~$\f{S}_n$ that respects the meet and join operations, \ie such that $x \equiv x'$ and~$y \equiv y'$ implies $x \meet y \, \equiv \, x' \meet y'$ and~$x \join y \, \equiv \, x' \join y'$.
 The \defn{lattice quotient}~$\f{S}_n/{\equiv}$ is the lattice on the congruence classes of~$\equiv$ where~$X \le Y$ if and only if there exist~$x \in X$ and~$y \in Y$ such that~$x \le y$, and~$X \meet Y$ (resp.~$X \join Y$) is the congruence class of~$x \meet y$ (resp.~$x \join y$) for any~$x \in X$~and~$y \in Y$.
 
 Respecting the meet and join operation is a strong condition that imposes additional structure on~$\equiv$.
-In fact, all the congruence classes of~$\equiv$ are intervals of the weak order, and the quotient~$\f{S}_n/{\equiv}$ is isomorphic (as a poset) to the subposet of the weak order induced by permutations which are minimal in their class.
+In fact, all the congruence classes of~$\equiv$ are intervals of the weak Bruhat order, and the quotient~$\f{S}_n/{\equiv}$ is isomorphic (as a poset) to the subposet of the weak Bruhat order induced by permutations which are minimal in their class.
 Moreover, the latter are precisely the permutations whose noncrossing arc diagrams only use arcs corresponding to join irreducible permutations which are minimal in their class, and we denote by~$\c{A}_\equiv$ this set of arcs.
 In other words, the classes of~$\equiv$ are in bijection with noncrossing arc diagrams using only arcs in~$\c{A}_\equiv$.
 This bijection actually translates the fact that canonical join representations behave properly under lattice quotients.
@@ -465,8 +454,8 @@ This bijection actually translates the fact that canonical join representations 
 %Moreover, the sets of arcs of the form~$\c{A}_\equiv$ are easily described.
 An arc~$(a, b, A, B)$ is a \defn{subarc} of an arc~$(a', b', A', B')$ if~$a' \le a < b \le b$ and~$A \subseteq A'$ while~$B \subseteq B'$.
 An \defn{arc ideal} is a subset of arcs closed by subarcs.
-The map~${\equiv} \mapsto \c{A}_\equiv$ is a bijection between the lattice congruences of the weak order and the arc ideals.
-In other words, the lattice of congruences of the weak order is distributive, and its poset of join irreducibles is isomorphic to the subarc order.
+The map~${\equiv} \mapsto \c{A}_\equiv$ is a bijection between the lattice congruences of the weak Bruhat order and the arc ideals.
+In other words, the lattice of congruences of the weak Bruhat order is distributive, and its poset of join irreducibles is isomorphic to the subarc order.
 
 \subsection{Quotient fans and shards}
 
@@ -476,7 +465,7 @@ It has a chamber for each permutation~$\sigma$ of~$[n]$, given by the set of vec
 The \defn{shard} of an arc~$(a, b, A, B)$ is the piece of the braid hyperplane~${x_a = x_b}$ defined by the inequalities~$x_{a'} < x_a$ for all~$a' \in A$ and~$x_b < x_{b'}$ for all~$b' \in B$.
 %$\Sigma(a, b, A, B) \eqdef \set{\b{x} \in \R^n}{x_a = x_b \text{ and } x_{a'} < x_a \text{ for all } a' \in A \text{ and }  x_b < x_{b'} \text{ for all } b' \in B}$.
 
-The \defn{quotient fan} of a lattice congruence~$\equiv$ of the weak order is the polyhedral fan~$\c{F}_\equiv$ where
+The \defn{quotient fan} of a lattice congruence~$\equiv$ of the weak Bruhat order is the polyhedral fan~$\c{F}_\equiv$ where
 \begin{itemize}
 \item the maximal cones are obtained by glueing together the chambers of the braid arrangement corresponding to permutations in the same congruence class of~$\equiv$,
 \item the union of the codimension~$1$ cones is the union of the shards of the arcs of~$\c{A}_\equiv$.
@@ -486,7 +475,7 @@ By construction, the braid fan refines the quotient fan~$\c{F}_\equiv$, and the 
 
 \subsection{Quotientopes and shard polytopes}
 
-A \defn{quotientope} for a lattice congruence~$\equiv$ of the weak order is a polytope whose normal fan is the quotient fan~$\c{F}_\equiv$.
+A \defn{quotientope} for a lattice congruence~$\equiv$ of the weak Bruhat order is a polytope whose normal fan is the quotient fan~$\c{F}_\equiv$.
 In particular, the skeleton of a quotientope is isomorphic to the cover graph of the quotient~$\f{S}_n/{\equiv}$.
 The existence of quotientopes was first proved in \cite{PilaudSantos} and later better understood in~\cite{PadrolPilaudRitter} using Minkowski sums of shard polytopes.
 
@@ -578,7 +567,7 @@ Recall that every deformed permutahedra can be defined as
   \{x\in\R^n : \sum_{i\in S} x_i \leq f(S)\ \forall S\subseteq [n], S\not=\emptyset, \text { and } \sum_{i\in [n]} x_i = f([n])\},
   \]
 where $f$ is a \defn{submodular} set function $f:2^{[n]}\mapsto \R$.
-The description of the weak rectangulotope $\WRP(n)$ as a Minkowski sum in Lemma~\ref{lem:weakMinkowski} allows us to easily compute the submodular function defining it.
+The description of the weak rectangulotope $\WRP(n)$ as a Minkowski sum in \cref{lem:weakMinkowski} allows us to easily compute the submodular function defining it.
 
 \begin{lemma}
   The weak rectangulotope $\WRP(n)$ is realized by the following submodular function:
@@ -596,7 +585,7 @@ The proof relies on the following simple lemma stating that the submodular funct
 \end{lemma}
 
 \begin{proof}
-  From Lemmas~\ref{lem:weakMinkowski} and~\ref{lem:submodsum}, the submodular function defining the realization of $\WRP(n)$ is the sum of the submodular functions defining the Loday and anti-Loday shard polytope in Lemmas~\ref{lem:lodaysp} and~\ref{lem:antilodaysp}. For a Loday arc $A$ defined by an interval $I$ of $[n]$, we have that its shard polytope $\SP(A)$ is realized by the submodular function
+  From \cref{lem:weakMinkowski,lem:submodsum}, the submodular function defining the realization of $\WRP(n)$ is the sum of the submodular functions defining the Loday and anti-Loday shard polytope in \cref{lem:lodaysp,lem:antilodaysp}. For a Loday arc $A$ defined by an interval $I$ of $[n]$, we have that its shard polytope $\SP(A)$ is realized by the submodular function
   \[
   \loday{f}_I(S) := \llbracket S\cap I\not=\emptyset \rrbracket .
   \]
@@ -616,7 +605,7 @@ The proof relies on the following simple lemma stating that the submodular funct
 
 For every rectangulation $R$, we wish to give the coordinates of a point $p(R)\in\R^n$ such that $\WRP(n)$ is the convex hull of the points $p(R)$ for all rectangulations $R$.
 Recall that in a Minkowski sum of polytopes, the vertex that is extremal in a generic direction is the sum of the vertices of the summands that are extremal in this direction.
-We therefore need to understand which vertices of the translates of the shard polytopes defined in Lemmas~\ref{lem:lodaysp} and~\ref{lem:antilodaysp} are extremal for a direction given by a permutation.
+We therefore need to understand which vertices of the translates of the shard polytopes defined in \cref{lem:lodaysp,lem:antilodaysp} are extremal for a direction given by a permutation.
 
 \begin{lemma}
   \label{lem:lodaymax}
@@ -680,6 +669,7 @@ The \defn{strong rectangulotope} $\SRP(n)$ is the quotientope of the strong rect
 We classify the arcs into two families, depending on whether the arcs cross from above or below.
 A \defn{yin arc} is defined by two consecutive nonempty intervals $I$ and $J$ of $[n]$ such that the arc goes above all elements of $I$ and below all elements of $J$.
 A \defn{yang arc} is defined similarly, except that the arc goes below the elements of $I$ and above the elements of $J$.
+Note that all up arcs and down arcs are both yin arcs and yang arcs.
 
 \subsection{Shard polytopes of yin and yang arcs}
 
@@ -705,17 +695,17 @@ The following is a direct application of the main result of Padrol, Pilaud, and 
   The strong rectangulotope $\SRP(n)$ is realized by the Minkowski sum of all shard polytopes of yin and yang arcs.
 \end{lemma}
 
-Since the combinatorial type of a Minkowski sum is invariant to translation of the summands, we can use the polytopes defined in Lemmas~\ref{lem:yinsp} and~\ref{lem:yangsp} as a definition of the yin and yang shard polytopes.
+Since the combinatorial type of a Minkowski sum is invariant to translation of the summands, we can use the polytopes defined in \cref{lem:yinsp,lem:yangsp} as a definition of the yin and yang shard polytopes.
 Also note that since Loday and anti-Loday shard polytopes are, up to a translation, both yin and yang, each Loday and anti-Loday shard polytope is summed twice in the proposed realization.
 This, again, does not change the combinatorial type of the polytope.
 
-Lemma~\ref{lem:strongsum} gives us an alternative description of $\SRP(n)$ as the sum of two opposite quotientopes defined by the \defn{yin} and \defn{yang congruences} respectively, where the yin congruence is defined by the arc ideal consisting of all yin arcs, and the yang congruence is defined by the yang arcs.
+\cref{lem:strongsum} gives us an alternative description of $\SRP(n)$ as the sum of two opposite quotientopes defined by the \defn{yin} and \defn{yang congruences} respectively, where the yin congruence is defined by the arc ideal consisting of all yin arcs, and the yang congruence is defined by the yang arcs.
 
 \subsection{Submodular functions of strong rectangulotopes}
 
 \jean{That seems to work.}
 
-The submodular function corresponding to our realization of $\SRP(n)$ can be obtained as before by summing the functions defining the yin and yang shard polytopes in Lemmas~\ref{lem:yinsp} and~\ref{lem:yangsp}.
+The submodular function corresponding to our realization of $\SRP(n)$ can be obtained as before by summing the functions defining the yin and yang shard polytopes in \cref{lem:yinsp,lem:yangsp}.
 
 \begin{lemma}
   The strong rectangulotope $\SRP(n)$ is realized by the following submodular function:
@@ -727,7 +717,7 @@ The submodular function corresponding to our realization of $\SRP(n)$ can be obt
 \end{lemma}
 
 \begin{proof}
-  From Lemmas~\ref{lem:strongMinkowski} and~\ref{lem:submodsum}, the submodular function defining the realization of $\WRP(n)$ is the sum of the submodular functions defining the yin and yang shard polytope in Lemmas~\ref{lem:yinsp} and~\ref{lem:yangsp}. For a yin arc $A$ defined by consecutive intervals $I, J$ of $[n]$, we have that its shard polytope $\SP(A)$ is realized by the submodular function
+  From \cref{lem:strongMinkowski,lem:submodsum}, the submodular function defining the realization of $\WRP(n)$ is the sum of the submodular functions defining the yin and yang shard polytope in \cref{lem:yinsp,lem:yangsp}. For a yin arc $A$ defined by consecutive intervals $I, J$ of $[n]$, we have that its shard polytope $\SP(A)$ is realized by the submodular function
   \[
   \yin{f}_{I,J}(S) := \llbracket S\cap I\not=\emptyset \wedge S\not\supseteq J \rrbracket .
   \]
@@ -747,7 +737,7 @@ The submodular function corresponding to our realization of $\SRP(n)$ can be obt
 For every rectangulation $R$, we wish to give the coordinates of a point $p(R)\in\R^n$ such that $\SRP(n)$ is the convex hull of the points $p(R)$ for all rectangulations $R$.
 We first consider the contributions, to these coordinates, of the Minkowski summand $\SP(A)$ for all yin arcs $A$.
 Recall that in a Minkowski sum of polytopes, the vertex that is extremal in a generic direction is the sum of the vertices of the summands that are extremal in this direction.
-We therefore need to understand which vertices of the translates of the yin shard polytopes defined in Lemmas~\ref{lem:yinsp} are extremal for a direction given by a permutation.
+We therefore need to understand which vertices of the translates of the yin shard polytopes defined in \cref{lem:yinsp} are extremal for a direction given by a permutation.
 
 \begin{lemma}
   \label{lem:yinminmax}
@@ -770,7 +760,7 @@ Note again that by definition, this extremal vertex should only depend on the st
 \end{lemma}
 \begin{proof}
   Let $\pi$ be the 2-clumped permutation corresponding to $R$, hence the minimal element of $\mathcal{L}(P_s(R))$ in the weak Bruhat order.
-  From Lemma~\ref{lem:yinminmax}, for a pair $i<j \in [n]$, there exists a yin arc $A$ whose shard polytope $\SP(A)$ contributes to $\mathbf{e}_i-\mathbf{e}_j$ only if
+  From \cref{lem:yinminmax}, for a pair $i<j \in [n]$, there exists a yin arc $A$ whose shard polytope $\SP(A)$ contributes to $\mathbf{e}_i-\mathbf{e}_j$ only if
   $\pi^{-1}(i)>\pi^{-1}(j)$, hence if $i\succ_s j$.
   Provided this holds, the set of yin arcs $A$ such that $\SP(A)$ contributes to $\mathbf{e}_i-\mathbf{e}_j$ are defined by pairs of contiguous intervals $I,J$ of $[n]$ with $i\in I$, $j\in J$, such that $i$ is the index of the maximum of $\pi^{-1}$ in $I$, and $j$ is the index of the maximum of $\pi^{-1}$ in $J$.
   %$i = \arg\max_{k\in I} \pi^{-1}(k)$ and $j = \arg\min_{k\in J} \pi^{-1}(k)$.
