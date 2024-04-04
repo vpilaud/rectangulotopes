@@ -725,24 +725,26 @@ The submodular function corresponding to our realization of $\SRP(n)$ can be obt
 \begin{lemma}
   The strong rectangulotope $\SRP(n)$ is realized by the following submodular function:
   \[
-  f(S) \eqdef \# \bigset{ I, J }{ I\cap S\not=\emptyset \wedge J\cap ([n]\ssm S) \not= \emptyset } +
-  \#\bigset{ I, J }{ J\cap S\not=\emptyset \wedge I\cap ([n]\ssm S) \not= \emptyset },
+  f(S) \eqdef \# \bigset{ I, J }{ I \not\subseteq [n] \ssm S \text{ and } J \not\subseteq S } +
+  \#\bigset{ I, J }{ I \not\subseteq S \text{ and } J \not\subseteq [n] \ssm S },
   \]
-  where $I, J$ are pairs of consecutive and nonempty intervals of $[n]$.
+  where $I, J$ are pairs of nonempty consecutive intervals of~$[n]$.
 \end{lemma}
 
 \begin{proof}
-  From \cref{lem:strongMinkowski,lem:submodsum}, the submodular function defining the realization of $\WRP(n)$ is the sum of the submodular functions defining the yin and yang shard polytope in \cref{lem:yinsp,lem:yangsp}. For a yin arc $A$ defined by consecutive intervals $I, J$ of $[n]$, we have that its shard polytope $\SP(A)$ is realized by the submodular function
+  The submodular function defining the realization of $\WRP(n)$ is the sum of the submodular functions defining the yin and yang shard polytopes in \cref{lem:yinsp,lem:yangsp}.
+  The shard polytope~$\SP(\yinArc{I}{J})$ of a yin arc $\yinArc{I}{J}$ is given by the submodular function
   \[
-  \yin{f}_{I,J}(S) \eqdef \llbracket S\cap I\not=\emptyset \wedge S\not\supseteq J \rrbracket .
+  f_{\yinArc{I}{J}}(S) \eqdef \llbracket I \not\subseteq [n] \ssm S \text{ and } J \not\subseteq S \rrbracket .
   \]
-  Similarly, for a yang arc, the shard polytope $\SP(A)$ is defined by the following submodular function:
+  (Recall that $\llbracket \varphi\rrbracket$ is equal to 1 if $\varphi$ holds, and 0 otherwise.)
+  Similarly, the shard polytope~$\SP(\yangArc{I}{J})$ of a yang arc~$\yangArc{I}{J}$ is given by the submodular function
   \[
-  \yang{f}_{I,J}(S) \eqdef \llbracket S\cap J\not=\emptyset \wedge S\not\supseteq I \rrbracket .
+  f_{\yangArc{I}{J}}(S) \eqdef \llbracket I \not\subseteq S \text{ and } J \not\subseteq [n] \ssm S \rrbracket .
   \]
   Their sum
   \[
-  f(S) \eqdef \sum_{I,J} \yin{f}_{I,J}(S) + \yang{f}_{I,J}(S)
+  f_{\strongeq}(S) \eqdef \sum_{I,J} f_{\yinArc{I}{J}}(S) + f_{\yangArc{I}{J}}(S)
   \]
   is therefore as claimed.
 \end{proof}
