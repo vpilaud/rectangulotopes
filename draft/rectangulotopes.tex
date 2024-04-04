@@ -502,6 +502,10 @@ A \defn{quotientope} for a lattice congruence~$\equiv$ of the weak Bruhat order 
 In particular, the skeleton of a quotientope is isomorphic to the cover graph of the quotient~$\f{S}_n/{\equiv}$.
 The existence of quotientopes was first proved in \cite{PilaudSantos} and later better understood in~\cite{PadrolPilaudRitter} using Minkowski sums of shard polytopes.
 
+The \defn{Minkowski sum} of two polytopes~$\polytope{P}$ and~$\polytope{Q}$ is~$\polytope{P} + \polytope{Q} \eqdef \set{\b{p} + \b{q}}{\b{p} \in \polytope{P} \text{ and } \b{q} \in \polytope{Q}}$.
+Recall that for any vector~$\b{v} \ne \b{0}$, the face of~$\polytope{P} + \polytope{Q}$ maximizing the scalar product with~$\b{v}$ is the Minkowski sum of the faces of~$\polytope{P}$ and~$\polytope{Q}$ maximizing the scalar product with~$\b{v}$.
+In particular, if~$\b{v}$ is a generic direction, the vertex of~$\polytope{P} + \polytope{Q}$ extremal in direction~$\b{v}$ is just the sum of the vertices of~$\polytope{P}$ and~$\polytope{Q}$ that are extremal in direction~$\b{v}$.
+
 Consider an arc~$\alpha \eqdef (a, b, A, B)$ on~$[n]$.
 An \defn{$\alpha$-alternating matching} is a sequence~$a \le i_1 < j_1 < i_2 < j_2 < \dots < i_q < j_q \le b$ such that~$i_p \in \{a\} \cup A$ and~$j_p \in \{b\} \cup B$ for all~$p \in [q]$.
 Its \defn{characteristic vector} is~$\sum_{p \in [q]} \b{e}_{i_p} - \b{e}_{j_p}$.
@@ -616,17 +620,14 @@ The description of the weak rectangulotope~$\WRP(n)$ as a Minkowski sum in \cref
 
 \subsection{Loday-type coordinates for weak rectangulotopes}
 
-For every rectangulation $R$, we wish to give the coordinates of a point $p(R)\in\R^n$ such that $\WRP(n)$ is the convex hull of the points $p(R)$ for all rectangulations $R$.
+For every weak rectangulation $R$, we wish to give the coordinates of a point $\b{p}(R)\in\R^n$ such that $\WRP(n)$ is the convex hull of the points~$\b{p}(R)$ for all weak rectangulations~$R$.
 Recall that in a Minkowski sum of polytopes, the vertex that is extremal in a generic direction is the sum of the vertices of the summands that are extremal in this direction.
 We therefore need to understand which vertices of the translates of the shard polytopes defined in \cref{lem:lodaysp,lem:antilodaysp} are extremal for a direction given by a permutation.
 
 \begin{lemma}
   \label{lem:lodaymax}
-  Let $\pi\in\f{S}_n$ and consider a Loday arc $A$ defined by an interval $I$.
-  The unique vertex of $\SP(A)$ that is extreme with respect to the direction $\pi^{-1}$
-  is $\b{e}_i$, where $i \eqdef \arg\max_{j\in I} \pi^{-1}(j)$.
-  Similarly, if $A$ is an anti-Loday arc defined by $I$, the unique vertex of $\SP(A)$ that is extreme with respect to the direction $\pi^{-1}$
-  is $-\b{e}_i$, where $i \eqdef \arg\min_{j\in I} \pi^{-1}(j)$.
+  Let $\pi \in \f{S}_n$ and $I$ be a subset of~$[n]$.
+  The unique vertex of the up shard polytope~$\SP(\upArc{I})$ (resp.~down shard polytope~$\SP(\downArc{I})$) that is extreme with respect to the direction $\pi^{-1}$ is $\b{e}_i$, where $i \eqdef \arg\max_{j\in I} \pi^{-1}(j)$ (resp.~where~$i \eqdef \arg\min_{j\in I} \pi^{-1}(j)$).
 \end{lemma}
 
 Note that this extremal vertex should only depend on the weak rectangulation congruence class of $\pi$.
@@ -638,12 +639,12 @@ $\arg\max_{j\in I} \pi^{-1}(j)=\arg\max_{j\in I} \sigma^{-1}(j)$, and
 $\arg\min_{j\in I} \pi^{-1}(j)=\arg\min_{j\in I} \sigma^{-1}(j)$.
 
 \begin{lemma}
-  Let $R$ be a rectangulation on $n$ rectangles and $p(R)$ the vertex of $\WRP(n)$ associated with $R$.
-  Given $i\in [n]$, the number of Loday arcs $A$ such that $\b{e}_i$ is the extremal vertex of $\SP(A)$ contributing to $p(R)$ is
+  Let $R$ be a rectangulation on~$n$ rectangles, with source and target trees~$S$ and~$T$, and let $\b{p}(R)$ the vertex of $\WRP(n)$ associated with $R$.
+  Given $i\in [n]$, the number of up arcs~$\upArc{I}$ such that $\b{e}_i$ is the extremal vertex of $\SP(\upArc{I})$ contributing to~$\b{p}(R)$ is
   \[
-  \loday{w}_i =  h(T(R), i)\cdot v(T(R),i),
+  \loday{w}_i =  h^{T}_i\cdot v^{T}_i,
   \]
-   where $h(T,i)$ and $v(T,i)$ denote respectively the number of leaves in the horizontal and vertical subtrees of $i$ in the tree $T$.
+   where $h^T_i$ and $v^T_i$ denote respectively the number of leaves in the horizontal and vertical subtrees of $i$ in the tree $T$.
 \end{lemma}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
