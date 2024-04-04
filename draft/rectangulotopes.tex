@@ -221,7 +221,7 @@
 \subsection{Polytopes of permutations, triangulations, and rectangulations}
 
 The encoding of combinatorial objects in the form of a polyhedral structure is a recurrent theme in geometric and algebraic combinatorics.
-An elementary yet striking example of this idea is the \defn{permutahedron} $\Perm (n)$, defined as the convex hull of the points $\sum_{i\in [n]} \pi^{-1}(i)\cdot \mathbf{e}_i$, for all permutations $\pi\in\f{S}_n$.
+An elementary yet striking example of this idea is the \defn{permutahedron} $\Perm (n)$, defined as the convex hull of the points $\sum_{i\in [n]} \sigma^{-1}(i)\cdot \mathbf{e}_i$, for all permutations $\sigma \in \f{S}_n$.
 It is an $(n-1)$-dimensional polytope, whose facets are indexed by the proper nonempty subsets of $[n]$, and whose skeleton is the Cayley graph of the symmetric group for the generators consisting of adjacent transpositions.
 The many generalizations and extensions of the permutahedra gave rise to a flourishing theory of \defn{generalized permutahedra}~\cite{Postnikov} (that we prefer to call \defn{deformed permutahedra}).
 
@@ -235,10 +235,10 @@ We note that the inequality description of the same polytope was actually provid
 
 \begin{theorem}
   \label{thm:loday}
-  The associahedron is realized by the polytope~$\Asso (n)$ in~$\R^n$ defined equivalently as
+  The associahedron is realized by the polytope~$\Asso (n) \subset \R^n$ defined equivalently as
   \begin{enumerate}[(i)]
   \item the convex hull of the points~$\sum_{i\in [n]} \ell^T_i\cdot r^T_i \cdot \mathbf{e}_i$ for all binary trees~$T$ with $n$ internal nodes, where $\ell^T_i$ and $r^T_i$ denote the number of leaves in the left and right subtrees of $i$ in $T$, see~\cite{MR2108555},
-  \item the intersection of the hyperplane defined by~$\sum_{i \in [n]} x_i = \binom{n+1}{2}$ with the halfspaces defined by~$\sum_{i \in I} x_i \le \#\set{J \text{ interval of } [n]}{I \cap J \ne \varnothing}$ for all intervals~$I \subseteq [n]$, see~\cite{ShniderSternberg}.
+  \item the intersection of the hyperplane defined by~$\sum_{i \in [n]} x_i = \binom{n+1}{2}$ with the halfspaces defined by~$\sum_{i \in I} x_i \le \#\set{J \text{ interval of } [n]}{I \cap J \ne \varnothing}$ for all intervals~$\varnothing \ne I \subsetneq [n]$, see~\cite{ShniderSternberg}.
   \end{enumerate}
 \end{theorem}
 
@@ -247,23 +247,24 @@ A natural object associated with the associahedron is the \defn{Tamari lattice},
 The Tamari lattice is known to be the quotient of the weak Bruhat order by a \defn{lattice congruence} relation called the \defn{sylvester congruence}.
 Answering a question of N.~Reading~\cite{MR2142177}, V.~Pilaud and F.~Santos~\cite{MR3964495} proved that with \emph{every} lattice congruence of the weak Bruhat order, one can associate a polytope whose skeleton is the cover graph of the lattice quotient, and more precisely whose normal fan is the \defn{quotient fan} defined by gluing the cones of the \defn{braid fan} (the type $A$ Coxeter arrangement) that belong to the same congruence class.
 Those polytopes are deformed permutahedra that they called \defn{quotientopes}.
-Associahedra are therefore the quotientopes of a congruence of the weak Bruhat order whose classes are in bijection with triangulations.
+Associahedra are therefore the quotientopes of the sylvester congruence of the weak Bruhat order whose classes are in bijection with triangulations.
 
 The goal of this paper is to describe the quotientopes of congruences of the weak Bruhat order whose classes are in bijection with (equivalence classes of) \defn{rectangulations}, defined as decompositions of a square into finitely many axis-aligned rectangles.
 The combinatorics of rectangulations has been studied for decades~\cite{MR2233287,MR2871762,MR2864445,MR2763051,MR3084577,MR3878132,MR4598046}, and the order-theoretic take on these structures has already proved useful.
 %, in particular in the context of electronic engineering applications~\cite{}.
+\vincent{More citations on electronic engineering...}
 There are two relevant lattice congruences related with rectangulations.
-
+%
 On the one hand, the \defn{weak rectangulation congruence} (or \defn{Baxter congruence}), studied by S.~Law and N.~Reading~\cite{MR2871762}, and whose classes are one-to-one with \defn{weak rectangulations} (or \defn{diagonal rectangulations}), with \defn{twin binary trees}~\cite{Giraudo}, and with \defn{Baxter permutations}. \vincent{Give more Baxter references here.}
 The corresponding quotientopes will be referred to as the \defn{weak rectangulotopes} and denoted by $\WRP(n)$.
 The skeleton of $\WRP(n)$ is isomorphic to the flip graph of weak rectangulations of size $n$ defined by Law and Reading~\cite{MR2871762}.
-
+%
 On the other hand, the \defn{strong rectangulation congruence}, whose classes are in bijection with \defn{strong rectangulations}~\cite{MR2864445}.
 The latter is mentioned by N.~Reading~\cite{MR3335492} (see for instance in Theorem 1.2, and Example 4.11), and studied more recently by A.~Asinowski, J.~Cardinal, S.~Felsner, and É.~Fusy~\cite{ACFF24}.
 The corresponding quotientopes will be referred to as the \defn{strong rectangulotopes} and denoted by $\SRP(n)$.
 The skeleton of $\SRP(n)$ is isomorphic to the flip graph of strong rectangulations of size $n$ defined by Meehan~\cite{MR3697823} (see also~\cite{ACFF24}).
 
-Rectangulotopes enrich the family of natural quotientopes, alongside associahedra, permutreehedra~\cite{MR3856522}, brick polytopes~\cite{Pilaud-brickAlgebra}, and certain graphical zonotopes~\cite{}, providing instructive examples of application of the theory of lattice congruences to concrete combinatorial objects.
+Rectangulotopes enrich the family of natural quotientopes, alongside associahedra, permutreehedra~\cite{MR3856522}, certain brick polytopes~\cite{PilaudSantos-brickPolytopes, PilaudStump-brickPolytopes, Pilaud-brickAlgebra}, and certain graphical zonotopes~\cite{Pilaud-brickAlgebra, Pilaud-acyclicReorientationLattices}, providing instructive examples of application of the theory of lattice congruences to concrete combinatorial objects.
 Our main results are elementary vertex and facet descriptions of both families of quotientopes.
 For vertices, we describe the coordinates of the vertex corresponding to a weak or strong rectangulation with simple product formulas in the spirit of J.-L.~Loday's realization in~\cref{thm:loday}.
 As mentioned in~\cite{PilaudSantosZiegler}, there is no such formula for arbitrary quotientopes, which makes rectangulotopes join the restricted club of Loday type quotientopes, jointly with associahedra and permutreehedra~\cite{MR3856522}.
@@ -334,11 +335,15 @@ For each $i\in [n]$, we refer to its two subtrees in $T(R)$ as the \defn{horizon
 
 \subsection{Weak rectangulotopes}
 
-Our first result is a concise formula for the coordinates of the vertices of the  weak rectangulotopes $\WRP(n)$, that consists of applying Loday's formula on each of the source and target trees of the rectangulation.
+Our first results are simple vertex and facet descriptions of the weak rectangulotopes~$\WRP(n)$.
+For the vertices, we provide a concise formula for the coordinates, that consists of applying J.-L.~Loday's formula on each of the source and target trees of the rectangulation.
+For the facets, we combine the right hand sides of two opposite associahedra to obtain those of the weak rectangulotopes.
 This materializes the result of Law and Reading that the weak rectangulotopes are Minkowski sums of two opposite associahedra~\cite{MR2871762}.
 
 \begin{theorem}
-  The $(n-1)$-dimensional weak rectangulotope is realized by the convex hull $\WRP (n)$ of the points
+  The weak rectangulotope is realized by the polytope~$\WRP (n) \subset \R^n\!$ defined equivalently~as
+  \begin{enumerate}[(i)]
+  \item the convex hull of the points
   $\sum_{i\in [n]} (\loday{w}^R_i - \antiloday{w}^R_i)\cdot \mathbf{e}_i$ for all weak rectangulations $R$ on $n$ rectangles,
   with
   \[
@@ -350,7 +355,9 @@ This materializes the result of Law and Reading that the weak rectangulotopes ar
     \qquad\text{and}\qquad
     \antiloday{w}^R_i \eqdef h^S_i\cdot v^S_i,
   \]
-  where~$S$ and~$T$ are the source and target trees of the rectangulation~$R$, and $h^T_i$ and $v^T_i$ denote the number of leaves in the horizontal and vertical subtrees of $i$ in~$T$.
+  where~$S$ and~$T$ are the source and target trees of the rectangulation~$R$, and $h^T_i$ and $v^T_i$ denote the number of leaves in the horizontal and vertical subtrees of $i$ in~$T$,
+  \item the intersection of the hyperplane defined by~$\sum_{i \in [n]} x_i = \binom{n+1}{2}$ with the halfspaces defined by~$\sum_{i \in S} x_i \le \#\set{I \text{ interval of } [n]}{I \not\subseteq S \text{ and } I \not\subseteq [n] \ssm S}$ for all subsets~$\varnothing \ne S \subsetneq [n]$.
+  \end{enumerate}
 \end{theorem}
 
 \begin{example}
@@ -359,6 +366,7 @@ This materializes the result of Law and Reading that the weak rectangulotopes ar
   (-3, 0, 26, 2, -9, 5, -69, -4, 17, 0, -8, 59, 2, -20, 0, 2).
   \]
   For instance, the $4$th coordinate is $h^T_4 \cdot v^T_4 - h^S_4 \cdot v^S_4 = 1 \cdot 5 - 1 \cdot 3 = 2$.
+  \vincent{give also a relevant example of facet...}
 \end{example}
 
 \subsection{Strong rectangulotopes}
@@ -370,7 +378,9 @@ $i \, \backslash \, j$ the situation where the rectangle labeled $i$ touches the
 We also use the Iverson bracket $\llbracket \varphi\rrbracket$, which is equal to 1 if $\varphi$ holds, and 0 otherwise.
 
 \begin{theorem}
-  The $(n-1)$-dimensional strong rectangulotope is realized by the convex hull~$\SRP (n)$ of the points
+  The $(n-1)$-dimensional strong rectangulotope is realized by the polytope~$\SRP (n)$ defined equivalently as
+  \begin{enumerate}[(i)]
+  \item convex hull of the points
   \[
   \sum_{i,j\in [n], i< j} (\yin{w}^R_{i,j} - \yang{w}^R_{i,j})\cdot (\mathbf{e}_i - \mathbf{e}_j),
   \]
@@ -390,17 +400,19 @@ We also use the Iverson bracket $\llbracket \varphi\rrbracket$, which is equal t
   \item $h^T_i$ and $v^T_i$ denote the number of leaves in the horizontal and vertical subtrees of $i$ in~$T$,
   \item $ch^{T,S}_{i,j}$ (resp.~$cv^{T,S}_{i,j}$) denote the number of common leaves of the horizontal (resp.~vertical) subtree of $i$ in $T$ and the horizontal (resp.~vertical) subtree of $j$ in $S$.
   \end{itemize}
+  \item the intersection of the hyperplane defined by~$\sum_{i \in [n]} x_i = \binom{n+1}{2}$ with the halfspaces defined by~$\sum_{i \in S} x_i \le \#\set{I,J}{I \not\subseteq S \text{ and } J \not\subseteq [n] \ssm S} + \#\set{I,J}{I \not\subseteq [n] \ssm S \text{ and } J \not\subseteq S}$ for all subsets~$\varnothing \ne S \subsetneq [n]$, where~$I,J$ in the sets denote consecutive intervals of~$[n]$.
+  \end{enumerate}
 \end{theorem}
 
 % jean:{Is there better way to write this down/compute? Here we do not take advantage of the fact that at most one of the two factors $\yin{w}_{i,j}$ and $\yang{w}_{i,j}$ is nonzero.}
 
 \begin{example}
-The vertex of~$\SRP (16)$ corresponding to the strong rectangulation of \cref{fig:strongRectangulation} is
-\[
-???
-\]
-For instance, the $4$th coordinate is $???$.
-
+  The vertex of~$\SRP (16)$ corresponding to the strong rectangulation of \cref{fig:strongRectangulation} is
+  \[
+  ???
+  \]
+  For instance, the $4$th coordinate is $???$.
+  \vincent{give also a relevant example of facet...}
 \end{example}
 
 \subsection{Plan of the paper}
@@ -409,7 +421,7 @@ For instance, the $4$th coordinate is $???$.
 
 \subsection*{Acknowledgments}
 
-This work was initiated at the Workshop on Combinatorics, Algorithms, and Geometry organized by Torsten M\"utze on March 4-8, 2024 in Dresden, Germany.
+This work was initiated at the Workshop on Combinatorics, Algorithms, and Geometry held on March 4-8, 2024 in Dresden, Germany.
 The authors thank Namrata and Torsten M\"utze for the organization and the other participants of the workshop for the stimulating interactions, notably on other combinatorial aspects of rectangulations.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
