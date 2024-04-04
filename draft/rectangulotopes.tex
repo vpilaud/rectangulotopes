@@ -67,8 +67,6 @@
 \newcommand{\f}[1]{\mathfrak{#1}} % frak letters
 \newcommand{\h}{\widehat} % hat letters
 
-% hello
-
 % math commands
 \newcommand{\set}[2]{\left\{ #1 \;\middle|\; #2 \right\}} % set notation
 \newcommand{\bigset}[2]{\big\{ #1 \;\big|\; #2 \big\}} % big set notation
@@ -149,8 +147,22 @@
 \newcommand{\verticalPattern}{\smash{\raisebox{-.25cm}{\includegraphics[scale=.5]{verticalPattern}}}} 
 
 % Loday and anti-Loday accents (?)
+\makeatletter
+\newcommand{\oset}[3][0ex]{%
+  \mathrel{\mathop{#3}\limits^{
+    \vbox to#1{\kern-2\ex@
+    \hbox{$\scriptstyle#2$}\vss}}}}
+%
+\newcommand{\uset}[3][0ex]{%
+  \mathrel{\mathop{#3}\limits_{
+    \vbox to#1{\kern-7\ex@
+    \hbox{$\scriptstyle#2$}\vss}}}}
+\makeatother
+%
 \newcommand{\loday}[1]{\smash{\overset{\frown}{#1}}}
 \newcommand{\antiloday}[1]{\smash{\overset{\smile}{#1}}}
+\newcommand{\upArc}[1]{\smash{\raisebox{.05cm}{$\uset[0ex]{#1}{\frown}$}}}
+\newcommand{\downArc}[1]{\smash{\raisebox{-.05cm}{$\oset[.2ex]{#1}{\smile}$}}}
 % yin and yang accents (?)
 \newcommand{\yang}[1]{\smash{\overset{\backsim}{#1}}}
 \newcommand{\yin}[1]{\smash{\overset{\sim}{#1}}}
@@ -373,8 +385,7 @@ This materializes the result of Law and Reading that the weak rectangulotopes ar
 
 In order to exhibit a similar realization for the strong rectangulotopes, we need to count subsets of leaves that lie in some subtrees of both the source and target trees of a rectangulation.
 Two leaves of the trees $T(R)$ and $S(R)$ are said to be \defn{common leaves} if the edges to their parents lie on the same segment of $R$.
-We denote by %$i|j$ and $\frac{\ j\ }i$
-$i \, \backslash \, j$ the situation where the rectangle labeled $i$ touches the rectangle labeled $j$ either from the left or from below in $R$. %, respectively.
+We denote by $i \, \backslash \, j$ the situation where the rectangle labeled $i$ touches the rectangle labeled $j$ either from the left or from below in $R$.
 We also use the Iverson bracket $\llbracket \varphi\rrbracket$, which is equal to 1 if $\varphi$ holds, and 0 otherwise.
 
 \begin{theorem}
@@ -400,7 +411,7 @@ We also use the Iverson bracket $\llbracket \varphi\rrbracket$, which is equal t
   \item $h^T_i$ and $v^T_i$ denote the number of leaves in the horizontal and vertical subtrees of $i$ in~$T$,
   \item $ch^{T,S}_{i,j}$ (resp.~$cv^{T,S}_{i,j}$) denote the number of common leaves of the horizontal (resp.~vertical) subtree of $i$ in $T$ and the horizontal (resp.~vertical) subtree of $j$ in $S$.
   \end{itemize}
-  \item the intersection of the hyperplane defined by~$\sum_{i \in [n]} x_i = \binom{n+1}{2}$ with the halfspaces defined by~$\sum_{i \in S} x_i \le \#\set{I,J}{I \not\subseteq S \text{ and } J \not\subseteq [n] \ssm S} + \#\set{I,J}{I \not\subseteq [n] \ssm S \text{ and } J \not\subseteq S}$ for all subsets~$\varnothing \ne S \subsetneq [n]$, where~$I,J$ in the sets denote consecutive intervals of~$[n]$.
+  \item the intersection of the hyperplane defined by~$\sum_{i \in [n]} x_i = \binom{n+1}{2}$ with the halfspaces defined by~$\sum_{i \in S} x_i \le \#\set{I,J}{I \not\subseteq S \text{ and } J \not\subseteq [n] \ssm S} + \#\set{I,J}{I \not\subseteq [n] \ssm S \text{ and } J \not\subseteq S}$ for all subsets~$\varnothing \ne S \subsetneq [n]$, where~$I,J$ in the sets denote nonempty and consecutive intervals of~$[n]$.
   \end{enumerate}
 \end{theorem}
 
@@ -513,22 +524,20 @@ Recall that the submodular function of a Minkowski sum of deformed permutahedra 
 
 \subsection{The weak rectangulation congruence}
 
-Given a rectangulation $R$, the two trees $T(R)$ and $S(R)$, where the horizontal edges are oriented from left to right and the vertical edges are oriented from bottom to top,
-define two partial orders on $[n]$.
-We define the \defn{weak poset} $P_w(R)=([n],\prec_w)$ of a rectangulation $R$ as the transitive closure of the union of the two partial orders defined by the intertwining binary trees $T(R)$ and $S(R)$~\cite{MR4014603}.
-The weak poset is a two-dimensional lattice, the minimum of which is the root of $S(R)$ and the maximum is the root of $T(R)$.
-We define the set $\mathcal{L}(P_w(R))$ as the linear extensions of the weak poset:
+Given a rectangulation~$R$, the source and target trees~$S(R)$ and~$T(R)$ define two partial orders on $[n]$ (the horizontal edges are oriented from left to right and the vertical edges are oriented from bottom to top).
+The \defn{weak poset}~$P_w(R)=([n],\prec_w)$ of the rectangulation~$R$ is the transitive closure of the union of the two partial orders defined by the intertwining binary trees~$S(R)$ and~$T(R)$~\cite{MR4014603}.
+The weak poset is a two-dimensional lattice, whose minimum is the root of~$S(R)$ and whose maximum is the root of~$T(R)$.
+We define the set~$\mathcal{L}(P_w(R))$ as the linear extensions of the weak poset:
 \[
 \mathcal{L}(P_w(R)) \eqdef \bigset{\pi\in\f{S}_n }{ i\prec_w j\implies \pi^{-1}(i) < \pi^{-1}(j)}.
 \]
 
-\begin{theorem}
+\begin{theorem}[\cite{LawReading}]
   The subsets $\mathcal{L}(P_w(R))$ of $\f{S}_n$, for all rectangulations $R$ on $n$ rectangles, 
-  are equivalence classes of a congruence relation $
-\weakeq$ on the weak Bruhat order on $\f{S}_n$.
+  are equivalence classes of a congruence relation $\weakeq$ on the weak Bruhat order on $\f{S}_n$.
   Furthermore:
   \begin{itemize}
-  \item The congruence classes are one-to-one with weak rectangulations,  
+  \item the congruence classes are one-to-one with weak rectangulations,  
   \item the minimal elements of each congruence class are the twisted Baxter permutations,
   \item the maximal elements are the co-twisted Baxter permutations,
   \item the congruence classes each contain a single Baxter permutation, and are one-to-one with Baxter permutations.
@@ -539,37 +548,34 @@ We call this congruence the \defn{weak rectangulation congruence} (it is sometim
 The \defn{weak rectangulotope} $\WRP(n)$ is the quotientope of the weak rectangulation congruence $
 \weakeq$ on the weak Bruhat order on $\f{S}_n$.
 
-\subsection{Loday and anti-Loday arcs}
+\subsection{Up and down arcs}
 
 \begin{lemma}
 The weak rectangulation congruence $
 \weakeq$ on $\f{S}_n$ is defined by the arc ideal composed of arcs that do not cross the horizontal line.
 \end{lemma}
 
-% jean: From this, do we directly have a description of the face lattice of $\WRP(n)$?}
+\subsection{Shard polytopes of up and down arcs}
 
-\subsection{Shard polytopes of Loday and anti-Loday arcs}
-
-Therefore, the quotientope is realized by a Minkowski sum of the shard polytopes defined by two families of arcs: the \defn{Loday arcs} and the \defn{anti-Loday arcs}, that go respectively above and below all elements of an interval $I$ of $[n]$.
+Therefore, the quotientope is realized by a Minkowski sum of the shard polytopes defined by two families of arcs: the \defn{up arcs}~$\upArc{I}$ and the \defn{down arcs}~$\downArc{I}$, that go respectively above and below all elements of an interval $I$ of $[n]$.
 
 \begin{lemma}
   \label{lem:lodaysp}
-  Given a Loday arc $A$ defined by an interval $I$, the Loday shard polytope $\SP(A)$ is a translate of the standard simplex $\conv \set{ \b{e}_i }{ i\in I }$.
+%  Given an up arc~$\alpha$ defined by an interval $I$, the up shard polytope $\SP(\alpha)$ is a translate of the standard simplex~$\conv \set{ \b{e}_i }{ i\in I }$.
+  The up shard polytope $\SP(\upArc{I})$ is a translate of the simplex~$\conv \set{ \b{e}_i }{ i\in I }$.
 \end{lemma}
 
 \begin{lemma}
   \label{lem:antilodaysp}
-  Given an anti-Loday arc $A$ defined by an interval $I$, the anti-Loday shard polytope $\SP(A)$ is a translate of the negative standard simplex $\conv \set{ - \b{e}_i }{ i\in I }$.
+%  Given a down arc~$\alpha$ defined by an interval $I$, the down shard polytope $\SP(\alpha)$ is a translate of the negative standard simplex~$\conv \set{ - \b{e}_i }{ i\in I }$.
+  The down shard polytope $\SP(\downArc{I})$ is a translate of the negative simplex~$\conv \set{ - \b{e}_i }{ i\in I }$.
 \end{lemma}
 
 \begin{lemma}
   \label{lem:weakMinkowski}
-  The weak rectangulotope $\WRP(n)$ is realized by the Minkowski sum of all Loday and anti-Loday shard polytopes.
-  In particular, it is the Minkowski sum of two opposite Loday associahedra.
+  The weak rectangulotope $\WRP(n)$ is realized by the Minkowski sum of all up and down shard polytopes.
+  In particular, it is the Minkowski sum of two opposite associahedra of J.-L.~Loday~\cite{LawReading}.
 \end{lemma}
-
-\vincent{Say also the minkowski sum of all faces of the standard simplex corresponding to intervals, and all their opposite.}
-\vincent{Say that this was already known by Law and Reading.}
 
 \subsection{Submodular functions of weak rectangulotopes}
 
@@ -578,33 +584,34 @@ The description of the weak rectangulotope~$\WRP(n)$ as a Minkowski sum in \cref
 \begin{lemma}
   The weak rectangulotope $\WRP(n)$ is realized by the following submodular function:
   \[
-  f(S) \eqdef \#\bigset{ I\text{ interval of } [n] }{ I\cap S\not=\emptyset \text{ and } I\cap ([n]\ssm S) \not= \emptyset }.
+  f_{\weakeq}(S) \eqdef \#\bigset{ I\text{ interval of } [n] }{ I \not\subseteq S \text{ and } I \not\subseteq [n]\ssm S }.
   \]
   %that maps $S$ to the number of intervals $I$ of $[n]$ such that $I\cap S\not=\emptyset$ and $I\not\subseteq S$. 
 \end{lemma}
 
-The proof relies on the following simple lemma stating that the submodular function of a Minkowski sum of deformed permutahedra is the sum of the submodular function of the summands.
-
-\begin{lemma}
-  \label{lem:submodsum}
-  Consider a collection $\polytope{P}_1, \polytope{P}_2,\ldots ,\polytope{P}_k$ of deformed permutahedra defined by the submodular functions $f_1,f_2,\ldots ,f_k$. Then the Minkowski sum $\sum_i \polytope{P}_i$ is defined by the submodular function $f \eqdef \sum_i f_i$.
-\end{lemma}
+%The proof relies on the following simple lemma stating that the submodular function of a Minkowski sum of deformed permutahedra is the sum of the submodular function of the summands.
+%
+%\begin{lemma}
+%  \label{lem:submodsum}
+%  Consider a collection $\polytope{P}_1, \polytope{P}_2,\ldots ,\polytope{P}_k$ of deformed permutahedra defined by the submodular functions $f_1,f_2,\ldots ,f_k$. Then the Minkowski sum $\sum_i \polytope{P}_i$ is defined by the submodular function $f \eqdef \sum_i f_i$.
+%\end{lemma}
 
 \begin{proof}
-  From \cref{lem:weakMinkowski,lem:submodsum}, the submodular function defining the realization of $\WRP(n)$ is the sum of the submodular functions defining the Loday and anti-Loday shard polytope in \cref{lem:lodaysp,lem:antilodaysp}. For a Loday arc $A$ defined by an interval $I$ of $[n]$, we have that its shard polytope $\SP(A)$ is realized by the submodular function
+  %From \cref{lem:weakMinkowski,lem:submodsum},
+  The submodular function defining the realization of $\WRP(n)$ is the sum of the submodular functions defining the up and down shard polytope in \cref{lem:lodaysp,lem:antilodaysp}. The shard polytope~$\SP(\upArc{I})$ of an up arc~$\upArc{I}$ is given by the submodular function
   \[
-  \loday{f}_I(S) \eqdef \llbracket S\cap I\not=\emptyset \rrbracket .
+  f_{\upArc{I}}(S) \eqdef \llbracket S\cap I\not=\emptyset \rrbracket .
   \]
   (Recall that $\llbracket \varphi\rrbracket$ is equal to 1 if $\varphi$ holds, and 0 otherwise.)
-  Similarly, for an anti-Loday arc $A$ defined by an interval $I$, the shard polytope $\SP(A)$ is defined by the following submodular function:
+  Similarly, the shard polytope~$\SP(\downArc{I})$ of a down arc~$\downArc{I}$ is given by the submodular function
   \[
-  \antiloday{f}_I(S) \eqdef - \llbracket I\subseteq S \rrbracket .
+  f_{\downArc{I}}(S) \eqdef - \llbracket I\subseteq S \rrbracket .
   \]
   Their sum
   \[
-  f(S) \eqdef \sum_{I\text{ interval of }[n]} \loday{f}_I(S) + \antiloday{f}_I(S)
+  f_{\weakeq}(S) = \sum_{I\text{ interval of }[n]} f_{\upArc{I}}(S) + f_{\downArc{I}}(S)
   \]
-  is therefore exactly the number of intervals of $I$ that intersect $S$ but are not contained in $S$, hence the number of intervals intersecting both $S$ and its complement.
+  is therefore exactly the number of intervals of $I$ that intersect $S$ but are not contained in $S$, hence the number of intervals contained neither in~$S$ nor in its complement.
 \end{proof}
 
 \subsection{Loday-type coordinates for weak rectangulotopes}
@@ -652,12 +659,12 @@ We define the \defn{strong poset} $P_s(R)=([n],\prec_s)$ of a rectangulation $R$
 \mathcal{L}(P_s(R)) \eqdef \bigset{\pi\in\f{S}_n }{ i\prec_s j\implies \pi^{-1}(i) < \pi^{-1}(j)}.
 \]
 
-\begin{theorem}
+\begin{theorem}[\cite{Reading}]
   The subsets $\mathcal{L}(P_s(R))$ of $\f{S}_n$, for all rectangulations $R$ on $n$ rectangles, 
   are equivalence classes of a congruence relation $\strongeq$ on the weak Bruhat order on $\f{S}_n$.
     Furthermore:
   \begin{itemize}
-  \item The congruence classes are one-to-one with strong rectangulations,  
+  \item the congruence classes are one-to-one with strong rectangulations,  
   \item the minimal elements of each congruence class are the 2-clumped permutations,
   \item the maximal elements are the co-2-clumped permutations.
   \end{itemize}
