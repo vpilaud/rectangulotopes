@@ -67,8 +67,6 @@
 \newcommand{\f}[1]{\mathfrak{#1}} % frak letters
 \newcommand{\h}{\widehat} % hat letters
 
-% hello
-
 % math commands
 \newcommand{\set}[2]{\left\{ #1 \;\middle|\; #2 \right\}} % set notation
 \newcommand{\bigset}[2]{\big\{ #1 \;\big|\; #2 \big\}} % big set notation
@@ -149,24 +147,29 @@
 \newcommand{\verticalPattern}{\smash{\raisebox{-.25cm}{\includegraphics[scale=.5]{verticalPattern}}}} 
 
 % Loday and anti-Loday accents (?)
+\makeatletter
+\newcommand{\oset}[3][0ex]{%
+  \mathrel{\mathop{#3}\limits^{
+    \vbox to#1{\kern-2\ex@
+    \hbox{$\scriptstyle#2$}\vss}}}}
+%
+\newcommand{\uset}[3][0ex]{%
+  \mathrel{\mathop{#3}\limits_{
+    \vbox to#1{\kern-7\ex@
+    \hbox{$\scriptstyle#2$}\vss}}}}
+\makeatother
+%
 \newcommand{\loday}[1]{\smash{\overset{\frown}{#1}}}
 \newcommand{\antiloday}[1]{\smash{\overset{\smile}{#1}}}
+\newcommand{\upArc}[1]{\smash{\raisebox{.05cm}{$\uset[0ex]{#1}{\frown}$}}}
+\newcommand{\downArc}[1]{\smash{\raisebox{-.05cm}{$\oset[.2ex]{#1}{\smile}$}}}
 % yin and yang accents (?)
-\newcommand{\yang}[1]{\smash{\overset{\backsim}{#1}}}
 \newcommand{\yin}[1]{\smash{\overset{\sim}{#1}}}
+\newcommand{\yang}[1]{\smash{\overset{\backsim}{#1}}}
+\newcommand{\yinArc}[2]{\smash{\raisebox{.05cm}{$\uset[0ex]{#1}{\frown}$}\hspace{-.3ex}\raisebox{-.03cm}{$\oset[.2ex]{#2}{\smile}$}}}
+\newcommand{\yangArc}[2]{\smash{\raisebox{-.03cm}{$\oset[.2ex]{#1}{\smile}$}\hspace{-.3ex}\raisebox{.05cm}{$\uset[0ex]{#2}{\frown}$}}}
 % weak and strong equivalence on S_n
-\newcommand{
-\weakeq}{\asymp}
-%\makeatletter
-%\DeclareRobustCommand{\strongeq}{%
-%  \mathbin{\mathpalette\scaletoplus@{\mkern1mu \smash{\begin{smallmatrix} \backsim \\[-.3cm] \sim \end{smallmatrix}} \mkern1mu}}%
-%}
-%\newcommand{\scaletoplus@}[2]{%
-%  \vcenter{%
-%    \hbox{\sbox\z@{$\m@th#1+$}\resizebox{\wd\z@}{!}{$\m@th#1#2$}}%
-%  }%
-%}
-%\makeatother
+\newcommand{\weakeq}{\asymp}
 \newcommand{\strongeq}{\mathbin{\smash{\begin{smallmatrix} \backsim \\[-.3cm] \sim \end{smallmatrix}}}}% % J: I would like to stack \backsim and \sim instead
 
 % formating the table of contents
@@ -182,6 +185,7 @@
 \let\oldtocsubsubsection=\tocsubsubsection
 \renewcommand{\tocsubsubsection}[2]{\quad\oldtocsubsubsection{#1}{#2}}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %\title{Rectangulation polytopes}
@@ -200,6 +204,7 @@
 \urladdr{\url{https://www.ub.edu/comb/vincentpilaud/}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 
@@ -215,10 +220,15 @@
 \tableofcontents
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Introduction}
+\label{sec:intro}
+
+%%%%%%%%%%%%%
 
 \subsection{Polytopes of permutations, triangulations, and rectangulations}
+\label{subsec:permTrianRect}
 
 The encoding of combinatorial objects in the form of a polyhedral structure is a recurrent theme in geometric and algebraic combinatorics.
 An elementary yet striking example of this idea is the \defn{permutahedron} $\Perm (n)$, defined as the convex hull of the points $\sum_{i\in [n]} \sigma^{-1}(i)\cdot \b{e}_i$, for all permutations $\sigma \in \f{S}_n$.
@@ -367,7 +377,10 @@ The resulting labeling coincides with the NW--SE labeling of~\cite{ACFF24}.
 From now on, the labels of the rectangles in a rectangulations are the inorder labels, and the two trees $T(R)$ and $S(R)$ are defined on the vertex set $[n]$ accordingly.
 For each $i\in [n]$, we refer to its two subtrees in $T(R)$ as the \defn{horizontal} and \defn{vertical subtrees}, and similarly for $S(R)$.
 
+%%%%%%%%%%%%%
+
 \subsection{Weak rectangulotopes}
+\label{subsec:weakRectangulotopes}
 
 Our first results are simple vertex and facet descriptions of the weak rectangulotopes~$\WRP(n)$.
 For the vertices, we provide a concise formula for the coordinates, that consists of applying J.-L.~Loday's formula on each of the source and target trees of the rectangulation.
@@ -403,12 +416,14 @@ This materializes the result of Law and Reading that the weak rectangulotopes ar
   \vincent{give also a relevant example of facet...}
 \end{example}
 
+%%%%%%%%%%%%%
+
 \subsection{Strong rectangulotopes}
+\label{subsec:strongRectangulotopes}
 
 In order to exhibit a similar realization for the strong rectangulotopes, we need to count subsets of leaves that lie in some subtrees of both the source and target trees of a rectangulation.
 Two leaves of the trees $T(R)$ and $S(R)$ are said to be \defn{common leaves} if the edges to their parents lie on the same segment of $R$.
-We denote by %$i|j$ and $\frac{\ j\ }i$
-$i \, \backslash \, j$ the situation where the rectangle labeled $i$ touches the rectangle labeled $j$ either from the left or from below in $R$. %, respectively.
+We denote by $i \, \backslash \, j$ the situation where the rectangle labeled $i$ touches the rectangle labeled $j$ either from the left or from below in $R$.
 We also use the Iverson bracket $\llbracket \varphi\rrbracket$, which is equal to 1 if $\varphi$ holds, and 0 otherwise.
 
 \begin{theorem}
@@ -434,7 +449,7 @@ We also use the Iverson bracket $\llbracket \varphi\rrbracket$, which is equal t
   \item $h^T_i$ and $v^T_i$ denote the number of leaves in the horizontal and vertical subtrees of $i$ in~$T$,
   \item $ch^{T,S}_{i,j}$ (resp.~$cv^{T,S}_{i,j}$) denote the number of common leaves of the horizontal (resp.~vertical) subtree of $i$ in $T$ and the horizontal (resp.~vertical) subtree of $j$ in $S$.
   \end{itemize}
-  \item the intersection of the hyperplane defined by~$\sum_{i \in [n]} x_i = \binom{n+1}{2}$ with the halfspaces defined by~$\sum_{i \in S} x_i \le \#\set{I,J}{I \not\subseteq S \text{ and } J \not\subseteq [n] \ssm S} + \#\set{I,J}{I \not\subseteq [n] \ssm S \text{ and } J \not\subseteq S}$ for all subsets~$\varnothing \ne S \subsetneq [n]$, where~$I,J$ in the sets denote consecutive intervals of~$[n]$.
+  \item the intersection of the hyperplane defined by~$\sum_{i \in [n]} x_i = \binom{n+1}{2}$ with the halfspaces defined by~$\sum_{i \in S} x_i \le \#\set{I,J}{I \not\subseteq S \text{ and } J \not\subseteq [n] \ssm S} + \#\set{I,J}{I \not\subseteq [n] \ssm S \text{ and } J \not\subseteq S}$ for all subsets~$\varnothing \ne S \subsetneq [n]$, where~$I,J$ in the sets denote nonempty and consecutive intervals of~$[n]$.
   \end{enumerate}
 \end{theorem}
 
@@ -449,15 +464,21 @@ We also use the Iverson bracket $\llbracket \varphi\rrbracket$, which is equal t
   \vincent{give also a relevant example of facet...}
 \end{example}
 
-\subsection{Plan of the paper}
+%%%%%%%%%%%%%
 
-\cref{sec:quotientopes} is dedicated to the background on quotientopes and their realizations as Minkowski sums of \defn{shard polytopes}, due to A.~Padrol, V.~Pilaud, and J.~Ritter~\cite{MR4584712}, which will be our main tool throughout. \cref{sec:wr} details the case of weak rectangulations, while \cref{sec:sr} deals with strong rectangulations. In both cases, in addition to the vertex coordinates, we also give the submodular functions defining the polytopes.
+\subsection{Plan of the paper}
+\label{subsec:plan}
+
+\cref{sec:quotientopes} is dedicated to the background on quotientopes and their realizations as Minkowski sums of \defn{shard polytopes}, due to A.~Padrol, V.~Pilaud, and J.~Ritter~\cite{MR4584712}, which will be our main tool throughout. \cref{sec:weakRectangulotopes} details the case of weak rectangulations, while \cref{sec:strongRectangulotopes} deals with strong rectangulations. In both cases, in addition to the vertex coordinates, we also give the submodular functions defining the polytopes.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection*{Acknowledgments}
 
 This work was initiated at the Workshop on Combinatorics, Algorithms, and Geometry held on March 4-8, 2024 in Dresden, Germany.
 The authors thank Namrata and Torsten M\"utze for the organization and the other participants of the workshop for the stimulating interactions, notably on other combinatorial aspects of rectangulations.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Quotientopes}
@@ -466,7 +487,10 @@ The authors thank Namrata and Torsten M\"utze for the organization and the other
 We now briefly recall some results on the weak Bruhat order and its quotients, both from a lattice and geometric perspectives.
 We refer to \cite{Reading-arcDiagrams, Reading-Chapters, PadrolPilaudRitter} for details.
 
+%%%%%%%%%%%%%
+
 \subsection{Weak order and noncrossing arc diagrams}
+\label{subsec:noncrossingArcDiagrams}
 
 Denote by~$\f{S}_n$ the set of permutations of~$[n]$.
 The \defn{inversion set} of~$\sigma \in \f{S}_n$ is~$\inv(\sigma) \eqdef \set{(\sigma_i, \sigma_j)}{1 \le i < j \le n \text{ and } \sigma_i > \sigma_j}$.
@@ -486,7 +510,10 @@ The single arcs correspond to permutations with a single descent, that is, to jo
 In general, the noncrossing arc diagram of a permutation~$\sigma$ actually encodes the canonical join representation of~$\sigma$ in the weak Bruhat order (which was known to exist, as the weak Bruhat order is join semidistributive).
 See~\cite{Reading-arcDiagrams} for details.
 
+%%%%%%%%%%%%%
+
 \subsection{Quotients and arc ideals}
+\label{subsec:arcIdeals}
 
 A \defn{lattice congruence} of the weak Bruhat order is an equivalence relation~$\equiv$ on~$\f{S}_n$ that respects the meet and join operations, \ie such that $x \equiv x'$ and~$y \equiv y'$ implies $x \meet y \, \equiv \, x' \meet y'$ and~$x \join y \, \equiv \, x' \join y'$.
 The \defn{lattice quotient}~$\f{S}_n/{\equiv}$ is the lattice on the congruence classes of~$\equiv$ where~$X \le Y$ if and only if there exist~$x \in X$ and~$y \in Y$ such that~$x \le y$, and~$X \meet Y$ (resp.~$X \join Y$) is the congruence class of~$x \meet y$ (resp.~$x \join y$) for any~$x \in X$~and~$y \in Y$.
@@ -503,7 +530,10 @@ An \defn{arc ideal} is a subset of arcs closed by subarcs.
 The map~${\equiv} \mapsto \c{A}_\equiv$ is a bijection between the lattice congruences of the weak Bruhat order and the arc ideals.
 In other words, the lattice of congruences of the weak Bruhat order is distributive, and its poset of join irreducibles is isomorphic to the subarc order.
 
+%%%%%%%%%%%%%
+
 \subsection{Quotient fans and shards}
+\label{subsec:quotientFans}
 
 The \defn{braid arrangement} is the hyperplane arrangement consisting of the hyperplanes~$\set{\b{x} \in \R^n}{x_a = x_b}$ for all~$1 \le a < b \le n$.
 It has a chamber for each permutation~$\sigma$ of~$[n]$, given by the set of vectors whose coordinates are ordered as~$\sigma$.
@@ -519,11 +549,18 @@ The \defn{quotient fan} of a lattice congruence~$\equiv$ of the weak Bruhat orde
 (These two descriptions are equivalent.)
 By construction, the braid fan refines the quotient fan~$\c{F}_\equiv$, and the dual graph of the quotient fan~$\c{F}_\equiv$ is isomorphic to the cover graph of the quotient~$\f{S}_n/{\equiv}$.
 
+%%%%%%%%%%%%%
+
 \subsection{Quotientopes and shard polytopes}
+\label{subsec:quotientopes}
 
 A \defn{quotientope} for a lattice congruence~$\equiv$ of the weak Bruhat order is a polytope whose normal fan is the quotient fan~$\c{F}_\equiv$.
 In particular, the skeleton of a quotientope is isomorphic to the cover graph of the quotient~$\f{S}_n/{\equiv}$.
 The existence of quotientopes was first proved in \cite{PilaudSantos} and later better understood in~\cite{PadrolPilaudRitter} using Minkowski sums of shard polytopes.
+
+The \defn{Minkowski sum} of two polytopes~$\polytope{P}$ and~$\polytope{Q}$ is~$\polytope{P} + \polytope{Q} \eqdef \set{\b{p} + \b{q}}{\b{p} \in \polytope{P} \text{ and } \b{q} \in \polytope{Q}}$.
+Recall that for any vector~$\b{v} \ne \b{0}$, the face of~$\polytope{P} + \polytope{Q}$ maximizing the scalar product with~$\b{v}$ is the Minkowski sum of the faces of~$\polytope{P}$ and~$\polytope{Q}$ maximizing the scalar product with~$\b{v}$.
+In particular, if~$\b{v}$ is a generic direction, the vertex of~$\polytope{P} + \polytope{Q}$ extremal in direction~$\b{v}$ is just the sum of the vertices of~$\polytope{P}$ and~$\polytope{Q}$ that are extremal in direction~$\b{v}$.
 
 Consider an arc~$\alpha \eqdef (a, b, A, B)$ on~$[n]$.
 An \defn{$\alpha$-alternating matching} is a sequence~$a \le i_1 < j_1 < i_2 < j_2 < \dots < i_q < j_q \le b$ such that~$i_p \in \{a\} \cup A$ and~$j_p \in \{b\} \cup B$ for all~$p \in [q]$.
@@ -544,30 +581,30 @@ Recall that the submodular function of a Minkowski sum of deformed permutahedra 
 \end{lemma}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Weak rectangulotopes}
-\label{sec:wr}
+\label{sec:weakRectangulotopes}
 
-%%%%%%%%%%%%
+%%%%%%%%%%%%%
 
 \subsection{The weak rectangulation congruence}
+\label{subsec:weakRectangulationCongruence}
 
-Given a rectangulation $R$, the two trees $T(R)$ and $S(R)$, where the horizontal edges are oriented from left to right and the vertical edges are oriented from bottom to top,
-define two partial orders on $[n]$.
-We define the \defn{weak poset} $P_w(R)=([n],\prec_w)$ of a rectangulation $R$ as the transitive closure of the union of the two partial orders defined by the intertwining binary trees $T(R)$ and $S(R)$~\cite{MR4014603}.
-The weak poset is a two-dimensional lattice, the minimum of which is the root of $S(R)$ and the maximum is the root of $T(R)$.
-We define the set $\mathcal{L}(P_w(R))$ as the linear extensions of the weak poset:
+Given a rectangulation~$R$, the source and target trees~$S(R)$ and~$T(R)$ define two partial orders on $[n]$ (the horizontal edges are oriented from left to right and the vertical edges are oriented from bottom to top).
+The \defn{weak poset}~$P_w(R)=([n],\prec_w)$ of the rectangulation~$R$ is the transitive closure of the union of the two partial orders defined by the intertwining binary trees~$S(R)$ and~$T(R)$~\cite{MR4014603}.
+The weak poset is a two-dimensional lattice, whose minimum is the root of~$S(R)$ and whose maximum is the root of~$T(R)$.
+We define the set~$\mathcal{L}(P_w(R))$ as the linear extensions of the weak poset:
 \[
 \mathcal{L}(P_w(R)) \eqdef \bigset{\pi\in\f{S}_n }{ i\prec_w j\implies \pi^{-1}(i) < \pi^{-1}(j)}.
 \]
 
-\begin{theorem}
+\begin{theorem}[\cite{LawReading}]
   The subsets $\mathcal{L}(P_w(R))$ of $\f{S}_n$, for all rectangulations $R$ on $n$ rectangles, 
-  are equivalence classes of a congruence relation $
-\weakeq$ on the weak Bruhat order on $\f{S}_n$.
+  are equivalence classes of a congruence relation $\weakeq$ on the weak Bruhat order on $\f{S}_n$.
   Furthermore:
   \begin{itemize}
-  \item The congruence classes are one-to-one with weak rectangulations,  
+  \item the congruence classes are one-to-one with weak rectangulations,  
   \item the minimal elements of each congruence class are the twisted Baxter permutations,
   \item the maximal elements are the co-twisted Baxter permutations,
   \item the congruence classes each contain a single Baxter permutation, and are one-to-one with Baxter permutations.
@@ -578,80 +615,92 @@ We call this congruence the \defn{weak rectangulation congruence} (it is sometim
 The \defn{weak rectangulotope} $\WRP(n)$ is the quotientope of the weak rectangulation congruence $
 \weakeq$ on the weak Bruhat order on $\f{S}_n$.
 
-\subsection{up and down arcs}
+\subsection{Up and down arcs}
+\label{subsec:upDownArcs}
 
 \begin{lemma}
 The weak rectangulation congruence $
 \weakeq$ on $\f{S}_n$ is defined by the arc ideal composed of arcs that do not cross the horizontal line.
 \end{lemma}
 
-% jean: From this, do we directly have a description of the face lattice of $\WRP(n)$?}
+These arcs can be classified into two families of arcs: the up arcs and the down arcs.
+For an interval $I$ of $[n]$ of size at least~$2$, the \defn{up arc}~$\upArc{I}$ (resp.~\defn{down arc}~$\downArc{I}$) is the arc that starts at~$\min(I)$ and ends at~$\max(I)$, and passes above (resp.~below) all remaining elements of~$I$, that is
+\begin{align*}
+\upArc{I} & \eqdef \big( \min(I), \max(I), I \ssm \{\min(I), \max(I)\}, \varnothing \big) \\
+\qquad\text{and}\qquad
+\downArc{I} & \eqdef \big( \min(I), \max(I), \varnothing, I \ssm \{\min(I), \max(I)\} \big).
+\end{align*}
+Note that the basic arc~$(i, i+1, \varnothing, \varnothing)$ is both an up and down arc.
 
 \subsection{Shard polytopes of up and down arcs}
+\label{subsec:upDownShardPolytopes}
 
-Therefore, the quotientope is realized by a Minkowski sum of the shard polytopes defined by two families of arcs: the \defn{up arcs} and the \defn{down arcs}, that go respectively above and below all elements of an interval $I$ of $[n]$.
+Therefore, the quotientope is realized by a Minkowski sum of the shard polytopes of the up arcs and the down arcs.
+These quotientopes are very basic ones.
 
 \begin{lemma}
   \label{lem:lodaysp}
-  Given a up arc $A$ defined by an interval $I$, the up shard polytope $\SP(A)$ is a translate of the standard simplex $\conv \set{ \b{e}_i }{ i\in I }$.
+%  Given an up arc~$\alpha$ defined by an interval $I$, the up shard polytope $\SP(\alpha)$ is a translate of the standard simplex~$\conv \set{ \b{e}_i }{ i\in I }$.
+  The up shard polytope $\SP(\upArc{I})$ is a translate of the simplex~$\conv \set{ \b{e}_i }{ i\in I }$.
 \end{lemma}
 
 \begin{lemma}
   \label{lem:antilodaysp}
-  Given a down arc $A$ defined by an interval $I$, the down shard polytope $\SP(A)$ is a translate of the negative standard simplex $\conv \set{ - \b{e}_i }{ i\in I }$.
+  The down shard polytope $\SP(\downArc{I})$ is a translate of the negative simplex~$\conv \set{ - \b{e}_i }{ i\in I }$.
 \end{lemma}
 
 \begin{lemma}
   \label{lem:weakMinkowski}
   The weak rectangulotope $\WRP(n)$ is realized by the Minkowski sum of all up and down shard polytopes.
-  In particular, it is the Minkowski sum of two opposite Loday associahedra.
+  In particular, it is the Minkowski sum of two opposite associahedra of J.-L.~Loday~\cite{LawReading}.
 \end{lemma}
 
-\vincent{Say also the minkowski sum of all faces of the standard simplex corresponding to intervals, and all their opposite.}
-\vincent{Say that this was already known by Law and Reading.}
+%%%%%%%%%%%%%
 
 \subsection{Submodular functions of weak rectangulotopes}
+\label{subsec:submodularWeakRectangulotopes}
 
 The description of the weak rectangulotope~$\WRP(n)$ as a Minkowski sum in \cref{lem:weakMinkowski} allows us to easily compute the corresponding submodular function.
 
 \begin{lemma}
   The weak rectangulotope $\WRP(n)$ is realized by the following submodular function:
   \[
-  f(S) \eqdef \#\bigset{ I\text{ interval of } [n] }{ I\cap S\not=\emptyset \text{ and } I\cap ([n]\ssm S) \not= \emptyset }.
+  f_{\weakeq}(S) \eqdef \#\bigset{ I\text{ interval of } [n] }{ I \not\subseteq S \text{ and } I \not\subseteq [n]\ssm S }.
   \]
   %that maps $S$ to the number of intervals $I$ of $[n]$ such that $I\cap S\not=\emptyset$ and $I\not\subseteq S$. 
 \end{lemma}
 
 \begin{proof}
-  From \cref{lem:weakMinkowski,lem:submodsum}, the submodular function defining the realization of $\WRP(n)$ is the sum of the submodular functions defining the up and down shard polytope in \cref{lem:lodaysp,lem:antilodaysp}. For a up arc $A$ defined by an interval $I$ of $[n]$, we have that its shard polytope $\SP(A)$ is realized by the submodular function
+  The submodular function defining the realization of $\WRP(n)$ is the sum of the submodular functions defining the up and down shard polytope in \cref{lem:lodaysp,lem:antilodaysp}.
+  The shard polytope~$\SP(\upArc{I})$ of an up arc~$\upArc{I}$ is given by the submodular function
   \[
-  \loday{f}_I(S) \eqdef \llbracket S\cap I\not=\emptyset \rrbracket .
+  f_{\upArc{I}}(S) \eqdef \llbracket S\cap I\not=\emptyset \rrbracket .
   \]
   (Recall that $\llbracket \varphi\rrbracket$ is equal to 1 if $\varphi$ holds, and 0 otherwise.)
-  Similarly, for a down arc $A$ defined by an interval $I$, the shard polytope $\SP(A)$ is defined by the following submodular function:
+  Similarly, the shard polytope~$\SP(\downArc{I})$ of a down arc~$\downArc{I}$ is given by the submodular function
   \[
-  \antiloday{f}_I(S) \eqdef - \llbracket I\subseteq S \rrbracket .
+  f_{\downArc{I}}(S) \eqdef - \llbracket I\subseteq S \rrbracket .
   \]
   Their sum
   \[
-  f(S) \eqdef \sum_{I\text{ interval of }[n]} \loday{f}_I(S) + \antiloday{f}_I(S)
+  f_{\weakeq}(S) = \sum_{I\text{ interval of }[n]} f_{\upArc{I}}(S) + f_{\downArc{I}}(S)
   \]
-  is therefore exactly the number of intervals of $I$ that intersect $S$ but are not contained in $S$, hence the number of intervals intersecting both $S$ and its complement.
+  is therefore exactly the number of intervals of $I$ that intersect $S$ but are not contained in $S$, hence the number of intervals contained neither in~$S$ nor in its complement.
 \end{proof}
 
-\subsection{Loday-type coordinates for weak rectangulotopes}
+%%%%%%%%%%%%%
 
-For every rectangulation $R$, we wish to give the coordinates of a point $p(R)\in\R^n$ such that $\WRP(n)$ is the convex hull of the points $p(R)$ for all rectangulations $R$.
+\subsection{Loday coordinates of weak rectangulotopes}
+\label{subsec:LodayWeakRectangulotopes}
+
+For every weak rectangulation $R$, we wish to give the coordinates of a point $\b{p}(R)\in\R^n$ such that $\WRP(n)$ is the convex hull of the points~$\b{p}(R)$ for all weak rectangulations~$R$.
 Recall that in a Minkowski sum of polytopes, the vertex that is extremal in a generic direction is the sum of the vertices of the summands that are extremal in this direction.
 We therefore need to understand which vertices of the translates of the shard polytopes defined in \cref{lem:lodaysp,lem:antilodaysp} are extremal for a direction given by a permutation.
 
 \begin{lemma}
   \label{lem:lodaymax}
-  Let $\pi\in\f{S}_n$ and consider a up arc $A$ defined by an interval $I$.
-  The unique vertex of $\SP(A)$ that is extreme with respect to the direction $\pi^{-1}$
-  is $\b{e}_i$, where $i \eqdef \arg\max_{j\in I} \pi^{-1}(j)$.
-  Similarly, if $A$ is a down arc defined by $I$, the unique vertex of $\SP(A)$ that is extreme with respect to the direction $\pi^{-1}$
-  is $-\b{e}_i$, where $i \eqdef \arg\min_{j\in I} \pi^{-1}(j)$.
+  Let $\pi \in \f{S}_n$ and $I$ be an interval of~$[n]$ of size at least~$2$.
+  The unique vertex of the up shard polytope~$\SP(\upArc{I})$ (resp.~of the translated down shard polytope~$\SP(\downArc{I})$) that is extreme with respect to the direction $\pi^{-1}$ is $\b{e}_i$, where $i \eqdef \arg\max_{j\in I} \pi^{-1}(j)$ (resp.~where~$i \eqdef \arg\min_{j\in I} \pi^{-1}(j)$).
 \end{lemma}
 
 Note that this extremal vertex should only depend on the weak rectangulation congruence class of $\pi$.
@@ -663,140 +712,152 @@ $\arg\max_{j\in I} \pi^{-1}(j)=\arg\max_{j\in I} \sigma^{-1}(j)$, and
 $\arg\min_{j\in I} \pi^{-1}(j)=\arg\min_{j\in I} \sigma^{-1}(j)$.
 
 \begin{lemma}
-  Let $R$ be a rectangulation on $n$ rectangles and $p(R)$ the vertex of $\WRP(n)$ associated with $R$.
-  Given $i\in [n]$, the number of up arcs $A$ such that $\b{e}_i$ is the extremal vertex of $\SP(A)$ contributing to $p(R)$ is
+  Let $R$ be a rectangulation on~$n$ rectangles, with source and target trees~$S$ and~$T$, and let $\b{p}(R)$ the vertex of $\WRP(n)$ associated with $R$.
+  Given $i\in [n]$, the number of up arcs~$\upArc{I}$ such that $\b{e}_i$ is the extremal vertex of $\SP(\upArc{I})$ contributing to~$\b{p}(R)$ is
   \[
-  \loday{w}_i =  h(T(R), i)\cdot v(T(R),i),
+  \loday{w}_i =  h^{T}_i\cdot v^{T}_i,
   \]
-   where $h(T,i)$ and $v(T,i)$ denote respectively the number of leaves in the horizontal and vertical subtrees of $i$ in the tree $T$.
+   where $h^T_i$ and $v^T_i$ denote respectively the number of leaves in the horizontal and vertical subtrees of $i$ in the tree $T$.
 \end{lemma}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Strong rectangulotopes}
-\label{sec:sr}
+\label{sec:strongRectangulotopes}
 
-%%%%%%%%%%%%
+%%%%%%%%%%%%%
+
 \subsection{The strong rectangulation congruence}
+\label{subsec:strongRectangulationCongruence}
 
 We define the \defn{strong poset} $P_s(R)=([n],\prec_s)$ of a rectangulation $R$, and $\mathcal{L}(P_s)$ as the set of permutations of $\f{S}_n$ corresponding to linear extensions of $P_s$:
 \[
 \mathcal{L}(P_s(R)) \eqdef \bigset{\pi\in\f{S}_n }{ i\prec_s j\implies \pi^{-1}(i) < \pi^{-1}(j)}.
 \]
 
-\begin{theorem}
+\begin{theorem}[\cite{Reading}]
   The subsets $\mathcal{L}(P_s(R))$ of $\f{S}_n$, for all rectangulations $R$ on $n$ rectangles, 
   are equivalence classes of a congruence relation $\strongeq$ on the weak Bruhat order on $\f{S}_n$.
     Furthermore:
   \begin{itemize}
-  \item The congruence classes are one-to-one with strong rectangulations,  
+  \item the congruence classes are one-to-one with strong rectangulations,  
   \item the minimal elements of each congruence class are the 2-clumped permutations,
   \item the maximal elements are the co-2-clumped permutations.
   \end{itemize}
 \end{theorem}
 
 We call the congruence $\strongeq$ the \defn{strong rectangulation congruence}.
-The \defn{strong rectangulotope} $\SRP(n)$ is the quotientope of the strong rectangulation congruence $\strongeq$.
+The \defn{strong rectangulotope} $\SRP(n)$ is the quotientope of the strong rectangulation congruence~${\strongeq}$.
+
+%%%%%%%%%%%%%
 
 \subsection{Yin and yang arcs}
+\label{subsec:yinYangArcs}
 
 \begin{lemma}
   The strong rectangulation congruence $\strongeq$ on $\f{S}_n$ is defined by the arc ideal composed of arcs that cross the horizontal line at most once.
 \end{lemma}
 
 We classify the arcs into two families, depending on whether the arcs cross from above or below.
-A \defn{yin arc} is defined by two consecutive nonempty intervals $I$ and $J$ of $[n]$ such that the arc goes above all elements of $I$ and below all elements of $J$.
-A \defn{yang arc} is defined similarly, except that the arc goes below the elements of $I$ and above the elements of $J$.
+For two consecutive intervals~$I$ and~$J$ of~$[n]$, the \defn{yin arc}~$\yinArc{I}{J}$ (resp.~\defn{yang arc}~$\yangArc{I}{J}$) is the arc starts at~$\min(I)$ and ends at~$\max(J)$, and goes above (resp.~below) the remaining elements of $I$ and below (resp.~above) the remaining elements of $J$, that is,
+\begin{align*}
+\yinArc{I}{J} & \eqdef \big( \min(I), \max(J), I \ssm \{\min(I)\}, J \ssm \{\max(J)\} \big) \\
+\qquad\text{and}\qquad
+\yangArc{I}{J} & \eqdef \big( \min(I), \max(J), J \ssm \{\max(J)\}, I \ssm \{\min(I)\} \big).
+\end{align*}
 Note that all up arcs and down arcs are both yin arcs and yang arcs.
 
+%%%%%%%%%%%%%
+
 \subsection{Shard polytopes of yin and yang arcs}
+\label{subsec:yinYangShardPolytopes}
 
 \begin{lemma}
   \label{lem:yinsp}
-  Given a yin arc $A=(I,J)$, the yin shard polytope $\SP(A)$ is defined as the convex hull of the points
-  $\{\b{0}\} \cup \set{\b{e}_i - \b{e}_j}{(i,j)\in I\times J}$.
+  The yin shard polytope $\SP(\yinArc{I}{J})$ is $\conv \{\b{0}\} \cup \set{\b{e}_i - \b{e}_j}{i \in I, \; j \in J}$.
 \end{lemma}
 
 \begin{lemma}
   \label{lem:yangsp}
-  Given a yang arc $A=(I,J)$, the yang shard polytope $\SP(A)$ is a translate of the convex hull of the points
-  $\{\b{0}\} \cup \set{\b{e}_j - \b{e}_i}{(i,j)\in I\times J}$.
+  The yang shard polytope $\SP(\yangArc{I}{J})$ is a translate of~$\conv \{\b{0}\} \cup \set{\b{e}_j - \b{e}_i}{i \in I,\; j \in J}$.
 \end{lemma}
 
-Note that yin shard polytopes are translates of the up shard polytopes when $|J|=1$, and of the down shard polytopes when $|I|=1$.
-Similarly, up and down shard polytopes are translates of some yang shard polytopes.
+%Note that yin shard polytopes are translates of the up shard polytopes when $|J|=1$, and of the down shard polytopes when $|I|=1$.
+%Similarly, up and down shard polytopes are translates of some yang shard polytopes.
 
 The following is a direct application of the main result of A.~Padrol, V.~Pilaud, and J.~Ritter~\cite{MR4584712}.
 
 \begin{lemma}
   \label{lem:strongMinkowski}
-  The strong rectangulotope $\SRP(n)$ is realized by the Minkowski sum of all shard polytopes of yin and yang arcs.
+  The strong rectangulotope $\SRP(n)$ is realized by the Minkowski sum of all yin and yang shard polytopes.
 \end{lemma}
 
 Since the combinatorial type of a Minkowski sum is invariant to translation of the summands, we can use the polytopes defined in \cref{lem:yinsp,lem:yangsp} as a definition of the yin and yang shard polytopes.
-Also note that since up and down shard polytopes are, up to a translation, both yin and yang, each up and down shard polytope is summed twice in the proposed realization.
+Also note that since the up and down shard polytopes are, up to a translation, both yin and yang, each up and down shard polytope is summed twice in the proposed realization.
 This, again, does not change the combinatorial type of the polytope.
 
-\cref{lem:strongsum} gives us an alternative description of $\SRP(n)$ as the sum of two opposite quotientopes defined by the \defn{yin} and \defn{yang congruences} respectively, where the yin congruence is defined by the arc ideal consisting of all yin arcs, and the yang congruence is defined by the yang arcs.
+\cref{lem:strongMinkowski} gives us an alternative description of $\SRP(n)$ as the sum of two opposite quotientopes defined by the \defn{yin} and \defn{yang congruences} respectively, where the yin congruence is defined by the arc ideal consisting of all yin arcs, and the yang congruence is defined by the yang arcs.
+
+%%%%%%%%%%%%%
 
 \subsection{Submodular functions of strong rectangulotopes}
-
-\jean{That seems to work.}
+\label{subsec:submodularStrongRectangulotopes}
 
 The submodular function corresponding to our realization of $\SRP(n)$ can be obtained as before by summing the functions defining the yin and yang shard polytopes in \cref{lem:yinsp,lem:yangsp}.
 
 \begin{lemma}
   The strong rectangulotope $\SRP(n)$ is realized by the following submodular function:
   \[
-  f(S) \eqdef \# \bigset{ I, J }{ I\cap S\not=\emptyset \wedge J\cap ([n]\ssm S) \not= \emptyset } +
-  \#\bigset{ I, J }{ J\cap S\not=\emptyset \wedge I\cap ([n]\ssm S) \not= \emptyset },
+  f(S) \eqdef \# \bigset{ I, J }{ I \not\subseteq [n] \ssm S \text{ and } J \not\subseteq S } +
+  \#\bigset{ I, J }{ I \not\subseteq S \text{ and } J \not\subseteq [n] \ssm S },
   \]
-  where $I, J$ are pairs of consecutive and nonempty intervals of $[n]$.
+  where $I, J$ are pairs of nonempty consecutive intervals of~$[n]$.
 \end{lemma}
 
 \begin{proof}
-  From \cref{lem:strongMinkowski,lem:submodsum}, the submodular function defining the realization of $\WRP(n)$ is the sum of the submodular functions defining the yin and yang shard polytope in \cref{lem:yinsp,lem:yangsp}. For a yin arc $A$ defined by consecutive intervals $I, J$ of $[n]$, we have that its shard polytope $\SP(A)$ is realized by the submodular function
+  The submodular function defining the realization of $\WRP(n)$ is the sum of the submodular functions defining the yin and yang shard polytopes in \cref{lem:yinsp,lem:yangsp}.
+  The shard polytope~$\SP(\yinArc{I}{J})$ of a yin arc $\yinArc{I}{J}$ is given by the submodular function
   \[
-  \yin{f}_{I,J}(S) \eqdef \llbracket S\cap I\not=\emptyset \wedge S\not\supseteq J \rrbracket .
+  f_{\yinArc{I}{J}}(S) \eqdef \llbracket I \not\subseteq [n] \ssm S \text{ and } J \not\subseteq S \rrbracket .
   \]
-  Similarly, for a yang arc, the shard polytope $\SP(A)$ is defined by the following submodular function:
+  (Recall that $\llbracket \varphi\rrbracket$ is equal to 1 if $\varphi$ holds, and 0 otherwise.)
+  Similarly, the shard polytope~$\SP(\yangArc{I}{J})$ of a yang arc~$\yangArc{I}{J}$ is given by the submodular function
   \[
-  \yang{f}_{I,J}(S) \eqdef \llbracket S\cap J\not=\emptyset \wedge S\not\supseteq I \rrbracket .
+  f_{\yangArc{I}{J}}(S) \eqdef \llbracket I \not\subseteq S \text{ and } J \not\subseteq [n] \ssm S \rrbracket .
   \]
   Their sum
   \[
-  f(S) \eqdef \sum_{I,J} \yin{f}_{I,J}(S) + \yang{f}_{I,J}(S)
+  f_{\strongeq}(S) \eqdef \sum_{I,J} f_{\yinArc{I}{J}}(S) + f_{\yangArc{I}{J}}(S)
   \]
   is therefore as claimed.
 \end{proof}
 
-\subsection{Loday-type coordinates for strong rectangulotopes}
+%%%%%%%%%%%%%
 
-For every rectangulation $R$, we wish to give the coordinates of a point $p(R)\in\R^n$ such that $\SRP(n)$ is the convex hull of the points $p(R)$ for all rectangulations $R$.
-We first consider the contributions, to these coordinates, of the Minkowski summand $\SP(A)$ for all yin arcs $A$.
-Recall that in a Minkowski sum of polytopes, the vertex that is extremal in a generic direction is the sum of the vertices of the summands that are extremal in this direction.
-We therefore need to understand which vertices of the translates of the yin shard polytopes defined in \cref{lem:yinsp} are extremal for a direction given by a permutation.
+\subsection{Loday coordinates of strong rectangulotopes}
+\label{subsec:LodayStrongRectangulotopes}
+
+As in \cref{subsec:LodayWeakRectangulotopes}, we need to understand which vertices of the translates of the yin and yang shard polytopes defined in \cref{lem:yinsp,lem:yangsp} are extremal for a direction given by a permutation.
 
 \begin{lemma}
   \label{lem:yinminmax}
-  Let $\pi\in\f{S}_n$ and consider a yin arc $A=(I,J)$.
-  Let $i \eqdef \arg\max_{k\in I} \pi^{-1}(k)$ and $j \eqdef \arg\min_{k\in J} \pi^{-1}(k)$.
-  The unique vertex of $\SP(A)$ that is extreme with respect to the direction $\pi^{-1}$
-  is $\b{e}_i-\b{e}_j$ if $\pi^{-1}(i)>\pi^{-1}(j)$, and $\b{0}$ otherwise.
+  Let $\pi\in\f{S}_n$, let~$I$ and~$J$ be two consecutive intervals of~$[n]$, and let $i \eqdef \arg\max_{k\in I} \pi^{-1}(k)$ and $j \eqdef \arg\min_{k\in J} \pi^{-1}(k)$.
+  The unique vertex of the yin shard polytope~$\SP(\yinArc{I}{J})$ that is extreme with respect to the direction $\pi^{-1}$ is $\b{e}_i-\b{e}_j$ if $\pi^{-1}(i)>\pi^{-1}(j)$, and $\b{0}$ otherwise.
 \end{lemma}
 
 Note again that by definition, this extremal vertex should only depend on the strong congruence class of $\pi$.
 
 \begin{lemma}
-  Let $R$ be a rectangulation on $n$ rectangles, $([n],\prec_s)$ the associated strong order, and $p(R)$ the vertex of $\SRP(n)$ corresponding to $R$.
-  Given a pair $i,j\in [n]$ with $i<j$, the number of yin arcs $A$ such that $\b{e}_i-\b{e}_j$
-  is the extremal vertex of $\SP(A)$ contributing to $p(R)$ is
+  Let $R$ be a strong rectangulation on $n$ rectangles, $S$ and $T$ be its source and target trees, $([n],\prec_s)$ be its strong order, and $\b{p}(R)$ be the vertex of $\SRP(n)$ corresponding to $R$.
+  Given a pair $i,j\in [n]$ with $i<j$, the number of yin arcs $A$ such that $\b{e}_i-\b{e}_j$ is the extremal vertex of $\SP(A)$ contributing to $p(R)$ is
   \[
-    h(T(R), i) \cdot cv (T(R), S(R), i, j)\cdot h(S(R), j) 
+    h^T_i \cdot cv^{T,S}_{i,j}\cdot h^S_j 
   \]
   if $i\succ_s j$, and $0$ otherwise.
 \end{lemma}
 \begin{proof}
+  \vincent{I still need to work out this proof...}
   Let $\pi$ be the 2-clumped permutation corresponding to $R$, hence the minimal element of $\mathcal{L}(P_s(R))$ in the weak Bruhat order.
   From \cref{lem:yinminmax}, for a pair $i<j \in [n]$, there exists a yin arc $A$ whose shard polytope $\SP(A)$ contributes to $\b{e}_i-\b{e}_j$ only if
   $\pi^{-1}(i)>\pi^{-1}(j)$, hence if $i\succ_s j$.
@@ -807,13 +868,13 @@ Note again that by definition, this extremal vertex should only depend on the st
   at $i$ and $j$, respectively, and the number of leaves of the subtree of $S(R)$ rooted at $j$.
 \end{proof}
 
-It remains to observe that the only case where this product is nonzero and $i,j$ is not an inversion in $\pi$ is when $i\backslash j$.
+It remains to observe that the only case where this product is nonzero and $i,j$ is not an inversion in $\pi$ is when $i \, \backslash \, j$.
 
 \begin{lemma}
-  Let $R$ be a rectangulation on $n$ rectangles and $([n],\prec_s)$ the associated strong order.
+  Let $R$ be a rectangulation on $n$ rectangles, $S$ and $T$ be its source and target trees, and $([n],\prec_s)$ be the associated strong order.
   Given a pair $i,j\in [n]$ such that $i<j$ and $i\prec_s j$, we have
   \[
-    cv (T(R), S(R), i, j) > 0 \implies i\backslash j.
+    cv^{T,S}_{i,j} > 0 \quad \Longrightarrow \quad i \, \backslash \, j.
   \]
 \end{lemma}
 
@@ -827,13 +888,15 @@ It remains to observe that the only case where this product is nonzero and $i,j$
 \label{sec:biblio}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%
 \newpage
 \appendix
 \section{Material}
 
 Properties/results we may need along the way.
+
+%%%%%%%%%%%%%
 
 \subsection{Twin binary trees.}
 
@@ -845,6 +908,8 @@ The source tree~$S(R)$ and target tree~$T(R)$ are \defn{twin binary trees}, mean
 \item for any~$i \in [n-1]$, the $(i+1)$th leaf of~$S$ is a left leaf if and only if the $(i+1)$th leaf of~$R$ is a right leaf.
 \end{enumerate}
 \end{lemma}
+
+%%%%%%%%%%%%%
 
 \subsection{Properties of diagonal rectangulations.}
 
