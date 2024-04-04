@@ -155,8 +155,19 @@
 \newcommand{\yang}[1]{\smash{\overset{\backsim}{#1}}}
 \newcommand{\yin}[1]{\smash{\overset{\sim}{#1}}}
 % weak and strong equivalence on S_n
-\newcommand{\baxtereq}{\asymp}%{\stackrel{\frown}{\smile}}
-\newcommand{\strongeq}{\simeq}% % J: I would like to stack \backsim and \sim instead
+\newcommand{
+\weakeq}{\asymp}
+%\makeatletter
+%\DeclareRobustCommand{\strongeq}{%
+%  \mathbin{\mathpalette\scaletoplus@{\mkern1mu \smash{\begin{smallmatrix} \backsim \\[-.3cm] \sim \end{smallmatrix}} \mkern1mu}}%
+%}
+%\newcommand{\scaletoplus@}[2]{%
+%  \vcenter{%
+%    \hbox{\sbox\z@{$\m@th#1+$}\resizebox{\wd\z@}{!}{$\m@th#1#2$}}%
+%  }%
+%}
+%\makeatother
+\newcommand{\strongeq}{\mathbin{\smash{\begin{smallmatrix} \backsim \\[-.3cm] \sim \end{smallmatrix}}}}% % J: I would like to stack \backsim and \sim instead
 
 % formating the table of contents
 \setcounter{tocdepth}{4}
@@ -409,14 +420,14 @@ We refer to \cite{Reading-arcDiagrams, Reading-Chapters, PadrolPilaudRitter} for
 
 Denote by~$\f{S}_n$ the set of permutations of~$[n]$.
 The \defn{inversion set} of~$\sigma \in \f{S}_n$ is~$\inv(\sigma) \eqdef \set{(\sigma_i, \sigma_j)}{1 \le i < j \le n \text{ and } \sigma_i > \sigma_j}$.
-The \defn{weak order} is the lattice on~$\f{S}_n$ defined by the inclusion of their inversion sets.
-Note that the cover relations in the weak order are given by the transposition of two adjacent letters.
+The \defn{weak order} is the lattice on the permutations of~$\f{S}_n$ defined by the inclusion of their inversion sets.
+Note that the cover relations in the weak order are given by the transpositions of two adjacent letters.
 %The weak order is known to be a congruence uniform lattice~\cite{}.
 %In particular, it is join semidistributive, so that any permutation admits a canonical join representation.
 
 An \defn{arc} on~$[n]$ is a quadruple~$(a, b, A, B)$ where~$1 \le a < b \le n$ and~$A \sqcup B$ forms a partition of the interval~${]a,b[} \eqdef \{a+1, \dots, b-1\}$.
 We represent an arc by an abscissa monotone curve wiggling around the horizontal axis, starting at point~$a$ and ending at point~$b$, and passing above the points of~$A$ and below the points of~$B$.
-A \defn{noncrossing arc diagram} on~$[n]$ is a collection of arcs on~$[n]$ where any two arcs do not cross in their interior and have distinct left endpoints and distinct right endpoints (but the right endpoint of an arc can be the right endpoint of another arc).
+A \defn{noncrossing arc diagram} on~$[n]$ is a collection of arcs on~$[n]$ where any two arcs do not cross in their interior and have distinct left endpoints and distinct right endpoints (but the right endpoint of an arc can be the left endpoint of another arc).
 
 In~\cite{Reading-arcDiagrams}, N.~Reading defined an elegant bijection between permutations of~$[n]$ and noncrossing arc diagrams on~$[n]$.
 It sends a permutation~$\sigma$ to the noncrossing arc diagram with an arc~$(\sigma_{j+1}, \sigma_j, A_j, B_j)$ for each descent~$j \in [n-1]$ of~$\sigma$ (\ie with~$\sigma_j > \sigma_{j+1}$), where \linebreak $A_j \eqdef \set{\sigma_i}{1 \le i < j \text{ and } \sigma_{j+1} < \sigma_i < \sigma_j}$ and~$B_j \eqdef \set{\sigma_k}{j+1 < k \le n \text{ and } \sigma_{j+1} < \sigma_k < \sigma_j}$. \linebreak
@@ -432,30 +443,31 @@ The \defn{lattice quotient}~$\f{S}_n/{\equiv}$ is the lattice on the congruence 
 
 Respecting the meet and join operation is a strong condition that imposes additional structure on~$\equiv$.
 In fact, all the congruence classes of~$\equiv$ are intervals of the weak order, and the quotient~$\f{S}_n/{\equiv}$ is isomorphic (as a poset) to the subposet of the weak order induced by permutations which are minimal in their class.
-Moreover, the latter are precisely the permutations whose noncrossing arc diagrams only use arcs corresponding to join irreducible permutations which are minimal in their class -- we denote by~$\c{A}_\equiv$ this set of arcs.
+Moreover, the latter are precisely the permutations whose noncrossing arc diagrams only use arcs corresponding to join irreducible permutations which are minimal in their class, and we denote by~$\c{A}_\equiv$ this set of arcs.
 In other words, the classes of~$\equiv$ are in bijection with noncrossing arc diagrams using only arcs in~$\c{A}_\equiv$.
 This bijection actually translates the fact that canonical join representations behave properly under lattice quotients.
 
-Moreover, the sets of arcs of the form~$\c{A}_\equiv$ are easily described.
+%Moreover, the sets of arcs of the form~$\c{A}_\equiv$ are easily described.
 An arc~$(a, b, A, B)$ is a \defn{subarc} of an arc~$(a', b', A', B')$ if~$a' \le a < b \le b$ and~$A \subseteq A'$ while~$B \subseteq B'$.
 An \defn{arc ideal} is a subset of arcs closed by subarcs.
-The map~${\equiv} \mapsto \c{A}_\equiv$ is a bijection between the lattice congruences of the weak order on~$\f{S}_n$ and the arc ideals.
-(In other words, the lattice of congruences of the weak order is distributive, and its poset of join irreducibles is isomorphic to the subarc order).
+The map~${\equiv} \mapsto \c{A}_\equiv$ is a bijection between the lattice congruences of the weak order and the arc ideals.
+In other words, the lattice of congruences of the weak order is distributive, and its poset of join irreducibles is isomorphic to the subarc order.
 
 \subsection{Quotient fans and shards}
 
-The \defn{braid arrangement} is the arrangement of hyperplanes~$\set{\b{x} \in \R^n}{x_a = x_b}$ for all~$1 \le a < b \le n$.
+The \defn{braid arrangement} is the hyperplane arrangement consisting of the hyperplanes~$\set{\b{x} \in \R^n}{x_a = x_b}$ for all~$1 \le a < b \le n$.
 It has a chamber for each permutation~$\sigma$ of~$[n]$, given by the set of vectors whose coordinates are ordered as~$\sigma$.
 
 The \defn{shard} of an arc~$(a, b, A, B)$ is the piece of the braid hyperplane~${x_a = x_b}$ defined by the inequalities~$x_{a'} < x_a$ for all~$a' \in A$ and~$x_b < x_{b'}$ for all~$b' \in B$.
 %$\Sigma(a, b, A, B) \eqdef \set{\b{x} \in \R^n}{x_a = x_b \text{ and } x_{a'} < x_a \text{ for all } a' \in A \text{ and }  x_b < x_{b'} \text{ for all } b' \in B}$.
+
 The \defn{quotient fan} of a lattice congruence~$\equiv$ of the weak order is the polyhedral fan~$\c{F}_\equiv$ where
 \begin{itemize}
 \item the maximal cones are obtained by glueing together the chambers of the braid arrangement corresponding to permutations in the same congruence class of~$\equiv$,
 \item the union of the codimension~$1$ cones is the union of the shards of the arcs of~$\c{A}_\equiv$.
 \end{itemize}
 (These two descriptions are equivalent.)
-By construction, the dual graph of the braid fan~$\c{F}_\equiv$ is isomorphic to the cover graph of the quotient~$\f{S}_n/{\equiv}$.
+By construction, the braid fan refines the quotient fan~$\c{F}_\equiv$, and the dual graph of the quotient fan~$\c{F}_\equiv$ is isomorphic to the cover graph of the quotient~$\f{S}_n/{\equiv}$.
 
 \subsection{Quotientopes and shard polytopes}
 
@@ -468,6 +480,12 @@ An \defn{$\alpha$-alternating matching} is a sequence~$a \le i_1 < j_1 < i_2 < j
 Its \defn{characteristic vector} is~$\sum_{p \in [q]} \b{e}_{i_p} - \b{e}_{j_p}$.
 The \defn{shard polytope} of~$\alpha$ is the convex hull~$\SP(\alpha)$ of the characteristic vectors of all $\alpha$-alternating matchings.
 It was shown in~\cite{PadrolPilaudRitter} that any Minkowski sum of positive scalings of the shard polytopes~$\SP(\alpha)$ for all arcs~$\alpha$ in the arc ideal~$\c{A}_\equiv$ is a quotientope for~$\equiv$.
+
+By definition, any quotientope is a generalized (or deformed) permutahedron, and can thus be written as
+  \[
+  \Bigset{x \in \R^n}{\sum_{i \in S} x_i \le f(S)\ \forall \varnothing \ne S \subseteq [n] \text { and } \sum_{i \in [n]} x_i = f([n])},
+  \]
+where~$f$ is a \defn{submodular} set function $f:2^{[n]}\mapsto \R$ (\ie such that~$f(X \cup Y) + f(X \cap Y) \le f(X) + f(Y)$ for any~$X, Y \subseteq [n]$).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -489,7 +507,8 @@ We define the set $\mathcal{L}(P_w(R))$ as the linear extensions of the weak pos
 
 \begin{theorem}
   The subsets $\mathcal{L}(P_w(R))$ of $\f{S}_n$, for all rectangulations $R$ on $n$ rectangles, 
-  are equivalence classes of a congruence relation $\baxtereq$ on the weak Bruhat order on $\f{S}_n$.
+  are equivalence classes of a congruence relation $
+\weakeq$ on the weak Bruhat order on $\f{S}_n$.
   Furthermore:
   \begin{itemize}
   \item The congruence classes are one-to-one with weak rectangulations,  
@@ -500,12 +519,14 @@ We define the set $\mathcal{L}(P_w(R))$ as the linear extensions of the weak pos
 \end{theorem}
 
 We call this congruence the \defn{weak rectangulation congruence} (it is sometimes referred to as the \defn{Baxter congruence}).
-The \defn{weak rectangulotope} $\WRP(n)$ is the quotientope of the weak rectangulation congruence $\baxtereq$ on the weak Bruhat order on $\f{S}_n$.
+The \defn{weak rectangulotope} $\WRP(n)$ is the quotientope of the weak rectangulation congruence $
+\weakeq$ on the weak Bruhat order on $\f{S}_n$.
 
 \subsection{Loday and anti-Loday arcs}
 
 \begin{lemma}
-The weak rectangulation congruence $\baxtereq$ on $\f{S}_n$ is defined by the arc ideal composed of arcs that do not cross the horizontal line.
+The weak rectangulation congruence $
+\weakeq$ on $\f{S}_n$ is defined by the arc ideal composed of arcs that do not cross the horizontal line.
 \end{lemma}
 
 % jean: From this, do we directly have a description of the face lattice of $\WRP(n)$?}
@@ -592,7 +613,8 @@ We therefore need to understand which vertices of the translates of the shard po
 
 Note that this extremal vertex should only depend on the weak rectangulation congruence class of $\pi$.
 This, in passing, gives us an alternative characterization of the weak rectangulation congruence:
-$\pi\baxtereq\sigma$ if and only if for any interval $I$ of $[n]$,
+$\pi
+\weakeq\sigma$ if and only if for any interval $I$ of $[n]$,
 %the maximum and the minimum of $\pi^{-1}$ and $\sigma^{-1}$ on $I$ have the same index.
 $\arg\max_{j\in I} \pi^{-1}(j)=\arg\max_{j\in I} \sigma^{-1}(j)$, and
 $\arg\min_{j\in I} \pi^{-1}(j)=\arg\min_{j\in I} \sigma^{-1}(j)$.
