@@ -186,6 +186,7 @@
 \renewcommand{\tocsubsubsection}[2]{\quad\oldtocsubsubsection{#1}{#2}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %\title{Rectangulation polytopes}
 \title{Rectangulotopes}
@@ -203,6 +204,7 @@
 \urladdr{\url{https://www.ub.edu/comb/vincentpilaud/}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 
@@ -218,10 +220,15 @@
 \tableofcontents
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Introduction}
+\label{sec:intro}
+
+%%%%%%%%%%%%%
 
 \subsection{Polytopes of permutations, triangulations, and rectangulations}
+\label{subsec:permTrianRect}
 
 The encoding of combinatorial objects in the form of a polyhedral structure is a recurrent theme in geometric and algebraic combinatorics.
 An elementary yet striking example of this idea is the \defn{permutahedron} $\Perm (n)$, defined as the convex hull of the points $\sum_{i\in [n]} \sigma^{-1}(i)\cdot \b{e}_i$, for all permutations $\sigma \in \f{S}_n$.
@@ -274,7 +281,10 @@ As mentioned in~\cite{PilaudSantosZiegler}, there is no such formula for arbitra
 For facets, we show that both weak and strong rectangulotopes have $2^n-2$ facets (the maximal possible number of facets of a deformed permutahedron), and provide simple formulas for the right hand side of the inequality corresponding to a given proper nonempty subset of~$[n]$.
 We now give the necessary definitions for precisely stating these vertex and facet descriptions of the weak and strong rectangulotopes.
 
+%%%%%%%%%%%%%
+
 \subsection{Weak and strong rectangulations}
+\label{subsec:weakStrongRectangulations}
 
 \begin{itemize}
 \item Terminology: rectangles, \defn{vertices}, \defn{segments}, \defn{generic} rectangulation
@@ -284,6 +294,7 @@ We now give the necessary definitions for precisely stating these vertex and fac
 \item \defn{Flip graphs} on rectangulations
 \end{itemize}
 
+%%%%%%%%%%%%%
 
 \subsection{Source and target trees of a rectangulation}
 \label{subsec:sourceTargetTrees}
@@ -336,7 +347,10 @@ The resulting labeling coincides with the NW--SE labeling of~\cite{ACFF24}.
 From now on, the labels of the rectangles in a rectangulations are the inorder labels, and the two trees $T(R)$ and $S(R)$ are defined on the vertex set $[n]$ accordingly.
 For each $i\in [n]$, we refer to its two subtrees in $T(R)$ as the \defn{horizontal} and \defn{vertical subtrees}, and similarly for $S(R)$.
 
+%%%%%%%%%%%%%
+
 \subsection{Weak rectangulotopes}
+\label{subsec:weakRectangulotopes}
 
 Our first results are simple vertex and facet descriptions of the weak rectangulotopes~$\WRP(n)$.
 For the vertices, we provide a concise formula for the coordinates, that consists of applying J.-L.~Loday's formula on each of the source and target trees of the rectangulation.
@@ -372,7 +386,10 @@ This materializes the result of Law and Reading that the weak rectangulotopes ar
   \vincent{give also a relevant example of facet...}
 \end{example}
 
+%%%%%%%%%%%%%
+
 \subsection{Strong rectangulotopes}
+\label{subsec:strongRectangulotopes}
 
 In order to exhibit a similar realization for the strong rectangulotopes, we need to count subsets of leaves that lie in some subtrees of both the source and target trees of a rectangulation.
 Two leaves of the trees $T(R)$ and $S(R)$ are said to be \defn{common leaves} if the edges to their parents lie on the same segment of $R$.
@@ -417,15 +434,21 @@ We also use the Iverson bracket $\llbracket \varphi\rrbracket$, which is equal t
   \vincent{give also a relevant example of facet...}
 \end{example}
 
-\subsection{Plan of the paper}
+%%%%%%%%%%%%%
 
-\cref{sec:quotientopes} is dedicated to the background on quotientopes and their realizations as Minkowski sums of \defn{shard polytopes}, due to A.~Padrol, V.~Pilaud, and J.~Ritter~\cite{MR4584712}, which will be our main tool throughout. \cref{sec:wr} details the case of weak rectangulations, while \cref{sec:sr} deals with strong rectangulations. In both cases, in addition to the vertex coordinates, we also give the submodular functions defining the polytopes.
+\subsection{Plan of the paper}
+\label{subsec:plan}
+
+\cref{sec:quotientopes} is dedicated to the background on quotientopes and their realizations as Minkowski sums of \defn{shard polytopes}, due to A.~Padrol, V.~Pilaud, and J.~Ritter~\cite{MR4584712}, which will be our main tool throughout. \cref{sec:weakRectangulotopes} details the case of weak rectangulations, while \cref{sec:strongRectangulotopes} deals with strong rectangulations. In both cases, in addition to the vertex coordinates, we also give the submodular functions defining the polytopes.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection*{Acknowledgments}
 
 This work was initiated at the Workshop on Combinatorics, Algorithms, and Geometry held on March 4-8, 2024 in Dresden, Germany.
 The authors thank Namrata and Torsten M\"utze for the organization and the other participants of the workshop for the stimulating interactions, notably on other combinatorial aspects of rectangulations.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Quotientopes}
@@ -434,7 +457,10 @@ The authors thank Namrata and Torsten M\"utze for the organization and the other
 We now briefly recall some results on the weak Bruhat order and its quotients, both from a lattice and geometric perspectives.
 We refer to \cite{Reading-arcDiagrams, Reading-Chapters, PadrolPilaudRitter} for details.
 
+%%%%%%%%%%%%%
+
 \subsection{Weak order and noncrossing arc diagrams}
+\label{subsec:noncrossingArcDiagrams}
 
 Denote by~$\f{S}_n$ the set of permutations of~$[n]$.
 The \defn{inversion set} of~$\sigma \in \f{S}_n$ is~$\inv(\sigma) \eqdef \set{(\sigma_i, \sigma_j)}{1 \le i < j \le n \text{ and } \sigma_i > \sigma_j}$.
@@ -454,7 +480,10 @@ The single arcs correspond to permutations with a single descent, that is, to jo
 In general, the noncrossing arc diagram of a permutation~$\sigma$ actually encodes the canonical join representation of~$\sigma$ in the weak Bruhat order (which was known to exist, as the weak Bruhat order is join semidistributive).
 See~\cite{Reading-arcDiagrams} for details.
 
+%%%%%%%%%%%%%
+
 \subsection{Quotients and arc ideals}
+\label{subsec:arcIdeals}
 
 A \defn{lattice congruence} of the weak Bruhat order is an equivalence relation~$\equiv$ on~$\f{S}_n$ that respects the meet and join operations, \ie such that $x \equiv x'$ and~$y \equiv y'$ implies $x \meet y \, \equiv \, x' \meet y'$ and~$x \join y \, \equiv \, x' \join y'$.
 The \defn{lattice quotient}~$\f{S}_n/{\equiv}$ is the lattice on the congruence classes of~$\equiv$ where~$X \le Y$ if and only if there exist~$x \in X$ and~$y \in Y$ such that~$x \le y$, and~$X \meet Y$ (resp.~$X \join Y$) is the congruence class of~$x \meet y$ (resp.~$x \join y$) for any~$x \in X$~and~$y \in Y$.
@@ -471,7 +500,10 @@ An \defn{arc ideal} is a subset of arcs closed by subarcs.
 The map~${\equiv} \mapsto \c{A}_\equiv$ is a bijection between the lattice congruences of the weak Bruhat order and the arc ideals.
 In other words, the lattice of congruences of the weak Bruhat order is distributive, and its poset of join irreducibles is isomorphic to the subarc order.
 
+%%%%%%%%%%%%%
+
 \subsection{Quotient fans and shards}
+\label{subsec:quotientFans}
 
 The \defn{braid arrangement} is the hyperplane arrangement consisting of the hyperplanes~$\set{\b{x} \in \R^n}{x_a = x_b}$ for all~$1 \le a < b \le n$.
 It has a chamber for each permutation~$\sigma$ of~$[n]$, given by the set of vectors whose coordinates are ordered as~$\sigma$.
@@ -487,7 +519,10 @@ The \defn{quotient fan} of a lattice congruence~$\equiv$ of the weak Bruhat orde
 (These two descriptions are equivalent.)
 By construction, the braid fan refines the quotient fan~$\c{F}_\equiv$, and the dual graph of the quotient fan~$\c{F}_\equiv$ is isomorphic to the cover graph of the quotient~$\f{S}_n/{\equiv}$.
 
+%%%%%%%%%%%%%
+
 \subsection{Quotientopes and shard polytopes}
+\label{subsec:quotientopes}
 
 A \defn{quotientope} for a lattice congruence~$\equiv$ of the weak Bruhat order is a polytope whose normal fan is the quotient fan~$\c{F}_\equiv$.
 In particular, the skeleton of a quotientope is isomorphic to the cover graph of the quotient~$\f{S}_n/{\equiv}$.
@@ -511,13 +546,15 @@ where~$f$ is a \defn{submodular} set function $f:2^{[n]}\mapsto \R$ (\ie such th
 Recall that the submodular function of a Minkowski sum of deformed permutahedra is just the sum of the submodular functions of the Minkowski summands.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Weak rectangulotopes}
-\label{sec:wr}
+\label{sec:weakRectangulotopes}
 
-%%%%%%%%%%%%
+%%%%%%%%%%%%%
 
 \subsection{The weak rectangulation congruence}
+\label{subsec:weakRectangulationCongruence}
 
 Given a rectangulation~$R$, the source and target trees~$S(R)$ and~$T(R)$ define two partial orders on $[n]$ (the horizontal edges are oriented from left to right and the vertical edges are oriented from bottom to top).
 The \defn{weak poset}~$P_w(R)=([n],\prec_w)$ of the rectangulation~$R$ is the transitive closure of the union of the two partial orders defined by the intertwining binary trees~$S(R)$ and~$T(R)$~\cite{MR4014603}.
@@ -543,7 +580,10 @@ We call this congruence the \defn{weak rectangulation congruence} (it is sometim
 The \defn{weak rectangulotope} $\WRP(n)$ is the quotientope of the weak rectangulation congruence $
 \weakeq$ on the weak Bruhat order on $\f{S}_n$.
 
+%%%%%%%%%%%%%
+
 \subsection{Up and down arcs}
+\label{subsec:upDownArcs}
 
 \begin{lemma}
 The weak rectangulation congruence $
@@ -559,7 +599,10 @@ For an interval $I$ of $[n]$ of size at least~$2$, the \defn{up arc}~$\upArc{I}$
 \end{align*}
 Note that the basic arc~$(i, i+1, \varnothing, \varnothing)$ is both an up and down arc.
 
+%%%%%%%%%%%%%
+
 \subsection{Shard polytopes of up and down arcs}
+\label{subsec:upDownShardPolytopes}
 
 Therefore, the quotientope is realized by a Minkowski sum of the shard polytopes of the up arcs and the down arcs.
 These quotientopes are very basic ones.
@@ -582,7 +625,10 @@ These quotientopes are very basic ones.
   In particular, it is the Minkowski sum of two opposite associahedra of J.-L.~Loday~\cite{LawReading}.
 \end{lemma}
 
+%%%%%%%%%%%%%
+
 \subsection{Submodular functions of weak rectangulotopes}
+\label{subsec:submodularWeakRectangulotopes}
 
 The description of the weak rectangulotope~$\WRP(n)$ as a Minkowski sum in \cref{lem:weakMinkowski} allows us to easily compute the corresponding submodular function.
 
@@ -619,7 +665,10 @@ The description of the weak rectangulotope~$\WRP(n)$ as a Minkowski sum in \cref
   is therefore exactly the number of intervals of $I$ that intersect $S$ but are not contained in $S$, hence the number of intervals contained neither in~$S$ nor in its complement.
 \end{proof}
 
-\subsection{Loday-type coordinates for weak rectangulotopes}
+%%%%%%%%%%%%%
+
+\subsection{Loday coordinates of weak rectangulotopes}
+\label{subsec:LodayWeakRectangulotopes}
 
 For every weak rectangulation $R$, we wish to give the coordinates of a point $\b{p}(R)\in\R^n$ such that $\WRP(n)$ is the convex hull of the points~$\b{p}(R)$ for all weak rectangulations~$R$.
 Recall that in a Minkowski sum of polytopes, the vertex that is extremal in a generic direction is the sum of the vertices of the summands that are extremal in this direction.
@@ -649,12 +698,15 @@ $\arg\min_{j\in I} \pi^{-1}(j)=\arg\min_{j\in I} \sigma^{-1}(j)$.
 \end{lemma}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Strong rectangulotopes}
-\label{sec:sr}
+\label{sec:strongRectangulotopes}
 
-%%%%%%%%%%%%
+%%%%%%%%%%%%%
+
 \subsection{The strong rectangulation congruence}
+\label{subsec:strongRectangulationCongruence}
 
 We define the \defn{strong poset} $P_s(R)=([n],\prec_s)$ of a rectangulation $R$, and $\mathcal{L}(P_s)$ as the set of permutations of $\f{S}_n$ corresponding to linear extensions of $P_s$:
 \[
@@ -675,7 +727,10 @@ We define the \defn{strong poset} $P_s(R)=([n],\prec_s)$ of a rectangulation $R$
 We call the congruence $\strongeq$ the \defn{strong rectangulation congruence}.
 The \defn{strong rectangulotope} $\SRP(n)$ is the quotientope of the strong rectangulation congruence~${\strongeq}$.
 
+%%%%%%%%%%%%%
+
 \subsection{Yin and yang arcs}
+\label{subsec:yinYangArcs}
 
 \begin{lemma}
   The strong rectangulation congruence $\strongeq$ on $\f{S}_n$ is defined by the arc ideal composed of arcs that cross the horizontal line at most once.
@@ -690,7 +745,10 @@ For two consecutive intervals~$I$ and~$J$ of~$[n]$, the \defn{yin arc}~$\yinArc{
 \end{align*}
 Note that all up arcs and down arcs are both yin arcs and yang arcs.
 
+%%%%%%%%%%%%%
+
 \subsection{Shard polytopes of yin and yang arcs}
+\label{subsec:yinYangShardPolytopes}
 
 \begin{lemma}
   \label{lem:yinsp}
@@ -718,7 +776,10 @@ This, again, does not change the combinatorial type of the polytope.
 
 \cref{lem:strongMinkowski} gives us an alternative description of $\SRP(n)$ as the sum of two opposite quotientopes defined by the \defn{yin} and \defn{yang congruences} respectively, where the yin congruence is defined by the arc ideal consisting of all yin arcs, and the yang congruence is defined by the yang arcs.
 
+%%%%%%%%%%%%%
+
 \subsection{Submodular functions of strong rectangulotopes}
+\label{subsec:submodularStrongRectangulotopes}
 
 The submodular function corresponding to our realization of $\SRP(n)$ can be obtained as before by summing the functions defining the yin and yang shard polytopes in \cref{lem:yinsp,lem:yangsp}.
 
@@ -749,12 +810,15 @@ The submodular function corresponding to our realization of $\SRP(n)$ can be obt
   is therefore as claimed.
 \end{proof}
 
-\subsection{Loday-type coordinates for strong rectangulotopes}
+%%%%%%%%%%%%%
 
-For every rectangulation $R$, we wish to give the coordinates of a point $p(R)\in\R^n$ such that $\SRP(n)$ is the convex hull of the points $p(R)$ for all rectangulations $R$.
+\subsection{Loday coordinates of strong rectangulotopes}
+\label{subsec:LodayStrongRectangulotopes}
+
+For every strong rectangulation $R$, we wish to give the coordinates of a point $\b{p}(R)\in\R^n$ such that $\SRP(n)$ is the convex hull of the points $\b{p}(R)$ for all strong rectangulations $R$.
 We first consider the contributions, to these coordinates, of the Minkowski summand $\SP(A)$ for all yin arcs $A$.
-Recall that in a Minkowski sum of polytopes, the vertex that is extremal in a generic direction is the sum of the vertices of the summands that are extremal in this direction.
-We therefore need to understand which vertices of the translates of the yin shard polytopes defined in \cref{lem:yinsp} are extremal for a direction given by a permutation.
+%Recall that in a Minkowski sum of polytopes, the vertex that is extremal in a generic direction is the sum of the vertices of the summands that are extremal in this direction.
+We need to understand which vertices of the translates of the yin shard polytopes defined in \cref{lem:yinsp} are extremal for a direction given by a permutation.
 
 \begin{lemma}
   \label{lem:yinminmax}
@@ -806,13 +870,15 @@ It remains to observe that the only case where this product is nonzero and $i,j$
 \label{sec:biblio}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%
 \newpage
 \appendix
 \section{Material}
 
 Properties/results we may need along the way.
+
+%%%%%%%%%%%%%
 
 \subsection{Twin binary trees.}
 
@@ -824,6 +890,8 @@ The source tree~$S(R)$ and target tree~$T(R)$ are \defn{twin binary trees}, mean
 \item for any~$i \in [n-1]$, the $(i+1)$th leaf of~$S$ is a left leaf if and only if the $(i+1)$th leaf of~$R$ is a right leaf.
 \end{enumerate}
 \end{lemma}
+
+%%%%%%%%%%%%%
 
 \subsection{Properties of diagonal rectangulations.}
 
