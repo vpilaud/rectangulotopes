@@ -21,6 +21,7 @@
 \usepackage[noabbrev,capitalise]{cleveref}
 \usepackage[export]{adjustbox}
 \usepackage{ulem}\normalem
+\usepackage{picins/picins}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -270,7 +271,7 @@ The corresponding quotientopes will be referred to as the \defn{weak rectangulot
 The skeleton of $\WRP(n)$ is isomorphic to the flip graph of weak rectangulations of size $n$ defined by Law and Reading~\cite{MR2871762}.
 %
 On the other hand, the \defn{strong rectangulation congruence}, whose classes are in bijection with \defn{strong rectangulations}~\cite{MR2864445}.
-The latter is mentioned by N.~Reading~\cite{MR3335492} (see for instance in Theorem 1.2, and Example 4.11), and studied more recently by A.~Asinowski, J.~Cardinal, S.~Felsner, and É.~Fusy~\cite{ACFF24}.
+The latter is mentioned by N.~Reading~\cite{Reading-arcDiagrams} (see for instance in Theorem 1.2, and Example 4.11), and studied more recently by A.~Asinowski, J.~Cardinal, S.~Felsner, and É.~Fusy~\cite{ACFF24}.
 The corresponding quotientopes will be referred to as the \defn{strong rectangulotopes} and denoted by $\SRP(n)$.
 The skeleton of $\SRP(n)$ is isomorphic to the flip graph of strong rectangulations of size $n$ defined by Meehan~\cite{MR3697823} (see also~\cite{ACFF24}).
 
@@ -457,6 +458,13 @@ The authors thank Namrata and Torsten M\"utze for the organization and the other
 We now briefly recall some results on the weak Bruhat order and its quotients, both from a lattice and geometric perspectives.
 We refer to \cite{Reading-arcDiagrams, Reading-Chapters, PadrolPilaudRitter} for details.
 
+\begin{figure}
+	\capstart
+	\centerline{\includegraphics[scale=.6]{weakOrderLeft4} \; \includegraphics[scale=.6]{weakOrderCongruence4} \; \includegraphics[scale=.48]{TamariLattice4}}
+	\caption{The weak Bruhat order on~$\f{S}_4$ (left), the sylvester congruence~$\equiv_\textrm{sylv}$~(middle), and the Tamari lattice (right). \cite[Fig.~1 \& 2]{PilaudSantos-quotientopes}}
+	\label{fig:sylvesterCongruence}
+\end{figure}
+
 %%%%%%%%%%%%%
 
 \subsection{Weak order and noncrossing arc diagrams}
@@ -465,6 +473,7 @@ We refer to \cite{Reading-arcDiagrams, Reading-Chapters, PadrolPilaudRitter} for
 Denote by~$\f{S}_n$ the set of permutations of~$[n]$.
 The \defn{inversion set} of~$\sigma \in \f{S}_n$ is~$\inv(\sigma) \eqdef \set{(\sigma_i, \sigma_j)}{1 \le i < j \le n \text{ and } \sigma_i > \sigma_j}$.
 The \defn{weak Bruhat order}\footnote{The weak Bruhat order is usually just referred to as the weak order. In this paper, we prefer to use weak Bruhat order to avoid any confusion with the weak poset defined on weak rectangulations.} is the lattice on the permutations of~$\f{S}_n$ defined by the inclusion of their inversion sets.
+See \cref{fig:sylvesterCongruence}\,(left).
 Note that the cover relations in the weak Bruhat order are given by the transpositions of two adjacent letters.
 %The weak Bruhat order is known to be a congruence uniform lattice~\cite{}.
 %In particular, it is join semidistributive, so that any permutation admits a canonical join representation.
@@ -473,12 +482,26 @@ An \defn{arc} on~$[n]$ is a quadruple~$(a, b, A, B)$ where~$1 \le a < b \le n$ a
 We represent an arc by an abscissa monotone curve wiggling around the horizontal axis, starting at point~$a$ and ending at point~$b$, and passing above the points of~$A$ and below the points of~$B$.
 A \defn{noncrossing arc diagram} on~$[n]$ is a collection of arcs on~$[n]$ where any two arcs do not cross in their interior and have distinct left endpoints and distinct right endpoints (but the right endpoint of an arc can be the left endpoint of another arc).
 
+\parpic(4cm,2.5cm)(10pt, 150pt)[r][b]{\includegraphics[scale=.9]{arcDiagram}}{
 In~\cite{Reading-arcDiagrams}, N.~Reading defined an elegant bijection between permutations of~$[n]$ and noncrossing arc diagrams on~$[n]$.
-It sends a permutation~$\sigma$ to the noncrossing arc diagram with an arc~$(\sigma_{j+1}, \sigma_j, A_j, B_j)$ for each descent~$j \in [n-1]$ of~$\sigma$ (\ie with~$\sigma_j > \sigma_{j+1}$), where \linebreak $A_j \eqdef \set{\sigma_i}{1 \le i < j \text{ and } \sigma_{j+1} < \sigma_i < \sigma_j}$ and~$B_j \eqdef \set{\sigma_k}{j+1 < k \le n \text{ and } \sigma_{j+1} < \sigma_k < \sigma_j}$. \linebreak
-This can also been visualized by representing the table~$(\sigma_j,j)$ of the permutation~$\sigma$, drawing the segments corresponding to the descents of~$\sigma$, and letting all points fall on the horizontal axis, allowing the segments to bend but not to cross each other nor to pass through a point.
+It sends a permutation~$\sigma$ to the noncrossing arc diagram with an arc~$(\sigma_{j+1}, \sigma_j, A_j, B_j)$ for each descent~$j \in [n-1]$ of~$\sigma$ (\ie with~$\sigma_j > \sigma_{j+1}$), where
+
+\vspace{-.2cm}
+\begin{minipage}{10cm}
+\begin{align*}
+A_j & \eqdef \set{\sigma_i}{1 \le i < j \text{ and } \sigma_{j+1} < \sigma_i < \sigma_j} \\
+\text{and} \qquad
+B_j & \eqdef \set{\sigma_k}{j+1 < k \le n \text{ and } \sigma_{j+1} < \sigma_k < \sigma_j}.
+\end{align*}
+\end{minipage}
+
+\vspace{.2cm}
+\noindent
+As illustrated on the right, this can also been visualized by representing the table~$(\sigma_j,j)$ of the permutation~$\sigma$, drawing the segments corresponding to the descents of~$\sigma$, and letting all points fall on the horizontal axis, allowing the segments to bend but not to cross each other nor to pass through a point.
 The single arcs correspond to permutations with a single descent, that is, to join irreducible permutations of the weak Bruhat order.
 In general, the noncrossing arc diagram of a permutation~$\sigma$ actually encodes the canonical join representation of~$\sigma$ in the weak Bruhat order (which was known to exist, as the weak Bruhat order is join semidistributive).
 See~\cite{Reading-arcDiagrams} for details.
+}
 
 %%%%%%%%%%%%%
 
@@ -487,6 +510,11 @@ See~\cite{Reading-arcDiagrams} for details.
 
 A \defn{lattice congruence} of the weak Bruhat order is an equivalence relation~$\equiv$ on~$\f{S}_n$ that respects the meet and join operations, \ie such that $x \equiv x'$ and~$y \equiv y'$ implies $x \meet y \, \equiv \, x' \meet y'$ and~$x \join y \, \equiv \, x' \join y'$.
 The \defn{lattice quotient}~$\f{S}_n/{\equiv}$ is the lattice on the congruence classes of~$\equiv$ where~$X \le Y$ if and only if there exist~$x \in X$ and~$y \in Y$ such that~$x \le y$, and~$X \meet Y$ (resp.~$X \join Y$) is the congruence class of~$x \meet y$ (resp.~$x \join y$) for any~$x \in X$~and~$y \in Y$.
+
+For instance, the \defn{sylvester congruence} is ... \vincent{todo}
+See \cref{fig:sylvesterCongruence}\,(middle).
+The quotient of the weak Bruhat order by the sylvester congruence is the classical \defn{Tamari lattice}.
+See \cref{fig:sylvesterCongruence}\,(right).
 
 Respecting the meet and join operation is a strong condition that imposes additional structure on~$\equiv$.
 In fact, all the congruence classes of~$\equiv$ are intervals of the weak Bruhat order, and the quotient~$\f{S}_n/{\equiv}$ is isomorphic (as a poset) to the subposet of the weak Bruhat order induced by permutations which are minimal in their class.
@@ -504,6 +532,13 @@ In other words, the lattice of congruences of the weak Bruhat order is distribut
 
 \subsection{Quotient fans and shards}
 \label{subsec:quotientFans}
+
+\begin{figure}
+	\capstart
+	\centerline{\includegraphics[scale=.6]{braidFanLeft4} \qquad \raisebox{-.3cm}{\includegraphics[scale=.6]{sylvesterFan4}}}
+	\caption{The braid fan (left) and the sylvester fan (right). \cite[Fig.~1]{PilaudSantos-quotientopes}}
+	\label{fig:fans}
+\end{figure}
 
 The \defn{braid arrangement} is the hyperplane arrangement consisting of the hyperplanes~$\set{\b{x} \in \R^n}{x_a = x_b}$ for all~$1 \le a < b \le n$.
 It has a chamber for each permutation~$\sigma$ of~$[n]$, given by the set of vectors whose coordinates are ordered as~$\sigma$.
@@ -523,6 +558,13 @@ By construction, the braid fan refines the quotient fan~$\c{F}_\equiv$, and the 
 
 \subsection{Quotientopes and shard polytopes}
 \label{subsec:quotientopes}
+
+\begin{figure}
+	\capstart
+	\centerline{\includegraphics[scale=.6]{permutahedronLeft4} \qquad \raisebox{-.4cm}{\includegraphics[scale=.6]{associahedron4}}}
+	\caption{The permutahedron~$\Perm(4)$ (left) and the associahedron~$\Asso(4)$. \cite[Fig.~1]{PilaudSantos-quotientopes}}
+	\label{fig:quotientopes}
+\end{figure}
 
 A \defn{quotientope} for a lattice congruence~$\equiv$ of the weak Bruhat order is a polytope whose normal fan is the quotient fan~$\c{F}_\equiv$.
 In particular, the skeleton of a quotientope is isomorphic to the cover graph of the quotient~$\f{S}_n/{\equiv}$.
