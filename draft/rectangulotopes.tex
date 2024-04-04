@@ -229,6 +229,8 @@ Among those, the \defn{associahedron} is a classical, ubiquitous polytope, first
 It was first defined as a combinatorial object, before various families of geometric realizations were shown to exist~\cite{MR1022776,MR1941227,MR2108555,MR3437894}.
 The face lattice of the $(n-1)$-dimensional associahedron is the reverse inclusion poset of nonintersecting diagonals of a convex $(n+3)$-gon.
 In particular, it skeleton is the \defn{flip graph} on \defn{triangulations} of the $(n+3)$-gon, or equivalently -- via a standard Catalan bijection -- the \defn{rotation graph} on \defn{binary trees} with $n$ internal nodes, the structure of which has been the subject of many investigations, with applications in computer science~\cite{MR928904,MR3197650}.
+
+\Vincent{I would change this theorem...}
 In 2004, Loday published the following elegant realization of the associahedron~\cite{MR2108555}, giving a recipe for computing the coordinates of a vertex given the corresponding binary tree.
 
 \begin{theorem}
@@ -240,6 +242,19 @@ In 2004, Loday published the following elegant realization of the associahedron~
   \]
   where $\ell^T_i$ and $r^T_i$ respectively denote the number of leaves in the left and right subtrees of $i$ in $T$.
 \end{theorem}
+
+\Vincent{... as follows}
+
+
+\begin{theorem}
+  \label{thm:loday}
+  The associahedron is realized by the polytope~$\Asso (n)$ in~$\R^n$ defined equivalently as
+  \begin{enumerate}[(i)]
+  \item the convex hull of the points~$\sum_{i\in [n]} \ell^T_i\cdot r^T_i \cdot \mathbf{e}_i$ for all binary trees~$T$ with $n$ internal nodes, where $\ell^T_i$ and $r^T_i$ denote the number of leaves in the left and right subtrees of $i$ in $T$,
+  \item the intersection of the hyperplane defined by~$\sum_{i \in [n]} x_i = \binom{n+1}{2}$ with the halfspaces defined by~$\sum_{i \in S} x_i \le \#\set{I \text{ interval of } [n]}{S \cap I \ne \varnothing}$.
+  \end{enumerate}
+\end{theorem}
+
 
 A natural object associated with the associahedron is the \defn{Tamari lattice}, the cover graph of which is isomorphic to the skeleton of the associahedron.
 The Tamari lattice is known to be the quotient of the weak Bruhat order by a \defn{lattice congruence} relation called the \defn{sylvester congruence}.
@@ -481,11 +496,12 @@ Its \defn{characteristic vector} is~$\sum_{p \in [q]} \b{e}_{i_p} - \b{e}_{j_p}$
 The \defn{shard polytope} of~$\alpha$ is the convex hull~$\SP(\alpha)$ of the characteristic vectors of all $\alpha$-alternating matchings.
 It was shown in~\cite{PadrolPilaudRitter} that any Minkowski sum of positive scalings of the shard polytopes~$\SP(\alpha)$ for all arcs~$\alpha$ in the arc ideal~$\c{A}_\equiv$ is a quotientope for~$\equiv$.
 
-By definition, any quotientope is a generalized (or deformed) permutahedron, and can thus be written as
+By definition, any quotientope is a deformed permutahedron, and can thus be written as
   \[
   \Bigset{x \in \R^n}{\sum_{i \in S} x_i \le f(S)\ \forall \varnothing \ne S \subseteq [n] \text { and } \sum_{i \in [n]} x_i = f([n])},
   \]
 where~$f$ is a \defn{submodular} set function $f:2^{[n]}\mapsto \R$ (\ie such that~$f(X \cup Y) + f(X \cap Y) \le f(X) + f(Y)$ for any~$X, Y \subseteq [n]$).
+Recall that the submodular function of a Minkowski sum of deformed permutahedra is just the sum of the submodular functions of the Minkowski summands.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
