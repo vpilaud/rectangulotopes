@@ -221,7 +221,7 @@
 \subsection{Polytopes of permutations, triangulations, and rectangulations}
 
 The encoding of combinatorial objects in the form of a polyhedral structure is a recurrent theme in geometric and algebraic combinatorics.
-An elementary yet striking example of this idea is the \defn{permutahedron} $\Perm (n)$, defined as the convex hull of the points $\sum_{i\in [n]} \sigma^{-1}(i)\cdot \mathbf{e}_i$, for all permutations $\sigma \in \f{S}_n$.
+An elementary yet striking example of this idea is the \defn{permutahedron} $\Perm (n)$, defined as the convex hull of the points $\sum_{i\in [n]} \sigma^{-1}(i)\cdot \b{e}_i$, for all permutations $\sigma \in \f{S}_n$.
 It is an $(n-1)$-dimensional polytope, whose facets are indexed by the proper nonempty subsets of $[n]$, and whose skeleton is the Cayley graph of the symmetric group for the generators consisting of adjacent transpositions.
 The many generalizations and extensions of the permutahedra gave rise to a flourishing theory of \defn{generalized permutahedra}~\cite{Postnikov} (that we prefer to call \defn{deformed permutahedra}).
 
@@ -237,7 +237,7 @@ We note that the inequality description of the same polytope was actually provid
   \label{thm:loday}
   The associahedron is realized by the polytope~$\Asso (n) \subset \R^n$ defined equivalently as
   \begin{enumerate}[(i)]
-  \item the convex hull of the points~$\sum_{i\in [n]} \ell^T_i\cdot r^T_i \cdot \mathbf{e}_i$ for all binary trees~$T$ with $n$ internal nodes, where $\ell^T_i$ and $r^T_i$ denote the number of leaves in the left and right subtrees of $i$ in $T$, see~\cite{MR2108555},
+  \item the convex hull of the points~$\sum_{i\in [n]} \ell^T_i\cdot r^T_i \cdot \b{e}_i$ for all binary trees~$T$ with $n$ internal nodes, where $\ell^T_i$ and $r^T_i$ denote the number of leaves in the left and right subtrees of $i$ in $T$, see~\cite{MR2108555},
   \item the intersection of the hyperplane defined by~$\sum_{i \in [n]} x_i = \binom{n+1}{2}$ with the halfspaces defined by~$\sum_{i \in I} x_i \le \#\set{J \text{ interval of } [n]}{I \cap J \ne \varnothing}$ for all intervals~$\varnothing \ne I \subsetneq [n]$, see~\cite{ShniderSternberg}.
   \end{enumerate}
 \end{theorem}
@@ -344,7 +344,7 @@ This materializes the result of Law and Reading that the weak rectangulotopes ar
   The weak rectangulotope is realized by the polytope~$\WRP (n) \subset \R^n\!$ defined equivalently~as
   \begin{enumerate}[(i)]
   \item the convex hull of the points
-  $\sum_{i\in [n]} (\loday{w}^R_i - \antiloday{w}^R_i)\cdot \mathbf{e}_i$ for all weak rectangulations $R$ on $n$ rectangles,
+  $\sum_{i\in [n]} (\loday{w}^R_i - \antiloday{w}^R_i)\cdot \b{e}_i$ for all weak rectangulations $R$ on $n$ rectangles,
   with
   \[
 %  \begin{split}
@@ -382,7 +382,7 @@ We also use the Iverson bracket $\llbracket \varphi\rrbracket$, which is equal t
   \begin{enumerate}[(i)]
   \item convex hull of the points
   \[
-  \sum_{i,j\in [n], i< j} (\yin{w}^R_{i,j} - \yang{w}^R_{i,j})\cdot (\mathbf{e}_i - \mathbf{e}_j),
+  \sum_{i,j\in [n], i< j} (\yin{w}^R_{i,j} - \yang{w}^R_{i,j})\cdot (\b{e}_i - \b{e}_j),
   \]
    for all strong rectangulations $R$ on $n$ rectangles, with
   \[
@@ -499,7 +499,7 @@ It was shown in~\cite{PadrolPilaudRitter} that any Minkowski sum of positive sca
 
 By definition, any quotientope is a deformed permutahedron, and can thus be written as
   \[
-  \Bigset{x \in \R^n}{\sum_{i \in S} x_i \le f(S)\ \forall \varnothing \ne S \subseteq [n] \text { and } \sum_{i \in [n]} x_i = f([n])},
+  \Bigset{x \in \R^n}{ \sum_{i \in [n]} x_i = f([n]) \text{ and } \sum_{i \in S} x_i \le f(S) \text{ for all } \varnothing \ne S \subseteq [n]},
   \]
 where~$f$ is a \defn{submodular} set function $f:2^{[n]}\mapsto \R$ (\ie such that~$f(X \cup Y) + f(X \cap Y) \le f(X) + f(Y)$ for any~$X, Y \subseteq [n]$).
 Recall that the submodular function of a Minkowski sum of deformed permutahedra is just the sum of the submodular functions of the Minkowski summands.
@@ -519,7 +519,7 @@ We define the \defn{weak poset} $P_w(R)=([n],\prec_w)$ of a rectangulation $R$ a
 The weak poset is a two-dimensional lattice, the minimum of which is the root of $S(R)$ and the maximum is the root of $T(R)$.
 We define the set $\mathcal{L}(P_w(R))$ as the linear extensions of the weak poset:
 \[
-\mathcal{L}(P_w(R)) \eqdef \{\pi\in\f{S}_n : i\prec_w j\implies \pi^{-1}(i) < \pi^{-1}(j)\}.
+\mathcal{L}(P_w(R)) \eqdef \bigset{\pi\in\f{S}_n }{ i\prec_w j\implies \pi^{-1}(i) < \pi^{-1}(j)}.
 \]
 
 \begin{theorem}
@@ -554,12 +554,12 @@ Therefore, the quotientope is realized by a Minkowski sum of the shard polytopes
 
 \begin{lemma}
   \label{lem:lodaysp}
-  Given a Loday arc $A$ defined by an interval $I$, the Loday shard polytope $\SP(A)$ is a translate of the standard simplex $\conv \{ \mathbf{e}_i : i\in I \}$.
+  Given a Loday arc $A$ defined by an interval $I$, the Loday shard polytope $\SP(A)$ is a translate of the standard simplex $\conv \set{ \b{e}_i }{ i\in I }$.
 \end{lemma}
 
 \begin{lemma}
   \label{lem:antilodaysp}
-  Given an anti-Loday arc $A$ defined by an interval $I$, the anti-Loday shard polytope $\SP(A)$ is a translate of the negative standard simplex $\conv \{ - \mathbf{e}_i : i\in I \}$.
+  Given an anti-Loday arc $A$ defined by an interval $I$, the anti-Loday shard polytope $\SP(A)$ is a translate of the negative standard simplex $\conv \set{ - \b{e}_i }{ i\in I }$.
 \end{lemma}
 
 \begin{lemma}
@@ -569,22 +569,16 @@ Therefore, the quotientope is realized by a Minkowski sum of the shard polytopes
 \end{lemma}
 
 \vincent{Say also the minkowski sum of all faces of the standard simplex corresponding to intervals, and all their opposite.}
+\vincent{Say that this was already known by Law and Reading.}
 
 \subsection{Submodular functions of weak rectangulotopes}
 
-\jean{You may want to use another notation here, feel free.}
-
-Recall that every deformed permutahedra can be defined as
-  \[
-  \{x\in\R^n : \sum_{i\in S} x_i \leq f(S)\ \forall S\subseteq [n], S\not=\emptyset, \text { and } \sum_{i\in [n]} x_i = f([n])\},
-  \]
-where $f$ is a \defn{submodular} set function $f:2^{[n]}\mapsto \R$.
-The description of the weak rectangulotope $\WRP(n)$ as a Minkowski sum in \cref{lem:weakMinkowski} allows us to easily compute the submodular function defining it.
+The description of the weak rectangulotope~$\WRP(n)$ as a Minkowski sum in \cref{lem:weakMinkowski} allows us to easily compute the corresponding submodular function.
 
 \begin{lemma}
   The weak rectangulotope $\WRP(n)$ is realized by the following submodular function:
   \[
-  f(S) := |\{ I\text{ interval of } [n] : I\cap S\not=\emptyset \text{ and } I\cap ([n]\setminus S) \not= \emptyset \}|.
+  f(S) \eqdef \#\bigset{ I\text{ interval of } [n] }{ I\cap S\not=\emptyset \text{ and } I\cap ([n]\ssm S) \not= \emptyset }.
   \]
   %that maps $S$ to the number of intervals $I$ of $[n]$ such that $I\cap S\not=\emptyset$ and $I\not\subseteq S$. 
 \end{lemma}
@@ -593,22 +587,22 @@ The proof relies on the following simple lemma stating that the submodular funct
 
 \begin{lemma}
   \label{lem:submodsum}
-  Consider a collection $\polytope{P}_1, \polytope{P}_2,\ldots ,\polytope{P}_k$ of deformed permutahedra defined by the submodular functions $f_1,f_2,\ldots ,f_k$. Then the Minkowski sum $\sum_i \polytope{P}_i$ is defined by the submodular function $f:=\sum_i f_i$.
+  Consider a collection $\polytope{P}_1, \polytope{P}_2,\ldots ,\polytope{P}_k$ of deformed permutahedra defined by the submodular functions $f_1,f_2,\ldots ,f_k$. Then the Minkowski sum $\sum_i \polytope{P}_i$ is defined by the submodular function $f \eqdef \sum_i f_i$.
 \end{lemma}
 
 \begin{proof}
   From \cref{lem:weakMinkowski,lem:submodsum}, the submodular function defining the realization of $\WRP(n)$ is the sum of the submodular functions defining the Loday and anti-Loday shard polytope in \cref{lem:lodaysp,lem:antilodaysp}. For a Loday arc $A$ defined by an interval $I$ of $[n]$, we have that its shard polytope $\SP(A)$ is realized by the submodular function
   \[
-  \loday{f}_I(S) := \llbracket S\cap I\not=\emptyset \rrbracket .
+  \loday{f}_I(S) \eqdef \llbracket S\cap I\not=\emptyset \rrbracket .
   \]
   (Recall that $\llbracket \varphi\rrbracket$ is equal to 1 if $\varphi$ holds, and 0 otherwise.)
   Similarly, for an anti-Loday arc $A$ defined by an interval $I$, the shard polytope $\SP(A)$ is defined by the following submodular function:
   \[
-  \antiloday{f}_I(S) := - \llbracket I\subseteq S \rrbracket .
+  \antiloday{f}_I(S) \eqdef - \llbracket I\subseteq S \rrbracket .
   \]
   Their sum
   \[
-  f(S) := \sum_{I\text{ interval of }[n]} \loday{f}_I(S) + \antiloday{f}_I(S)
+  f(S) \eqdef \sum_{I\text{ interval of }[n]} \loday{f}_I(S) + \antiloday{f}_I(S)
   \]
   is therefore exactly the number of intervals of $I$ that intersect $S$ but are not contained in $S$, hence the number of intervals intersecting both $S$ and its complement.
 \end{proof}
@@ -623,9 +617,9 @@ We therefore need to understand which vertices of the translates of the shard po
   \label{lem:lodaymax}
   Let $\pi\in\f{S}_n$ and consider a Loday arc $A$ defined by an interval $I$.
   The unique vertex of $\SP(A)$ that is extreme with respect to the direction $\pi^{-1}$
-  is $\mathbf{e}_i$, where $i \eqdef \arg\max_{j\in I} \pi^{-1}(j)$.
+  is $\b{e}_i$, where $i \eqdef \arg\max_{j\in I} \pi^{-1}(j)$.
   Similarly, if $A$ is an anti-Loday arc defined by $I$, the unique vertex of $\SP(A)$ that is extreme with respect to the direction $\pi^{-1}$
-  is $-\mathbf{e}_i$, where $i \eqdef \arg\min_{j\in I} \pi^{-1}(j)$.
+  is $-\b{e}_i$, where $i \eqdef \arg\min_{j\in I} \pi^{-1}(j)$.
 \end{lemma}
 
 Note that this extremal vertex should only depend on the weak rectangulation congruence class of $\pi$.
@@ -638,7 +632,7 @@ $\arg\min_{j\in I} \pi^{-1}(j)=\arg\min_{j\in I} \sigma^{-1}(j)$.
 
 \begin{lemma}
   Let $R$ be a rectangulation on $n$ rectangles and $p(R)$ the vertex of $\WRP(n)$ associated with $R$.
-  Given $i\in [n]$, the number of Loday arcs $A$ such that $\mathbf{e}_i$ is the extremal vertex of $\SP(A)$ contributing to $p(R)$ is
+  Given $i\in [n]$, the number of Loday arcs $A$ such that $\b{e}_i$ is the extremal vertex of $\SP(A)$ contributing to $p(R)$ is
   \[
   \loday{w}_i =  h(T(R), i)\cdot v(T(R),i),
   \]
@@ -655,7 +649,7 @@ $\arg\min_{j\in I} \pi^{-1}(j)=\arg\min_{j\in I} \sigma^{-1}(j)$.
 
 We define the \defn{strong poset} $P_s(R)=([n],\prec_s)$ of a rectangulation $R$, and $\mathcal{L}(P_s)$ as the set of permutations of $\f{S}_n$ corresponding to linear extensions of $P_s$:
 \[
-\mathcal{L}(P_s(R)) \eqdef \{\pi\in\f{S}_n : i\prec_s j\implies \pi^{-1}(i) < \pi^{-1}(j)\}.
+\mathcal{L}(P_s(R)) \eqdef \bigset{\pi\in\f{S}_n }{ i\prec_s j\implies \pi^{-1}(i) < \pi^{-1}(j)}.
 \]
 
 \begin{theorem}
@@ -688,19 +682,19 @@ Note that all up arcs and down arcs are both yin arcs and yang arcs.
 \begin{lemma}
   \label{lem:yinsp}
   Given a yin arc $A=(I,J)$, the yin shard polytope $\SP(A)$ is defined as the convex hull of the points
-  $\{\mathbf{0} \}\cup \{ \mathbf{e}_i - \mathbf{e}_j : (i,j)\in I\times J\}$.
+  $\{\b{0}\} \cup \set{\b{e}_i - \b{e}_j}{(i,j)\in I\times J}$.
 \end{lemma}
 
 \begin{lemma}
   \label{lem:yangsp}
   Given a yang arc $A=(I,J)$, the yang shard polytope $\SP(A)$ is a translate of the convex hull of the points
-  $\{\mathbf{0} \}\cup \{ \mathbf{e}_j - \mathbf{e}_i : (i,j)\in I\times J\}$.
+  $\{\b{0}\} \cup \set{\b{e}_j - \b{e}_i}{(i,j)\in I\times J}$.
 \end{lemma}
 
 Note that yin shard polytopes are translates of the Loday shard polytopes when $|J|=1$, and of the anti-Loday shard polytopes when $|I|=1$.
-similarly, Loday and anti-Loday shard polytopes are translates of some yang shard polytopes.
+Similarly, Loday and anti-Loday shard polytopes are translates of some yang shard polytopes.
 
-The following is a direct application of the main result of Padrol, Pilaud, and Ritter~\cite{MR4584712}.
+The following is a direct application of the main result of A.~Padrol, V.~Pilaud, and J.~Ritter~\cite{MR4584712}.
 
 \begin{lemma}
   \label{lem:strongMinkowski}
@@ -722,8 +716,8 @@ The submodular function corresponding to our realization of $\SRP(n)$ can be obt
 \begin{lemma}
   The strong rectangulotope $\SRP(n)$ is realized by the following submodular function:
   \[
-  f(S) := |\{ I, J : I\cap S\not=\emptyset \wedge J\cap ([n]\setminus S) \not= \emptyset \}| +
-  |\{ I, J : J\cap S\not=\emptyset \wedge I\cap ([n]\setminus S) \not= \emptyset \}|,
+  f(S) \eqdef \# \bigset{ I, J }{ I\cap S\not=\emptyset \wedge J\cap ([n]\ssm S) \not= \emptyset } +
+  \#\bigset{ I, J }{ J\cap S\not=\emptyset \wedge I\cap ([n]\ssm S) \not= \emptyset },
   \]
   where $I, J$ are pairs of consecutive and nonempty intervals of $[n]$.
 \end{lemma}
@@ -731,15 +725,15 @@ The submodular function corresponding to our realization of $\SRP(n)$ can be obt
 \begin{proof}
   From \cref{lem:strongMinkowski,lem:submodsum}, the submodular function defining the realization of $\WRP(n)$ is the sum of the submodular functions defining the yin and yang shard polytope in \cref{lem:yinsp,lem:yangsp}. For a yin arc $A$ defined by consecutive intervals $I, J$ of $[n]$, we have that its shard polytope $\SP(A)$ is realized by the submodular function
   \[
-  \yin{f}_{I,J}(S) := \llbracket S\cap I\not=\emptyset \wedge S\not\supseteq J \rrbracket .
+  \yin{f}_{I,J}(S) \eqdef \llbracket S\cap I\not=\emptyset \wedge S\not\supseteq J \rrbracket .
   \]
   Similarly, for a yang arc, the shard polytope $\SP(A)$ is defined by the following submodular function:
   \[
-  \yang{f}_{I,J}(S) := \llbracket S\cap J\not=\emptyset \wedge S\not\supseteq I \rrbracket .
+  \yang{f}_{I,J}(S) \eqdef \llbracket S\cap J\not=\emptyset \wedge S\not\supseteq I \rrbracket .
   \]
   Their sum
   \[
-  f(S) := \sum_{I,J} \yin{f}_{I,J}(S) + \yang{f}_{I,J}(S)
+  f(S) \eqdef \sum_{I,J} \yin{f}_{I,J}(S) + \yang{f}_{I,J}(S)
   \]
   is therefore as claimed.
 \end{proof}
@@ -756,14 +750,14 @@ We therefore need to understand which vertices of the translates of the yin shar
   Let $\pi\in\f{S}_n$ and consider a yin arc $A=(I,J)$.
   Let $i \eqdef \arg\max_{k\in I} \pi^{-1}(k)$ and $j \eqdef \arg\min_{k\in J} \pi^{-1}(k)$.
   The unique vertex of $\SP(A)$ that is extreme with respect to the direction $\pi^{-1}$
-  is $\mathbf{e}_i-\mathbf{e}_j$ if $\pi^{-1}(i)>\pi^{-1}(j)$, and $\mathbf{0}$ otherwise.
+  is $\b{e}_i-\b{e}_j$ if $\pi^{-1}(i)>\pi^{-1}(j)$, and $\b{0}$ otherwise.
 \end{lemma}
 
 Note again that by definition, this extremal vertex should only depend on the strong congruence class of $\pi$.
 
 \begin{lemma}
   Let $R$ be a rectangulation on $n$ rectangles, $([n],\prec_s)$ the associated strong order, and $p(R)$ the vertex of $\SRP(n)$ corresponding to $R$.
-  Given a pair $i,j\in [n]$ with $i<j$, the number of yin arcs $A$ such that $\mathbf{e}_i-\mathbf{e}_j$
+  Given a pair $i,j\in [n]$ with $i<j$, the number of yin arcs $A$ such that $\b{e}_i-\b{e}_j$
   is the extremal vertex of $\SP(A)$ contributing to $p(R)$ is
   \[
     h(T(R), i) \cdot cv (T(R), S(R), i, j)\cdot h(S(R), j) 
@@ -772,9 +766,9 @@ Note again that by definition, this extremal vertex should only depend on the st
 \end{lemma}
 \begin{proof}
   Let $\pi$ be the 2-clumped permutation corresponding to $R$, hence the minimal element of $\mathcal{L}(P_s(R))$ in the weak Bruhat order.
-  From \cref{lem:yinminmax}, for a pair $i<j \in [n]$, there exists a yin arc $A$ whose shard polytope $\SP(A)$ contributes to $\mathbf{e}_i-\mathbf{e}_j$ only if
+  From \cref{lem:yinminmax}, for a pair $i<j \in [n]$, there exists a yin arc $A$ whose shard polytope $\SP(A)$ contributes to $\b{e}_i-\b{e}_j$ only if
   $\pi^{-1}(i)>\pi^{-1}(j)$, hence if $i\succ_s j$.
-  Provided this holds, the set of yin arcs $A$ such that $\SP(A)$ contributes to $\mathbf{e}_i-\mathbf{e}_j$ are defined by pairs of contiguous intervals $I,J$ of $[n]$ with $i\in I$, $j\in J$, such that $i$ is the index of the maximum of $\pi^{-1}$ in $I$, and $j$ is the index of the maximum of $\pi^{-1}$ in $J$.
+  Provided this holds, the set of yin arcs $A$ such that $\SP(A)$ contributes to $\b{e}_i-\b{e}_j$ are defined by pairs of contiguous intervals $I,J$ of $[n]$ with $i\in I$, $j\in J$, such that $i$ is the index of the maximum of $\pi^{-1}$ in $I$, and $j$ is the index of the maximum of $\pi^{-1}$ in $J$.
   %$i = \arg\max_{k\in I} \pi^{-1}(k)$ and $j = \arg\min_{k\in J} \pi^{-1}(k)$.
   We claim that the number of choices of the three endpoints defining such a pair of intervals $I$ and $J$ is the product of the
   number of leaves of the subtree of $T(R)$ rooted at $i$, the number of common leaves to the vertical subtrees of $T(R)$ and $S(R)$ rooted
