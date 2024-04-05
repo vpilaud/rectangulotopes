@@ -57,41 +57,41 @@ def powerset(iterable):
     return chain.from_iterable(combinations(s, r) for r in range(len(s)+1))
 
 # compute the polyhedron for a given submod function
+# f takes two arguments : subset S and size of ground set n
 def submod_polytope(f, n):
-    all_ineq = [ (f(S),) + tuple(-1 if x in S else 0 for x in range(n)) for S in powerset(range(n)) ]
-    the_eq = [ (f(range(n)),) + tuple(-1 for i in range(n)) ]
-    return Polyhedron(ieqs = all_ineq, eqns = the_eq)
+    all_ineq = [ (f(S, n),) + tuple(-1 if x in S else 0 for x in range(n)) for S in powerset(range(n)) ]
+    return Polyhedron(ieqs = all_ineq, eqns = [all_ineq[-1]]) # the last ineq is an eq
 
 ## RECTANGULOTOPES
 
 # associahedron as a Minkowski sum
 def assoc(n):
-    return sum([submod_polytope(lambda S : f_loday(S, range(i, j+1)), n) for i in range(n-1) for j in range(i+1, n)])
+    return sum([submod_polytope(lambda S, m : f_loday(S, range(i, j+1)), n) for i in range(n-1) for j in range(i+1, n)])
 
 # weak rectangulation polytope (diagonal / Baxter)
 # either sum all lodays and antilodays, or the cubocs
 def wrp(n):
-    return sum([submod_polytope(lambda S : f_cuboc(S, I), n) for i in range(n-1) for j in range(i+1, n)])
+    return sum([submod_polytope(lambda S, m : f_cuboc(S, range(i, j+1)), n) for i in range(n-1) for j in range(i+1, n)])
 
 # weak rectangulotope via the summed submodular function f_weakrect 
 def wrp2(n):
-    return submod_polytope(lambda S : f_weakrect(S, n), n)
+    return submod_polytope(f_weakrect, n)
 
 # yin rectangulotopes via yin shards
 def yrp(n):
-    return sum([submod_polytope(lambda S : f_yin(S, range(i, j+1), range(j+1, k+1)), n) for i in range(n-1) for j in range(i, n-1) for k in range(j+1, n)])
+    return sum([submod_polytope(lambda S, m : f_yin(S, range(i, j+1), range(j+1, k+1)), n) for i in range(n-1) for j in range(i, n-1) for k in range(j+1, n)])
 
 # yin rectangulotopes via the summed submod function
 def yrp2(n):
-    return submod_polytope(lambda S : f_yinrect(S, n), n)
+    return submod_polytope(f_yinrect, n)
 
 # yang polytopes, just the same
 def yarp(n):
-    return sum([submod_polytope(lambda S : f_yang(S, range(i, j+1), range(j+1, k+1)), n) for i in range(n-1) for j in range(i, n-1) for k in range(j+1, n)])
+    return sum([submod_polytope(lambda S, m : f_yang(S, range(i, j+1), range(j+1, k+1)), n) for i in range(n-1) for j in range(i, n-1) for k in range(j+1, n)])
 
 # strong rectangulotope
 def srp(n):
-    return submod_polytope(lambda S: f_strongrect(S, n), n)
+    return submod_polytope(f_strongrect, n)
 
 # examples
 #WRP6 = wrp2(6)
