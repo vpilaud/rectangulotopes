@@ -234,6 +234,7 @@
 The encoding of combinatorial objects in the form of a polyhedral structure is a recurrent theme in geometric and algebraic combinatorics.
 An elementary yet striking example of this idea is the \defn{permutahedron} $\Perm (n)$, defined as the convex hull of the points $\sum_{i\in [n]} \sigma^{-1}(i)\cdot \b{e}_i$, for all permutations $\sigma \in \f{S}_n$.
 It is an $(n-1)$-dimensional polytope, whose facets are indexed by the proper nonempty subsets of $[n]$, and whose skeleton is the Cayley graph of the symmetric group for the generators consisting of adjacent transpositions.
+See \cref{fig:quotientopes}\,(left) for an illustration when~$n = 4$.
 The many generalizations and extensions of the permutahedra gave rise to a flourishing theory of \defn{deformed permutahedra}~\cite{MR2520477,Postnikov,MR4064768,MR4651496} (also call \defn{generalized permutahedra}, or \defn{polymatroids}).
 
 Among those, the \defn{associahedron} is a classical, ubiquitous polytope, first defined by D.~Tamari~\cite{T51} and by J.~Stasheff~\cite{S63} in a topological context.
@@ -243,6 +244,7 @@ The face lattice of the $(n-1)$-dimensional associahedron is the reverse inclusi
 In particular, its skeleton is the \defn{flip graph} on \defn{triangulations} of the $(n+3)$-gon, or equivalently -- via a standard Catalan bijection -- the \defn{rotation graph} on \defn{binary trees} with $n$ internal nodes, the structure of which has been the subject of many investigations, with applications in computer science~\cite{MR928904,MR3197650}.
 In 2004, J.-L.~Loday published the following elegant description of the associahedron~\cite{MR2108555}, giving a recipe for computing the coordinates of a vertex given the corresponding binary tree.
 We note that the inequality description of the same polytope was actually provided in 1993 by S.~Shnider and S.~Sternberg~\cite{ShniderSternberg}, but Loday's vertex description largely popularized this realization.
+See \cref{fig:quotientopes}\,(right) for an illustration when~$n = 4$.
 
 \begin{theorem}
   \label{thm:loday}
@@ -259,7 +261,7 @@ Answering a question of N.~Reading~\cite{MR2142177}, V.~Pilaud and F.~Santos~\ci
 Those polytopes are deformed permutahedra that they called \defn{quotientopes}.
 Associahedra are therefore the quotientopes of the sylvester congruence of the weak Bruhat order whose classes are in bijection with triangulations.
 
-The goal of this paper is to describe the quotientopes of congruences of the weak Bruhat order whose classes are in bijection with equivalence classes of rectangulations, defined as decompositions of a square into rectangles.
+The goal of this paper is to describe the geometry of the quotientopes for two particular congruences of the weak Bruhat order whose classes are in bijection with equivalence classes of rectangulations, defined as decompositions of a square into rectangles.
 
 \subsection{Weak and strong rectangulations}
 
@@ -287,7 +289,8 @@ A \defn{diagonal rectangulation} is a rectangulation in which every rectangle in
 It is simple to check that every weak rectangulation has a diagonal representative, hence weak rectangulations can also be thought of as diagonal rectangulations.
 
 \begin{figure}
-  \caption{\label{fig:rectequiv}Weak and strong equivalence between rectangulations.}
+	\caption{Weak and strong equivalence between rectangulations.}
+	\label{fig:rectequiv}
 \end{figure}
 
 \subsection{Weak and strong rectangulotopes}
@@ -300,7 +303,7 @@ The corresponding quotientopes will be referred to as the \defn{weak rectangulot
 
 The \defn{strong rectangulation congruence} was introduced by N.~Reading~\cite{MR2864445}, revisited in~\cite[Thm.~1.2 \& Exm.~4.11]{Reading-arcDiagrams}, and studied more recently by E.~Meehan~\cite{MR3697823}, and A.~Asinowski, J.~Cardinal, S.~Felsner, and É.~Fusy~\cite{ACFF24}.
 Its classes are in bijection with strong rectangulations.
-The corresponding quotientopes will be referred to as the \defn{strong rectangulotopes} and denoted by $\SRP(n)$.
+The corresponding quotientopes will be referred to as the \defn{strong rectangulotopes} and denoted by~$\SRP(n)$.
 
 An important motivation for studying these quotientopes is the informative structure of their skeleta, which are \defn{flip graphs} on the rectangulations.
 A flip is a local, reversible change in the structure of the rectangulation.
@@ -315,8 +318,14 @@ The various types of flips are illustrated in Figure~\ref{fig:flips}.
 We refer to S.~Law and N.~Reading~\cite{MR2871762}, J.~Cardinal, V.~Sacrist\'an, and R.~Silveira~\cite{MR3878132}, E.~Meehan~\cite{MR3697823}, and A.~Asinowski, J.~Cardinal, S.~Felsner, and \'E.~Fusy~\cite{ACFF24} for detailed descriptions of the flip graphs on both weak and strong rectangulations.
 Just like associahedra encode the rotation graphs on binary trees, the rectangulotopes directly yield flip graphs on rectangulations.
 
+\begin{figure}
+	\caption{Three types of flips between rectangulations.}
+	\label{fig:flip}
+\end{figure}
+
 \begin{lemma}
   The skeleton of $\WRP(n)$ (resp.~of $\SRP(n)$) is isomorphic to the flip graph on weak (resp.~strong) rectangulations of size~$n$.
+  \vincent{I would leave that in the text, not in a proper thm environment...}
 \end{lemma}
 
 Rectangulotopes enrich the family of natural quotientopes, alongside associahedra, permutreehedra~\cite{MR3856522}, certain brick polytopes~\cite{PilaudSantos-brickPolytopes, PilaudStump-brickPolytopes, Pilaud-brickAlgebra}, and certain graphical zonotopes~\cite{Pilaud-brickAlgebra, Pilaud-acyclicReorientationLattices}, providing instructive examples of application of the theory of lattice congruences to concrete combinatorial objects.
@@ -516,6 +525,7 @@ An \defn{arc} on~$[n]$ is a quadruple~$(a, b, A, B)$ where~$1 \le a < b \le n$ a
 We represent an arc by an abscissa monotone curve wiggling around the horizontal axis, starting at point~$a$ and ending at point~$b$, and passing above the points of~$A$ and below the points of~$B$.
 A \defn{noncrossing arc diagram} on~$[n]$ is a collection of arcs on~$[n]$ where any two arcs do not cross in their interior and have distinct left endpoints and distinct right endpoints (but the right endpoint of an arc can be the left endpoint of another arc).
 
+\vspace{-.1cm}
 \parpic(4cm,2.5cm)(10pt, 150pt)[r][b]{\includegraphics[scale=.9]{arcDiagram}}{
 In~\cite{Reading-arcDiagrams}, N.~Reading defined an elegant bijection between permutations of~$[n]$ and noncrossing arc diagrams on~$[n]$.
 It sends a permutation~$\sigma$ to the noncrossing arc diagram with an arc~$(\sigma_{j+1}, \sigma_j, A_j, B_j)$ for each descent~$j \in [n-1]$ of~$\sigma$ (\ie with~$\sigma_j > \sigma_{j+1}$), where
@@ -545,7 +555,7 @@ See~\cite{Reading-arcDiagrams} for details.
 A \defn{lattice congruence} of the weak Bruhat order is an equivalence relation~$\equiv$ on~$\f{S}_n$ that respects the meet and join operations, \ie such that $x \equiv x'$ and~$y \equiv y'$ implies $x \meet y \, \equiv \, x' \meet y'$ and~$x \join y \, \equiv \, x' \join y'$.
 The \defn{lattice quotient}~$\f{S}_n/{\equiv}$ is the lattice on the congruence classes of~$\equiv$ where~$X \le Y$ if and only if there exist~$x \in X$ and~$y \in Y$ such that~$x \le y$, and~$X \meet Y$ (resp.~$X \join Y$) is the congruence class of~$x \meet y$ (resp.~$x \join y$) for any~$x \in X$~and~$y \in Y$.
 
-For instance, the \defn{sylvester congruence} is ... \vincent{todo}
+For instance, the sets of linear extensions of binary trees (labeled in inorder and oriented toward their roots) are the classes of the \defn{sylvester congruence}~\cite{HivertNovelliThibon-binarySearchTrees}.
 See \cref{fig:sylvesterCongruence}\,(middle).
 The quotient of the weak Bruhat order by the sylvester congruence is the classical \defn{Tamari lattice}.
 See \cref{fig:sylvesterCongruence}\,(right).
@@ -557,36 +567,42 @@ In other words, the classes of~$\equiv$ are in bijection with noncrossing arc di
 This bijection actually translates the fact that canonical join representations behave properly under lattice quotients.
 
 %Moreover, the sets of arcs of the form~$\c{A}_\equiv$ are easily described.
-An arc~$(a, b, A, B)$ is a \defn{subarc} of an arc~$(a', b', A', B')$ if~$a' \le a < b \le b$ and~$A \subseteq A'$ while~$B \subseteq B'$.
+\vspace{-.15cm}
+\parpic(5cm,2.8cm)(10pt, 90pt)[r][b]{\includegraphics[scale=.5]{subarcOrder}}{
+An arc~$(a, b, A, B)$ is a \defn{subarc} of an arc~$(a', b', A', B')$ if \linebreak $a' \le a < b \le b$ and~$A \subseteq A'$ while~$B \subseteq B'$.
 An \defn{arc ideal} is a subset of arcs closed by subarcs.
 The map~${\equiv} \mapsto \c{A}_\equiv$ is a bijection between the lattice congruences of the weak Bruhat order and the arc ideals.
-In other words, the lattice of congruences of the weak Bruhat order is distributive, and its poset of join irreducibles is isomorphic to the subarc order.
+In other words, the lattice of congruences of the weak Bruhat order is distributive, and its poset of join irreducibles is isomorphic to the subarc order, illustrated on the right for~$n = 4$.
+}
 
 %%%%%%%%%%%%%
 
 \subsection{Quotient fans and shards}
 \label{subsec:quotientFans}
 
-\begin{figure}
+\begin{figure}[b]
 	\capstart
 	\centerline{\includegraphics[scale=.6]{braidFanLeft4} \qquad \raisebox{-.3cm}{\includegraphics[scale=.6]{sylvesterFan4}}}
-	\caption{The braid fan (left) and the sylvester fan (right). \cite[Fig.~1]{MR3964495}}
+	\caption{The braid fan (left) and the sylvester fan (right). \cite[Fig.~1]{MR3964495} \&~\cite[Fig.~5]{MR4584712}}
 	\label{fig:fans}
 \end{figure}
 
 The \defn{braid arrangement} is the hyperplane arrangement consisting of the hyperplanes~$\set{\b{x} \in \R^n}{x_a = x_b}$ for all~$1 \le a < b \le n$.
 It has a chamber for each permutation~$\sigma$ of~$[n]$, given by the set of vectors whose coordinates are ordered as~$\sigma$.
+See \cref{fig:fans}\,(left).
 
 The \defn{shard} of an arc~$(a, b, A, B)$ is the piece of the braid hyperplane~${x_a = x_b}$ defined by the inequalities~$x_{a'} < x_a$ for all~$a' \in A$ and~$x_b < x_{b'}$ for all~$b' \in B$.
 %$\Sigma(a, b, A, B) \eqdef \set{\b{x} \in \R^n}{x_a = x_b \text{ and } x_{a'} < x_a \text{ for all } a' \in A \text{ and }  x_b < x_{b'} \text{ for all } b' \in B}$.
+In other words, the shards decompose each hyperplane~$x_a = x_b$ of the braid arrangement into~$2^{b-a-1}$ cones.
 
-The \defn{quotient fan} of a lattice congruence~$\equiv$ of the weak Bruhat order is the polyhedral fan~$\c{F}_\equiv$ where
+The \defn{quotient fan} of a congruence~$\equiv$ of the weak Bruhat order is the polyhedral fan~$\c{F}_\equiv$~where
 \begin{itemize}
 \item the maximal cones are obtained by glueing together the chambers of the braid arrangement corresponding to permutations in the same congruence class of~$\equiv$,
 \item the union of the codimension~$1$ cones is the union of the shards of the arcs of~$\c{A}_\equiv$.
 \end{itemize}
 (These two descriptions are equivalent.)
 By construction, the braid fan refines the quotient fan~$\c{F}_\equiv$, and the dual graph of the quotient fan~$\c{F}_\equiv$ is isomorphic to the cover graph of the quotient~$\f{S}_n/{\equiv}$.
+For instance, \cref{fig:fans}\,(right) represents the \defn{sylvester fan} (the quotient fan of the sylvester congruence of \cref{fig:sylvesterCongruence}\,(middle)) for~$n = 4$, whose dual graph is the cover graph of the Tamari lattice of \cref{fig:sylvesterCongruence}\,(right).
 
 %%%%%%%%%%%%%
 
@@ -596,23 +612,32 @@ By construction, the braid fan refines the quotient fan~$\c{F}_\equiv$, and the 
 \begin{figure}
 	\capstart
 	\centerline{\includegraphics[scale=.6]{permutahedronLeft4} \qquad \raisebox{-.4cm}{\includegraphics[scale=.6]{associahedron4}}}
-	\caption{The permutahedron~$\Perm(4)$ (left) and the associahedron~$\Asso(4)$. \cite[Fig.~1]{MR3964495}}
+	\caption{The permutahedron~$\Perm(4)$ (left) and the associahedron~$\Asso(4)$. \cite[Fig.~1]{MR3964495} \&~\cite[Fig.~5]{MR4584712}}
 	\label{fig:quotientopes}
 \end{figure}
 
 A \defn{quotientope} for a lattice congruence~$\equiv$ of the weak Bruhat order is a polytope whose normal fan is the quotient fan~$\c{F}_\equiv$.
 In particular, the skeleton of a quotientope is isomorphic to the cover graph of the quotient~$\f{S}_n/{\equiv}$.
+For instance, the associahedron~$\Asso(n)$ (\cref{fig:quotientopes}\,(right) when~$n = 4$)  is a quotientope for the sylvester congruence (\cref{fig:sylvesterCongruence}\,(middle) when~$n = 4$), its normal fan is the sylvester fan (\cref{fig:fans}\,(right) when~$n = 4$), and its skeleton is the cover graph of the Tamari lattice (\cref{fig:sylvesterCongruence}\,(right) when~$n = 4$).
 The existence of quotientopes was first proved in \cite{MR3964495} and later better understood in~\cite{MR4584712} using Minkowski sums of shard polytopes.
 
 The \defn{Minkowski sum} of two polytopes~$\polytope{P}$ and~$\polytope{Q}$ is~$\polytope{P} + \polytope{Q} \eqdef \set{\b{p} + \b{q}}{\b{p} \in \polytope{P} \text{ and } \b{q} \in \polytope{Q}}$.
 Recall that for any vector~$\b{v} \ne \b{0}$, the face of~$\polytope{P} + \polytope{Q}$ maximizing the scalar product with~$\b{v}$ is the Minkowski sum of the faces of~$\polytope{P}$ and~$\polytope{Q}$ maximizing the scalar product with~$\b{v}$.
 In particular, if~$\b{v}$ is a generic direction, the vertex of~$\polytope{P} + \polytope{Q}$ extremal in direction~$\b{v}$ is just the sum of the vertices of~$\polytope{P}$ and~$\polytope{Q}$ that are extremal in direction~$\b{v}$.
+Moreover, the normal fan of the Minkowski sum~$\polytope{P} + \polytope{Q}$ is the common refinement of the normal fans of~$\polytope{P}$ and~$\polytope{Q}$.
 
 Consider an arc~$\alpha \eqdef (a, b, A, B)$ on~$[n]$.
 An \defn{$\alpha$-alternating matching} is a sequence~$a \le i_1 < j_1 < i_2 < j_2 < \dots < i_q < j_q \le b$ such that~$i_p \in \{a\} \cup A$ and~$j_p \in \{b\} \cup B$ for all~$p \in [q]$.
 Its \defn{characteristic vector} is~$\sum_{p \in [q]} \b{e}_{i_p} - \b{e}_{j_p}$.
 The \defn{shard polytope} of~$\alpha$ is the convex hull~$\SP(\alpha)$ of the characteristic vectors of all $\alpha$-alternating matchings.
 It was shown in~\cite{MR4584712} that any Minkowski sum of positive scalings of the shard polytopes~$\SP(\alpha)$ for all arcs~$\alpha$ in the arc ideal~$\c{A}_\equiv$ is a quotientope for~$\equiv$.
+
+\begin{figure}
+	\capstart
+	\centerline{\includegraphics[scale=1]{shardPolytopes}}
+	\caption{The shard polytopes of the up arc~$(1, 4, \{2, 3\}, \varnothing)$, down arc~$(1, 4, \varnothing, \{2, 3\})$, yin arc~$(1, 4, \{2\}, \{3\})$, and yang arc~$(1, 4, \{3\}, \{2\})$. The vertices of the shard polytope of an arc~$\alpha \eqdef (a, b, A, B)$ are labeled by the corresponding $\alpha$-alternating matchings, where we use solid dots~$\bullet$ for elements in~$\{a\} \cup A$ and hollow dots~$\circ$ for elements in~$B \cup \{b\}$. The corresponding vertex coordinates are directly read replacing~$\bullet$ by~$1$ and~$\circ$ by~$-1$. For instance, the vertex labeled~${\bullet \cdot \cdot \,\circ}$ has coordinates~$(1,0,0,-1)$. Adapted from~\cite[Fig.~10]{PadrolPilaudRitter}.}
+	\label{fig:shardPolytiopes}
+\end{figure}
 
 By definition, any quotientope is a deformed permutahedron, and can thus be written as
   \[
@@ -623,6 +648,7 @@ Recall that the submodular function of a Minkowski sum of deformed permutahedra 
 
 \begin{lemma}
   \label{lem:submodsum}
+  \vincent{I would not make this one so visible in a proper thm environment.}
   Consider a collection $\polytope{P}_1, \polytope{P}_2,\ldots ,\polytope{P}_k$ of deformed permutahedra defined by the submodular functions $f_1,f_2,\ldots ,f_k$. Then the Minkowski sum $\sum_i \polytope{P}_i$ is defined by the submodular function $f \eqdef \sum_i f_i$.
 \end{lemma}
 
@@ -708,6 +734,7 @@ These quotientopes are very basic ones.
 \label{subsec:submodularWeakRectangulotopes}
 
 The description of the weak rectangulotope~$\WRP(n)$ as a Minkowski sum in \cref{lem:weakMinkowski} allows us to easily compute the corresponding submodular function.
+\vincent{Say here that all rays are preserved}
 
 \begin{lemma}
   The weak rectangulotope $\WRP(n)$ is realized by the following submodular function:
