@@ -1,11 +1,11 @@
 ### SOME EXPERIMENTS ON RECTANGULOTOPES
 
 @cached_function
-def diagonal_rectangulation_polytope(n):
-    return diagonal_rectangulations_congruence(n).quotientope(essential=False)
+def diagonal_rectangulation_polytope(n, essential=False):
+    return diagonal_rectangulations_congruence(n).quotientope(essential=essential)
 
 @cached_function
-def diagonal_rectangulation_polytope_vertices(n):
+def diagonal_rectangulation_polytope_vertices(n, essential=False):
     return diagonal_rectangulation_polytope(n).vertices()
 
 def yinyangs(n):
@@ -26,14 +26,14 @@ def up_down_yangs(n):
 def up_down_yinyangs(n):
     return Arcs(n, arcs=list(up_down_yins(n)) + list(up_down_yangs(n)))
 
-def up_down_yins_quotientope(n):
-    return up_down_yins(n).quotientope(essential=False)
+def up_down_yins_quotientope(n, essential=False):
+    return up_down_yins(n).quotientope(essential=essential)
 
-def up_down_yangs_quotientope(n):
-    return up_down_yangs(n).quotientope(essential=False)
+def up_down_yangs_quotientope(n, essential=False):
+    return up_down_yangs(n).quotientope(essential=essential)
 
-def up_down_yinyangs_quotientope(n):
-    return up_down_yinyangs(n).quotientope(essential=False)
+def up_down_yinyangs_quotientope(n, essential=False):
+    return up_down_yinyangs(n).quotientope(essential=essential)
 
 def vertex_2_clumped_permutation(perm):
     n = len(perm)
@@ -485,7 +485,7 @@ def draw_rectangulation(rectangulation):
         res.append(polygon2d([[l,d], [l,u], [r,u], [r,d]], fill=None, axes=False))
     return add(res)
 
-def to_tikz(perm, print_permutation=False):
+def perm_rectangulation_to_tikz(perm, print_permutation=False):
     r"""
     Return a tikz code for rectangulations.
 
