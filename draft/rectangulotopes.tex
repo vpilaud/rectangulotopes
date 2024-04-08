@@ -12,7 +12,7 @@
 \usetikzlibrary{trees, decorations, decorations.markings, shapes, arrows, matrix, calc, fit, intersections, patterns, angles, cd}
 \usepackage[external]{forest}
 %\tikzexternalize
-\graphicspath{{figures/}{figures/nodes/}}
+\graphicspath{{figures/}{figures/rectangulations/}}
 \makeatletter\def\input@path{{figures/}}\makeatother
 \usepackage{caption}
 \captionsetup{width=\textwidth}
@@ -256,7 +256,7 @@ See \cref{fig:quotientopes}\,(right) for an illustration when~$n = 4$.
   \end{enumerate}
 \end{theorem}
 
-A natural object associated with the associahedron is the \defn{Tamari lattice}, whose cover graph is isomorphic to the skeleton of the associahedron~\cite{MR0146227,MR3235205}.
+A natural object associated with the associahedron is the \defn{Tamari lattice}, the cover graph of which is isomorphic to the skeleton of the associahedron~\cite{MR0146227,MR3235205}.
 The Tamari lattice is known to be the quotient of the weak Bruhat order by a \defn{lattice congruence} called the \defn{sylvester congruence}~\cite{MR1654173,MR2142078}.
 Answering a question of N.~Reading~\cite{MR2142177}, V.~Pilaud and F.~Santos~\cite{MR3964495} proved that with \emph{every} lattice congruence of the weak Bruhat order, one can associate a polytope whose skeleton is the cover graph of the lattice quotient, and more precisely whose normal fan is the \defn{quotient fan} defined by gluing the cones of the \defn{braid fan} (the type $A$ Coxeter arrangement) that belong to the same congruence class.
 Those polytopes are deformed permutahedra that they called \defn{quotientopes}.
@@ -273,9 +273,9 @@ We define a \defn{rectangulation} of size $n$ as a decomposition of the square i
 The \defn{segments} of a rectangulation are the inclusionwise maximal line segments composed of edges of the rectangles, excluding the edges of the decomposed square.
 We suppose throughout that no four rectangles have a common vertex, hence that the rectangulations are \defn{generic} in that sense.
 
-In order to focus on the combinatorial structure of a rectangulation, we introduce two equivalence relations between rectangulations.
+In order to focus on the combinatorial structure of a rectangulation, we recall two equivalence relations between rectangulations~\cite{??}.
 We say that a rectangle~$r$ is \defn{above} another rectangle~$s$ (and~$s$ is \defn{below}~$r$) if either the bottom edge of~$r$ lies in the same segment as the top edge of~$s$, or if~$r$ is above another rectangle~$t$ that is above~$s$.
-Similarly, a rectangle~$r$ is \defn{on the left of} another rectangle $s$ (and $s$ is \defn{on the right of} $r$) if either the right edge of $r$ lies in the same segment as the left edge of $s$, or if $r$ is on the left of another rectangle $t$ that is on the left of $s$.
+We define \defn{on the left of} and \defn{on the right of} similarly.
 Two rectangulations are said to be \defn{weakly equivalent} if there exists a bijection between their rectangles that preserves the above-below and left-right relations between the rectangles.
 Weak equivalence classes of rectangulations will be referred to as \defn{weak rectangulations}.
 (Note that this is a slight, yet convenient abuse of terminology, as weak rectangulations are really sets of rectangulations.)
@@ -285,8 +285,8 @@ We will naturally refer to strong equivalence classes of rectangulations as \def
 In order to make sense of these definitions, it is useful to consider \defn{wall slides} in a rectangulation: the local changes consisting of shifting a horizontal segment vertically, or a vertical segment horizontally, while extending or shortening the incident segments accordingly.
 Performing a wall slide in a rectangulation $R$ leads to a rectangulation that is always weakly equivalent to $R$.
 However, if the wall slide changes the adjacency relation between the rectangles, then the resulting rectangulation is not strongly equivalent to $R$ anymore.
-This is illustrated in Figure~\ref{fig:rectequiv}.
-A \defn{diagonal rectangulation} is a rectangulation in which every rectangle intersects the top-left to bottom-right diagonal of the square, see Figure~\ref{fig:weakRectangulation}.
+This is illustrated in \cref{fig:rectequiv}.
+A \defn{diagonal rectangulation} is a rectangulation in which every rectangle intersects the top-left to bottom-right diagonal of the square, see \cref{fig:weakRectangulation}.
 It is simple to check that every weak rectangulation has a diagonal representative, hence weak rectangulations can also be thought of as diagonal rectangulations.
 
 \begin{figure}
@@ -301,37 +301,59 @@ Weak and strong rectangulations of size $n$ have been shown to define congruence
 The \defn{weak rectangulation congruence} (or \defn{Baxter congruence}) was first explicitly studied by S.~Law and N.~Reading~\cite{MR2871762} and revisited in~\cite[Thm.~1.1 \& Exm.~4.10]{Reading-arcDiagrams} in terms of arc diagrams.
 Its classes are in bijection with weak rectangulations, but also with \defn{Baxter permutations}~\cite{MR0491652,MR0555815}, with \defn{twin binary trees}~\cite{MR1417289,MR2914637}, and with many other combinatorial families~\cite{MR2763051}. 
 The corresponding quotientopes will be referred to as the \defn{weak rectangulotopes} and denoted by $\WRP(n)$.
+For~$n = 4$, the weak rectangulation lattice is represented in \cref{fig:weakRectangulationLattice} and the weak rectangulotope is represented in \cref{fig:weakRectangulotope}.
+
+\begin{figure}
+	\centerline{\includegraphics[scale=1.05]{weakRectangulationLattice}}
+	\caption{The weak rectangulation lattice.}
+	\label{fig:weakRectangulationLattice}
+\end{figure}
+
+\begin{figure}
+	\centerline{\includegraphics[scale=1.05]{weakRectangulotopeLabeled}}
+	\caption{The strong rectangulotope~$\WRP(4)$.}
+        \label{fig:weakRectangulotope}
+\end{figure}
 
 The \defn{strong rectangulation congruence} was introduced by N.~Reading~\cite{MR2864445}, revisited in~\cite[Thm.~1.2 \& Exm.~4.11]{Reading-arcDiagrams} in terms of arc diagrams, and studied more recently by E.~Meehan~\cite{MR3697823}, and A.~Asinowski, J.~Cardinal, S.~Felsner, and É.~Fusy~\cite{ACFF24}.
 Its classes are in bijection with strong rectangulations.
 The corresponding quotientopes will be referred to as the \defn{strong rectangulotopes} and denoted by~$\SRP(n)$.
+For~$n = 4$, the strong rectangulation lattice is represented in \cref{fig:strongRectangulationLattice} and the strong rectangulotope is represented in \cref{fig:strongRectangulotope}.
+
+\begin{figure}
+	\centerline{\includegraphics[scale=1.05]{strongRectangulationLattice}}
+	\caption{The strong rectangulation lattice.}
+	\label{fig:strongRectangulationLattice}
+\end{figure}
+
+\begin{figure}
+	\centerline{\includegraphics[scale=1.05]{strongRectangulotopeLabeled}}
+	\caption{The strong rectangulotope~$\SRP(4)$.}
+        \label{fig:strongRectangulotope}
+\end{figure}
 
 An important motivation for studying these quotientopes is the informative structure of their skeleta, which are \defn{flip graphs} on the rectangulations.
 A flip is a local, reversible change in the structure of the rectangulation.
 Flips in rectangulations come in three flavors:
-\begin{description}
-\item[Simple flips] replace a vertical segment incident to exactly two rectangles by a horizontal segment, and vice-versa.
-\item[Pivoting] operations transform a pair of adjacent rectangles whose union is not a rectangle, changing a left-right pair into an above-below pair, and vice-versa.
-\item[Wall slide] flips are wall slides that modify the adjacency of the rectangles, removing exactly one adjacency and adding exactly one. These flips are only relevant in strong rectangulations.
-\end{description}
+\begin{itemize}
+\item \defn{Simple flips} replace a vertical segment incident to exactly two rectangles by a horizontal segment, and vice-versa,
+\item \defn{Pivoting operations} transform a pair of adjacent rectangles whose union is not a rectangle, changing a left-right pair into an above-below pair, and vice-versa,
+\item \defn{Wall slide flips} are wall slides that modify the adjacency of the rectangles, removing exactly one adjacency and adding exactly one. These flips are only relevant in strong rectangulations.
+\end{itemize}
 
-The various types of flips are illustrated in Figure~\ref{fig:flips}.
+The various types of flips are illustrated in \cref{fig:flips}.
 We refer to \cite{MR2871762,MR3878132,MR3697823,ACFF24} for detailed descriptions of the flip graphs on both weak and strong rectangulations.
 Just like associahedra encode the rotation graphs on binary trees, the rectangulotopes directly yield flip graphs on rectangulations.
+Namely, the skeleton of $\WRP(n)$ (resp.~of $\SRP(n)$) is isomorphic to the flip graph on weak (resp.~strong) rectangulations of size~$n$.
 
 \begin{figure}
 	\caption{Three types of flips between rectangulations.}
 	\label{fig:flip}
 \end{figure}
 
-\begin{lemma}
-  The skeleton of $\WRP(n)$ (resp.~of $\SRP(n)$) is isomorphic to the flip graph on weak (resp.~strong) rectangulations of size~$n$.
-  \vincent{I would leave that in the text, not in a proper thm environment...}
-\end{lemma}
-
 Rectangulotopes enrich the family of natural quotientopes, alongside associahedra, permutreehedra~\cite{MR3856522}, certain brick polytopes~\cite{PilaudSantos-brickPolytopes, PilaudStump-brickPolytopes, Pilaud-brickAlgebra}, and certain graphical zonotopes~\cite{Pilaud-brickAlgebra, Pilaud-acyclicReorientationLattices}, providing instructive examples of application of the theory of lattice congruences to concrete combinatorial objects.
 Our main results are elementary vertex and facet descriptions of both families of quotientopes.
-For vertices, we describe the coordinates of the vertex corresponding to a weak or strong rectangulation with simple product formulas in the spirit of J.-L.~Loday's realization in~\cref{thm:loday}.
+For vertices, we describe the coordinates of the vertex corresponding to a weak or strong rectangulation with simple product formulas in the spirit of J.-L.~Loday's realization in~\cref{thm:loday}\,(i).
 As mentioned in~\cite{PilaudSantosZiegler}, there is no such formula for arbitrary quotientopes, which makes rectangulotopes join the restricted club of Loday type quotientopes, jointly with associahedra and permutreehedra~\cite{MR3856522}.
 For facets, we show that both weak and strong rectangulotopes have $2^n-2$ facets (the maximal possible number of facets of a deformed permutahedron), and provide simple formulas for the right hand side of the inequality corresponding to a given proper nonempty subset of~$[n]$.
 
@@ -394,12 +416,6 @@ For each $i\in [n]$, we refer to its two subtrees in $T(R)$ as the \defn{horizon
 \subsection{Weak rectangulotopes}
 \label{subsec:weakRectangulotopes}
 
-\begin{figure}
-	\centerline{\includegraphics[scale=1.5]{weakRectangulotopeLabeled}}
-	\caption{The strong rectangulotope~$\WRP(4)$.}
-        \label{fig:weakRectangulotope}
-\end{figure}
-
 Our first results are simple vertex and facet descriptions of the weak rectangulotopes~$\WRP(n)$.
 For the vertices, we provide a concise formula for the coordinates, that consists of applying J.-L.~Loday's formula on each of the source and target trees of the rectangulation.
 For the facets, we combine the right hand sides of two opposite associahedra to obtain those of the weak rectangulotopes.
@@ -408,6 +424,7 @@ These two descriptions materialize the result of Law and Reading that the weak r
 \Jean{We need to make it clear whether $\WRP (n)$ is the proposed realization or just the combinatorial type. I was thinking the latter. Then we can change the sentence ``The weak rectangulotope is realized by the polytope~$\WRP (n)$...'' by ``The weak rectangulotope $\WRP (n)$ is realized by:~''. Otherwise, refrain from using $\WRP (n)$ before here.}
 
 \begin{theorem}
+\label{thm:weakRectangulotope}
   The weak rectangulotope is realized by the polytope~$\WRP (n) \subset \R^n\!$ defined equivalently~as
   \begin{enumerate}[(i)]
   \item the convex hull of the points
@@ -428,6 +445,70 @@ These two descriptions materialize the result of Law and Reading that the weak r
 \end{theorem}
 
 For instance, the weak rectangulotope~$\WRP(4)$ is illustrated in \cref{fig:weakRectangulotope}.
+The coordinates of the vertices corresponding to each weak rectangulation are gathered in \cref{tab:verticesWeakRectangulotope}.
+\vincent{add table for the facets}
+
+\begin{table}[p]
+	\centerline{
+	\begin{tabular}{cccccccc}
+		\includegraphics[scale=1.5]{rectangulation1} &
+		\includegraphics[scale=1.5]{rectangulation2} &
+		\includegraphics[scale=1.5]{rectangulation3} &
+		\includegraphics[scale=1.5]{rectangulation4} &
+		\includegraphics[scale=1.5]{rectangulation5} &
+		\includegraphics[scale=1.5]{rectangulation6} &
+		\\
+		$(-3, -1, 1, 3)$ &
+		$(-3, -1, 5, -1)$ &
+		$(-3, 3, -3, 3)$ &
+		$(1, -5, 1, 3)$ &
+		$(-3, 0, 5, -2)$ &
+		$(-3, 5, -3, 1)$ &
+		\\[.2cm]
+		\includegraphics[scale=1.5]{rectangulation8} &
+		\includegraphics[scale=1.5]{rectangulation9} &
+		\includegraphics[scale=1.5]{rectangulation10} &
+		\includegraphics[scale=1.5]{rectangulation11} &
+		\includegraphics[scale=1.5]{rectangulation12} &
+		\includegraphics[scale=1.5]{rectangulation13} &
+		\\
+		$(-1, 3, -5, 3)$ &
+		$(2, -5, 0, 3)$ &
+		$(-3, 5, 0, -2)$ &
+		$(-2, 0, 5, -3)$ &
+		$(1, -5, 5, -1)$ &
+		$(-1, 5, -5, 1)$ &
+		\\[.2cm]
+		\includegraphics[scale=1.5]{rectangulation14} &
+		\includegraphics[scale=1.5]{rectangulation15} &
+		\includegraphics[scale=1.5]{rectangulation16} &
+		\includegraphics[scale=1.5]{rectangulation17} &
+		\includegraphics[scale=1.5]{rectangulation19} &
+		\includegraphics[scale=1.5]{rectangulation20} &
+		\\
+		$(3, -5, 0, 2)$ &
+		$(2, 0, -5, 3)$ &
+		$(-2, 5, 0, -3)$ &
+		$(1, -3, 5, -3)$ &
+		$(3, -5, 3, -1)$ &
+		$(3, 0, -5, 2)$ &
+		\\[.2cm]
+		&		
+		\includegraphics[scale=1.5]{rectangulation21} &
+		\includegraphics[scale=1.5]{rectangulation22} &
+		\includegraphics[scale=1.5]{rectangulation23} &
+		\includegraphics[scale=1.5]{rectangulation24} &
+		\\
+		&
+		$(-1, 5, -1, -3)$ &
+		$(3, -3, 3, -3)$ &
+		$(3, 1, -5, 1)$ &
+		$(3, 1, -1, -3)$ &
+	\end{tabular}
+	}
+	\caption{The vertices of the weak rectangulotope~$\WRP(4)$ of \cref{fig:weakRectangulotope}.}
+	\label{tab:verticesWeakRectangulotope}
+\end{table}
 
 \begin{example}
   The vertex of~$\WRP (16)$ corresponding to the weak rectangulation of \cref{fig:weakRectangulation} is
@@ -443,18 +524,13 @@ For instance, the weak rectangulotope~$\WRP(4)$ is illustrated in \cref{fig:weak
 \subsection{Strong rectangulotopes}
 \label{subsec:strongRectangulotopes}
 
-\begin{figure}
-	\centerline{\includegraphics[scale=1.5]{strongRectangulotopeLabeled}}
-	\caption{The strong rectangulotope~$\SRP(4)$.}
-        \label{fig:strongRectangulotope}
-\end{figure}
-
 In order to exhibit a similar realization for the strong rectangulotopes, we need to count subsets of leaves that lie in some subtrees of both the source and target trees of a rectangulation.
 Two leaves of the trees $T(R)$ and $S(R)$ are said to be \defn{common leaves} if the edges to their parents lie on the same segment of $R$.
 We denote by $i \, \backslash \, j$ the situation where the rectangle labeled $i$ touches the rectangle labeled $j$ either from the left or from below in $R$.
 We also use the Iverson bracket $\llbracket \varphi\rrbracket$, which is equal to 1 if $\varphi$ holds, and 0 otherwise.
 
 \begin{theorem}
+\label{thm:strongRectangulotope}
   The $(n-1)$-dimensional strong rectangulotope is realized by the polytope~$\SRP (n)$ defined equivalently as
   \begin{enumerate}[(i)]
   \item convex hull of the points
@@ -484,15 +560,85 @@ We also use the Iverson bracket $\llbracket \varphi\rrbracket$, which is equal t
 % jean:{Is there better way to write this down/compute? Here we do not take advantage of the fact that at most one of the two factors $\yin{w}_{i,j}$ and $\yang{w}_{i,j}$ is nonzero.}
 
 For instance, the strong rectangulotope~$\SRP(4)$ is illustrated in \cref{fig:strongRectangulotope}.
+The coordinates of the vertices corresponding to each strong rectangulation are gathered in \cref{tab:verticesStrongRectangulotope}.
+\vincent{add table for the facets}
+
+\begin{table}
+	\centerline{
+	\begin{tabular}{cccccccc}
+		\includegraphics[scale=1.5]{rectangulation1} &
+		\includegraphics[scale=1.5]{rectangulation2} &
+		\includegraphics[scale=1.5]{rectangulation3} &
+		\includegraphics[scale=1.5]{rectangulation4} &
+		\includegraphics[scale=1.5]{rectangulation5} &
+		\includegraphics[scale=1.5]{rectangulation6} &
+		\\
+		$(-6, -2, 2, 6)$ &
+		$(-6, -2, 9, -1)$ &
+		$(-6, 5, -5, 6)$ &
+		$(1, -9, 2, 6)$ &
+		$(-6, 1, 9, -4)$ &
+		$(-6, 9, -5, 2)$ &
+		\\[.2cm]
+		\includegraphics[scale=1.5]{rectangulation8} &
+		\includegraphics[scale=1.5]{rectangulation9} &
+		\includegraphics[scale=1.5]{rectangulation10} &
+		\includegraphics[scale=1.5]{rectangulation11} &
+		\includegraphics[scale=1.5]{rectangulation12} &
+		\includegraphics[scale=1.5]{rectangulation13} &
+		\\
+		$(-2, 5, -9, 6)$ &
+		$(4, -9, -1, 6)$ &
+		$(-6, 9, 1, -4)$ &
+		$(-4, 1, 9, -6)$ &
+		$(2, -9, 9, -2)$ &
+		$(-2, 9, -9, 2)$ &
+		\\[.2cm]
+		\includegraphics[scale=1.5]{rectangulation14} &
+		\includegraphics[scale=1.5]{rectangulation15} &
+		\includegraphics[scale=1.5]{rectangulation16} &
+		\includegraphics[scale=1.5]{rectangulation17} &
+		\includegraphics[scale=1.5]{rectangulation19} &
+		\includegraphics[scale=1.5]{rectangulation20} &
+		\\
+		$(6, -9, -1, 4)$ &
+		$(4, -1, -9, 6)$ &
+		$(-4, 9, 1, -6)$ &
+		$(2, -5, 9, -6)$ &
+		$(6, -9, 5, -2)$ &
+		$(6, -1, -9, 4)$ &
+		\\[.2cm]
+		\includegraphics[scale=1.5]{rectangulation21} &
+		\includegraphics[scale=1.5]{rectangulation22} &
+		\includegraphics[scale=1.5]{rectangulation23} &
+		\includegraphics[scale=1.5]{rectangulation24} &
+		\includegraphics[scale=1.5]{rectangulation7} &
+		\includegraphics[scale=1.5]{rectangulation18}
+		\\
+		$(-1, 9, -2, -6)$ &
+		$(6, -5, 5, -6)$ &
+		$(6, 2, -9, 1)$ &
+		$(6, 2, -2, -6)$ &
+		$(1, -9, 9, -1)$ &
+		$(-1, 9, -9, 1)$
+	\end{tabular}
+	}
+	\caption{The vertices of the weak rectangulotope~$\WRP(4)$ of \cref{fig:weakRectangulotope}.}
+	\label{tab:verticesWeakRectangulotope}
+\end{table}
 
 \begin{example}
   The vertex of~$\SRP (16)$ corresponding to the strong rectangulation of \cref{fig:strongRectangulation} is
   \[
-  ???
+  (-41, 5, 262, 24, -110, 50, -525, -50, 184, 3, -88, 450, 35, -221, -5, 27).
   \]
-  For instance, the $4$th coordinate is $???$.
+  For instance, the contribution of~$\b{e}_5 - \b{e}_7$ is ...
   \vincent{give also a relevant example of facet...}
 \end{example}
+
+We think of the formula of \cref{thm:strongRectangulotope}\,(i) as the analogue of J.-L.-Loday's product formula of \cref{thm:loday}\,(i) for the coordinates of the vertices of the associahedron.
+We note however that our formula is quadratic in~$n$.
+It remains unclear to us if there is a simple linear formula to compute the coordinates of the vertex of~$\SRP(n)$ corresponding to a given strong rectangulation.
 
 %%%%%%%%%%%%%
 
@@ -1063,17 +1209,5 @@ The ordinate of an horizontal segment~$h$ of~$R$ is defined symmetrically.
 \input{figures/rectangulations6.tikz}
 \clearpage
 \end{comment}
-
-\begin{figure}
-	\centerline{\includegraphics[scale=.9]{weakRectangulationLattice}}
-	\caption{The weak rectangulation lattice.}
-	\label{fig:weakRectangulationLattice}
-\end{figure}
-
-\begin{figure}
-	\centerline{\includegraphics[scale=.9]{strongRectangulationLattice}}
-	\caption{The strong rectangulation lattice.}
-	\label{fig:strongRectangulationLattice}
-\end{figure}
 
 \end{document}
