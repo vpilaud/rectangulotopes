@@ -72,7 +72,7 @@ def vertex_2_clumped_permutation_bis(perm):
     """
     Yins = [0] + [[0] + [max(0, len(HT[u]) * (min(max(VT[u]), v-1) - max(min(VS[v])-1, u) + 1) * len(HS[v])) for u in range(1, v)] for v in range(1, n+1)]
     Yangs = [0] + [[0] + [max(0, len(VS[u]) * (min(max(HS[u]), v-1) - max(min(HT[v])-1, u) + 1) * len(VT[v])) for u in range(1, v)] for v in range(1, n+1)]
-    vertex = vector(range(binomial(n,2), -binomial(n,2)-1, -n)) # vector([len(HT[u]) * len(VT[u]) - len(HS[u]) * len(VS[u]) for u in range(1,n+1)]) # no need for Loday and antiLoday
+    vertex = vector([0]*n) #vector(range(binomial(n,2), -binomial(n,2)-1, -n)) # vector([len(HT[u]) * len(VT[u]) - len(HS[u]) * len(VS[u]) for u in range(1,n+1)]) # no need for Loday and antiLoday
     for v in range(1, n+1):
         for u in range(1, v):
             if perm_inv(u) > perm_inv(v):

@@ -440,58 +440,58 @@ These two descriptions materialize the result of Law and Reading that the weak r
     \antiloday{w}^R_i \eqdef h^S_i\cdot v^S_i,
   \]
   where~$S$ and~$T$ are the source and target trees of the rectangulation~$R$, and $h^T_i$ and $v^T_i$ denote the number of leaves in the horizontal and vertical subtrees of $i$ in~$T$,
-  \item the intersection of the hyperplane defined by~$\sum_{i \in [n]} x_i = \binom{n+1}{2}$ with the halfspaces defined by~$\sum_{i \in S} x_i \le \#\set{I \text{ interval of } [n]}{I \not\subseteq S \text{ and } I \not\subseteq [n] \ssm S}$ for all subsets~$\varnothing \ne S \subsetneq [n]$.
+  \item the intersection of the hyperplane defined by~$\sum_{i \in [n]} x_i = 0$ with the halfspaces defined by~$\sum_{i \in S} x_i \le \#\set{I \text{ interval of } [n]}{I \not\subseteq S \text{ and } I \not\subseteq [n] \ssm S}$ for all subsets~$\varnothing \ne S \subsetneq [n]$.
   \end{enumerate}
 \end{theorem}
 
 For instance, the weak rectangulotope~$\WRP(4)$ is illustrated in \cref{fig:weakRectangulotope}.
-The coordinates of the vertices corresponding to each weak rectangulation are gathered in \cref{tab:verticesWeakRectangulotope}.
-\vincent{add table for the facets}
+The coordinates of the vertex corresponding to each weak rectangulation are gathered in \cref{tab:verticesWeakRectangulotope}.
+The facet inequalities corresponding to each nonempty proper subset of~$[n]$ are gathered in \cref{tab:facetsWeakRectangulotope}.
 
 \begin{table}[p]
 	\centerline{
-	\begin{tabular}{cccccccc}
+	\begin{tabular}{cccccc}
 		\includegraphics[scale=1.5]{rectangulation1} &
 		\includegraphics[scale=1.5]{rectangulation2} &
 		\includegraphics[scale=1.5]{rectangulation3} &
 		\includegraphics[scale=1.5]{rectangulation4} &
 		\includegraphics[scale=1.5]{rectangulation5} &
-		\includegraphics[scale=1.5]{rectangulation6} &
+		\includegraphics[scale=1.5]{rectangulation6}
 		\\
 		$(-3, -1, 1, 3)$ &
 		$(-3, -1, 5, -1)$ &
 		$(-3, 3, -3, 3)$ &
 		$(1, -5, 1, 3)$ &
 		$(-3, 0, 5, -2)$ &
-		$(-3, 5, -3, 1)$ &
+		$(-3, 5, -3, 1)$
 		\\[.2cm]
 		\includegraphics[scale=1.5]{rectangulation8} &
 		\includegraphics[scale=1.5]{rectangulation9} &
 		\includegraphics[scale=1.5]{rectangulation10} &
 		\includegraphics[scale=1.5]{rectangulation11} &
 		\includegraphics[scale=1.5]{rectangulation12} &
-		\includegraphics[scale=1.5]{rectangulation13} &
+		\includegraphics[scale=1.5]{rectangulation13}
 		\\
 		$(-1, 3, -5, 3)$ &
 		$(2, -5, 0, 3)$ &
 		$(-3, 5, 0, -2)$ &
 		$(-2, 0, 5, -3)$ &
 		$(1, -5, 5, -1)$ &
-		$(-1, 5, -5, 1)$ &
+		$(-1, 5, -5, 1)$
 		\\[.2cm]
 		\includegraphics[scale=1.5]{rectangulation14} &
 		\includegraphics[scale=1.5]{rectangulation15} &
 		\includegraphics[scale=1.5]{rectangulation16} &
 		\includegraphics[scale=1.5]{rectangulation17} &
 		\includegraphics[scale=1.5]{rectangulation19} &
-		\includegraphics[scale=1.5]{rectangulation20} &
+		\includegraphics[scale=1.5]{rectangulation20}
 		\\
 		$(3, -5, 0, 2)$ &
 		$(2, 0, -5, 3)$ &
 		$(-2, 5, 0, -3)$ &
 		$(1, -3, 5, -3)$ &
 		$(3, -5, 3, -1)$ &
-		$(3, 0, -5, 2)$ &
+		$(3, 0, -5, 2)$
 		\\[.2cm]
 		&		
 		\includegraphics[scale=1.5]{rectangulation21} &
@@ -508,6 +508,47 @@ The coordinates of the vertices corresponding to each weak rectangulation are ga
 	}
 	\caption{The vertices of the weak rectangulotope~$\WRP(4)$ of \cref{fig:weakRectangulotope}.}
 	\label{tab:verticesWeakRectangulotope}
+\end{table}
+
+\begin{table}
+	\centerline{
+	\begin{tabular}{c|cccccccccccccc}
+		$J$ &
+		$1$ &
+		$2$ &
+		$3$ &
+		$4$ &
+		$12$ &
+		$13$ &
+		$14$ &
+		$23$ &
+		$24$ &
+		$34$ &
+		$123$ &
+		$124$ &
+		$134$ &
+		$234$
+		\\
+		\hline
+		$f_{\weakeq}(J)$ &
+		$3$ &
+		$5$ &
+		$5$ &
+		$3$ &
+		$4$ &
+		$6$ &
+		$5$ &
+		$5$ &
+		$6$ &
+		$4$ &
+		$3$ &
+		$5$ &
+		$5$ &
+		$3$
+	\end{tabular}
+	}
+	\caption{The facets of the weak rectangulotope~$\WRP(4)$ of \cref{fig:weakRectangulotope}.}
+	\label{tab:facetsWeakRectangulotope}
 \end{table}
 
 \begin{example}
@@ -553,60 +594,60 @@ We also use the Iverson bracket $\llbracket \varphi\rrbracket$, which is equal t
   \item $h^T_i$ and $v^T_i$ denote the number of leaves in the horizontal and vertical subtrees of $i$ in~$T$,
   \item $ch^{T,S}_{i,j}$ (resp.~$cv^{T,S}_{i,j}$) denote the number of common leaves of the horizontal (resp.~vertical) subtree of $i$ in $T$ and the horizontal (resp.~vertical) subtree of $j$ in $S$,
   \end{itemize}
-  \item the intersection of the hyperplane defined by~$\sum_{i \in [n]} x_i = \binom{n+1}{2}$ with the halfspaces defined by~$\sum_{i \in S} x_i \le \#\set{I,J}{I \not\subseteq S \text{ and } J \not\subseteq [n] \ssm S} + \#\set{I,J}{I \not\subseteq [n] \ssm S \text{ and } J \not\subseteq S}$ for all subsets~$\varnothing \ne S \subsetneq [n]$, where~$I,J$ denote nonempty and consecutive intervals of~$[n]$.
+  \item the intersection of the hyperplane defined by~$\sum_{i \in [n]} x_i = 0$ with the halfspaces defined by~$\sum_{i \in S} x_i \le \#\set{I,J}{I \not\subseteq S \text{ and } J \not\subseteq [n] \ssm S} + \#\set{I,J}{I \not\subseteq [n] \ssm S \text{ and } J \not\subseteq S}$ for all subsets~$\varnothing \ne S \subsetneq [n]$, where~$I,J$ denote nonempty and consecutive intervals of~$[n]$.
   \end{enumerate}
 \end{theorem}
 
 % jean:{Is there better way to write this down/compute? Here we do not take advantage of the fact that at most one of the two factors $\yin{w}_{i,j}$ and $\yang{w}_{i,j}$ is nonzero.}
 
 For instance, the strong rectangulotope~$\SRP(4)$ is illustrated in \cref{fig:strongRectangulotope}.
-The coordinates of the vertices corresponding to each strong rectangulation are gathered in \cref{tab:verticesStrongRectangulotope}.
-\vincent{add table for the facets}
+The coordinates of the vertex corresponding to each strong rectangulation are gathered in \cref{tab:verticesStrongRectangulotope}.
+The facet inequalities corresponding to each nonempty proper subset of~$[n]$ are gathered in \cref{tab:facetsStrongRectangulotope}.
 
 \begin{table}
 	\centerline{
-	\begin{tabular}{cccccccc}
+	\begin{tabular}{cccccc}
 		\includegraphics[scale=1.5]{rectangulation1} &
 		\includegraphics[scale=1.5]{rectangulation2} &
 		\includegraphics[scale=1.5]{rectangulation3} &
 		\includegraphics[scale=1.5]{rectangulation4} &
 		\includegraphics[scale=1.5]{rectangulation5} &
-		\includegraphics[scale=1.5]{rectangulation6} &
+		\includegraphics[scale=1.5]{rectangulation6}
 		\\
 		$(-6, -2, 2, 6)$ &
 		$(-6, -2, 9, -1)$ &
 		$(-6, 5, -5, 6)$ &
 		$(1, -9, 2, 6)$ &
 		$(-6, 1, 9, -4)$ &
-		$(-6, 9, -5, 2)$ &
+		$(-6, 9, -5, 2)$
 		\\[.2cm]
 		\includegraphics[scale=1.5]{rectangulation8} &
 		\includegraphics[scale=1.5]{rectangulation9} &
 		\includegraphics[scale=1.5]{rectangulation10} &
 		\includegraphics[scale=1.5]{rectangulation11} &
 		\includegraphics[scale=1.5]{rectangulation12} &
-		\includegraphics[scale=1.5]{rectangulation13} &
+		\includegraphics[scale=1.5]{rectangulation13}
 		\\
 		$(-2, 5, -9, 6)$ &
 		$(4, -9, -1, 6)$ &
 		$(-6, 9, 1, -4)$ &
 		$(-4, 1, 9, -6)$ &
 		$(2, -9, 9, -2)$ &
-		$(-2, 9, -9, 2)$ &
+		$(-2, 9, -9, 2)$
 		\\[.2cm]
 		\includegraphics[scale=1.5]{rectangulation14} &
 		\includegraphics[scale=1.5]{rectangulation15} &
 		\includegraphics[scale=1.5]{rectangulation16} &
 		\includegraphics[scale=1.5]{rectangulation17} &
 		\includegraphics[scale=1.5]{rectangulation19} &
-		\includegraphics[scale=1.5]{rectangulation20} &
+		\includegraphics[scale=1.5]{rectangulation20}
 		\\
 		$(6, -9, -1, 4)$ &
 		$(4, -1, -9, 6)$ &
 		$(-4, 9, 1, -6)$ &
 		$(2, -5, 9, -6)$ &
 		$(6, -9, 5, -2)$ &
-		$(6, -1, -9, 4)$ &
+		$(6, -1, -9, 4)$
 		\\[.2cm]
 		\includegraphics[scale=1.5]{rectangulation21} &
 		\includegraphics[scale=1.5]{rectangulation22} &
@@ -623,8 +664,17 @@ The coordinates of the vertices corresponding to each strong rectangulation are 
 		$(-1, 9, -9, 1)$
 	\end{tabular}
 	}
-	\caption{The vertices of the weak rectangulotope~$\WRP(4)$ of \cref{fig:weakRectangulotope}.}
-	\label{tab:verticesWeakRectangulotope}
+	\caption{The vertices of the strong rectangulotope~$\SRP(4)$ of \cref{fig:strongRectangulotope}.}
+	\label{tab:verticesStrongRectangulotope}
+\end{table}
+
+\begin{table}
+	\centerline{
+	\begin{tabular}{cccccccc}
+	\end{tabular}
+	}
+	\caption{The facets of the strong rectangulotope~$\SRP(4)$ of \cref{fig:strongRectangulotope}.}
+	\label{tab:facetsStrongRectangulotope}
 \end{table}
 
 \begin{example}
