@@ -440,11 +440,12 @@ These two descriptions materialize the result of Law and Reading that the weak r
     \antiloday{w}^R_i \eqdef h^S_i\cdot v^S_i,
   \]
   where~$S$ and~$T$ are the source and target trees of the rectangulation~$R$, and $h^T_i$ and $v^T_i$ denote the number of leaves in the horizontal and vertical subtrees of $i$ in~$T$,
-  \item the intersection of the hyperplane defined by~$\sum_{i \in [n]} x_i = 0$ with the halfspaces defined by~$\sum_{i \in S} x_i \le \#\set{I \text{ interval of } [n]}{I \not\subseteq S \text{ and } I \not\subseteq [n] \ssm S}$ for all subsets~$\varnothing \ne S \subsetneq [n]$.
+  \item the intersection of the hyperplane defined by~$\sum_{i \in [n]} x_i = 0$ with the halfspaces defined by \linebreak $\sum_{i \in S} x_i \le \#\set{I \text{ interval of } [n]}{I \not\subseteq S \text{ and } I \not\subseteq [n] \ssm S}$ for all subsets~$\varnothing \ne S \subsetneq [n]$.
   \end{enumerate}
 \end{theorem}
 
-For instance, the weak rectangulotope~$\WRP(4)$ is illustrated in \cref{fig:weakRectangulotope}.
+\begin{example}
+The weak rectangulotope~$\WRP(4)$ is illustrated in \cref{fig:weakRectangulotope}.
 The coordinates of the vertex corresponding to each weak rectangulation are gathered in \cref{tab:verticesWeakRectangulotope}.
 The facet inequalities corresponding to each nonempty proper subset of~$[n]$ are gathered in \cref{tab:facetsWeakRectangulotope}.
 
@@ -550,6 +551,7 @@ The facet inequalities corresponding to each nonempty proper subset of~$[n]$ are
 	\caption{The facets of the weak rectangulotope~$\WRP(4)$ of \cref{fig:weakRectangulotope}.}
 	\label{tab:facetsWeakRectangulotope}
 \end{table}
+\end{example}
 
 \begin{example}
   The vertex of~$\WRP (16)$ corresponding to the weak rectangulation of \cref{fig:weakRectangulation} is
@@ -557,7 +559,11 @@ The facet inequalities corresponding to each nonempty proper subset of~$[n]$ are
   (-3, 0, 26, 2, -9, 5, -69, -4, 17, 0, -8, 59, 2, -20, 0, 2).
   \]
   For instance, the $4$th coordinate is $h^T_4 \cdot v^T_4 - h^S_4 \cdot v^S_4 = 1 \cdot 5 - 1 \cdot 3 = 2$.
-  \vincent{give also a relevant example of facet...}
+  The facet of~$\WRP (16)$ corresponding to the subset~$\{3,4,7,8,9,10,14\}$ is given by the inequality
+  \[
+  x_3 + x_4 + x_7 + x_8 + x_9 + x_{10} + x_{14} \le ???
+  \]
+  \vincent{Compute and check...}
 \end{example}
 
 %%%%%%%%%%%%%
@@ -594,13 +600,14 @@ We also use the Iverson bracket $\llbracket \varphi\rrbracket$, which is equal t
   \item $h^T_i$ and $v^T_i$ denote the number of leaves in the horizontal and vertical subtrees of $i$ in~$T$,
   \item $ch^{T,S}_{i,j}$ (resp.~$cv^{T,S}_{i,j}$) denote the number of common leaves of the horizontal (resp.~vertical) subtree of $i$ in $T$ and the horizontal (resp.~vertical) subtree of $j$ in $S$,
   \end{itemize}
-  \item the intersection of the hyperplane defined by~$\sum_{i \in [n]} x_i = 0$ with the halfspaces defined by~$\sum_{i \in S} x_i \le \#\set{I,J}{I \not\subseteq S \text{ and } J \not\subseteq [n] \ssm S} + \#\set{I,J}{I \not\subseteq [n] \ssm S \text{ and } J \not\subseteq S}$ for all subsets~$\varnothing \ne S \subsetneq [n]$, where~$I,J$ denote nonempty and consecutive intervals of~$[n]$.
+  \item the intersection of the hyperplane defined by~$\sum_{i \in [n]} x_i = 0$ with the halfspaces defined by \linebreak $\sum_{i \in S} x_i \le \#\set{I,J}{I \not\subseteq S \text{ and } J \not\subseteq [n] \ssm S} + \#\set{I,J}{I \not\subseteq [n] \ssm S \text{ and } J \not\subseteq S}$ for all subsets~$\varnothing \ne S \subsetneq [n]$, where~$I,J$ denote nonempty and consecutive intervals of~$[n]$.
   \end{enumerate}
 \end{theorem}
 
 % jean:{Is there better way to write this down/compute? Here we do not take advantage of the fact that at most one of the two factors $\yin{w}_{i,j}$ and $\yang{w}_{i,j}$ is nonzero.}
 
-For instance, the strong rectangulotope~$\SRP(4)$ is illustrated in \cref{fig:strongRectangulotope}.
+\begin{example}
+The strong rectangulotope~$\SRP(4)$ is illustrated in \cref{fig:strongRectangulotope}.
 The coordinates of the vertex corresponding to each strong rectangulation are gathered in \cref{tab:verticesStrongRectangulotope}.
 The facet inequalities corresponding to each nonempty proper subset of~$[n]$ are gathered in \cref{tab:facetsStrongRectangulotope}.
 
@@ -708,6 +715,7 @@ The facet inequalities corresponding to each nonempty proper subset of~$[n]$ are
 	\caption{The facets of the strong rectangulotope~$\SRP(4)$ of \cref{fig:strongRectangulotope}.}
 	\label{tab:facetsStrongRectangulotope}
 \end{table}
+\end{example}
 
 \begin{example}
   The vertex of~$\SRP (16)$ corresponding to the strong rectangulation of \cref{fig:strongRectangulation} is
@@ -715,7 +723,12 @@ The facet inequalities corresponding to each nonempty proper subset of~$[n]$ are
   (-41, 5, 262, 24, -110, 50, -525, -50, 184, 3, -88, 450, 35, -221, -5, 27).
   \]
   For instance, the contribution of~$\b{e}_5 - \b{e}_7$ is ...
-  \vincent{give also a relevant example of facet...}
+  \vincent{Compute and check...}
+  The facet of~$\SRP (16)$ corresponding to the subset~$\{3,4,7,8,9,10,14\}$ is given by the inequality
+  \[
+  x_3 + x_4 + x_7 + x_8 + x_9 + x_{10} + x_{14} \le ???
+  \]
+  \vincent{Compute and check...}
 \end{example}
 
 We think of the formula of \cref{thm:strongRectangulotope}\,(i) as the analogue of J.-L.-Loday's product formula of \cref{thm:loday}\,(i) for the coordinates of the vertices of the associahedron.
