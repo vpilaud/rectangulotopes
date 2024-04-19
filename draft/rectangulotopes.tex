@@ -1,7 +1,7 @@
 \documentclass{amsart}
 
 \usepackage[T1]{fontenc}
-\usepackage{enumerate, amsmath, amsfonts, amssymb, amsthm, mathrsfs, wasysym, graphics, graphicx, xcolor, url, hyperref, hypcap, shuffle, xargs, multicol, overpic, pdflscape, multirow, hvfloat, minibox, accents, array, multido, xifthen, a4wide, ae, aecompl, blkarray, pifont, mathtools, etoolbox, dsfont, verbatim, stackrel, stmaryrd}
+\usepackage{enumerate, amsmath, amsfonts, amssymb, amsthm, mathrsfs, wasysym, graphics, graphicx, xcolor, url, hyperref, hypcap, shuffle, xargs, multicol, overpic, pdflscape, multirow, hvfloat, minibox, accents, array, multido, xifthen, a4wide, ae, aecompl, blkarray, pifont, mathtools, etoolbox, dsfont, verbatim, stackrel, stmaryrd, subcaption}
 \usepackage{marginnote}
 \hypersetup{colorlinks=true, citecolor=darkblue, linkcolor=darkblue}
 \usepackage[all]{xy}
@@ -252,20 +252,36 @@ See \cref{fig:quotientopes}\,(right) for an illustration when~$n = 4$.
 
 \begin{theorem}
   \label{thm:loday}
-  The associahedron is realized by the polytope~$\Asso (n) \subset \R^n$ defined equivalently as
+  % The associahedron is realized by the polytope~$\Asso (n) \subset \R^n$ defined equivalently as
+    The associahedron $\Asso (n)$ is realized by:
   \begin{enumerate}[(i)]
-  \item the convex hull of the points~$\sum_{i\in [n]} \ell^T_i\cdot r^T_i \cdot \b{e}_i$ for all binary trees~$T$ with $n$ internal nodes, where $\ell^T_i$ and $r^T_i$ denote the number of leaves in the left and right subtrees of $i$ in $T$, see~\cite{MR2108555},
-  \item the intersection of the hyperplane defined by~$\sum_{i \in [n]} x_i = \binom{n+1}{2}$ with the halfspaces defined by~$\sum_{i \in I} x_i \le \#\set{J \text{ interval of } [n]}{I \cap J \ne \varnothing}$ for all intervals~$\varnothing \ne I \subsetneq [n]$, see~\cite{ShniderSternberg}.
+  \item the convex hull of the points
+    \[
+    \sum_{i\in [n]} \ell^T_i\cdot r^T_i \cdot \b{e}_i
+    \]
+    for all binary trees~$T$ with $n$ internal nodes, where $\ell^T_i$ and $r^T_i$ denote the number of leaves in the left and right subtrees of $i$ in $T$, see~\cite{MR2108555},
+  \item the intersection of the hyperplane defined by $\sum_{i \in [n]} x_i = \binom{n+1}{2}$ with the halfspaces defined by
+    \[
+    \sum_{i \in I} x_i \le \#\set{J \text{ interval of } [n]}{I \cap J \ne \varnothing}
+    \]
+    for all intervals~$\varnothing \ne I \subsetneq [n]$, see~\cite{ShniderSternberg}.
   \end{enumerate}
 \end{theorem}
 
-A natural object associated with the associahedron is the \defn{Tamari lattice}, the cover graph of which is isomorphic to the skeleton of the associahedron~\cite{MR0146227,MR3235205}.
+A natural object associated with the associahedron is the \defn{Tamari lattice}, whose cover graph is isomorphic to the skeleton of the associahedron~\cite{MR0146227,MR3235205}.
 The Tamari lattice is known to be the quotient of the weak Bruhat order by a \defn{lattice congruence} called the \defn{sylvester congruence}~\cite{MR1654173,MR2142078}.
 Answering a question of N.~Reading~\cite{MR2142177}, V.~Pilaud and F.~Santos~\cite{MR3964495} proved that with \emph{every} lattice congruence of the weak Bruhat order, one can associate a polytope whose skeleton is the cover graph of the lattice quotient, and more precisely whose normal fan is the \defn{quotient fan} defined by gluing the cones of the \defn{braid fan} (the type $A$ Coxeter arrangement) that belong to the same congruence class.
 Those polytopes are deformed permutahedra that they called \defn{quotientopes}.
 Associahedra are therefore the quotientopes of the sylvester congruence of the weak Bruhat order whose classes are in bijection with triangulations.
 
 The goal of this paper is to describe the geometry of the quotientopes for two particular congruences of the weak Bruhat order whose classes are in bijection with equivalence classes of rectangulations, defined as decompositions of a square into rectangles.
+
+\begin{figure}
+	\capstart
+	\centerline{\includegraphics[scale=.6]{permutahedronLeft4} \qquad \raisebox{-.4cm}{\includegraphics[scale=.6]{associahedron4}}}
+	\caption{The permutahedron~$\Perm(4)$ (left) and the associahedron~$\Asso(4)$ (right). \cite[Fig.~1]{MR3964495} \&~\cite[Fig.~5]{MR4584712}}
+	\label{fig:quotientopes}
+\end{figure}
 
 \subsection{Weak and strong rectangulations}
 
@@ -276,7 +292,7 @@ We define a \defn{rectangulation} of size $n$ as a decomposition of the square i
 The \defn{segments} of a rectangulation are the inclusionwise maximal line segments composed of edges of the rectangles, excluding the edges of the decomposed square.
 We suppose throughout that no four rectangles have a common vertex, hence that the rectangulations are \defn{generic} in that sense.
 
-In order to focus on the combinatorial structure of a rectangulation, we recall two equivalence relations between rectangulations~\cite{??}.
+In order to focus on the combinatorial structure of a rectangulation, we recall two equivalence relations between rectangulations (see for instance~\cite{ACFF24} and references therein).
 We say that a rectangle~$r$ is \defn{above} another rectangle~$s$ (and~$s$ is \defn{below}~$r$) if either the bottom edge of~$r$ lies in the same segment as the top edge of~$s$, or if~$r$ is above another rectangle~$t$ that is above~$s$.
 We define \defn{on the left of} and \defn{on the right of} similarly.
 Two rectangulations are said to be \defn{weakly equivalent} if there exists a bijection between their rectangles that preserves the above-below and left-right relations between the rectangles.
@@ -288,12 +304,13 @@ We will naturally refer to strong equivalence classes of rectangulations as \def
 In order to make sense of these definitions, it is useful to consider \defn{wall slides} in a rectangulation: the local changes consisting of shifting a horizontal segment vertically, or a vertical segment horizontally, while extending or shortening the incident segments accordingly.
 Performing a wall slide in a rectangulation $R$ leads to a rectangulation that is always weakly equivalent to $R$.
 However, if the wall slide changes the adjacency relation between the rectangles, then the resulting rectangulation is not strongly equivalent to $R$ anymore.
-This is illustrated in \cref{fig:rectequiv}.
-A \defn{diagonal rectangulation} is a rectangulation in which every rectangle intersects the top-left to bottom-right diagonal of the square, see \cref{fig:weakRectangulation}.
+A \defn{diagonal rectangulation} is a rectangulation in which every rectangle intersects the top-left to bottom-right diagonal of the square.
+Examples of rectangulations are given in \cref{fig:rectequiv}.
 It is simple to check that every weak rectangulation has a diagonal representative, hence weak rectangulations can also be thought of as diagonal rectangulations.
 
 \begin{figure}
-	\caption{Weak and strong equivalence between rectangulations.}
+  \includegraphics[width=.7\textwidth]{rectangulations.pdf}
+	\caption{Three rectangulations. All three rectangulations are weakly equivalent, but only the first two are strongly equivalent. Only the third one is diagonal.}
 	\label{fig:rectequiv}
 \end{figure}
 
@@ -306,29 +323,26 @@ Its classes are in bijection with weak rectangulations, but also with \defn{Baxt
 The corresponding quotientopes will be referred to as the \defn{weak rectangulotopes} and denoted by $\WRP(n)$.
 For~$n = 4$, the weak rectangulation lattice is represented in \cref{fig:weakRectangulationLattice} and the weak rectangulotope is represented in \cref{fig:weakRectangulotope}.
 
-\begin{figure}
-	\centerline{\includegraphics[scale=1.05]{weakRectangulationLattice}}
-	\caption{The weak rectangulation lattice.}
-	\label{fig:weakRectangulationLattice}
-\end{figure}
-
-\begin{figure}
-	\centerline{\includegraphics[scale=1.05]{weakRectangulotopeLabeled}}
-	\caption{The strong rectangulotope~$\WRP(4)$.}
-        \label{fig:weakRectangulotope}
-\end{figure}
-
 The \defn{strong rectangulation congruence} was introduced by N.~Reading~\cite{MR2864445}, revisited in~\cite[Thm.~1.2 \& Exm.~4.11]{Reading-arcDiagrams} in terms of arc diagrams, and studied more recently by E.~Meehan~\cite{MR3697823}, and A.~Asinowski, J.~Cardinal, S.~Felsner, and É.~Fusy~\cite{ACFF24}.
 Its classes are in bijection with strong rectangulations.
 The corresponding quotientopes will be referred to as the \defn{strong rectangulotopes} and denoted by~$\SRP(n)$.
 For~$n = 4$, the strong rectangulation lattice is represented in \cref{fig:strongRectangulationLattice} and the strong rectangulotope is represented in \cref{fig:strongRectangulotope}.
 
 \begin{figure}
+	\centerline{\includegraphics[scale=1.05]{weakRectangulationLattice}}
+	\caption{The weak rectangulation lattice.}
+	\label{fig:weakRectangulationLattice}
+\end{figure}
+\begin{figure}
+	\centerline{\includegraphics[scale=1.05]{weakRectangulotopeLabeled}}
+	\caption{The weak rectangulotope~$\WRP(4)$.}
+        \label{fig:weakRectangulotope}
+\end{figure}
+\begin{figure}
 	\centerline{\includegraphics[scale=1.05]{strongRectangulationLattice}}
 	\caption{The strong rectangulation lattice.}
 	\label{fig:strongRectangulationLattice}
 \end{figure}
-
 \begin{figure}
 	\centerline{\includegraphics[scale=1.05]{strongRectangulotopeLabeled}}
 	\caption{The strong rectangulotope~$\SRP(4)$.}
@@ -340,7 +354,7 @@ A flip is a local, reversible change in the structure of the rectangulation.
 Flips in rectangulations come in three flavors:
 \begin{itemize}
 \item \defn{Simple flips} replace a vertical segment incident to exactly two rectangles by a horizontal segment, and vice-versa,
-\item \defn{Pivoting operations} transform a pair of adjacent rectangles whose union is not a rectangle, changing a left-right pair into an above-below pair, and vice-versa,
+\item \defn{Pivoting flips} transform a pair of adjacent rectangles whose union is not a rectangle, changing a left-right pair into an above-below pair, and vice-versa,
 \item \defn{Wall slide flips} are wall slides that modify the adjacency of the rectangles, removing exactly one adjacency and adding exactly one. These flips are only relevant in strong rectangulations.
 \end{itemize}
 
@@ -350,7 +364,27 @@ Just like associahedra encode the rotation graphs on binary trees, the rectangul
 Namely, the skeleton of $\WRP(n)$ (resp.~of $\SRP(n)$) is isomorphic to the flip graph on weak (resp.~strong) rectangulations of size~$n$.
 
 \begin{figure}
-	\caption{Three types of flips between rectangulations.}
+  \begin{center}
+  \begin{subfigure}{0.3\textwidth}
+    \begin{center}
+    \includegraphics[page=2, scale=.5]{flipGraph.pdf}
+    \caption{Simple flips.}
+    \end{center}
+    \end{subfigure}
+  \begin{subfigure}{0.3\textwidth}
+    \begin{center}
+    \includegraphics[page=1, scale=.5]{flipGraph.pdf}
+    \caption{Pivoting flips.}
+    \end{center}
+  \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \begin{center}
+    \includegraphics[page=3, scale=.5]{flipGraph.pdf}
+    \caption{\label{fig:wallSlides}Wall slide flips.}
+    \end{center}
+    \end{subfigure}
+    \end{center}
+	\caption{The three types of flips between rectangulations. The flips are possible only if the grey areas do not intersect any segment of the rectangulation.}
 	\label{fig:flips}
 \end{figure}
 
@@ -365,7 +399,12 @@ We now give the necessary definitions for precisely stating these vertex and fac
 \subsection{Source and target trees of a rectangulation}
 \label{subsec:sourceTargetTrees}
 
-% jean:{Here only give the definitions allowing to state the results.}
+\begin{figure}
+	\centerline{\includegraphics[width=.5\textwidth]{strongRectangulation} \qquad \includegraphics[width=.5\textwidth]{strongRectangulationTrees}}
+	\caption{A rectangulation $R$ (left) and its pair of binary trees $S(R)$ and $T(R)$ (right). Example from \cite{ACFF24}.}
+        % The corresponding $2$-clumped permutation is $[7,5,14,8,1,6,15,11,4,10,16,2,9,13,3,12]$ and its inverse is $[5, 12, 15, 9, 2, 6, 1, 4, 13, 10, 8, 16, 14, 3, 7, 11]$.
+        \label{fig:strongRectangulation}
+\end{figure}
 
 \begin{figure}
 	\centerline{\includegraphics[width=.5\textwidth]{weakRectangulation} \qquad \includegraphics[width=.5\textwidth]{weakRectangulationTrees}}
@@ -374,23 +413,12 @@ We now give the necessary definitions for precisely stating these vertex and fac
 	\label{fig:weakRectangulation}
 \end{figure}
 
-\begin{figure}
-	\centerline{\includegraphics[width=.5\textwidth]{strongRectangulation} \qquad \includegraphics[width=.5\textwidth]{strongRectangulationTrees}}
-	\caption{A (non-diagonal) rectangulation (left) and its pair of intertwining binary trees (right). Example from \cite{ACFF24}.}
-        % The corresponding $2$-clumped permutation is $[7,5,14,8,1,6,15,11,4,10,16,2,9,13,3,12]$ and its inverse is $[5, 12, 15, 9, 2, 6, 1, 4, 13, 10, 8, 16, 14, 3, 7, 11]$.
-        \label{fig:strongRectangulation}
-\end{figure}
-
 Fix a rectangulation~$R$ of size~$n$, and consider the directed graph~$D(R)$ whose vertex set is the set of all vertices of~$R$, and whose edges are obtained as follows.
 For each rectangle~$r$ of~$R$, we include in~$D(R)$ four edges joining the vertices of~$r$, where the horizontal edges are oriented from left to right, and the vertical edges are oriented from bottom to top.
 Hence, the bottom left corner of~$r$ is its source~$s(r)$, while its top right corner is its target~$t(r)$.
 Note that since~$R$ is generic, the sources~$\set{s(r)}{r \in [n]}$ and the targets~$\set{t(r)}{r \in [n]}$ are disjoint.
 The \defn{source tree}~$S(R)$ (resp.~\defn{target tree}~$T(R)$) is the subgraph of~$D(R)$ induced by the sources~$\set{s(r)}{r \in [n]}$ (resp.~by the targets~$\set{t(r)}{r \in [n]}$).
-See \cref{fig:strongRectangulation}.
-
-\begin{lemma}
-The source tree~$S(R)$ (resp.~target tree~$T(R)$) is a binary tree, rooted at the bottom left (resp.~top right) corner of~$R$, and oriented from (resp.~towards) its root.
-\end{lemma}
+It is not difficult to check that the source tree~$S(R)$ (resp.~target tree~$T(R)$) is a binary tree, rooted at the bottom left (resp.~top right) corner of~$R$, and oriented from (resp.~towards) its root.
 
 \begin{comment}
 \begin{proof}
@@ -401,14 +429,13 @@ This tree is binary as each node has at most one vertical child and one horizont
 \end{proof}
 \end{comment}
 
-We complete each node of~$S(R)$ and~$T(R)$ with a vertical (resp.~horizontal) leaf if it has no vertical (resp.~horizontal) child, see \cref{fig:strongRectangulation}.
-If the rectangulation $R$ is diagonal, we retrieve the well-studied pair of twin binary trees~\cite{MR1417289,MR2914637}.
+We complete each node of~$S(R)$ and~$T(R)$ with a vertical (resp.~horizontal) leaf if it has no vertical (resp.~horizontal) child.
+An example is given in~\cref{fig:strongRectangulation}.
+If the rectangulation $R$ is diagonal, we retrieve the well-studied pair of twin binary trees~\cite{MR1417289,MR2914637}, see~\cref{fig:weakRectangulation}.
 Recall that the \defn{inorder labeling} of a binary tree~$T$ is the labeling of the nodes of~$T$ such that the label of each node~$t$ of~$T$ is larger than all labels in the left subtree of~$t$ and larger than all labels in the right subtree of~$t$.
-
-\begin{lemma}
+%\begin{lemma}
 For any rectangle~$r$ of~$R$, the inorder label of the source~$s(r)$ in~$S(R)$ coincides with the inorder label of the target~$t(r)$ in~$T(R)$.
-\end{lemma}
-
+%\end{lemma}
 This enables to unambiguously label the rectangles of~$R$ by the inorder.
 The resulting labeling coincides with the NW--SE labeling of~\cite{ACFF24}.
 From now on, the labels of the rectangles in a rectangulation are the inorder labels, and the two trees $T(R)$ and $S(R)$ are defined on the vertex set $[n]$ accordingly.
@@ -424,26 +451,28 @@ For the vertices, we provide a concise formula for the coordinates, that consist
 For the facets, we combine the right hand sides of two opposite associahedra to obtain those of the weak rectangulotopes.
 These two descriptions materialize the result of Law and Reading that the weak rectangulotopes are Minkowski sums of two opposite associahedra~\cite{MR2871762}.
 
-\Jean{We need to make it clear whether $\WRP (n)$ is the proposed realization or just the combinatorial type. I was thinking the latter. Then we can change the sentence ``The weak rectangulotope is realized by the polytope~$\WRP (n)$...'' by ``The weak rectangulotope $\WRP (n)$ is realized by:~''. Otherwise, refrain from using $\WRP (n)$ before here.}
-
 \begin{theorem}
-\label{thm:weakRectangulotope}
-  The weak rectangulotope is realized by the polytope~$\WRP (n) \subset \R^n\!$ defined equivalently~as
+  \label{thm:weakRectangulotope}
+  % Jean: I chose to denote the *abstract* polytope by WRP(n), hence changed the next sentence accordingly.
+%The weak rectangulotope is realized by the polytope~$\WRP (n) \subset \R^n\!$ defined equivalently~as
+The weak rectangulotope $\WRP (n)$ is realized by:
   \begin{enumerate}[(i)]
   \item the convex hull of the points
-  $\sum_{i\in [n]} (\loday{w}^R_i - \antiloday{w}^R_i)\cdot \b{e}_i$ for all weak rectangulations $R$ of size~$n$,
-  with
+    \[
+    \sum_{i\in [n]} (\loday{w}^R_i - \antiloday{w}^R_i)\cdot \b{e}_i
+    \]
+    for all weak rectangulations $R$ of size~$n$, with
   \[
-%  \begin{split}
-%    \loday{w}^R_i \eqdef & h(T, i)\cdot v(T,i) \\
-%    \antiloday{w}^R_i \eqdef & h(S, i)\cdot v(S,i),
-%  \end{split}
     \loday{w}^R_i \eqdef h^T_i\cdot v^T_i
     \qquad\text{and}\qquad
     \antiloday{w}^R_i \eqdef h^S_i\cdot v^S_i,
   \]
   where~$S$ and~$T$ are the source and target trees of the rectangulation~$R$, and $h^T_i$ and $v^T_i$ denote the number of leaves in the horizontal and vertical subtrees of $i$ in~$T$,
-  \item the intersection of the hyperplane defined by~$\sum_{i \in [n]} x_i = 0$ with the halfspaces defined by \linebreak $\sum_{i \in S} x_i \le \#\set{I \text{ interval of } [n]}{I \not\subseteq S \text{ and } I \not\subseteq [n] \ssm S}$ for all subsets~$\varnothing \ne S \subsetneq [n]$.
+\item the intersection of the hyperplane defined by~$\sum_{i \in [n]} x_i = 0$ with the halfspaces defined by
+  \[
+  \sum_{i \in S} x_i \le \#\set{I \text{ interval of } [n]}{I \not\subseteq S \text{ and } I \not\subseteq [n] \ssm S}
+  \]
+  for all subsets~$\varnothing \ne S \subsetneq [n]$.
   \end{enumerate}
 \end{theorem}
 
@@ -556,6 +585,7 @@ The facet inequalities corresponding to each nonempty proper subset of~$[n]$ are
 \end{table}
 \end{example}
 
+\begin{comment}
 \begin{example}
   The vertex of~$\WRP (16)$ corresponding to the weak rectangulation of \cref{fig:weakRectangulation} is
   \[
@@ -568,6 +598,7 @@ The facet inequalities corresponding to each nonempty proper subset of~$[n]$ are
   \]
   \vincent{Compute and check...}
 \end{example}
+\end{comment}
 
 %%%%%%%%%%%%%
 
@@ -581,7 +612,8 @@ We also use the Iverson bracket $\llbracket \varphi\rrbracket$, which is equal t
 
 \begin{theorem}
 \label{thm:strongRectangulotope}
-  The $(n-1)$-dimensional strong rectangulotope is realized by the polytope~$\SRP (n)$ defined equivalently as
+% The strong rectangulotope is realized by the polytope~$\SRP (n)$ defined equivalently as
+The strong rectangulotope~$\SRP (n)$ is realized by:
   \begin{enumerate}[(i)]
   \item convex hull of the points
   \[
@@ -589,10 +621,6 @@ We also use the Iverson bracket $\llbracket \varphi\rrbracket$, which is equal t
   \]
    for all strong rectangulations $R$ of size~$n$, with
   \[
-%  \begin{split}
-%    \yin{w}_{i,j} \eqdef & h(T, i) \cdot cv (T, S, i, j)\cdot h(S, j)\cdot \llbracket \neg i\backslash j \rrbracket \\% \text { if not } i\backslash j, \text{and } 0\text{ otherwise.} \\ % \neg i|j \text{ and } \neg \frac{\ j\ }i ] \\
-%    \yang{w}_{i,j} \eqdef & v(S, i) \cdot ch (S, T, i, j)\cdot v(T, j) \cdot \llbracket \neg j\backslash i \rrbracket,
-%  \end{split}
     \yin{w}^R_{i,j} \eqdef h^T_i \cdot cv^{T,S}_{i,j}\cdot h^S_ j\cdot \llbracket \neg \, i \, \backslash \, j \rrbracket
     \qquad\text{and}\qquad
     \yang{w}^R_{i,j} \eqdef v^S_i \cdot ch^{S,T}_{i,j}\cdot v^T_j \cdot \llbracket \neg \, j \, \backslash \, i \rrbracket,
@@ -603,7 +631,11 @@ We also use the Iverson bracket $\llbracket \varphi\rrbracket$, which is equal t
   \item $h^T_i$ and $v^T_i$ denote the number of leaves in the horizontal and vertical subtrees of $i$ in~$T$,
   \item $ch^{T,S}_{i,j}$ (resp.~$cv^{T,S}_{i,j}$) denote the number of common leaves of the horizontal (resp.~vertical) subtree of $i$ in $T$ and the horizontal (resp.~vertical) subtree of $j$ in $S$,
   \end{itemize}
-  \item the intersection of the hyperplane defined by~$\sum_{i \in [n]} x_i = 0$ with the halfspaces defined by \linebreak $\sum_{i \in S} x_i \le \#\set{I,J}{I \not\subseteq S \text{ and } J \not\subseteq [n] \ssm S} + \#\set{I,J}{I \not\subseteq [n] \ssm S \text{ and } J \not\subseteq S}$ for all subsets~$\varnothing \ne S \subsetneq [n]$, where~$I,J$ denote nonempty and consecutive intervals of~$[n]$.
+\item the intersection of the hyperplane defined by~$\sum_{i \in [n]} x_i = 0$ with the halfspaces defined by
+  \[
+  \sum_{i \in S} x_i \le \#\set{I,J}{I \not\subseteq S \text{ and } J \not\subseteq [n] \ssm S} + \#\set{I,J}{I \not\subseteq [n] \ssm S \text{ and } J \not\subseteq S}
+  \]
+  for all subsets~$\varnothing \ne S \subsetneq [n]$, where~$I,J$ denote nonempty and consecutive intervals of~$[n]$.
   \end{enumerate}
 \end{theorem}
 
@@ -720,6 +752,7 @@ The facet inequalities corresponding to each nonempty proper subset of~$[n]$ are
 \end{table}
 \end{example}
 
+\begin{comment}
 \begin{example}
   The vertex of~$\SRP (16)$ corresponding to the strong rectangulation of \cref{fig:strongRectangulation} is
   \[
@@ -733,6 +766,7 @@ The facet inequalities corresponding to each nonempty proper subset of~$[n]$ are
   \]
   \vincent{Compute and check...}
 \end{example}
+\end{comment}
 
 We think of the formula of \cref{thm:strongRectangulotope}\,(i) as the analogue of J.-L.-Loday's product formula of \cref{thm:loday}\,(i) for the coordinates of the vertices of the associahedron.
 We note however that our formula is quadratic in~$n$.
@@ -776,7 +810,7 @@ We refer to \cite{Reading-arcDiagrams, MR3645055, MR3645056, MR4584712} for deta
 
 Denote by~$\f{S}_n$ the set of permutations of~$[n]$.
 The \defn{inversion set} of~$\sigma \in \f{S}_n$ is~$\inv(\sigma) \eqdef \set{(\sigma_i, \sigma_j)}{1 \le i < j \le n \text{ and } \sigma_i > \sigma_j}$.
-The \defn{weak Bruhat order}\footnote{The weak Bruhat order is usually just referred to as the weak order~\cite{Humphrey, BjornerBrenti}. In this paper, we prefer to use weak Bruhat order to avoid any confusion with the weak poset defined on weak rectangulations.} is the lattice on the permutations of~$\f{S}_n$ defined by the inclusion of their inversion sets.
+The \defn{weak Bruhat order}\footnote{The weak Bruhat order is usually just referred to as the weak order~\cite{MR1066460, MR2133266}. In this paper, we prefer to use weak Bruhat order to avoid any confusion with the weak poset defined on weak rectangulations.} is the lattice on the permutations of~$\f{S}_n$ defined by the inclusion of their inversion sets.
 See \cref{fig:sylvesterCongruence}\,(left).
 Note that the cover relations in the weak Bruhat order are given by the transpositions of two adjacent letters.
 %The weak Bruhat order is known to be a congruence uniform lattice~\cite{}.
@@ -816,7 +850,7 @@ See~\cite{Reading-arcDiagrams} for details.
 A \defn{lattice congruence} of the weak Bruhat order is an equivalence relation~$\equiv$ on~$\f{S}_n$ that respects the meet and join operations, \ie such that $x \equiv x'$ and~$y \equiv y'$ implies $x \meet y \, \equiv \, x' \meet y'$ and~$x \join y \, \equiv \, x' \join y'$.
 The \defn{lattice quotient}~$\f{S}_n/{\equiv}$ is the lattice on the congruence classes of~$\equiv$ where~$X \le Y$ if and only if there exist~$x \in X$ and~$y \in Y$ such that~$x \le y$, and~$X \meet Y$ (resp.~$X \join Y$) is the congruence class of~$x \meet y$ (resp.~$x \join y$) for any~$x \in X$~and~$y \in Y$.
 
-For instance, the sets of linear extensions of binary trees (labeled in inorder and oriented toward their roots) are the classes of the \defn{sylvester congruence}~\cite{HivertNovelliThibon-binarySearchTrees}.
+For instance, the sets of linear extensions of binary trees (labeled in inorder and oriented toward their roots) are the classes of the \defn{sylvester congruence}~\cite{MR2142078}.
 See \cref{fig:sylvesterCongruence}\,(middle).
 The quotient of the weak Bruhat order by the sylvester congruence is the classical \defn{Tamari lattice}.
 See \cref{fig:sylvesterCongruence}\,(right).
@@ -871,7 +905,7 @@ The \defn{quotient fan} of a congruence~$\equiv$ of the weak Bruhat order is the
 By construction, the braid fan refines the quotient fan~$\c{F}_\equiv$, and the dual graph of the quotient fan~$\c{F}_\equiv$ is isomorphic to the cover graph of the quotient~$\f{S}_n/{\equiv}$.
 For instance, \cref{fig:fans}\,(right) represents the \defn{sylvester fan} (the quotient fan of the sylvester congruence of \cref{fig:sylvesterCongruence}\,(middle)) for~$n = 4$, whose dual graph is the cover graph of the Tamari lattice of \cref{fig:sylvesterCongruence}\,(right).
 
-It was shown in~\cite[Lem.~23]{AlbertinPilaudRitter} that the ray of the braid arrangement corresponding to a nonempty proper subset~$\varnothing \ne J \subsetneq [n]$ is preserved in the quotient fan~$\c{F}_\equiv$ if and only if the arc ideal~$\c{A}_\equiv$ contains the $|J|-1$ down arcs joining two consecutive elements of~$J$ and the~$n-|J|-1$ up arcs joining two consecutive elements of~$[n] \ssm J$.
+It was shown in~\cite[Lem.~23]{MR4328906} that the ray of the braid arrangement corresponding to a nonempty proper subset~$\varnothing \ne J \subsetneq [n]$ is preserved in the quotient fan~$\c{F}_\equiv$ if and only if the arc ideal~$\c{A}_\equiv$ contains the $|J|-1$ down arcs joining two consecutive elements of~$J$ and the~$n-|J|-1$ up arcs joining two consecutive elements of~$[n] \ssm J$.
 An immediate consequence is that all $2^n-2$ rays of the braid arrangement are preserved in the quotient fan~$\c{F}_\equiv$ if and only if the arc ideal~$\c{A}_\equiv$ contains all up arcs and all down arcs (in other words, if it is above the weak rectangulation congruence in the lattice of congruences of the weak Bruhat order).
 
 %%%%%%%%%%%%%
@@ -879,16 +913,9 @@ An immediate consequence is that all $2^n-2$ rays of the braid arrangement are p
 \subsection{Quotientopes and shard polytopes}
 \label{subsec:quotientopes}
 
-\begin{figure}
-	\capstart
-	\centerline{\includegraphics[scale=.6]{permutahedronLeft4} \qquad \raisebox{-.4cm}{\includegraphics[scale=.6]{associahedron4}}}
-	\caption{The permutahedron~$\Perm(4)$ (left) and the associahedron~$\Asso(4)$ (right). \cite[Fig.~1]{MR3964495} \&~\cite[Fig.~5]{MR4584712}}
-	\label{fig:quotientopes}
-\end{figure}
-
 A \defn{quotientope} for a lattice congruence~$\equiv$ of the weak Bruhat order is a polytope whose normal fan is the quotient fan~$\c{F}_\equiv$.
 In particular, the skeleton of a quotientope is isomorphic to the cover graph of the quotient~$\f{S}_n/{\equiv}$.
-For instance, the associahedron~$\Asso(n)$ (\cref{fig:quotientopes}\,(right) when~$n = 4$)  is a quotientope for the sylvester congruence (\cref{fig:sylvesterCongruence}\,(middle) when~$n = 4$), its normal fan is the sylvester fan (\cref{fig:fans}\,(right) when~$n = 4$), and its skeleton is the cover graph of the Tamari lattice (\cref{fig:sylvesterCongruence}\,(right) when~$n = 4$).
+For instance, the associahedron~$\Asso(n)$ (\cref{fig:quotientopes}\,(right) when~$n = 4$) is a quotientope for the sylvester congruence (\cref{fig:sylvesterCongruence}\,(middle) when~$n = 4$), its normal fan is the sylvester fan (\cref{fig:fans}\,(right) when~$n = 4$), and its skeleton is the cover graph of the Tamari lattice (\cref{fig:sylvesterCongruence}\,(right) when~$n = 4$).
 The existence of quotientopes was first proved in \cite{MR3964495} and later better understood in~\cite{MR4584712} using Minkowski sums of shard polytopes.
 
 The \defn{Minkowski sum} of two polytopes~$\polytope{P}, \polytope{Q} \subset \R^n$ is~$\polytope{P} + \polytope{Q} \eqdef \set{\b{p} + \b{q}}{\b{p} \in \polytope{P} \text{ and } \b{q} \in \polytope{Q}} \subset \R^n$.
@@ -900,13 +927,14 @@ Consider an arc~$\alpha \eqdef (a, b, A, B)$ on~$[n]$.
 An \defn{$\alpha$-alternating matching} is a sequence~$a \le i_1 < j_1 < i_2 < j_2 < \dots < i_q < j_q \le b$ such that~$i_p \in \{a\} \cup A$ and~$j_p \in \{b\} \cup B$ for all~$p \in [q]$.
 Its \defn{characteristic vector} is~$\sum_{p \in [q]} \b{e}_{i_p} - \b{e}_{j_p}$.
 The \defn{shard polytope} of~$\alpha$ is the convex hull~$\SP(\alpha)$ of the characteristic vectors of all $\alpha$-alternating matchings.
+We refer to Figure~\ref{fig:shardPolytopes} for an illustration of this definition.
 It was shown in~\cite{MR4584712} that any Minkowski sum of positive scalings of the shard polytopes~$\SP(\alpha)$ for all arcs~$\alpha$ in the arc ideal~$\c{A}_\equiv$ is a quotientope for~$\equiv$.
 
 \begin{figure}
 	\capstart
 	\centerline{\includegraphics[scale=1]{shardPolytopes}}
 	\caption{The shard polytopes of the up arc~$(1, 4, \{2, 3\}, \varnothing)$, down arc~$(1, 4, \varnothing, \{2, 3\})$, yin arc~$(1, 4, \{2\}, \{3\})$, and yang arc~$(1, 4, \{3\}, \{2\})$. The vertices of the shard polytope of an arc~$\alpha \eqdef (a, b, A, B)$ are labeled by the corresponding $\alpha$-alternating matchings, where we use solid dots~$\bullet$ for elements in~$\{a\} \cup A$ and hollow dots~$\circ$ for elements in~$B \cup \{b\}$. The corresponding vertex coordinates are directly read replacing~$\bullet$ by~$1$ and~$\circ$ by~$-1$. For instance, the vertex labeled~${\bullet \cdot \cdot \,\circ}$ has coordinates~$(1,0,0,-1)$. Adapted from~\cite[Fig.~10]{MR4584712}.}
-	\label{fig:shardPolytiopes}
+	\label{fig:shardPolytopes}
 \end{figure}
 
 A set function $f:2^{[n]}\mapsto \R$ is said to be \defn{submodular} when $f(X \cup Y) + f(X \cap Y) \le f(X) + f(Y)$ for any~$X, Y \subseteq [n]$.
@@ -943,6 +971,10 @@ We define the set~$\mathcal{L}(P_w(R))$ as the linear extensions of the weak pos
 \mathcal{L}(P_w(R)) \eqdef \bigset{\pi\in\f{S}_n }{ i\prec_w j\implies \pi^{-1}(i) < \pi^{-1}(j)}.
 \]
 
+We recall that \emph{Baxter permutations} are permutations avoiding the vincular pattern $2\underline{41}3$ and $3\underline{14}2$, where the underlining indicates that the symbols must appear contiguously in the permutation.
+Similarly, \defn{twisted Baxter permutations} are permutations avoiding the patterns $2\underline{41}3$ and $3\underline{41}2$, and \defn{co-twisted Baxter permutations} are permutations avoiding the patterns $2\underline{14}3$ and $3\underline{14}2$.
+These permutation families are central in the theory of rectangulations and appear in many other contexts~\cite{MR2763051}.
+
 \begin{theorem}[\cite{MR2871762}]
   The subsets $\mathcal{L}(P_w(R))$ of $\f{S}_n$, for all rectangulations $R$ of size~$n$, 
   are equivalence classes of a congruence relation $\weakeq$ on the weak Bruhat order on $\f{S}_n$.
@@ -978,8 +1010,8 @@ Note that the basic arc~$(i, i+1, \varnothing, \varnothing)$ is both an up and d
 \subsection{Shard polytopes of up and down arcs}
 \label{subsec:upDownShardPolytopes}
 
-Therefore, the quotientope is realized by a Minkowski sum of the shard polytopes of the up arcs and the down arcs.
-These quotientopes are very basic ones.
+From the results of section~\ref{subsec:quotientopes}, the quotientope is realized by a Minkowski sum of the shard polytopes of the up arcs and the down arcs.
+These quotientopes are simplices and anti-simplices (see Figure~\ref{fig:shardPolytopes}, left).
 
 \begin{lemma}
   \label{lem:lodaysp}
@@ -1004,7 +1036,8 @@ These quotientopes are very basic ones.
 \label{subsec:submodularWeakRectangulotopes}
 
 The description of the weak rectangulotope~$\WRP(n)$ as a Minkowski sum in \cref{lem:weakMinkowski} allows us to easily compute the corresponding submodular function.
-\vincent{Say here that all rays are preserved}
+The arc ideal of the weak rectangulation congruence contains exactly all up arcs and all down arcs, hence from the result of~\cite{MR4328906} mentioned in section~\ref{subsec:quotientFans}, all $2^n-2$ rays of the braid fan are preserved in the fan of the weak rectangulotope.
+This implies that every nonempty proper subset will define a facet of the weak rectangulotope, and the description of the weak rectangulotope by its submodular function is actually an irredundant facet description.
 
 \begin{lemma}
   The weak rectangulotope $\WRP(n)$ is realized by the following submodular function:
@@ -1044,7 +1077,7 @@ We therefore need to understand which vertices of the translates of the shard po
 \begin{lemma}
   \label{lem:lodaymax}
   Let $\pi \in \f{S}_n$ and $I$ be an interval of~$[n]$ of size at least~$2$.
-  The unique vertex of the up shard polytope~$\SP(\upArc{I})$ (resp.~of the translated down shard polytope~$\SP(\downArc{I})$) that is extreme with respect to the direction $\pi^{-1}$ is $\b{e}_i$, where $i \eqdef \arg\max_{j\in I} \pi^{-1}(j)$ (resp.~where~$i \eqdef \arg\min_{j\in I} \pi^{-1}(j)$).
+  The unique vertex of the up shard polytope~$\SP(\upArc{I})$ (resp.~of the translated down shard polytope~$\SP(\downArc{I})$) that is extreme with respect to the direction $\pi^{-1}$ is $\b{e}_i$ (resp.~$-\b{e}_i$), where $i$ is the maximum (resp. the minimum) of $\pi^{-1}$ in $I$.
 \end{lemma}
 
 Note that this extremal vertex should only depend on the weak rectangulation congruence class of $\pi$.
@@ -1055,7 +1088,11 @@ $\pi
 $\arg\max_{j\in I} \pi^{-1}(j)=\arg\max_{j\in I} \sigma^{-1}(j)$, and
 $\arg\min_{j\in I} \pi^{-1}(j)=\arg\min_{j\in I} \sigma^{-1}(j)$.
 
+The proof of the following lemma actually follows from Loday's realization in Theorem~\ref{thm:Loday}.
+For the sake of completeness, and because we will reuse the same reasoning in the next section, we give an elementary proof.
+
 \begin{lemma}
+  \label{lem:weakCoord}
   Let $R$ be a rectangulation of size~$n$, with source and target trees~$S$ and~$T$, and let $\b{p}(R)$ the vertex of $\WRP(n)$ associated with $R$.
   Given $i\in [n]$, the number of up arcs~$\upArc{I}$ such that $\b{e}_i$ is the extremal vertex of $\SP(\upArc{I})$ contributing to~$\b{p}(R)$ is
   \[
@@ -1063,6 +1100,25 @@ $\arg\min_{j\in I} \pi^{-1}(j)=\arg\min_{j\in I} \sigma^{-1}(j)$.
   \]
    where $h^T_i$ and $v^T_i$ denote respectively the number of leaves in the horizontal and vertical subtrees of $i$ in the tree $T$.
 \end{lemma}
+\begin{proof}
+  Let $\pi$ be any permutation in $\mathcal{L}(P_w(R))$.
+  From \cref{lem:lodaymax}, for an $i\in [n]$, a shard polytope $\SP(\upArc{I})$ contributes to $\b{e}_i$ only if $i$ is the index of the maximum of $\pi^{-1}$ in $I$.
+  We claim that the number of intervals $I$ satisfying this condition is the given product.
+
+  We first show that the number of choices for the left endpoint of $I$ is equal to the number $h^T_i$ of leaves in the horizontal subtree of $i$ in $T(R)$.
+  Each such leaf determines a left endpoint for $I$, defined as the node of the tree that follows it in an inorder traversal.
+  Any such node $\ell$ either lies in the horizontal subtree of $i$, or is $i$ itself.
+  Since the weak poset extends the order induced by $T(R)$, we have that either $\ell=i$ or $\ell\prec_s i$, hence $\pi^{-1}(\ell)\leq \pi^{-1}(i)$.
+  Therefore, each such choice of left endpoint for $I$ does not contradict the fact that $i$ is the index of the maximum of $\pi^{-1}$ in $I$.
+  Now consider the leaf of $T(R)$ that is immediately left of the leftmost leaf of the horizontal subtree of $i$.
+  This leaf is associated with the node $\ell$ that comes next in inorder traversal, which must be an ancestor of $i$ in $T(R)$.
+  Therefore, we must have $\ell\succ_s i$, and $\pi^{-1}(\ell) > \pi^{-1}(i)$, and we cannot extend $I$ past this index on the left.
+  This shows that there are exactly $h^T_i$ choices, and not more, for the choice of the left endpoint of $I$.
+  A symmetric argument shows that there are exactly $v^{T}_i$ choices for the right endpoint of $I$.
+\end{proof}
+
+A symmetric analogue of Lemma~\ref{lem:weakCoord} holds for down shard polytopes, where the product contributes to $-\b{e}_i$ instead of $\b{e}_i$.
+This proves Theorem~\ref{thm:weakRectangulotope}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1080,9 +1136,8 @@ Given a rectangulation $R$, we define the \defn{strong poset} $P_s(R)=([n],\prec
 \item The \defn{special relation} $([n],\btri)$ of $R$, in which $a\btri b$ if the two rectangles with inorder labels $a$ and $b$ are such that either (i) the right side of $b$ and the left side of $a$ lie on the same vertical segment, and the bottom-right corner of $b$ is above the top-left corner of $a$, or (ii) the top side of $b$ and the bottom side of rectangle $a$ lie on the same horizontal segment, and the top-left corner of $b$ lies on the right of the bottom-right corner of  $a$.
 \end{enumerate}
 The strong poset is the transitive closure of the union of the two relations $\tri$ and $\btri$. 
-The strong poset is a two-dimensional lattice, whose minimum is the root of~$S(R)$ and whose maximum is the root of~$T(R)$.
+The strong poset is a two-dimensional lattice, whose minimum is the root of~$S(R)$ and whose maximum is the root of~$T(R)$. The following statement will be used later.
 
-We will use the following statement.
 \begin{lemma}
   \label{lem:sextw}
   The strong poset $P_s(R)$ of a rectangulation $R$ is an extension of its weak poset $P_w(R)$.
@@ -1090,10 +1145,11 @@ We will use the following statement.
 \begin{proof}
   Clearly, the strong poset is an extension of the adjacency poset $([n],\tri)$ of $R$, since it is obtained by adding pairs from the special relation.
   It remains to observe that the adjacency poset of $R$ is an extension of the weak poset of $R$.
-  For this, we consider the diagonal representative $D$ of the weak equivalence class of $R$, and recall that the weak poset of $R$ is the adjacency poset of $D$.
+  For this, we consider a diagonal representative $D$ of the weak equivalence class of $R$, and recall that the weak poset of $R$ is the adjacency poset of $D$.
   By definition, $R$ can be obtained from $D$ by a sequence of wall slides.
   Each wall slide in this sequence consists of either a horizontal segment being pulled down past another horizontal segment on its right, or a vertical segment being pushed right past another vertical segment below it.
-  Note that each of these we can only add new adjacencies, hence the adjacency poset of $R$ is always an extension of that of $D$. 
+  (These are the flips described in~\cref{fig:wallSlides}, performed in bottom to top order on the figure.) 
+  Note that each of these we can only add new pairs in the adjacency poset, hence the adjacency poset of $R$ is always an extension of that of $D$. 
 \end{proof}
 
 %%%%%%%%%%%%%
@@ -1104,6 +1160,10 @@ Let $\mathcal{L}(P_s)$ be the set of permutations of $\f{S}_n$ corresponding to 
 \[
 \mathcal{L}(P_s(R)) \eqdef \bigset{\pi\in\f{S}_n }{ i\prec_s j\implies \pi^{-1}(i) < \pi^{-1}(j)}.
 \]
+
+N. Reading~\cite{MR2864445} introduced \defn{2-clumped permutations}, defined as the permutations avoiding the vincular patterns $24\underline{51}3$, $42\underline{51}3$, $3\underline{51}24$, and $3\underline{51}42$.
+The \defn{co-2-clumped permutations} are defined similarly, as permutations avoiding the mirror images of these four patterns.
+He showed that 2-clumped permutations were in bijection with strong rectangulations.
 
 \begin{theorem}[\cite{MR2864445,ACFF24}]
   The subsets $\mathcal{L}(P_s(R))$ of $\f{S}_n$, for all rectangulations $R$ of size~$n$, are equivalence classes of a congruence relation $\strongeq$ on the weak Bruhat order on $\f{S}_n$.
@@ -1141,6 +1201,8 @@ Note that all up arcs and down arcs are both yin arcs and yang arcs.
 \subsection{Shard polytopes of yin and yang arcs}
 \label{subsec:yinYangShardPolytopes}
 
+The following lemmas are direct applications of the results from~\cite{MR4584712} given in section~\ref{subsec:quotientopes}.
+
 \begin{lemma}
   \label{lem:yinsp}
   The yin shard polytope $\SP(\yinArc{I}{J})$ is $\conv \{\b{0}\} \cup \set{\b{e}_i - \b{e}_j}{i \in I, \; j \in J}$.
@@ -1151,10 +1213,9 @@ Note that all up arcs and down arcs are both yin arcs and yang arcs.
   The yang shard polytope $\SP(\yangArc{I}{J})$ is a translate of~$\conv \{\b{0}\} \cup \set{\b{e}_j - \b{e}_i}{i \in I,\; j \in J}$.
 \end{lemma}
 
+We refer to Figure~\ref{fig:shardPolytopes} for examples of yin and yang shard polytopes.
 %Note that yin shard polytopes are translates of the up shard polytopes when $|J|=1$, and of the down shard polytopes when $|I|=1$.
 %Similarly, up and down shard polytopes are translates of some yang shard polytopes.
-
-The following is a direct application of the main result of A.~Padrol, V.~Pilaud, and J.~Ritter~\cite{MR4584712}.
 
 \begin{lemma}
   \label{lem:strongMinkowski}
@@ -1166,13 +1227,16 @@ Also note that since the up and down shard polytopes are, up to a translation, b
 This, again, does not change the combinatorial type of the polytope.
 
 \cref{lem:strongMinkowski} gives us an alternative description of $\SRP(n)$ as the sum of two opposite quotientopes defined by the \defn{yin} and \defn{yang congruences} respectively, where the yin congruence is defined by the arc ideal consisting of all yin arcs, and the yang congruence is defined by the yang arcs.
+It can be checked that the equivalence classes of these congruences are counted by \defn{semi-Baxter permutations}, defined as permutations avoiding $2\underline{41}3$, hence only one of the two forbidden Baxter patterns.
+These equivalence classes are in turn in bijection with rectangulations that avoid one of the two patterns defining diagonal rectangulations, see~\cite{ACFF24}.
 
 %%%%%%%%%%%%%
 
 \subsection{Submodular functions of strong rectangulotopes}
 \label{subsec:submodularStrongRectangulotopes}
 
-The submodular function corresponding to our realization of $\SRP(n)$ can be obtained as before by summing the functions defining the yin and yang shard polytopes in \cref{lem:yinsp,lem:yangsp}.
+From the results of section~\ref{subsec:quotientopes}, the submodular function corresponding to our realization of $\SRP(n)$ can be obtained as before by summing the functions defining the yin and yang shard polytopes in \cref{lem:yinsp,lem:yangsp}.
+Note again that all rays of the braid fan are preserved in the fan of the strong rectangulotope, hence our characterization of the strong rectangulotope is an irredundant facet description.
 
 \begin{lemma}
   The strong rectangulotope $\SRP(n)$ is realized by the following submodular function:
@@ -1222,21 +1286,24 @@ Note again that by definition, this extremal vertex should only depend on the st
   \[
     h^T_i \cdot cv^{T,S}_{i,j}\cdot h^S_j 
   \]
-  if $i\succ_s j$, and $0$ otherwise.
+  if $i\succ_s j$, and $0$ otherwise, where
+  \begin{itemize}
+  \item $h^T_i$ denotes the number of leaves in the horizontal and vertical subtrees of $i$ in~$T$,
+  \item $cv^{T,S}_{i,j}$ denotes the number of common leaves of the vertical subtree of $i$ in $T$ and the vertical subtree of $j$ in $S$.
+  \end{itemize}  
 \end{lemma}
 \begin{proof}
-  Let $\pi$ be any permutation corresponding to $R$, hence an element of $\mathcal{L}(P_s(R))$.
+  The proof is not much more involved that of Lemma~\ref{lem:weakCoord}.
+  Let $\pi$ be any permutation in $\mathcal{L}(P_s(R))$.
   From \cref{lem:yinminmax}, for a pair $i<j \in [n]$, there exists a yin arc $A$ whose shard polytope $\SP(A)$ contributes to $\b{e}_i-\b{e}_j$ only if $\pi^{-1}(i)>\pi^{-1}(j)$, hence if $i\succ_s j$.
   Provided this holds, the set of yin arcs $A$ such that $\SP(A)$ contributes to $\b{e}_i-\b{e}_j$ are defined by pairs of contiguous intervals $I,J$ of $[n]$ with $i\in I$, $j\in J$, such that $i$ is the index of the maximum of $\pi^{-1}$ in $I$, and $j$ is the index of the maximum of $\pi^{-1}$ in $J$.
-  We claim that the number of choices of the three endpoints defining such a pair of intervals $I$ and $J$ is the product of the
-  number $h^T_i$ of leaves of the horizontal subtree of $T(R)$ rooted at $i$, the number $cv^{T,S}_{i,j}$ of common leaves to the vertical subtrees of $T(R)$ and $S(R)$ rooted
-  at $i$ and $j$, respectively, and the number $h^S_j$ of leaves of the horizontal subtree of $S(R)$ rooted at $j$.
+  We claim that the number of choices of the three endpoints defining such a pair of intervals $I$ and $J$ is the given product.
 
   We first show that the number of choices for the left endpoint of $I$ is equal to the number $h^T_i$ of leaves in the horizontal subtree of $i$ in $T(R)$.
   Each such leaf determines a left endpoint for $I$, defined as the node of the tree that follows it in an inorder traversal.
   Any such node $\ell$ either lies in the horizontal subtree of $i$, or is $i$ itself.
   Since from Lemma~\ref{lem:sextw} the strong poset extends the order induced by $T(R)$, we have that either $\ell=i$ or $\ell\prec_s i$, hence $\pi^{-1}(\ell)\leq \pi^{-1}(i)$.
-  Therefore, each such choice of left endpoint for $I$ preserves the fact that $i$ is the index of the maximum of $\pi^{-1}$ in $I$.
+  Therefore, each such choice of left endpoint for $I$ does not contradict the fact that $i$ is the index of the maximum of $\pi^{-1}$ in $I$.
   Now consider the leaf of $T(R)$ that is immediately left of the leftmost leaf of the horizontal subtree of $i$.
   This leaf is associated with the node $\ell$ that comes next in inorder traversal, which must be an ancestor of $i$ in $T(R)$.
   Therefore, we must have $\ell\succ_s i$, and $\pi^{-1}(\ell) > \pi^{-1}(i)$, and we cannot extend $I$ past this index on the left.
@@ -1259,6 +1326,7 @@ It remains to observe that the only case where this product is nonzero and $i,j$
   \]
 \end{lemma}
 
+This concludes the proof of Theorem~\ref{thm:strongRectangulotope}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1270,10 +1338,11 @@ It remains to observe that the only case where this product is nonzero and $i,j$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
 
 \newpage
 \appendix
-\section{Material}
+\section{Unused Material}
 
 Properties/results we may need along the way.
 
@@ -1326,7 +1395,6 @@ The abscissa of~$v$ is then the number of rectangle on the left of~$p$ plus the 
 The ordinate of an horizontal segment~$h$ of~$R$ is defined symmetrically.
 }
 
-\begin{comment}
 \newpage
 \noindent
 \input{figures/rectangulations2.tikz}
