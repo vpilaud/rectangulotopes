@@ -1093,7 +1093,7 @@ For the sake of completeness, and because we will reuse the same reasoning in th
 
 \begin{lemma}
   \label{lem:weakCoord}
-  Let $R$ be a rectangulation of size~$n$, with source and target trees~$S$ and~$T$, and let $\b{p}(R)$ the vertex of $\WRP(n)$ associated with $R$.
+  Let $R$ be a rectangulation of size~$n$, with target tree~$T$, and let $\b{p}(R)$ the vertex of $\WRP(n)$ associated with $R$.
   Given $i\in [n]$, the number of up arcs~$\upArc{I}$ such that $\b{e}_i$ is the extremal vertex of $\SP(\upArc{I})$ contributing to~$\b{p}(R)$ is
   \[
   \loday{w}_i =  h^{T}_i\cdot v^{T}_i,
@@ -1105,19 +1105,19 @@ For the sake of completeness, and because we will reuse the same reasoning in th
   From \cref{lem:lodaymax}, for an $i\in [n]$, a shard polytope $\SP(\upArc{I})$ contributes to $\b{e}_i$ only if $i$ is the index of the maximum of $\pi^{-1}$ in $I$.
   We claim that the number of intervals $I$ satisfying this condition is the given product.
 
-  We first show that the number of choices for the left endpoint of $I$ is equal to the number $h^T_i$ of leaves in the horizontal subtree of $i$ in $T(R)$.
+  We first show that the number of choices for the left endpoint of $I$ is equal to the number $h^T_i$ of leaves in the horizontal subtree of $i$ in $T$.
   Each such leaf determines a left endpoint for $I$, defined as the node of the tree that follows it in an inorder traversal.
   Any such node $\ell$ either lies in the horizontal subtree of $i$, or is $i$ itself.
-  Since the weak poset extends the order induced by $T(R)$, we have that either $\ell=i$ or $\ell\prec_s i$, hence $\pi^{-1}(\ell)\leq \pi^{-1}(i)$.
+  Since the weak poset extends the order induced by $T$, we have that either $\ell=i$ or $\ell\prec_s i$, hence $\pi^{-1}(\ell)\leq \pi^{-1}(i)$.
   Therefore, each such choice of left endpoint for $I$ does not contradict the fact that $i$ is the index of the maximum of $\pi^{-1}$ in $I$.
-  Now consider the leaf of $T(R)$ that is immediately left of the leftmost leaf of the horizontal subtree of $i$.
-  This leaf is associated with the node $\ell$ that comes next in inorder traversal, which must be an ancestor of $i$ in $T(R)$.
+  Now consider the leaf of $T$ that is immediately left of the leftmost leaf of the horizontal subtree of $i$.
+  This leaf is associated with the node $\ell$ that comes next in inorder traversal, which must be an ancestor of $i$ in $T$.
   Therefore, we must have $\ell\succ_s i$, and $\pi^{-1}(\ell) > \pi^{-1}(i)$, and we cannot extend $I$ past this index on the left.
   This shows that there are exactly $h^T_i$ choices, and not more, for the choice of the left endpoint of $I$.
   A symmetric argument shows that there are exactly $v^{T}_i$ choices for the right endpoint of $I$.
 \end{proof}
 
-A symmetric analogue of Lemma~\ref{lem:weakCoord} holds for down shard polytopes, where the product contributes to $-\b{e}_i$ instead of $\b{e}_i$.
+A symmetric analogue of Lemma~\ref{lem:weakCoord} holds for down shard polytopes, where the product contributes to $-\b{e}_i$ instead of $\b{e}_i$, and we consider the tree $S(R)$ instead of the tree $T(R)$.
 This proves Theorem~\ref{thm:weakRectangulotope}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1299,19 +1299,19 @@ Note again that by definition, this extremal vertex should only depend on the st
   Provided this holds, the set of yin arcs $A$ such that $\SP(A)$ contributes to $\b{e}_i-\b{e}_j$ are defined by pairs of contiguous intervals $I,J$ of $[n]$ with $i\in I$, $j\in J$, such that $i$ is the index of the maximum of $\pi^{-1}$ in $I$, and $j$ is the index of the maximum of $\pi^{-1}$ in $J$.
   We claim that the number of choices of the three endpoints defining such a pair of intervals $I$ and $J$ is the given product.
 
-  We first show that the number of choices for the left endpoint of $I$ is equal to the number $h^T_i$ of leaves in the horizontal subtree of $i$ in $T(R)$.
+  We first show that the number of choices for the left endpoint of $I$ is equal to the number $h^T_i$ of leaves in the horizontal subtree of $i$ in $T$.
   Each such leaf determines a left endpoint for $I$, defined as the node of the tree that follows it in an inorder traversal.
   Any such node $\ell$ either lies in the horizontal subtree of $i$, or is $i$ itself.
-  Since from Lemma~\ref{lem:sextw} the strong poset extends the order induced by $T(R)$, we have that either $\ell=i$ or $\ell\prec_s i$, hence $\pi^{-1}(\ell)\leq \pi^{-1}(i)$.
+  Since from Lemma~\ref{lem:sextw} the strong poset extends the order induced by $T$, we have that either $\ell=i$ or $\ell\prec_s i$, hence $\pi^{-1}(\ell)\leq \pi^{-1}(i)$.
   Therefore, each such choice of left endpoint for $I$ does not contradict the fact that $i$ is the index of the maximum of $\pi^{-1}$ in $I$.
-  Now consider the leaf of $T(R)$ that is immediately left of the leftmost leaf of the horizontal subtree of $i$.
-  This leaf is associated with the node $\ell$ that comes next in inorder traversal, which must be an ancestor of $i$ in $T(R)$.
+  Now consider the leaf of $T$ that is immediately left of the leftmost leaf of the horizontal subtree of $i$.
+  This leaf is associated with the node $\ell$ that comes next in inorder traversal, which must be an ancestor of $i$ in $T$.
   Therefore, we must have $\ell\succ_s i$, and $\pi^{-1}(\ell) > \pi^{-1}(i)$, and we cannot extend $I$ past this index on the left.
   This shows that there are exactly $h^T_i$ choices, and not more, for the choice of the left endpoint of $I$.
 
   The rest of the formula comes by symmetric arguments.
-  First, the right endpoint of $I$ can only be chosen among the leaves of the vertical subtree of $T(R)$ rooted at $i$.
-  Then the same reasoning holds for the two endpoints of $J$, replacing $i$ by $j$ and $T(R)$ by $S(R)$.
+  First, the right endpoint of $I$ can only be chosen among the leaves of the vertical subtree of $T$ rooted at $i$.
+  Then the same reasoning holds for the two endpoints of $J$, replacing $i$ by $j$ and $T$ by $S$.
   Finally, since the right endpoint of $I$ and the left endpoint of $J$ must be consecutive, the selected leaves must correspond to the same pair of successive indices of $[n]$.
   These leaves are exactly the common leaves defined previously.
 \end{proof}
