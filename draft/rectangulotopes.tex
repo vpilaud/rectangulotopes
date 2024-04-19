@@ -146,6 +146,9 @@
 \newcommand{\horizontalPattern}{\smash{\raisebox{-.15cm}{\includegraphics[scale=.5]{horizontalPattern}}}} 
 % vertical pattern
 \newcommand{\verticalPattern}{\smash{\raisebox{-.25cm}{\includegraphics[scale=.5]{verticalPattern}}}} 
+% orders
+\newcommand{\tri}{\lhd}
+\newcommand{\btri}{\LHD}
 
 % Loday and anti-Loday accents (?)
 \makeatletter
@@ -236,7 +239,7 @@ An elementary yet striking example of this idea is the \defn{permutahedron} $\Pe
 It is the $(n-1)$-dimensional polytope defined either as the convex hull of the points $\sum_{i\in [n]} \sigma^{-1}(i)\cdot \b{e}_i$ for all permutations $\sigma \in \f{S}_n$, or as the intersection of the hyperplane of~$\R^n$ given by~$\sum_{i \in [n]} x_i = \smash{\binom{n+1}{2}}$ with the halfspaces given by~$\sum_{i \in I} x_i \ge \smash{\binom{|I|+1}{2}}$ for all nonempty proper subsets~$\varnothing \ne I \subsetneq [n]$.
 Its skeleton is the Cayley graph of the symmetric group for the generators consisting of adjacent transpositions.
 See \cref{fig:quotientopes}\,(left) for an illustration when~$n = 4$.
-The many generalizations and extensions of the permutahedra gave rise to a flourishing theory of \defn{deformed permutahedra}~\cite{MR2520477,Postnikov,MR4064768,MR4651496} (also call \defn{generalized permutahedra}, or \defn{polymatroids}).
+The many generalizations and extensions of the permutahedra gave rise to a flourishing theory of \defn{deformed permutahedra}~\cite{MR2520477,Postnikov,MR4064768,MR4651496} (also called \defn{generalized permutahedra}, or \defn{polymatroids}).
 
 Among those, the \defn{associahedron} is a classical, ubiquitous polytope, first defined combinatorially by D.~Tamari~\cite{T51} and by J.~Stasheff~\cite{S63} in a topological context.
 It has since then been identified as a fundamental object in many other areas of mathematics, including operads, cluster algebras, combinatorial Hopf algebras, and physics (see for instance the recent survey from V. Pilaud, F. Santos and G. Ziegler~\cite{PilaudSantosZiegler} and references therein).
@@ -906,18 +909,13 @@ It was shown in~\cite{MR4584712} that any Minkowski sum of positive scalings of 
 	\label{fig:shardPolytiopes}
 \end{figure}
 
+A set function $f:2^{[n]}\mapsto \R$ is said to be \defn{submodular} when $f(X \cup Y) + f(X \cap Y) \le f(X) + f(Y)$ for any~$X, Y \subseteq [n]$.
 By definition, any quotientope is a deformed permutahedron, and can thus be written as
   \[
   \Bigset{x \in \R^n}{ \sum_{i \in [n]} x_i = f([n]) \text{ and } \sum_{i \in S} x_i \le f(S) \text{ for all } \varnothing \ne S \subseteq [n]},
   \]
-where~$f$ is a \defn{submodular} set function $f:2^{[n]}\mapsto \R$ (\ie such that~$f(X \cup Y) + f(X \cap Y) \le f(X) + f(Y)$ for any~$X, Y \subseteq [n]$).
-Recall that the submodular function of a Minkowski sum of deformed permutahedra is just the sum of the submodular functions of the Minkowski summands.
-
-\begin{lemma}
-  \label{lem:submodsum}
-  \vincent{I would not make this one so visible in a proper thm environment.}
-  Consider a collection $\polytope{P}_1, \polytope{P}_2,\ldots ,\polytope{P}_k$ of deformed permutahedra defined by the submodular functions $f_1,f_2,\ldots ,f_k$. Then the Minkowski sum $\sum_i \polytope{P}_i$ is defined by the submodular function $f \eqdef \sum_i f_i$.
-\end{lemma}
+where~$f$ is a submodular set function.
+We will need the following simple result: Given a collection $\polytope{P}_1, \polytope{P}_2,\ldots ,\polytope{P}_k$ of deformed permutahedra defined by submodular set functions $f_1,f_2,\ldots ,f_k$, their Minkowski sum $\sum_i \polytope{P}_i$ is defined by the submodular function $f \eqdef \sum_i f_i$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -926,14 +924,20 @@ Recall that the submodular function of a Minkowski sum of deformed permutahedra 
 \label{sec:weakRectangulotopes}
 
 %%%%%%%%%%%%%
+\subsection{The weak poset}
+\label{subsec:weakPoset}
 
+Given a rectangulation~$R$, let us consider the source and target trees~$S(R)$ and~$T(R)$, and orient the horizontal edges from left to right, and the vertical edges from bottom to top.
+This defines two partial orders on $[n]$.
+The \defn{weak poset}~$P_w(R)=([n],\prec_w)$ of the rectangulation~$R$ is the transitive closure of the union of these two partial orders defined by~$S(R)$ and~$T(R)$.
+Equivalently, the weak poset can be defined by considering the adjacency graph of the rectangles in a diagonal representative of the weak equivalence class of $R$, orienting its edges from left to right and from bottom to top, and taking the transitive closure of this directed acyclic graph.
+These posets were characterized (and called Baxter posets) by E.~Meehan~\cite{MR4014603}.
+The weak poset is a two-dimensional lattice, whose minimum is the root of~$S(R)$ and whose maximum is the root of~$T(R)$.
+
+%%%%%%%%%%%%%
 \subsection{The weak rectangulation congruence}
 \label{subsec:weakRectangulationCongruence}
 
-Given a rectangulation~$R$, the source and target trees~$S(R)$ and~$T(R)$ define two partial orders on $[n]$ (the horizontal edges are oriented from left to right and the vertical edges are oriented from bottom to top).
-The \defn{weak poset}~$P_w(R)=([n],\prec_w)$ of the rectangulation~$R$ is the transitive closure of the union of the two partial orders defined by the intertwining binary trees~$S(R)$ and~$T(R)$.
-These posets were characterized (and called Baxter posets) by E.~Meehan~\cite{MR4014603}.
-The weak poset is a two-dimensional lattice, whose minimum is the root of~$S(R)$ and whose maximum is the root of~$T(R)$.
 We define the set~$\mathcal{L}(P_w(R))$ as the linear extensions of the weak poset:
 \[
 \mathcal{L}(P_w(R)) \eqdef \bigset{\pi\in\f{S}_n }{ i\prec_w j\implies \pi^{-1}(i) < \pi^{-1}(j)}.
@@ -959,8 +963,7 @@ The \defn{weak rectangulotope} $\WRP(n)$ is the quotientope of the weak rectangu
 \label{subsec:upDownArcs}
 
 \begin{lemma}
-The weak rectangulation congruence $
-\weakeq$ on $\f{S}_n$ is defined by the arc ideal composed of arcs that do not cross the horizontal line.
+The weak rectangulation congruence $\weakeq$ on $\f{S}_n$ is defined by the arc ideal composed of arcs that do not cross the horizontal line.
 \end{lemma}
 
 These arcs can be classified into two families of arcs: the up arcs and the down arcs.
@@ -1068,18 +1071,42 @@ $\arg\min_{j\in I} \pi^{-1}(j)=\arg\min_{j\in I} \sigma^{-1}(j)$.
 \label{sec:strongRectangulotopes}
 
 %%%%%%%%%%%%%
+\subsection{The strong poset}
+\label{subsec:strongPoset}
 
+Given a rectangulation $R$, we define the \defn{strong poset} $P_s(R)=([n],\prec_s)$ of $R$ by considering two relations on $[n]$~\cite{ACFF24}:
+\begin{enumerate}
+\item The \defn{adjacency poset} $([n],\tri)$ of $R$, defined by considering the adjacency graph of the rectangles of $R$ (identified by their inorder labels in $[n]$), orienting its edges from left to right and from bottom to top, and taking the transitive closure of this directed acyclic graph.
+\item The \defn{special relation} $([n],\btri)$ of $R$, in which $a\btri b$ if the two rectangles with inorder labels $a$ and $b$ are such that either (i) the right side of $b$ and the left side of $a$ lie on the same vertical segment, and the bottom-right corner of $b$ is above the top-left corner of $a$, or (ii) the top side of $b$ and the bottom side of rectangle $a$ lie on the same horizontal segment, and the top-left corner of $b$ lies on the right of the bottom-right corner of  $a$.
+\end{enumerate}
+The strong poset is the transitive closure of the union of the two relations $\tri$ and $\btri$. 
+The strong poset is a two-dimensional lattice, whose minimum is the root of~$S(R)$ and whose maximum is the root of~$T(R)$.
+
+We will use the following statement.
+\begin{lemma}
+  \label{lem:sextw}
+  The strong poset $P_s(R)$ of a rectangulation $R$ is an extension of its weak poset $P_w(R)$.
+\end{lemma}
+\begin{proof}
+  Clearly, the strong poset is an extension of the adjacency poset $([n],\tri)$ of $R$, since it is obtained by adding pairs from the special relation.
+  It remains to observe that the adjacency poset of $R$ is an extension of the weak poset of $R$.
+  For this, we consider the diagonal representative $D$ of the weak equivalence class of $R$, and recall that the weak poset of $R$ is the adjacency poset of $D$.
+  By definition, $R$ can be obtained from $D$ by a sequence of wall slides.
+  Each wall slide in this sequence consists of either a horizontal segment being pulled down past another horizontal segment on its right, or a vertical segment being pushed right past another vertical segment below it.
+  Note that each of these we can only add new adjacencies, hence the adjacency poset of $R$ is always an extension of that of $D$. 
+\end{proof}
+
+%%%%%%%%%%%%%
 \subsection{The strong rectangulation congruence}
 \label{subsec:strongRectangulationCongruence}
 
-We define the \defn{strong poset} $P_s(R)=([n],\prec_s)$ of a rectangulation $R$, and $\mathcal{L}(P_s)$ as the set of permutations of $\f{S}_n$ corresponding to linear extensions of $P_s$:
+Let $\mathcal{L}(P_s)$ be the set of permutations of $\f{S}_n$ corresponding to linear extensions of the strong poset $P_s$:
 \[
 \mathcal{L}(P_s(R)) \eqdef \bigset{\pi\in\f{S}_n }{ i\prec_s j\implies \pi^{-1}(i) < \pi^{-1}(j)}.
 \]
 
 \begin{theorem}[\cite{MR2864445,ACFF24}]
-  The subsets $\mathcal{L}(P_s(R))$ of $\f{S}_n$, for all rectangulations $R$ of size~$n$, 
-  are equivalence classes of a congruence relation $\strongeq$ on the weak Bruhat order on $\f{S}_n$.
+  The subsets $\mathcal{L}(P_s(R))$ of $\f{S}_n$, for all rectangulations $R$ of size~$n$, are equivalence classes of a congruence relation $\strongeq$ on the weak Bruhat order on $\f{S}_n$.
     Furthermore:
   \begin{itemize}
   \item the congruence classes are one-to-one with strong rectangulations,  
@@ -1198,15 +1225,28 @@ Note again that by definition, this extremal vertex should only depend on the st
   if $i\succ_s j$, and $0$ otherwise.
 \end{lemma}
 \begin{proof}
-  \vincent{I still need to work out this proof...}
-  Let $\pi$ be the 2-clumped permutation corresponding to $R$, hence the minimal element of $\mathcal{L}(P_s(R))$ in the weak Bruhat order.
-  From \cref{lem:yinminmax}, for a pair $i<j \in [n]$, there exists a yin arc $A$ whose shard polytope $\SP(A)$ contributes to $\b{e}_i-\b{e}_j$ only if
-  $\pi^{-1}(i)>\pi^{-1}(j)$, hence if $i\succ_s j$.
+  Let $\pi$ be any permutation corresponding to $R$, hence an element of $\mathcal{L}(P_s(R))$.
+  From \cref{lem:yinminmax}, for a pair $i<j \in [n]$, there exists a yin arc $A$ whose shard polytope $\SP(A)$ contributes to $\b{e}_i-\b{e}_j$ only if $\pi^{-1}(i)>\pi^{-1}(j)$, hence if $i\succ_s j$.
   Provided this holds, the set of yin arcs $A$ such that $\SP(A)$ contributes to $\b{e}_i-\b{e}_j$ are defined by pairs of contiguous intervals $I,J$ of $[n]$ with $i\in I$, $j\in J$, such that $i$ is the index of the maximum of $\pi^{-1}$ in $I$, and $j$ is the index of the maximum of $\pi^{-1}$ in $J$.
-  %$i = \arg\max_{k\in I} \pi^{-1}(k)$ and $j = \arg\min_{k\in J} \pi^{-1}(k)$.
   We claim that the number of choices of the three endpoints defining such a pair of intervals $I$ and $J$ is the product of the
-  number of leaves of the subtree of $T(R)$ rooted at $i$, the number of common leaves to the vertical subtrees of $T(R)$ and $S(R)$ rooted
-  at $i$ and $j$, respectively, and the number of leaves of the subtree of $S(R)$ rooted at $j$.
+  number $h^T_i$ of leaves of the horizontal subtree of $T(R)$ rooted at $i$, the number $cv^{T,S}_{i,j}$ of common leaves to the vertical subtrees of $T(R)$ and $S(R)$ rooted
+  at $i$ and $j$, respectively, and the number $h^S_j$ of leaves of the horizontal subtree of $S(R)$ rooted at $j$.
+
+  We first show that the number of choices for the left endpoint of $I$ is equal to the number $h^T_i$ of leaves in the horizontal subtree of $i$ in $T(R)$.
+  Each such leaf determines a left endpoint for $I$, defined as the node of the tree that follows it in an inorder traversal.
+  Any such node $\ell$ either lies in the horizontal subtree of $i$, or is $i$ itself.
+  Since from Lemma~\ref{lem:sextw} the strong poset extends the order induced by $T(R)$, we have that either $\ell=i$ or $\ell\prec_s i$, hence $\pi^{-1}(\ell)\leq \pi^{-1}(i)$.
+  Therefore, each such choice of left endpoint for $I$ preserves the fact that $i$ is the index of the maximum of $\pi^{-1}$ in $I$.
+  Now consider the leaf of $T(R)$ that is immediately left of the leftmost leaf of the horizontal subtree of $i$.
+  This leaf is associated with the node $\ell$ that comes next in inorder traversal, which must be an ancestor of $i$ in $T(R)$.
+  Therefore, we must have $\ell\succ_s i$, and $\pi^{-1}(\ell) > \pi^{-1}(i)$, and we cannot extend $I$ past this index on the left.
+  This shows that there are exactly $h^T_i$ choices, and not more, for the choice of the left endpoint of $I$.
+
+  The rest of the formula comes by symmetric arguments.
+  First, the right endpoint of $I$ can only be chosen among the leaves of the vertical subtree of $T(R)$ rooted at $i$.
+  Then the same reasoning holds for the two endpoints of $J$, replacing $i$ by $j$ and $T(R)$ by $S(R)$.
+  Finally, since the right endpoint of $I$ and the left endpoint of $J$ must be consecutive, the selected leaves must correspond to the same pair of successive indices of $[n]$.
+  These leaves are exactly the common leaves defined previously.
 \end{proof}
 
 It remains to observe that the only case where this product is nonzero and $i,j$ is not an inversion in $\pi$ is when $i \, \backslash \, j$.
