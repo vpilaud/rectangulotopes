@@ -615,7 +615,7 @@ We also use the Iverson bracket $\llbracket \varphi\rrbracket$, which is equal t
 % The strong rectangulotope is realized by the polytope~$\SRP (n)$ defined equivalently as
 The strong rectangulotope~$\SRP (n)$ is realized by:
   \begin{enumerate}[(i)]
-  \item convex hull of the points
+  \item the convex hull of the points
   \[
   \sum_{i,j\in [n], i< j} (\yin{w}^R_{i,j} - \yang{w}^R_{i,j})\cdot (\b{e}_i - \b{e}_j),
   \]
@@ -971,7 +971,7 @@ We define the set~$\mathcal{L}(P_w(R))$ as the linear extensions of the weak pos
 \mathcal{L}(P_w(R)) \eqdef \bigset{\pi\in\f{S}_n }{ i\prec_w j\implies \pi^{-1}(i) < \pi^{-1}(j)}.
 \]
 
-We recall that \emph{Baxter permutations} are permutations avoiding the vincular pattern $2\underline{41}3$ and $3\underline{14}2$, where the underlining indicates that the symbols must appear contiguously in the permutation.
+We recall that \defn{Baxter permutations} are permutations avoiding the vincular pattern $2\underline{41}3$ and $3\underline{14}2$, where the underlining indicates that the symbols must appear contiguously in the permutation.
 Similarly, \defn{twisted Baxter permutations} are permutations avoiding the patterns $2\underline{41}3$ and $3\underline{41}2$, and \defn{co-twisted Baxter permutations} are permutations avoiding the patterns $2\underline{14}3$ and $3\underline{14}2$.
 These permutation families are central in the theory of rectangulations and appear in many other contexts~\cite{MR2763051}.
 
@@ -997,6 +997,11 @@ The \defn{weak rectangulotope} $\WRP(n)$ is the quotientope of the weak rectangu
 \begin{lemma}
 The weak rectangulation congruence $\weakeq$ on $\f{S}_n$ is defined by the arc ideal composed of arcs that do not cross the horizontal line.
 \end{lemma}
+\begin{proof}
+  We consider the forbidden vincular patterns $2\underline{41}3$ and $3\underline{41}2$ that define the minimal elements of each congruence class of $\weakeq$.
+  We observe that every occurrence of a pattern in a permutation corresponds to an occurrence of an arc that cross the horizontal line at least once in the arc diagram of the permutation.
+  The twisted Baxter permutations are therefore the permutations whose arc diagrams are composed only of arcs that do not cross the horizontal line.
+\end{proof}
 
 These arcs can be classified into two families of arcs: the up arcs and the down arcs.
 For an interval $I$ of $[n]$ of size at least~$2$, the \defn{up arc}~$\upArc{I}$ (resp.~\defn{down arc}~$\downArc{I}$) is the arc that starts at~$\min(I)$ and ends at~$\max(I)$, and passes above (resp.~below) all remaining elements of~$I$, that is
@@ -1065,6 +1070,8 @@ This implies that every nonempty proper subset will define a facet of the weak r
   is therefore exactly the number of intervals of $I$ that intersect $S$ but are not contained in $S$, hence the number of intervals contained neither in~$S$ nor in its complement.
 \end{proof}
 
+This proves the second part of Theorem~\ref{thm:weakRectangulotope}.
+
 %%%%%%%%%%%%%
 
 \subsection{Loday coordinates of weak rectangulotopes}
@@ -1118,7 +1125,7 @@ For the sake of completeness, and because we will reuse the same reasoning in th
 \end{proof}
 
 A symmetric analogue of Lemma~\ref{lem:weakCoord} holds for down shard polytopes, where the product contributes to $-\b{e}_i$ instead of $\b{e}_i$, and we consider the tree $S(R)$ instead of the tree $T(R)$.
-This proves Theorem~\ref{thm:weakRectangulotope}.
+This concludes the proof of Theorem~\ref{thm:weakRectangulotope}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1186,6 +1193,11 @@ The \defn{strong rectangulotope} $\SRP(n)$ is the quotientope of the strong rect
 \begin{lemma}
   The strong rectangulation congruence $\strongeq$ on $\f{S}_n$ is defined by the arc ideal composed of arcs that cross the horizontal line at most once.
 \end{lemma}
+\begin{proof}
+  We consider the forbidden vincular patterns $24\underline{51}3$, $42\underline{51}3$, $3\underline{51}24$, and $3\underline{51}42$ that define the 2-clumped permutations, the minimal elements of each congruence class of $\strongeq$.
+  We observe that every occurrence of a pattern in a permutation corresponds to an occurrence of an arc that cross the horizontal line at least twice in the arc diagram of the permutation.
+  The 2-clumped permutations are therefore the permutations whose arc diagrams are composed only of arcs that cross the horizontal line at most once.
+\end{proof}
 
 We classify the arcs into two families, depending on whether the arcs cross from above or below.
 For two consecutive intervals~$I$ and~$J$ of~$[n]$, the \defn{yin arc}~$\yinArc{I}{J}$ (resp.~\defn{yang arc}~$\yangArc{I}{J}$) is the arc starts at~$\min(I)$ and ends at~$\max(J)$, and goes above (resp.~below) the remaining elements of $I$ and below (resp.~above) the remaining elements of $J$, that is,
@@ -1241,7 +1253,7 @@ Note again that all rays of the braid fan are preserved in the fan of the strong
 \begin{lemma}
   The strong rectangulotope $\SRP(n)$ is realized by the following submodular function:
   \[
-  f(S) \eqdef \# \bigset{ I, J }{ I \not\subseteq [n] \ssm S \text{ and } J \not\subseteq S } +
+  f_{\strongeq}(S) \eqdef \# \bigset{ I, J }{ I \not\subseteq [n] \ssm S \text{ and } J \not\subseteq S } +
   \#\bigset{ I, J }{ I \not\subseteq S \text{ and } J \not\subseteq [n] \ssm S },
   \]
   where $I, J$ are pairs of nonempty consecutive intervals of~$[n]$.
@@ -1264,6 +1276,8 @@ Note again that all rays of the braid fan are preserved in the fan of the strong
   \]
   is therefore as claimed.
 \end{proof}
+
+This proves the second part of Theorem~\ref{thm:strongRectangulotope}.
 
 %%%%%%%%%%%%%
 
