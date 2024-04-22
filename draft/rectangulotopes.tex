@@ -311,7 +311,7 @@ Examples of rectangulations are given in \cref{fig:rectequiv}.
 It is simple to check that every weak rectangulation has a diagonal representative, hence weak rectangulations can also be thought of as diagonal rectangulations.
 
 \begin{figure}
-  \includegraphics[width=.9\textwidth]{rectangulations.pdf}
+  \includegraphics[width=.65\textwidth]{rectangulations.pdf}
 	\caption{Three rectangulations. All three rectangulations are weakly equivalent, but only the first two are strongly equivalent. Only the third one is diagonal.}
 	\label{fig:rectequiv}
 \end{figure}
@@ -462,7 +462,7 @@ These two descriptions materialize the result of Law and Reading that the weak r
   \label{thm:weakRectangulotope}
   % Jean: I chose to denote the *abstract* polytope by WRP(n), hence changed the next sentence accordingly.
 %The weak rectangulotope is realized by the polytope~$\WRP (n) \subset \R^n\!$ defined equivalently~as
-The weak rectangulotope $\WRP (n)$ is realized by: \vincent{We loose the information that the two descriptions define the same polytope...}
+The weak rectangulotope $\WRP (n)$ is realized by the polytope equivalently described as:
   \begin{enumerate}[(i)]
   \item the convex hull of the points
     \[
@@ -718,21 +718,18 @@ The facet inequalities corresponding to each nonempty proper subset of~$[n]$ are
 \end{table}
 %\end{example}
 
-\begin{comment}
-\begin{example}
+%\begin{example}
   The vertex of~$\WRP (16)$ corresponding to the weak rectangulation of \cref{fig:weakRectangulation} is
   \[
   (-3, 0, 26, 2, -9, 5, -69, -4, 17, 0, -8, 59, 2, -20, 0, 2).
   \]
   For instance, the $4$th coordinate is $h^T_4 \cdot v^T_4 - h^S_4 \cdot v^S_4 = 1 \cdot 5 - 1 \cdot 3 = 2$.
-  The facet of~$\WRP (16)$ corresponding to the subset~$\{3,4,7,8,9,10,14\}$ is given by the inequality
-  \[
-  x_3 + x_4 + x_7 + x_8 + x_9 + x_{10} + x_{14} \le ???
-  \]
-  \vincent{Compute and check...}
-\end{example}
-\end{comment}
-\vincent{not sure if we want to reintroduce this example.}
+%  The facet of~$\WRP (16)$ corresponding to the subset~$\{3,4,7,8,9,10,14\}$ is given by the inequality
+%  \[
+%  x_3 + x_4 + x_7 + x_8 + x_9 + x_{10} + x_{14} \le ???
+%  \]
+%  \vincent{Compute and check...}
+%\end{example}
 
 %%%%%%%%%%%%%
 
@@ -747,7 +744,7 @@ We also use the Iverson bracket $\llbracket \varphi\rrbracket$, which is equal t
 \begin{theorem}
 \label{thm:strongRectangulotope}
 % The strong rectangulotope is realized by the polytope~$\SRP (n)$ defined equivalently as
-The strong rectangulotope~$\SRP (n)$ is realized by:
+The strong rectangulotope~$\SRP (n)$ is realized by the polytope equivalently described as:
   \begin{enumerate}[(i)]
   \item the convex hull of the points
   \[
@@ -886,21 +883,21 @@ The facet inequalities corresponding to each nonempty proper subset of~$[n]$ are
 \end{table}
 %\end{example}
 
-\begin{comment}
-\begin{example}
+%\begin{comment}
+%\begin{example}
   The vertex of~$\SRP (16)$ corresponding to the strong rectangulation of \cref{fig:strongRectangulation} is
   \[
   (-41, 5, 262, 24, -110, 50, -525, -50, 184, 3, -88, 450, 35, -221, -5, 27).
   \]
-  For instance, the contribution of~$\b{e}_5 - \b{e}_7$ is ...
-  \vincent{Compute and check...}
-  The facet of~$\SRP (16)$ corresponding to the subset~$\{3,4,7,8,9,10,14\}$ is given by the inequality
-  \[
-  x_3 + x_4 + x_7 + x_8 + x_9 + x_{10} + x_{14} \le ???
-  \]
-  \vincent{Compute and check...}
-\end{example}
-\end{comment}
+%  For instance, the contribution of~$\b{e}_5 - \b{e}_7$ is ...
+%  \vincent{Compute and check...}
+%  The facet of~$\SRP (16)$ corresponding to the subset~$\{3,4,7,8,9,10,14\}$ is given by the inequality
+%  \[
+%  x_3 + x_4 + x_7 + x_8 + x_9 + x_{10} + x_{14} \le ???
+%  \]
+%  \vincent{Compute and check...}
+%\end{example}
+%\end{comment}
 
 We think of the formula of \cref{thm:strongRectangulotope}\,(i) as the analogue of J.-L.-Loday's product formula of \cref{thm:loday}\,(i) for the coordinates of the vertices of the associahedron.
 We note however that our formula is quadratic in~$n$.
@@ -1084,7 +1081,6 @@ We will need the following simple result: Given a collection $\polytope{P}_1, \p
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\pagebreak
 \section{Weak rectangulotopes}
 \label{sec:weakRectangulotopes}
 
