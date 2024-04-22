@@ -458,10 +458,10 @@ This tree is binary as each node has at most one vertical child and one horizont
 We complete each node of~$S(R)$ and~$T(R)$ with a vertical (resp.~horizontal) leaf if it has no vertical (resp.~horizontal) child.
 An example is given in~\cref{fig:strongRectangulation}.
 If the rectangulation $R$ is diagonal, we retrieve the well-studied pair of twin binary trees~\cite{MR1417289,MR2914637}, see~\cref{fig:weakRectangulation}.
+
 Recall that the \defn{inorder labeling} of a binary tree~$T$ is the labeling of the nodes of~$T$ such that the label of each node~$t$ of~$T$ is larger than all labels in the left subtree of~$t$ and larger than all labels in the right subtree of~$t$.
-%\begin{lemma}
 For any rectangle~$r$ of~$R$, the inorder label of the source~$s(r)$ in~$S(R)$ coincides with the inorder label of the target~$t(r)$ in~$T(R)$.
-%\end{lemma}
+The inorder can also be retrieved from the above-below and left-right relationships defined before, as the transitive closure of the union of the below and right partial orders.
 This enables to unambiguously label the rectangles of~$R$ by the inorder.
 The resulting labeling coincides with the NW--SE labeling of~\cite{ACFF24}.
 From now on, the labels of the rectangles in a rectangulation are the inorder labels, and the two trees $T(R)$ and $S(R)$ are defined on the vertex set $[n]$ accordingly.
@@ -758,7 +758,7 @@ The facet inequalities corresponding to each nonempty proper subset of~$[n]$ are
 In order to exhibit a similar realization for the strong rectangulotopes, we need to count subsets of leaves that lie in some subtrees of both the source and target trees of a rectangulation.
 Two leaves of the trees $T(R)$ and $S(R)$ are said to be \defn{common leaves} if the edges to their parents lie on the same segment of $R$.
 
-We denote by $i\verticalPattern j$ the situation where 
+We denote by $i\verticalPattern j$ the situation where the rectangles $r_i$ and $r_j$ of inorder labels $i$ and $j$ share a vertical segment, $r_i$ is on the left of $r_j$, and the bottom edge of $r_i$ is lower than the top edge of $r_j$.
 and by $i\horizontalPattern j$ the situation where \Jean{Complete with the right definition here.}
 
 We also use the Iverson bracket $\llbracket \varphi\rrbracket$, which is equal to 1 if $\varphi$ holds, and 0 otherwise.
@@ -1139,6 +1139,7 @@ Similarly, \defn{twisted Baxter permutations} are permutations avoiding the patt
 These permutation families are central in the theory of rectangulations and appear in many other contexts~\cite{MR2763051}.
 
 \begin{theorem}[\cite{MR2871762}]
+  \label{thm:weakCong}
   The subsets $\mathcal{L}(P_w(R))$ of $\f{S}_n$, for all rectangulations $R$ of size~$n$, 
   are equivalence classes of a congruence relation $\weakeq$ on the weak Bruhat order on $\f{S}_n$.
   Furthermore:
@@ -1154,7 +1155,7 @@ We call this congruence the \defn{weak rectangulation congruence} (it is sometim
 The \defn{weak rectangulotope} $\WRP(n)$ is the quotientope of the weak rectangulation congruence $
 \weakeq$ on the weak Bruhat order on $\f{S}_n$.
 
-\vincent{Add here sentence about geometric interpretation of weak poset. Bijection cover relations weak poset -- facets -- flips...}
+From \cref{thm:weakCong}, we obtain a bijection between the cover relations in the weak poset and the facets of the dual cone corresponding to the rectangulation, which are in turn one-to-one with feasible flips in the rectangulation.
 
 %%%%%%%%%%%%%
 
@@ -1360,6 +1361,7 @@ The \defn{co-2-clumped permutations} are defined similarly, as permutations avoi
 He showed that 2-clumped permutations are in bijection with strong rectangulations.
 
 \begin{theorem}[\cite{MR2864445,ACFF24}]
+  \label{thm:strongCong}
   The subsets $\mathcal{L}(P_s(R))$ of $\f{S}_n$, for all rectangulations $R$ of size~$n$, are equivalence classes of a congruence relation $\strongeq$ on the weak Bruhat order on $\f{S}_n$.
     Furthermore:
   \begin{itemize}
@@ -1371,6 +1373,8 @@ He showed that 2-clumped permutations are in bijection with strong rectangulatio
 
 We call the congruence $\strongeq$ the \defn{strong rectangulation congruence}.
 The \defn{strong rectangulotope}~$\SRP(n)$ is the quotientope of the strong rectangulation congruence~${\strongeq}$.
+
+Note that, similarly to the weak case, \cref{thm:strongCong} yields a bijection between the cover relations in the strong poset and the facets of the dual cone corresponding to the rectangulation, which are in turn one-to-one with feasible flips in the rectangulation.
 
 %%%%%%%%%%%%%
 
@@ -1520,11 +1524,9 @@ Note again that by definition, this extremal vertex should only depend on the st
 \end{proof}
 
 \cref{lem:yincount} essentially gives us the coefficient $\yin{w}^R_{i,j}$ in \cref{thm:strongRectangulotope}, except that the condition $\neg i\verticalPattern j$ is replaced by $i\succ_s j$.
-
-Recall that $i\verticalPattern j$ denote the situation where the rectangles $r_i$ and $r_j$ of inorder labels $i$ and $j$ are such that $r_i$ and $r_j$ share a vertical segment, $r_i$ is on the left of $r_j$, and the bottom edge of $r_i$ is lower than the top edge of $r_j$.
-
+Recall that $i\verticalPattern j$ denote the situation where the rectangles $r_i$ and $r_j$ of inorder labels $i$ and $j$ share a vertical segment, $r_i$ is on the left of $r_j$, and the bottom edge of $r_i$ is lower than the top edge of $r_j$.
 Our aim is to provide a formula for the coordinates of the vertices of the strong rectangulotope that does not involve the computation of the strong poset or one of its linear extension.
-For that purpose, we prove that for every pair $i<j\in [n]$ such that $i\prec_s j$, hence which do not have any associated yin arc, we have either $cv^{T,S}_{i,j} = 0$ (hence the product in \cref{lem:yincount} is 0 as well and adding it does not harm the result), or $i\verticalPattern j$. 
+For that purpose, we prove that for every pair $i<j\in [n]$ such that $i\prec_s j$, which do not have any associated yin arc, we have either $cv^{T,S}_{i,j} = 0$ (hence the product in \cref{lem:yincount} is 0 as well and adding it does not harm the result), or $i\verticalPattern j$. 
 
 \begin{lemma}
   \label{lem:whentosum}
@@ -1538,16 +1540,16 @@ For that purpose, we prove that for every pair $i<j\in [n]$ such that $i\prec_s 
   Consider the two rectangles $r_i$ and $r_j$ with inorder labels $i$ and $j$ in $R$.
   We first observe that the source vertex $s(r_j)$ is not contained in the interior of the lower left quadrant of origin $t(r_i)$.
   Indeed, if we suppose otherwise, then the line segment from $s(r_j)$ to $t(r_i)$ has positive slope, which implies that $j\tri i$, which in turn implies $j\prec_s i$, contradicting our hypothesis.
+  We also observe that since $i < j$, by definition of the inorder, the rectangle $r_j$ must be below or on the right of $r_i$.
+  Combining those two observations, we conclude that the left edge of $r_j$ cannot be on the left of the right edge of $r_i$.
 
-  We now claim that there can only be one segment on which leaves common to the vertical subtree of $i$ in $T$ and the vertical subtree of $j$ in $S$ may lie, and this segment is the vertical segment supporting the right edge of $r_i$ and the left edge of $r_j$.
-  \Jean{This requires a case analysis. Any shortcut?}
-  
-  Let us assume that this segment is shared.
+  Therefore, there can only be one segment on which a leaf common to the vertical subtree of $i$ in $T$ and the vertical subtree of $j$ in $S$ may lie, which is the vertical segment supporting the right edge of $r_i$ and the left edge of $r_j$.
+  Let us assume that this segment is shared by those two edges.
   If the bottom edge of $r_i$ is higher than the top edge of $r_j$, we must have $j\btri i$, which implies $j\prec_s i$, contradicting our hypothesis again.
-  Hence we must have that the bottom edge of $r_i$ is lower than the top edge of $r_j$, hence that $i\verticalPattern j$, as claimed.
+  Thus the bottom edge of $r_i$ is lower than the top edge of $r_j$, and $i\verticalPattern j$, as claimed.
 \end{proof}
 
-We omit the proofs of the analogues of \cref{lem:yincount} and \cref{lem:whentosum} for the case of the yang arcs: The arguments are completely symmetric.
+We omit the proofs of the analogues of \cref{lem:yincount} and \cref{lem:whentosum} for the case of the yang arcs, which use completely symmetric arguments.
 This concludes the proof of \cref{thm:strongRectangulotope}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
