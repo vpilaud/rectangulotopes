@@ -194,7 +194,7 @@
 \newcommand{\yangArc}[2]{\smash{\raisebox{-.03cm}{$\oset[.2ex]{#1}{\smile}$}\hspace{-.3ex}\raisebox{.05cm}{$\uset[0ex]{#2}{\frown}$}}}
 % weak and strong equivalence on S_n
 \newcommand{\weakeq}{\asymp}
-\newcommand{\strongeq}{\mathbin{\smash{\begin{smallmatrix} \backsim \\[-.3cm] \sim \end{smallmatrix}}}}% % J: I would like to stack \backsim and \sim instead
+\newcommand{\strongeq}{\mathbin{\smash{\begin{smallmatrix} \backsim \\[-.3cm] \sim \end{smallmatrix}}}}
 
 % formating the table of contents
 \setcounter{tocdepth}{4}
@@ -1112,7 +1112,7 @@ This section is devoted to weak rectangulations and the proof of \cref{thm:weakR
 
 Given a rectangulation~$R$, let us consider the source and target trees~$S(R)$ and~$T(R)$, and orient the horizontal edges from left to right, and the vertical edges from bottom to top.
 This defines two partial orders on $[n]$.
-The \defn{weak poset}~$P_w(R)=([n],\prec_w)$ of the rectangulation~$R$ is the transitive closure of the union of these two partial orders defined by~$S(R)$ and~$T(R)$.
+The \defn{weak poset}~$P_w(R)=([n],\preccurlyeq_w)$ of the rectangulation~$R$ is the transitive closure of the union of these two partial orders defined by~$S(R)$ and~$T(R)$.
 Equivalently, the weak poset can be defined by considering the adjacency graph of the rectangles in a diagonal representative of the weak equivalence class of $R$, orienting its edges from left to right and from bottom to top, and taking the transitive closure of this directed acyclic graph.
 These posets were characterized (and called Baxter posets) by E.~Meehan~\cite{MR4014603}.
 The weak poset is a two-dimensional lattice, whose minimum is the root of~$S(R)$ and whose maximum is the root of~$T(R)$.
@@ -1151,10 +1151,19 @@ These permutation families are central in the theory of rectangulations and appe
 \end{theorem}
 
 We call this congruence the \defn{weak rectangulation congruence} (it is sometimes referred to as the \defn{Baxter congruence}).
-The \defn{weak rectangulotope} $\WRP(n)$ is the quotientope of the weak rectangulation congruence $
-\weakeq$ on the weak Bruhat order on $\f{S}_n$.
+It is the intersection of the sylvester congruence with the antisylvester congruence.
+The \defn{weak rectangulotope} $\WRP(n)$ is the quotientope of the weak rectangulation congruence $\weakeq$ on the weak Bruhat order on $\f{S}_n$.
 
-\vincent{Add here sentence about geometric interpretation of weak poset. Bijection cover relations weak poset -- facets -- flips...}
+By construction, the quotient fan~$\c{F}_\weakeq$ has a maximal cone~$C_R$ for each weak rectangulation~$R$ of size~$n$.
+\vincent{Notations? $\preccurlyeq_R^w$ and~$C_R^w$?}
+This cone is given by~$C_R = \set{\b{x} \in \R^n}{x_i \le x_j \text{ if } i \preccurlyeq_w j}$, where~$\preccurlyeq_w$ is the weak poset of~$R$.
+Note that there is a bijection between the facets of~$C_R$, the cover relations of~$\preccurlyeq_w$, and the flips from~$R$.
+The definition of the weak poset just translates the fact that the weak rectangulation fan~$\c{F}_\weakeq$ is the common refinement of the sylvester fan and the anti-sylvester fan.
+Namely, as~$C_R$ is the intersection of the cone of the sylvester fan corresponding to the target tree~$T(R)$ with the cone of the anti-sylvester fan corresponding to the source tree~$S(R)$, the weak poset~$\preccurlyeq_w$ is the transitive closure of the union of the posets associated to~$S(R)$ and~$T(R)$.
+
+Note that weak rectangulotopes were first constructed by S.~Law and N.~Reading in~\cite{MR2871762} as Minkowski sums of two opposite associahedra.
+Our vertex and facet descriptions of \cref{thm:weakRectangulotope} can be directly derived from this construction.
+Here, we provide a more pedestrian approach based on Minkowski sums of shard polytopes, as it will serve as a template for the more involved proof of \cref{thm:strongRectangulotope} in \cref{sec:strongRectangulotopes}.
 
 %%%%%%%%%%%%%
 
@@ -1180,6 +1189,7 @@ For an interval $I$ of $[n]$ of size at least~$2$, the \defn{up arc}~$\upArc{I}$
 \downArc{I} & \eqdef \big( \min(I), \max(I), \varnothing, I \ssm \{\min(I), \max(I)\} \big).
 \end{align*}
 Note that the basic arc~$(i, i+1, \varnothing, \varnothing)$ is both an up and down arc.
+The up arcs correspond to the sylvester congruence, while the down arcs correspond to the anti-sylvester congruence.
 
 %%%%%%%%%%%%%
 
@@ -1312,7 +1322,7 @@ This section is devoted to strong rectangulations and the proof of \cref{thm:str
 \subsection{The strong poset}
 \label{subsec:strongPoset}
 
-Given a rectangulation $R$, we define the \defn{strong poset} $P_s(R)=([n],\prec_s)$ of $R$ by considering two relations on $[n]$~\cite{ACFF24}:
+Given a rectangulation $R$, we define the \defn{strong poset} $P_s(R)=([n],\preccurlyeq_s)$ of $R$ by considering two relations on $[n]$~\cite{ACFF24}:
 \begin{enumerate}
 \item The \defn{adjacency poset} $([n],\tri)$ of $R$, defined by considering the adjacency graph of the rectangles of $R$ (identified by their inorder labels in $[n]$), orienting its edges from left to right and from bottom to top, and taking the transitive closure of this directed acyclic graph.
 \item The \defn{special relation} $([n],\btri)$ of $R$, in which $a\btri b$ if the two rectangles $r_a$ and $r_b$ with respective inorder labels $a$ and $b$ are such that 
@@ -1372,6 +1382,10 @@ He showed that 2-clumped permutations are in bijection with strong rectangulatio
 We call the congruence $\strongeq$ the \defn{strong rectangulation congruence}.
 The \defn{strong rectangulotope}~$\SRP(n)$ is the quotientope of the strong rectangulation congruence~${\strongeq}$.
 
+By construction, the quotient fan~$\c{F}_{\strongeq}$ has a maximal cone~$C_R$ for each strong rectangulation~$R$ of size~$n$.
+This cone is given by~$C_R = \set{\b{x} \in \R^n}{x_i \le x_j \text{ if } i \preccurlyeq_s j}$, where~$\preccurlyeq_s$ is the strong poset of~$R$.
+Note that there is a bijection between the facets of~$C_R$, the cover relations of~$\preccurlyeq_s$, and the flips from~$R$.
+
 %%%%%%%%%%%%%
 
 \subsection{Yin and yang arcs}
@@ -1429,6 +1443,7 @@ This, again, does not change the combinatorial type of the polytope.
 \cref{prop:strongMinkowski} gives us an alternative description of $\SRP(n)$ as the sum of two opposite quotientopes defined by the \defn{yin} and \defn{yang congruences} respectively, where the yin (resp.~yang) congruence is defined by the arc ideal consisting of all yin (resp.~yang) arcs.
 It can be checked that the equivalence classes of these congruences are counted by \defn{semi-Baxter permutations}, defined as permutations avoiding $2\underline{41}3$, hence only one of the two forbidden Baxter patterns.
 These equivalence classes are in turn in bijection with rectangulations that avoid one of the two patterns defining diagonal rectangulations, see~\cite{ACFF24}.
+\vincent{Move this}
 
 %%%%%%%%%%%%%
 
@@ -1484,7 +1499,7 @@ Note again that by definition, this extremal vertex should only depend on the st
 
 \begin{lemma}
   \label{lem:yincount}
-  Let $R$ be a strong rectangulation of size~$n$, let~$S$ and $T$ be its source and target trees, let~$([n],\prec_s)$ be its strong poset, and let~$\b{p}(R)$ be the vertex of $\SRP(n)$ corresponding to $R$.
+  Let $R$ be a strong rectangulation of size~$n$, let~$S$ and $T$ be its source and target trees, let~$([n],\preccurlyeq_s)$ be its strong poset, and let~$\b{p}(R)$ be the vertex of $\SRP(n)$ corresponding to $R$.
   Given a pair $i,j\in [n]$ with $i<j$, the number of yin arcs $\alpha$ such that $\b{e}_i-\b{e}_j$ is the extremal vertex of~$\SP(\alpha)$ contributing to $\b{p}(R)$ is
   \[
     h^T_i \cdot cv^{T,S}_{i,j}\cdot h^S_j 
@@ -1528,7 +1543,7 @@ For that purpose, we prove that for every pair $i<j\in [n]$ such that $i\prec_s 
 
 \begin{lemma}
   \label{lem:whentosum}
-  Let $R$ be a rectangulation of size~$n$, let $S$ and $T$ be its source and target trees, and let~$([n],\prec_s)$ be the associated strong order.
+  Let $R$ be a rectangulation of size~$n$, let $S$ and $T$ be its source and target trees, and let~$([n],\preccurlyeq_s)$ be the associated strong order.
   Given a pair $i,j\in [n]$ such that $i<j$ and $i\prec_s j$, we have
   \[
     cv^{T,S}_{i,j} > 0 \quad \Longrightarrow \quad i \verticalPattern j.
