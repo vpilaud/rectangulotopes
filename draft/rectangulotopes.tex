@@ -298,7 +298,7 @@ The goal of this paper is to describe the geometry of the quotientopes for two p
 
 \begin{figure}
 	\capstart
-	\centerline{\includegraphics[scale=.75]{permutahedronLeft4} \quad \raisebox{-.4cm}{\includegraphics[scale=.75]{associahedron4}}}
+	\centerline{\includegraphics[scale=.75]{permutahedronLeft4} \quad \raisebox{-.5cm}{\includegraphics[scale=.75]{associahedron4}}}
 	\caption{The permutahedron~$\Perm(4)$ (left) and the associahedron~$\Asso(4)$ (right). \cite[Fig.~1]{MR3964495} \&~\cite[Fig.~5]{MR4584712}}
 	\label{fig:quotientopes}
 \end{figure}
@@ -379,9 +379,9 @@ An important motivation for studying these quotientopes is the informative struc
 A flip is a local, reversible change in the structure of the rectangulation.
 Flips in rectangulations come in three flavors:
 \begin{itemize}
-\item \defn{Simple flips} replace a vertical segment incident to exactly two rectangles by a horizontal segment, and vice-versa,
-\item \defn{Pivoting flips} transform a pair of adjacent rectangles whose union is not a rectangle, changing a left-right pair into an above-below pair, and vice-versa,
-\item \defn{Wall slide flips} are wall slides that modify the adjacency of the rectangles, removing exactly one adjacency and adding exactly one. These flips are only relevant in strong rectangulations.
+\item \defn{simple flips} replace a vertical segment incident to exactly two rectangles by a horizontal segment, and vice-versa,
+\item \defn{pivoting flips} transform a pair of adjacent rectangles whose union is not a rectangle, changing a left-right pair into an above-below pair, and vice-versa,
+\item \defn{wall slide flips} are wall slides that modify the adjacency of the rectangles, removing exactly one adjacency and adding exactly one. These are only relevant in strong rectangulations.
 \end{itemize}
 
 The various types of flips are illustrated in \cref{fig:flips}.
@@ -758,11 +758,11 @@ The facet inequalities corresponding to each nonempty proper subset of~$[n]$ are
 \label{subsec:strongRectangulotopes}
 
 In order to exhibit a similar realization for the strong rectangulotopes, we need to count subsets of leaves that lie in some subtrees of both the source and target trees of a rectangulation.
+%
 Two leaves of the trees $T(R)$ and $S(R)$ are said to be \defn{common leaves} if the edges to their parents lie on the same segment of $R$.
-
-We denote by $i\verticalPattern j$ the situation where the rectangles $r_i$ and $r_j$ of inorder labels $i$ and $j$ share a vertical segment, $r_i$ is on the left of $r_j$, and the bottom edge of $r_i$ is lower than the top edge of $r_j$.
-and by $i\horizontalPattern j$ the situation where \Jean{Complete with the right definition here.}
-
+%
+We denote by ${}^i \!\!\! \raisebox{.03cm}{\verticalPattern} \!\!\! {}_j$ the situation where the rectangles $r_i$ and $r_j$ of inorder labels $i$ and $j$ share a vertical segment containing the right edge of~$r_i$ and the left edge of~$r_j$, and the bottom edge of $r_i$ is below the top edge of~$r_j$.
+Similarly, we denote by~$\; {}^i \!\!\!\!\! \horizontalPattern \!\!\!\!\! \raisebox{-.06cm}{$_j$} \,$ the situation where the rectangles $r_i$ and $r_j$ share a horizontal segment containing the bottom edge of~$r_i$ and the top edge of~$r_j$, and the right edge of~$r_i$ is on the right of the left edge of~$r_j$.
 We also use the Iverson bracket $\llbracket \varphi\rrbracket$, which is equal to 1 if $\varphi$ holds, and 0 otherwise.
 
 \begin{theorem}
@@ -776,9 +776,9 @@ The strong rectangulotope~$\SRP (n)$ is realized by the polytope equivalently de
   \]
    for all strong rectangulations $R$ of size~$n$, with
   \[
-    \yin{w}^R_{i,j} \eqdef h^T_i \cdot cv^{T,S}_{i,j}\cdot h^S_ j\cdot \llbracket \neg \, i \verticalPattern j \rrbracket
+    \yin{w}^R_{i,j} \eqdef h^T_i \cdot cv^{T,S}_{i,j}\cdot h^S_ j\cdot \llbracket \; \neg \; {}^i \!\!\! \raisebox{.03cm}{\verticalPattern} \!\!\! {}_j \; \rrbracket
     \qquad\text{and}\qquad
-    \yang{w}^R_{i,j} \eqdef v^S_i \cdot ch^{S,T}_{i,j}\cdot v^T_j \cdot \llbracket \neg \, j \horizontalPattern i \rrbracket,
+    \yang{w}^R_{i,j} \eqdef v^S_i \cdot ch^{S,T}_{i,j}\cdot v^T_j \cdot \llbracket \; \neg \;\; {}^i \!\!\!\!\! \horizontalPattern \!\!\!\!\! \raisebox{-.06cm}{$_j$} \;\; \rrbracket,
   \]
  where:
   \begin{itemize}
@@ -1035,7 +1035,7 @@ In other words, the lattice of congruences of the weak Bruhat order is distribut
 
 \begin{figure}
 	\capstart
-	\centerline{\includegraphics[scale=.75]{braidFanLeft4} \quad \raisebox{-.3cm}{\includegraphics[scale=.75]{sylvesterFan4}}}
+	\centerline{\includegraphics[scale=.75]{braidFanLeft4} \quad \raisebox{-.35cm}{\includegraphics[scale=.75]{sylvesterFan4}}}
 	\caption{The braid fan (left) and the sylvester fan (right). \cite[Fig.~1]{MR3964495} \&~\cite[Fig.~5]{MR4584712}}
 	\label{fig:fans}
 \end{figure}
@@ -1091,6 +1091,7 @@ It was shown in~\cite{MR4584712} that any Minkowski sum of positive scalings of 
 	\label{fig:shardPolytopes}
 \end{figure}
 
+\pagebreak
 A set function $f:2^{[n]}\mapsto \R$ is said to be \defn{submodular} when $f(X \cup Y) + f(X \cap Y) \le f(X) + f(Y)$ for any~$X, Y \subseteq [n]$.
 By definition, any quotientope is a deformed permutahedron, and can thus be written as
   \[
@@ -1114,7 +1115,7 @@ This section is devoted to weak rectangulations and the proof of \cref{thm:weakR
 
 Given a rectangulation~$R$, let us consider the source and target trees~$S(R)$ and~$T(R)$, and orient the horizontal edges from left to right, and the vertical edges from bottom to top.
 This defines two partial orders on $[n]$.
-The \defn{weak poset}~$P_w(R)=([n],\preccurlyeq_w)$ of the rectangulation~$R$ is the transitive closure of the union of these two partial orders defined by~$S(R)$ and~$T(R)$.
+The \defn{weak poset}~$([n],\prec_w^R)$ of the rectangulation~$R$ is the transitive closure of the union of these two partial orders defined by~$S(R)$ and~$T(R)$.
 Equivalently, the weak poset can be defined by considering the adjacency graph of the rectangles in a diagonal representative of the weak equivalence class of $R$, orienting its edges from left to right and from bottom to top, and taking the transitive closure of this directed acyclic graph.
 These posets were characterized (and called Baxter posets) by E.~Meehan~\cite{MR4014603}.
 The weak poset is a two-dimensional lattice, whose minimum is the root of~$S(R)$ and whose maximum is the root of~$T(R)$.
@@ -1131,18 +1132,20 @@ See \cref{fig:weakPoset}.
 \subsection{The weak rectangulation congruence}
 \label{subsec:weakRectangulationCongruence}
 
-We define the set~$\mathcal{L}(P_w(R))$ as the linear extensions of the weak poset:
+We define the set~$\mathcal{L}(\prec_w^R)$ as the linear extensions of the weak poset:
 \[
-\mathcal{L}(P_w(R)) \eqdef \bigset{\pi\in\f{S}_n }{ i\prec_w j\implies \pi^{-1}(i) < \pi^{-1}(j)}.
+\mathcal{L}(\prec_w^R) \eqdef \bigset{\pi\in\f{S}_n }{ i\prec_w^R j\implies \pi^{-1}(i) < \pi^{-1}(j)}.
 \]
 
 We recall that \defn{Baxter permutations} are permutations avoiding the vincular patterns $2\underline{41}3$ and $3\underline{14}2$, where the underlining indicates that the symbols must appear contiguously in the permutation.
 Similarly, \defn{twisted Baxter permutations} are permutations avoiding the patterns $2\underline{41}3$ and $3\underline{41}2$, and \defn{co-twisted Baxter permutations} are permutations avoiding the patterns $2\underline{14}3$ and $3\underline{14}2$.
 These permutation families are central in the theory of rectangulations and appear in many other contexts~\cite{MR2763051}.
 
+\pagebreak
+
 \begin{theorem}[\cite{MR2871762}]
   \label{thm:weakCong}
-  The subsets $\mathcal{L}(P_w(R))$ of $\f{S}_n$, for all rectangulations $R$ of size~$n$, 
+  The subsets $\mathcal{L}(\prec_w^R)$ of $\f{S}_n$, for all rectangulations $R$ of size~$n$, 
   are equivalence classes of a congruence relation $\weakeq$ on the weak Bruhat order on $\f{S}_n$.
   Furthermore:
   \begin{itemize}
@@ -1154,20 +1157,18 @@ These permutation families are central in the theory of rectangulations and appe
 \end{theorem}
 
 We call this congruence the \defn{weak rectangulation congruence} (it is sometimes referred to as the \defn{Baxter congruence}).
-It is the intersection of the sylvester congruence with the antisylvester congruence.
+It is the intersection of the sylvester congruence with the anti-sylvester congruence.
 The \defn{weak rectangulotope} $\WRP(n)$ is the quotientope of the weak rectangulation congruence $\weakeq$ on the weak Bruhat order on $\f{S}_n$.
 
-By construction, the quotient fan~$\c{F}_\weakeq$ has a maximal cone~$C_R$ for each weak rectangulation~$R$ of size~$n$.
-\vincent{Notations? $\preccurlyeq_R^w$ and~$C_R^w$?}
-This cone is given by~$C_R = \set{\b{x} \in \R^n}{x_i \le x_j \text{ if } i \preccurlyeq_w j}$, where~$\preccurlyeq_w$ is the weak poset of~$R$.
-Note that there is a bijection between the facets of~$C_R$, the cover relations of~$\preccurlyeq_w$, and the feasible flips in~$R$.
+By construction, the quotient fan~$\c{F}_\weakeq$ has a maximal cone~$\polytope{C}_w^R$ for each weak rectangulation~$R$ of size~$n$.
+This cone is given by~$\polytope{C}_w^R = \set{\b{x} \in \R^n}{x_i \le x_j \text{ if } i \prec_w^R j}$. %, where~$\prec_w$ is the weak poset of~$R$.
+Note that there is a bijection between the facets of~$\polytope{C}_w^R$, the cover relations of~$\prec_w^R$, and the feasible flips in~$R$.
 The definition of the weak poset just translates the fact that the weak rectangulation fan~$\c{F}_\weakeq$ is the common refinement of the sylvester fan and the anti-sylvester fan.
-Namely, as~$C_R$ is the intersection of the cone of the sylvester fan corresponding to the target tree~$T(R)$ with the cone of the anti-sylvester fan corresponding to the source tree~$S(R)$, the weak poset~$\preccurlyeq_w$ is the transitive closure of the union of the posets associated to~$S(R)$ and~$T(R)$.
+Namely, as~$\polytope{C}_w^R$ is the intersection of the cone of the sylvester fan corresponding to the target tree~$T(R)$ with the cone of the anti-sylvester fan corresponding to the source tree~$S(R)$, the weak poset~$\prec_w^R$ is the transitive closure of the union of the posets associated to~$S(R)$ and~$T(R)$.
 
 Note that weak rectangulotopes were first constructed by S.~Law and N.~Reading in~\cite{MR2871762} as Minkowski sums of two opposite associahedra.
 Our vertex and facet descriptions of \cref{thm:weakRectangulotope} can be directly derived from this construction.
 Here, we provide a more pedestrian approach based on Minkowski sums of shard polytopes, as it will serve as a template for the more involved proof of \cref{thm:strongRectangulotope} in \cref{sec:strongRectangulotopes}.
-\jean{From \cref{thm:weakCong}, we obtain a bijection between the cover relations in the weak poset and the facets of the dual cone corresponding to the rectangulation, which are in turn one-to-one with feasible flips in the rectangulation.}
 
 %%%%%%%%%%%%%
 
@@ -1293,14 +1294,14 @@ For the sake of completeness, and because we will reuse the same reasoning in th
    where $h^T_i$ and $v^T_i$ denote respectively the number of leaves in the horizontal and vertical subtrees of $i$ in the tree $T$.
 \end{lemma}
 \begin{proof}
-  Let $\pi$ be any permutation in $\mathcal{L}(P_w(R))$.
+  Let $\pi$ be any permutation in $\mathcal{L}(\prec_w^R)$.
   From \cref{lem:lodaymax}, for an $i\in [n]$, a shard polytope~$\SP(\upArc{I})$ contributes to $\b{e}_i$ if and only if $i$ is the index of the maximum of $\pi^{-1}$ in $I$.
   We claim that the number of intervals $I$ satisfying this condition is the given product.
 
   We first show that the number of choices for the left endpoint of $I$ is equal to the number $h^T_i$ of leaves in the horizontal subtree of $i$ in $T$.
   Each such leaf determines a left endpoint for $I$, defined as the node of the tree that follows it in an inorder traversal.
   Any such node $\ell$ either lies in the horizontal subtree of $i$, or is $i$ itself.
-  Since the weak poset extends the order induced by $T$, we have that either $\ell=i$ or $\ell\prec_s i$, hence $\pi^{-1}(\ell)\leq \pi^{-1}(i)$.
+  Since the weak poset extends the order induced by $T$, we have that either $\ell=i$ or $\ell\prec_s^R i$, hence $\pi^{-1}(\ell)\leq \pi^{-1}(i)$.
   Therefore, each such choice of left endpoint for $I$ does not contradict the fact that $i$ is the index of the maximum of $\pi^{-1}$ in $I$.
   Now consider the leaf of $T$ that is immediately left of the leftmost leaf of the horizontal subtree of $i$.
   This leaf is associated with the node $\ell$ that comes next in inorder traversal, which must be an ancestor of $i$ in $T$.
@@ -1326,13 +1327,13 @@ This section is devoted to strong rectangulations and the proof of \cref{thm:str
 \subsection{The strong poset}
 \label{subsec:strongPoset}
 
-Given a rectangulation $R$, we define the \defn{strong poset} $P_s(R)=([n],\preccurlyeq_s)$ of $R$ by considering two relations on $[n]$~\cite{ACFF24}:
+Given a rectangulation $R$, we define the \defn{strong poset} $([n],\prec_s^R)$ of $R$ by considering two relations on $[n]$~\cite{ACFF24}:
 \begin{enumerate}
 \item The \defn{adjacency poset} $([n],\tri)$ of $R$, defined by considering the adjacency graph of the rectangles of $R$ (identified by their inorder labels in $[n]$), orienting its edges from left to right and from bottom to top, and taking the transitive closure of this directed acyclic graph.
-\item The \defn{special relation} $([n],\btri)$ of $R$, in which $a\btri b$ if the two rectangles $r_a$ and $r_b$ with respective inorder labels $a$ and $b$ are such that 
+\item The \defn{special relation} $([n],\btri)$ of $R$, in which $i\btri j$ if the two rectangles $r_i$ and $r_j$ with respective inorder labels $i$ and $j$ are such that 
 	\begin{enumerate}[(i)]
-	\item either the right side of $r_b$ and the left side of $r_a$ lie on the same vertical segment, and the bottom-right corner of $r_b$ is above the top-left corner of $r_a$, 
-	\item or the top side of $r_b$ and the bottom side of rectangle $r_a$ lie on the same horizontal segment, and the top-left corner of $r_b$ lies on the right of the bottom-right corner~of~$r_a$.
+	\item either the right side of $r_j$ and the left side of $r_i$ lie on the same vertical segment, and the bottom-right corner of $r_j$ is above the top-left corner of $r_i$, 
+	\item or the top side of $r_j$ and the bottom side of rectangle $r_i$ lie on the same horizontal segment, and the top-left corner of $r_j$ lies on the right of the bottom-right corner~of~$r_i$.
 	\end{enumerate}
 \end{enumerate}
 The strong poset is the transitive closure of the union of the two relations $\tri$ and $\btri$.
@@ -1347,11 +1348,11 @@ The strong poset is a two-dimensional lattice, whose minimum is the root of~$S(R
 
 \begin{lemma}
   \label{lem:sextw}
-  The strong poset $P_s(R)$ of a rectangulation $R$ is an extension of its weak poset $P_w(R)$.
+  The strong poset $\prec_s^R$ of a rectangulation $R$ is an extension of its weak poset $\prec_w^R$.
 \end{lemma}
 \begin{proof}
   Clearly, the strong poset is an extension of the adjacency poset $([n],\tri)$ of $R$, since it is obtained by adding pairs from the special relation~$([n],\btri)$.
-  It remains to observe that the adjacency poset of $R$ is an extension of the weak poset of $R$.
+  It remains to observe that the adjacency poset of $R$ is an extension of the weak poset of $R$ (compare for instance \cref{fig:weakPoset}\,(left) and \cref{fig:strongPoset}\,(left)).
   For this, we consider a diagonal representative~$D$ of the weak equivalence class of $R$, and recall that the weak poset of $R$ is the adjacency poset of $D$.
   By definition, $R$ can be obtained from $D$ by a sequence of wall slides.
   Each wall slide in this sequence consists of either a horizontal segment being pulled down past another horizontal segment on its right, or a vertical segment being pushed right past another vertical segment below it.
@@ -1364,18 +1365,19 @@ The strong poset is a two-dimensional lattice, whose minimum is the root of~$S(R
 \subsection{The strong rectangulation congruence}
 \label{subsec:strongRectangulationCongruence}
 
-Let $\mathcal{L}(P_s)$ be the set of permutations of $\f{S}_n$ corresponding to linear extensions of the strong poset $P_s$:
+Let $\mathcal{L}(\prec_s^R)$ be the set of permutations of $\f{S}_n$ corresponding to linear extensions of the strong poset $\prec_s^R$:
 \[
-\mathcal{L}(P_s(R)) \eqdef \bigset{\pi\in\f{S}_n }{ i\prec_s j\implies \pi^{-1}(i) < \pi^{-1}(j)}.
+\mathcal{L}(\prec_s^R) \eqdef \bigset{\pi\in\f{S}_n }{ i\prec_s^R j\implies \pi^{-1}(i) < \pi^{-1}(j)}.
 \]
 
 N. Reading~\cite{MR2864445} introduced \defn{2-clumped permutations}, defined as the permutations avoiding the vincular patterns $24\underline{51}3$, $42\underline{51}3$, $3\underline{51}24$, and $3\underline{51}42$.
 The \defn{co-2-clumped permutations} are defined similarly, as permutations avoiding the mirror images of these four patterns.
 He showed that 2-clumped permutations are in bijection with strong rectangulations.
 
+\pagebreak
 \begin{theorem}[\cite{MR2864445,ACFF24}]
   \label{thm:strongCong}
-  The subsets $\mathcal{L}(P_s(R))$ of $\f{S}_n$, for all rectangulations $R$ of size~$n$, are equivalence classes of a congruence relation $\strongeq$ on the weak Bruhat order on $\f{S}_n$.
+  The subsets $\mathcal{L}(\prec_s^R)$ of $\f{S}_n$, for all rectangulations $R$ of size~$n$, are equivalence classes of a congruence relation $\strongeq$ on the weak Bruhat order on $\f{S}_n$.
     Furthermore:
   \begin{itemize}
   \item the congruence classes are one-to-one with strong rectangulations,  
@@ -1387,10 +1389,9 @@ He showed that 2-clumped permutations are in bijection with strong rectangulatio
 We call the congruence $\strongeq$ the \defn{strong rectangulation congruence}.
 The \defn{strong rectangulotope}~$\SRP(n)$ is the quotientope of the strong rectangulation congruence~${\strongeq}$.
 
-By construction, the quotient fan~$\c{F}_{\strongeq}$ has a maximal cone~$C_R$ for each strong rectangulation~$R$ of size~$n$.
-This cone is given by~$C_R = \set{\b{x} \in \R^n}{x_i \le x_j \text{ if } i \preccurlyeq_s j}$, where~$\preccurlyeq_s$ is the strong poset of~$R$.
-Note that there is a bijection between the facets of~$C_R$, the cover relations of~$\preccurlyeq_s$, and the feasible flips in~$R$.
-\jean{Note that, similarly to the weak case, \cref{thm:strongCong} yields a bijection between the cover relations in the strong poset and the facets of the dual cone corresponding to the rectangulation, which are in turn one-to-one with feasible flips in the rectangulation.}
+Similarly to the weak case, the quotient fan~$\c{F}_{\strongeq}$ has a maximal cone~$\polytope{C}_s^R$ for each strong rectangulation~$R$ of size~$n$.
+This cone is given by~$\polytope{C}_s^R = \set{\b{x} \in \R^n}{x_i \le x_j \text{ if } i \prec_s^R j}$.
+Note that there is a bijection between the facets of~$\polytope{C}_s^R$, the cover relations of~$\prec_s^R$, and the feasible flips in~$R$.
 
 %%%%%%%%%%%%%
 
@@ -1416,6 +1417,11 @@ For two consecutive intervals~$I$ and~$J$ of~$[n]$, the \defn{yin arc}~$\yinArc{
 \yangArc{I}{J} & \eqdef \big( \min(I), \max(J), J \ssm \{\max(J)\}, I \ssm \{\min(I)\} \big).
 \end{align*}
 Note that all up arcs and down arcs are both yin arcs and yang arcs.
+
+Note that the yin (resp.~yang) arcs alone form an arc ideal, and we call \defn{yin} (resp.~\defn{yang}) \defn{congruence} the corresponding congruence of the weak order.
+It can be checked that the equivalence classes of these congruences are counted by \defn{semi-Baxter permutations}, defined as permutations avoiding $2\underline{41}3$, hence only one of the two forbidden Baxter patterns.
+These equivalence classes are in turn in bijection with rectangulations that avoid one of the two patterns defining diagonal rectangulations, see~\cite{ACFF24}.
+The strong rectangulation congruence is the intersection of the yin and yang congruences.
 
 %%%%%%%%%%%%%
 
@@ -1446,10 +1452,7 @@ Since the combinatorial type of a Minkowski sum is invariant to translation of t
 Also note that since the up and down shard polytopes are, up to a translation, both yin and yang, each up and down shard polytope is summed twice in the proposed realization.
 This, again, does not change the combinatorial type of the polytope.
 
-\cref{prop:strongMinkowski} gives us an alternative description of $\SRP(n)$ as the sum of two opposite quotientopes defined by the \defn{yin} and \defn{yang congruences} respectively, where the yin (resp.~yang) congruence is defined by the arc ideal consisting of all yin (resp.~yang) arcs.
-It can be checked that the equivalence classes of these congruences are counted by \defn{semi-Baxter permutations}, defined as permutations avoiding $2\underline{41}3$, hence only one of the two forbidden Baxter patterns.
-These equivalence classes are in turn in bijection with rectangulations that avoid one of the two patterns defining diagonal rectangulations, see~\cite{ACFF24}.
-\vincent{Move this}
+\cref{prop:strongMinkowski} gives us an alternative description of $\SRP(n)$ as the sum of two opposite quotientopes corresponding to the yin and yang congruences.
 
 %%%%%%%%%%%%%
 
@@ -1505,7 +1508,7 @@ Note again that by definition, this extremal vertex should only depend on the st
 
 \begin{lemma}
   \label{lem:yincount}
-  Let $R$ be a strong rectangulation of size~$n$, let~$S$ and $T$ be its source and target trees, let~$([n],\preccurlyeq_s)$ be its strong poset, and let~$\b{p}(R)$ be the vertex of $\SRP(n)$ corresponding to $R$.
+  Let $R$ be a strong rectangulation of size~$n$, let~$S$ and $T$ be its source and target trees, let~$([n],\prec_s^R)$ be its strong poset, and let~$\b{p}(R)$ be the vertex of $\SRP(n)$ corresponding to $R$.
   Given a pair $i,j\in [n]$ with $i<j$, the number of yin arcs $\alpha$ such that $\b{e}_i-\b{e}_j$ is the extremal vertex of~$\SP(\alpha)$ contributing to $\b{p}(R)$ is
   \[
     h^T_i \cdot cv^{T,S}_{i,j}\cdot h^S_j 
@@ -1517,7 +1520,7 @@ Note again that by definition, this extremal vertex should only depend on the st
   \end{itemize}  
 \end{lemma}
 \begin{proof}
-  Let $\pi$ be any permutation in~$\mathcal{L}(P_s(R))$.
+  Let $\pi$ be any permutation in~$\mathcal{L}(\prec_s^R)$.
   From \cref{lem:yinminmax}, for a pair $i<j \in [n]$, there exists a yin arc~$\alpha$ whose shard polytope $\SP(\alpha)$ contributes to $\b{e}_i-\b{e}_j$ if and only if $\pi^{-1}(i)>\pi^{-1}(j)$, hence if $i\succ_s j$.
   Provided this holds, the set of yin arcs $\alpha$ such that $\SP(\alpha)$ contributes to $\b{e}_i-\b{e}_j$ are defined by pairs of contiguous intervals $I,J$ of $[n]$ with $i\in I$, $j\in J$, such that $i$ is the index of the maximum of $\pi^{-1}$ in $I$, and $j$ is the index of the maximum of $\pi^{-1}$ in $J$.
   We claim that the number of choices of the three endpoints defining such a pair of intervals $I$ and $J$ is the given product.
@@ -1526,7 +1529,7 @@ Note again that by definition, this extremal vertex should only depend on the st
   The proof of this follows the exact same lines as that of \cref{lem:weakCoord}.
   Each leaf determines a left endpoint for $I$, defined as the next node in an inorder traversal.
   Any such node $\ell$ either lies in the horizontal subtree of $i$, or is $i$ itself.
-  Since from \cref{lem:sextw} the strong poset extends the order induced by $T$, we have that either $\ell=i$ or $\ell\prec_s i$, hence $\pi^{-1}(\ell)\leq \pi^{-1}(i)$.
+  Since from \cref{lem:sextw} the strong poset extends the order induced by $T$, we have that either $\ell=i$ or $\ell\prec_s^R i$, hence $\pi^{-1}(\ell)\leq \pi^{-1}(i)$.
   Therefore, each such choice of left endpoint for $I$ does not contradict the fact that $i$ is the index of the maximum of~$\pi^{-1}$ in $I$.
   Now consider the leaf of $T$ that is immediately left of the leftmost leaf of the horizontal subtree of $i$.
   This leaf is associated with the node $\ell$ that comes next in inorder traversal, which must be an ancestor of $i$ in $T$.
@@ -1540,30 +1543,30 @@ Note again that by definition, this extremal vertex should only depend on the st
   These leaves are exactly the common leaves defined previously.
 \end{proof}
 
-\cref{lem:yincount} essentially gives us the coefficient $\yin{w}^R_{i,j}$ in \cref{thm:strongRectangulotope}, except that the condition $\neg i\verticalPattern j$ is replaced by $i\succ_s j$.
-Recall that $i\verticalPattern j$ denote the situation where the rectangles $r_i$ and~$r_j$ of inorder labels $i$ and $j$ share a vertical segment, $r_i$ is on the left of $r_j$, and the bottom edge of $r_i$ is lower than the top edge of $r_j$.
+\cref{lem:yincount} essentially gives us the coefficient $\yin{w}^R_{i,j}$ in \cref{thm:strongRectangulotope}, except that the condition $\neg \; {}^i \!\!\! \raisebox{.03cm}{\verticalPattern} \!\!\! {}_j$ is replaced by $i\succ_s j$.
+Recall that ${}^i \!\!\! \raisebox{.03cm}{\verticalPattern} \!\!\! {}_j$ denote the situation where the rectangles $r_i$ and~$r_j$ of inorder labels $i$ and $j$ share a vertical segment, $r_i$ is on the left of $r_j$, and the bottom edge of $r_i$ is lower than the top edge of $r_j$.
 Our aim is to provide a formula for the coordinates of the vertices of the strong rectangulotope that does not involve the computation of the strong poset or one of its linear extension.
-For that purpose, we prove that for every pair $i<j\in [n]$ such that~$i\prec_s j$, which do not have any associated yin arc, we have either $cv^{T,S}_{i,j} = 0$ (hence the product in \cref{lem:yincount} is~$0$ as well and adding it does not harm the result), or $i\verticalPattern j$. 
+For that purpose, we prove that for every pair $i<j\in [n]$ such that~$i\prec_s^R j$, which do not have any associated yin arc, we have either ${}^i \!\!\! \raisebox{.03cm}{\verticalPattern} \!\!\! {}_j$ or $cv^{T,S}_{i,j} = 0$ (hence the product in \cref{lem:yincount} is~$0$ as well and adding it does not harm the result).
 
 \begin{lemma}
   \label{lem:whentosum}
-  Let $R$ be a rectangulation of size~$n$, let $S$ and $T$ be its source and target trees, and let~$([n],\preccurlyeq_s)$ be the associated strong order.
-  Given a pair $i,j\in [n]$ such that $i<j$ and $i\prec_s j$, we~have
+  Let $R$ be a rectangulation of size~$n$, with source and target trees~$S$ and~$T$, and strong order~$\prec_s^R$.
+  Given a pair $i,j\in [n]$ such that $i<j$ and $i\prec_s^R j$, we~have
   \[
-    cv^{T,S}_{i,j} > 0 \quad \Longrightarrow \quad i \verticalPattern j.
+    cv^{T,S}_{i,j} > 0 \quad \Longrightarrow \quad {}^i \!\!\! \raisebox{.03cm}{\verticalPattern} \!\!\! {}_j.
   \]
 \end{lemma}
 \begin{proof}
   Consider the two rectangles $r_i$ and $r_j$ with inorder labels $i$ and $j$ in $R$.
-  We first observe that the source vertex $s(r_j)$ is not contained in the interior of the lower left quadrant of origin $t(r_i)$.
-  Indeed, if we suppose otherwise, then the line segment from $s(r_j)$ to $t(r_i)$ has positive slope, which implies that $j\tri i$, which in turn implies $j\prec_s i$, contradicting our hypothesis.
-  We also observe that since $i < j$, by definition of the inorder, the rectangle $r_j$ must be below or on the right of $r_i$.
-  Combining those two observations, we conclude that the left edge of $r_j$ cannot be on the left of the right edge of $r_i$.
+  We first observe that the source vertex $s(r_j)$ is not contained in the interior of the lower left quadrant of origin~$t(r_i)$.
+  Indeed, if we assume otherwise, then the line segment from $s(r_j)$ to $t(r_i)$ has positive slope, which implies that $j\tri i$, which in turn implies $j\prec_s^R i$, contradicting our hypothesis.
+  We also observe that since $i < j$, by definition of the inorder on~$S$ and~$T$, the rectangle $r_j$ must be below or on the right of~$r_i$.
+  Combining those two observations, we conclude that the right edge of $r_i$ cannot be on the right of the left edge of~$r_j$.
 
   Therefore, there can only be one segment on which a leaf common to the vertical subtree of $i$ in $T$ and the vertical subtree of $j$ in $S$ may lie, which is the vertical segment supporting the right edge of $r_i$ and the left edge of $r_j$.
   Let us assume that this segment is shared by those two edges.
-  If the bottom edge of $r_i$ is higher than the top edge of $r_j$, we must have $j\btri i$, which implies $j\prec_s i$, contradicting our hypothesis again.
-  Thus the bottom edge of $r_i$ is lower than the top edge of $r_j$, and $i\verticalPattern j$, as claimed.
+  If the bottom edge of $r_i$ is higher than the top edge of $r_j$, we must have $j\btri i$, which implies $j\prec_s^R i$, contradicting our hypothesis again.
+  Thus the bottom edge of $r_i$ is lower than the top edge of $r_j$, and ${}^i \!\!\! \raisebox{.03cm}{\verticalPattern} \!\!\! {}_j$, as claimed.
 \end{proof}
 
 We omit the proofs of the analogues of \cref{lem:yincount} and \cref{lem:whentosum} for the case of the yang arcs, which use completely symmetric arguments.
