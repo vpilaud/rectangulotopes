@@ -223,7 +223,7 @@
 \urladdr{\url{https://jean.cardinal.web.ulb.be}}
 
 \author{Vincent Pilaud}
-\address{Universitat de Barcelona}
+\address{Universitat de Barcelona (UB)}
 \email{vincent.pilaud@ub.edu}
 \urladdr{\url{https://www.ub.edu/comb/vincentpilaud/}}
 
@@ -345,11 +345,13 @@ Weak and strong rectangulations of size $n$ have been shown to define congruence
 The \defn{weak rectangulation congruence} (or \defn{Baxter congruence}) was first explicitly studied by S.~Law and N.~Reading~\cite{MR2871762} and revisited in~\cite[Thm.~1.1 \& Exm.~4.10]{Reading-arcDiagrams} in terms of arc diagrams.
 Its classes are in bijection with weak rectangulations, but also with \defn{Baxter permutations}~\cite{MR0491652,MR0555815}, with \defn{twin binary trees}~\cite{MR1417289,MR2914637}, and with many other combinatorial families~\cite{MR2763051}. 
 The corresponding quotientopes will be referred to as the \defn{weak rectangulotopes} and denoted by $\WRP(n)$.
+We note that weak rectangulotopes were already constructed as Minkowski sums of two opposite associahedra in~\cite{MR2871762}, before the general constructions of quotientopes of~\cite{MR3964495,MR4584712}.
 For~$n = 4$, the weak rectangulation lattice is represented in \cref{fig:weakRectangulationLattice} and the weak rectangulotope is represented in \cref{fig:weakRectangulotope}.
 
 The \defn{strong rectangulation congruence} was introduced by N.~Reading~\cite{MR2864445}, revisited in~\cite[Thm.~1.2 \& Exm.~4.11]{Reading-arcDiagrams} in terms of arc diagrams, and studied more recently by E.~Meehan~\cite{MR3697823}, and A.~Asinowski, J.~Cardinal, S.~Felsner, and É.~Fusy~\cite{ACFF24}.
 Its classes are in bijection with strong rectangulations.
 The corresponding quotientopes will be referred to as the \defn{strong rectangulotopes} and denoted by~$\SRP(n)$.
+Strong rectangulotopes can be obtained as quotientopes~\cite{MR3964495,MR4584712} for the strong rectangulation congruence.
 For~$n = 4$, the strong rectangulation lattice is represented in \cref{fig:strongRectangulationLattice} and the strong rectangulotope is represented in \cref{fig:strongRectangulotope}.
 
 \begin{figure}
@@ -1242,7 +1244,7 @@ This implies that every nonempty proper subset will define a facet of the weak r
   \[
   f_{\upArc{I}}(S) \eqdef \llbracket S\cap I\not=\emptyset \rrbracket .
   \]
-  (Recall that $\llbracket \varphi\rrbracket$ is equal to 1 if $\varphi$ holds, and 0 otherwise.)
+  (Recall that $\llbracket \varphi\rrbracket$ is equal to 1 if $\varphi$ holds, and~$0$ otherwise.)
   Similarly, the shard polytope~$\SP(\downArc{I})$ of a down arc~$\downArc{I}$ is given by the submodular function
   \[
   f_{\downArc{I}}(S) \eqdef - \llbracket I\subseteq S \rrbracket .
@@ -1472,7 +1474,7 @@ Note again that all rays of the braid fan are preserved in the fan of the strong
   \[
   f_{\yinArc{I}{J}}(S) \eqdef \llbracket I \not\subseteq [n] \ssm S \text{ and } J \not\subseteq S \rrbracket .
   \]
-  (Recall that $\llbracket \varphi\rrbracket$ is equal to 1 if $\varphi$ holds, and 0 otherwise.)
+  (Recall that $\llbracket \varphi\rrbracket$ is equal to 1 if $\varphi$ holds, and~$0$ otherwise.)
   Similarly, the shard polytope~$\SP(\yangArc{I}{J})$ of a yang arc~$\yangArc{I}{J}$ is given by the submodular function
   \[
   f_{\yangArc{I}{J}}(S) \eqdef \llbracket I \not\subseteq S \text{ and } J \not\subseteq [n] \ssm S \rrbracket .
@@ -1539,14 +1541,14 @@ Note again that by definition, this extremal vertex should only depend on the st
 \end{proof}
 
 \cref{lem:yincount} essentially gives us the coefficient $\yin{w}^R_{i,j}$ in \cref{thm:strongRectangulotope}, except that the condition $\neg i\verticalPattern j$ is replaced by $i\succ_s j$.
-Recall that $i\verticalPattern j$ denote the situation where the rectangles $r_i$ and $r_j$ of inorder labels $i$ and $j$ share a vertical segment, $r_i$ is on the left of $r_j$, and the bottom edge of $r_i$ is lower than the top edge of $r_j$.
+Recall that $i\verticalPattern j$ denote the situation where the rectangles $r_i$ and~$r_j$ of inorder labels $i$ and $j$ share a vertical segment, $r_i$ is on the left of $r_j$, and the bottom edge of $r_i$ is lower than the top edge of $r_j$.
 Our aim is to provide a formula for the coordinates of the vertices of the strong rectangulotope that does not involve the computation of the strong poset or one of its linear extension.
-For that purpose, we prove that for every pair $i<j\in [n]$ such that $i\prec_s j$, which do not have any associated yin arc, we have either $cv^{T,S}_{i,j} = 0$ (hence the product in \cref{lem:yincount} is 0 as well and adding it does not harm the result), or $i\verticalPattern j$. 
+For that purpose, we prove that for every pair $i<j\in [n]$ such that~$i\prec_s j$, which do not have any associated yin arc, we have either $cv^{T,S}_{i,j} = 0$ (hence the product in \cref{lem:yincount} is~$0$ as well and adding it does not harm the result), or $i\verticalPattern j$. 
 
 \begin{lemma}
   \label{lem:whentosum}
   Let $R$ be a rectangulation of size~$n$, let $S$ and $T$ be its source and target trees, and let~$([n],\preccurlyeq_s)$ be the associated strong order.
-  Given a pair $i,j\in [n]$ such that $i<j$ and $i\prec_s j$, we have
+  Given a pair $i,j\in [n]$ such that $i<j$ and $i\prec_s j$, we~have
   \[
     cv^{T,S}_{i,j} > 0 \quad \Longrightarrow \quad i \verticalPattern j.
   \]
