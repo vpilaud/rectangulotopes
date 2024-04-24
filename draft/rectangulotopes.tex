@@ -234,7 +234,7 @@
 
 \begin{abstract}
   Rectangulations are decompositions of a square into finitely many axis-aligned rectangles.
-  We describe realizations of $(n-1)$-dimensional polytopes associated with two families of rectangulations composed of $n$ rectangles.
+  We describe realizations of $(n-1)$-dimensional polytopes associated with two combinatorial families of rectangulations composed of $n$ rectangles.
   They are defined as quotientopes of natural lattice congruence on the weak Bruhat order on permutations in $\f{S}_n$, and their skeleta are flip graphs on rectangulations.
   We give simple vertex and facet descriptions of these polytopes, in particular elementary formulas for computing the coordinates of the vertex corresponding to each rectangulation, in the spirit of J.-L.~Loday's realization of the associahedron.
 \end{abstract}
@@ -261,7 +261,7 @@ Its skeleton is the Cayley graph of the symmetric group for the generators consi
 See \cref{fig:quotientopes}\,(left) for an illustration when~$n = 4$.
 The many generalizations and extensions of the permutahedra gave rise to a flourishing theory of \defn{deformed permutahedra}~\cite{MR2520477,Postnikov,MR4064768,MR4651496} (also called \defn{generalized permutahedra}, or \defn{polymatroids}).
 
-Among those, the \defn{associahedron} is a classical, ubiquitous polytope, first defined combinatorially by D.~Tamari~\cite{T51} and by J.~Stasheff~\cite{S63} in a topological context.
+Among those, the \defn{associahedron} is a classical, ubiquitous polytope, first defined by D.~Tamari~\cite{T51} and by J.~Stasheff~\cite{S63} in a topological context.
 It has since then been identified as a fundamental object in many other areas of mathematics, including operads, cluster algebras, combinatorial Hopf algebras, and physics (see for instance the recent survey from V. Pilaud, F. Santos and G. Ziegler~\cite{PilaudSantosZiegler} and references therein).
 It was first thought of as a purely combinatorial object, before various families of geometric realizations were shown to exist~\cite{MR1022776,MR1941227,MR2108555,MR3437894,MR2321739}.
 The face lattice of the $(n-1)$-dimensional associahedron is the reverse inclusion poset of nonintersecting diagonals of a convex $(n+3)$-gon.
@@ -380,10 +380,9 @@ A flip is a local, reversible change in the structure of the rectangulation.
 Flips in rectangulations come in three flavors:
 \begin{itemize}
 \item \defn{simple flips} replace a vertical segment incident to exactly two rectangles by a horizontal segment, and vice-versa,
-\item \defn{pivoting flips} transform a pair of adjacent rectangles whose union is not a rectangle, changing a left-right pair into an above-below pair, and vice-versa,
+\item \defn{pivoting flips} transform a pair of adjacent rectangles whose union is L-shaped, changing a left-right pair into an above-below pair, and vice-versa,
 \item \defn{wall slide flips} are wall slides that modify the adjacency of the rectangles, removing exactly one adjacency and adding exactly one. These are only relevant in strong rectangulations.
 \end{itemize}
-
 The various types of flips are illustrated in \cref{fig:flips}.
 We refer to \cite{MR2871762,MR3878132,MR3697823,ACFF24} for detailed descriptions of the flip graphs on both weak and strong rectangulations.
 Just like associahedra encode the rotation graphs on binary trees, the rectangulotopes directly yield flip graphs on rectangulations.
@@ -431,7 +430,7 @@ Namely, the skeleton of $\WRP(n)$ (resp.~of $\SRP(n)$) is isomorphic to the flip
 Rectangulotopes enrich the family of natural quotientopes, alongside associahedra, permutreehedra~\cite{MR3856522}, certain brick polytopes~\cite{PilaudSantos-brickPolytopes, PilaudStump-brickPolytopes, Pilaud-brickAlgebra}, and certain graphical zonotopes~\cite{Pilaud-brickAlgebra, Pilaud-acyclicReorientationLattices}, providing instructive examples of application of the theory of lattice congruences to concrete combinatorial objects.
 Our main results are elementary vertex and facet descriptions of both families of quotientopes.
 For vertices, we describe the coordinates of the vertex corresponding to a weak or strong rectangulation with simple product formulas in the spirit of J.-L.~Loday's realization in~\cref{thm:loday}\,(i).
-As mentioned in~\cite{PilaudSantosZiegler}, there is no such formula for arbitrary quotientopes, which makes rectangulotopes join the restricted club of Loday type quotientopes, jointly with associahedra and permutreehedra~\cite{MR3856522}.
+As mentioned in~\cite{PilaudSantosZiegler}, there is no such formula for arbitrary quotientopes, which makes rectangulotopes join the restricted club of Loday type quotientopes, together with associahedra and permutreehedra~\cite{MR3856522}.
 For facets, we show that both weak and strong rectangulotopes have $2^n-2$ facets (the maximal possible number of facets of a deformed permutahedron), and provide simple formulas for the right hand side of the inequality corresponding to a given proper nonempty subset of~$[n]$.
 
 We now give the necessary definitions for precisely stating these vertex and facet descriptions of the weak and strong rectangulotopes.
@@ -471,7 +470,7 @@ For each $i\in [n]$, we refer to its two subtrees in $T(R)$ as the \defn{horizon
 
 %%%%%%%%%%%%%
 
-\subsection{Weak rectangulotopes}
+\subsection{Realizations of weak rectangulotopes}
 \label{subsec:weakRectangulotopes}
 
 Our first results are simple vertex and facet descriptions of the weak rectangulotopes~$\WRP(n)$.
@@ -755,7 +754,7 @@ The facet inequalities corresponding to each nonempty proper subset of~$[n]$ are
 
 %%%%%%%%%%%%%
 
-\subsection{Strong rectangulotopes}
+\subsection{Realizations of strong rectangulotopes}
 \label{subsec:strongRectangulotopes}
 
 In order to exhibit a similar realization for the strong rectangulotopes, we need to count subsets of leaves that lie in some subtrees of both the source and target trees of a rectangulation.
@@ -958,6 +957,8 @@ We refer to \cite{MR2142177, Reading-arcDiagrams, MR3645055, MR3645056, MR396449
 \subsection{Weak order and noncrossing arc diagrams}
 \label{subsec:noncrossingArcDiagrams}
 
+\jean{We use the notation $\pi^{-1}(i)$ later. Should we switch to $\pi^{-1}_ii$, or use $\sigma (i)$ in what follows?}
+
 Denote by~$\f{S}_n$ the set of permutations of~$[n]$.
 The \defn{inversion set} of~$\sigma \in \f{S}_n$ is~$\inv(\sigma) \eqdef \set{(\sigma_i, \sigma_j)}{1 \le i < j \le n \text{ and } \sigma_i > \sigma_j}$.
 The \defn{weak Bruhat order}\footnote{The weak Bruhat order is usually just referred to as the weak order~\cite{MR1066460, MR2133266}. In this paper, we prefer to use weak Bruhat order to avoid any confusion with the weak poset defined on weak rectangulations.} is the lattice on the permutations of~$\f{S}_n$ defined by the inclusion of their inversion sets.
@@ -1142,7 +1143,8 @@ We define the set~$\mathcal{L}(\prec_w^R)$ as the linear extensions of the weak 
 
 We recall that \defn{Baxter permutations} are permutations avoiding the vincular patterns $2\underline{41}3$ and $3\underline{14}2$, where the underlining indicates that the symbols must appear contiguously in the permutation.
 Similarly, \defn{twisted Baxter permutations} are permutations avoiding the patterns $2\underline{41}3$ and $3\underline{41}2$, and \defn{co-twisted Baxter permutations} are permutations avoiding the patterns $2\underline{14}3$ and $3\underline{14}2$.
-These permutation families are central in the theory of rectangulations and appear in many other contexts~\cite{MR2763051}.
+These permutation families are equinumerous and their sizes are the \defn{Baxter numbers} (see sequence A001181 in the Online Encyclopedia of Integer Sequences).
+They are central in the theory of rectangulations and appear in many other contexts~\cite{MR2763051}.
 
 \pagebreak
 
@@ -1155,7 +1157,7 @@ These permutation families are central in the theory of rectangulations and appe
   \item the congruence classes are one-to-one with weak rectangulations,  
   \item the minimal elements of the congruence classes are the twisted Baxter permutations,
   \item the maximal elements of the congruence classes are the co-twisted Baxter permutations,
-  \item the congruence classes each contain a single Baxter permutation, and are one-to-one with Baxter permutations.
+  \item the congruence classes each contain a single Baxter permutation. %and are one-to-one with Baxter permutations. % J: redundant
   \end{itemize}
 \end{theorem}
 
@@ -1375,7 +1377,8 @@ Let $\mathcal{L}(\prec_s^R)$ be the set of permutations of $\f{S}_n$ correspondi
 
 N. Reading~\cite{MR2864445} introduced \defn{2-clumped permutations}, defined as the permutations avoiding the vincular patterns $24\underline{51}3$, $42\underline{51}3$, $3\underline{51}24$, and $3\underline{51}42$.
 The \defn{co-2-clumped permutations} are defined similarly, as permutations avoiding the mirror images of these four patterns.
-He showed that 2-clumped permutations are in bijection with strong rectangulations.
+These two permutation families are equinumerous (see sequence A342141 in the Online Encyclopedia of Integer Sequences).
+Reading showed that 2-clumped permutations are in bijection with strong rectangulations.
 
 \pagebreak
 \begin{theorem}[\cite{MR2864445,ACFF24}]
