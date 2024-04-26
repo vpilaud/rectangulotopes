@@ -308,7 +308,7 @@ The goal of this paper is to describe the geometry of the quotientopes for two p
 
 \subsection{Weak and strong rectangulations}
 
-The combinatorics of rectangulations has been studied for nearly two decades~\cite{MR2233287,MR2763051,MR2871762,MR2864445,MR3084577,MR3192492,MR3878132,MR4598046,AB24,ACFF24}.
+The combinatorics of rectangulations has been studied for nearly two decades~\cite{MR2233287,MR2763051,MR2871762,MR2864445,MR3084577,MR3192492,MR3878132,MR4598046,MR4667583,AB24,ACFF24}.
 In fact, several combinatorial ideas can even be traced back to the problem of ``squaring the square'' studied since the 1930s~\cite{A30,Abe32,MR0000470,MR0003040}. Also, some results were initially motivated by applications to the design of \defn{floorplans} for very large scale integrated circuits, and published in electrical engineering journals, see for instance Z. C. Shen and C. C. N. Chu~\cite{SC03}, and R. Fujimaki, Y. Inoue, and T. Takahashi~\cite{FT07,TF08,ITF09,FIT09}.
 
 We define a \defn{rectangulation} of size $n$ as a decomposition of the square into $n$ axis-parallel rectangles with disjoint interiors.
@@ -1278,15 +1278,14 @@ We therefore need to understand which vertices of the translates of the shard po
 \begin{lemma}
   \label{lem:lodaymax}
   Let $\sigma \in \f{S}_n$ and $I$ be an interval of~$[n]$ of size at least~$2$.
-  The unique vertex of the up shard polytope~$\SP(\upArc{I})$ (resp.~down shard polytope~$\SP(\downArc{I})$) that is extreme with respect to the direction $\sigma^{-1}$ is $\b{e}_i$ (resp.~$-\b{e}_i$), where $i$ is the maximum (resp. the minimum) of~$\sigma^{-1}$ in $I$.
+  The unique vertex of the up shard polytope~$\SP(\upArc{I})$ (resp.~down shard polytope~$\SP(\downArc{I})$) that is extreme with respect to the direction $\sigma^{-1}$ is $\b{e}_i$ (resp.~$-\b{e}_i$), where $i$ is the maximum (resp.~the minimum) of~$\sigma^{-1}$ in $I$.
 \end{lemma}
 
 Note that this extremal vertex should only depend on the weak rectangulation congruence class of $\sigma$.
-This, in passing, gives us alternative characterizations of the sylvester congruence $\frown$ and the weak rectangulation congruence $\weakeq$:
-$\sigma \frown \tau$ if and only if for any interval $I$ of $[n]$,
-$\arg\max_{j\in I} \sigma^{-1}_j=\arg\max_{j\in I} \tau^{-1}_j$, and
-$\sigma \weakeq \tau$ if the previous property holds, and in addition
-$\arg\min_{j\in I} \sigma^{-1}_j=\arg\min_{j\in I} \tau^{-1}_j$.
+This, in passing, gives us alternative characterizations of the sylvester congruence~$\frown$, the anti-sylvester congruence~$\smile$, and the weak rectangulation congruence $\weakeq$.
+We have~$\sigma \frown \tau$ if and only if $\arg\max_{j\in I} \sigma^{-1}_j=\arg\max_{j\in I} \tau^{-1}_j$ for any interval $I$ of $[n]$.
+Similarly, $\sigma \smile \tau$ if and only if $\arg\min_{j\in I} \sigma^{-1}_j=\arg\min_{j\in I} \tau^{-1}_j$ for any interval $I$ of $[n]$.
+Finally, $\sigma\weakeq\tau$ if both conditions hold.
 
 The proof of the following lemma actually follows from Loday's realization in~\cref{thm:loday}.
 For the sake of completeness, and because we will reuse the same reasoning in \cref{sec:strongRectangulotopes}, we give an elementary proof.
@@ -1508,18 +1507,18 @@ As in \cref{subsec:LodayWeakRectangulotopes}, we need to understand which vertic
 
 \begin{lemma}
   \label{lem:yinminmax}
-  Let $\sigma\in\f{S}_n$, let~$I$ and~$J$ be two consecutive intervals of~$[n]$, and let $i\eqdef \arg\max_{k\in I} \sigma^{-1}_k$ and $j \eqdef \arg\min_{k\in J} \sigma^{-1}_k$ (respectively, for yang arcs, $i\eqdef \arg\min_{k\in I} \sigma^{-1}_k$ and $j \eqdef \arg\max_{k\in J} \sigma^{-1}_k$).
-  The unique vertex of the yin (resp. yang) shard polytope~$\SP(\yinArc{I}{J})$ (resp. $\SP(\yangArc{I}{J})$) that is extreme with respect to the direction $\sigma^{-1}$ is $\b{e}_i-\b{e}_j$ (resp. $\b{e}_j-\b{e}_i$) if $\sigma^{-1}_i > \sigma^{-1}_j$ (resp. $\sigma^{-1}_i < \sigma^{-1}_j$), and $\b{0}$ otherwise.
+  Let $\sigma\in\f{S}_n$, let~$I$ and~$J$ be two consecutive intervals of~$[n]$, and let $i\eqdef \arg\max_{k\in I} \sigma^{-1}_k$ and $j \eqdef \arg\min_{k\in J} \sigma^{-1}_k$ (resp.~$i\eqdef \arg\min_{k\in I} \sigma^{-1}_k$ and $j \eqdef \arg\max_{k\in J} \sigma^{-1}_k$).
+  The unique vertex of the yin (resp.~yang) shard polytope~$\SP(\yinArc{I}{J})$ (resp.~$\SP(\yangArc{I}{J})$) that is extreme with respect to the direction $\sigma^{-1}$ is $\b{e}_i-\b{e}_j$ (resp.~$\b{e}_j-\b{e}_i$) if $\sigma^{-1}_i > \sigma^{-1}_j$ (resp.~$\sigma^{-1}_i < \sigma^{-1}_j$), and $\b{0}$ otherwise.
 \end{lemma}
 
 Note again that by definition, this extremal vertex should only depend on the strong congruence class of $\sigma$.
 This, again, gives us alternative characterizations of the yin congruence $\sim$, the yang congruence $\backsim$, and the strong rectangulation congruence $\strongeq$.
 We have $\sigma \sim \tau$ if and only if for any pair of consecutive intervals $I$ and $J$ of $[n]$, 
-$\arg\max_{k\in I} \sigma^{-1}_k = \arg\max_{k\in I} \tau^{-1}_k$, 
-$\arg\min_{k\in J} \sigma^{-1}_k = \arg\min_{k\in J} \tau^{-1}_k$,
+$\arg\max_{k\in I} \sigma^{-1}_k = \arg\max_{k\in I} \tau^{-1}_k$ and 
+$\arg\min_{k\in J} \sigma^{-1}_k = \arg\min_{k\in J} \tau^{-1}_k$ (that is, if $\sigma \weakeq \tau$),
 and, if we let $i$ and $j$ be defined as in Lemma~\ref{lem:yinminmax} as the indices of the maximum in $I$ and the minimum in $J$,
 $\sigma^{-1}_i > \sigma^{-1}_j \Leftrightarrow \tau^{-1}_i > \tau^{-1}_j$.
-A similar statement holds for the yang congruence $\backsim$, by exchanging $\min$ and $\max$, and flipping the sign of the inequality.
+A similar statement holds for the yang congruence $\backsim$, by exchanging $\min$ and $\max$.
 Finally, $\sigma\strongeq\tau$ if both sets of conditions hold.
 
 \begin{lemma}
