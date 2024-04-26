@@ -256,12 +256,12 @@
 
 The encoding of combinatorial objects in the form of a polyhedral structure is a recurrent theme in geometric and algebraic combinatorics.
 An elementary yet striking example of this idea is the \defn{permutahedron} $\Perm (n)$.
-It is the $(n-1)$-dimensional polytope defined either as the convex hull of the points $\sum_{i\in [n]} \sigma^{-1}(i)\cdot \b{e}_i$ for all permutations $\sigma \in \f{S}_n$, or as the intersection of the hyperplane of~$\R^n$ given by~$\sum_{i \in [n]} x_i = \smash{\binom{n+1}{2}}$ with the halfspaces given by~$\sum_{i \in I} x_i \ge \smash{\binom{|I|+1}{2}}$ for all nonempty proper subsets~$\varnothing \ne I \subsetneq [n]$.
+It is the $(n-1)$-dimensional polytope defined either as the convex hull of the points $\sum_{i\in [n]} \sigma^{-1}_i\cdot \b{e}_i$ for all permutations $\sigma \in \f{S}_n$, or as the intersection of the hyperplane of~$\R^n$ given by~$\sum_{i \in [n]} x_i = \smash{\binom{n+1}{2}}$ with the halfspaces given by~$\sum_{i \in I} x_i \ge \smash{\binom{|I|+1}{2}}$ for all nonempty proper subsets~$\varnothing \ne I \subsetneq [n]$.
 Its skeleton is the Cayley graph of the symmetric group for the generators consisting of adjacent transpositions.
 See \cref{fig:quotientopes}\,(left) for an illustration when~$n = 4$.
 The many generalizations and extensions of the permutahedra gave rise to a flourishing theory of \defn{deformed permutahedra}~\cite{MR2520477,Postnikov,MR4064768,MR4651496} (also called \defn{generalized permutahedra}, or \defn{polymatroids}).
 
-Among those, the \defn{associahedron} is a classical, ubiquitous polytope, first defined by D.~Tamari~\cite{T51} and by J.~Stasheff~\cite{S63} in a topological context.
+Among those, the \defn{associahedron} is a classical and ubiquitous polytope, first defined by D.~Tama\-ri~\cite{T51} and by J.~Stasheff~\cite{S63} in a topological context.
 It has since then been identified as a fundamental object in many other areas of mathematics, including operads, cluster algebras, combinatorial Hopf algebras, and physics (see for instance the recent survey from V. Pilaud, F. Santos and G. Ziegler~\cite{PilaudSantosZiegler} and references therein).
 It was first thought of as a purely combinatorial object, before various families of geometric realizations were shown to exist~\cite{MR1022776,MR1941227,MR2108555,MR3437894,MR2321739}.
 The face lattice of the $(n-1)$-dimensional associahedron is the reverse inclusion poset of nonintersecting diagonals of a convex $(n+3)$-gon.
@@ -469,7 +469,7 @@ For each $i\in [n]$, we refer to its two subtrees in $T(R)$ as the \defn{horizon
 
 %%%%%%%%%%%%%
 
-\subsection{Realizations of weak rectangulotopes}
+\subsection{Weak rectangulotopes}
 \label{subsec:weakRectangulotopes}
 
 Our first results are simple vertex and facet descriptions of the weak rectangulotopes~$\WRP(n)$.
@@ -753,7 +753,7 @@ The facet inequalities corresponding to each nonempty proper subset of~$[n]$ are
 
 %%%%%%%%%%%%%
 
-\subsection{Realizations of strong rectangulotopes}
+\subsection{Strong rectangulotopes}
 \label{subsec:strongRectangulotopes}
 
 In order to exhibit a similar realization for the strong rectangulotopes, we need to count subsets of leaves that lie in some subtrees of both the source and target trees of a rectangulation.
@@ -956,8 +956,6 @@ We refer to \cite{MR2142177, Reading-arcDiagrams, MR3645055, MR3645056, MR396449
 \subsection{Weak order and noncrossing arc diagrams}
 \label{subsec:noncrossingArcDiagrams}
 
-\jean{We use the notation $\pi^{-1}(i)$ later. Should we switch to $\pi^{-1}_ii$, or use $\sigma (i)$ in what follows?}
-
 Denote by~$\f{S}_n$ the set of permutations of~$[n]$.
 The \defn{inversion set} of~$\sigma \in \f{S}_n$ is~$\inv(\sigma) \eqdef \set{(\sigma_i, \sigma_j)}{1 \le i < j \le n \text{ and } \sigma_i > \sigma_j}$.
 The \defn{weak Bruhat order}\footnote{The weak Bruhat order is usually just referred to as the weak order~\cite{MR1066460, MR2133266}. In this paper, we prefer to use weak Bruhat order to avoid any confusion with the weak poset defined on weak rectangulations.} is the lattice on the permutations of~$\f{S}_n$ defined by the inclusion of their inversion sets.
@@ -1094,7 +1092,7 @@ It was shown in~\cite{MR4584712} that any Minkowski sum of positive scalings of 
 	\label{fig:shardPolytopes}
 \end{figure}
 
-%\pagebreak 
+\pagebreak 
 A set function $f:2^{[n]}\mapsto \R$ is said to be \defn{submodular} when $f(X \cup Y) + f(X \cap Y) \le f(X) + f(Y)$ for any~$X, Y \subseteq [n]$.
 By definition, any quotientope is a deformed permutahedron, and can thus be written as
   \[
@@ -1131,14 +1129,13 @@ See \cref{fig:weakPoset}.
 \end{figure}
 
 %%%%%%%%%%%%%
-%\pagebreak
 
 \subsection{The weak rectangulation congruence}
 \label{subsec:weakRectangulationCongruence}
 
 We define the set~$\mathcal{L}(\prec_w^R)$ as the linear extensions of the weak poset:
 \[
-\mathcal{L}(\prec_w^R) \eqdef \bigset{\pi\in\f{S}_n }{ i\prec_w^R j\implies \pi^{-1}(i) < \pi^{-1}(j)}.
+\mathcal{L}(\prec_w^R) \eqdef \bigset{\sigma\in\f{S}_n }{ i\prec_w^R j\implies \sigma^{-1}_i < \sigma^{-1}_j}.
 \]
 
 We recall that \defn{Baxter permutations} are permutations avoiding the vincular patterns $2\underline{41}3$ and $3\underline{14}2$, where the underlining indicates that the symbols must appear contiguously in the permutation.
@@ -1273,16 +1270,15 @@ We therefore need to understand which vertices of the translates of the shard po
 
 \begin{lemma}
   \label{lem:lodaymax}
-  Let $\pi \in \f{S}_n$ and $I$ be an interval of~$[n]$ of size at least~$2$.
-  The unique vertex of the up shard polytope~$\SP(\upArc{I})$ (resp.~of the translated down shard polytope~$\SP(\downArc{I})$) that is extreme with respect to the direction $\pi^{-1}$ is $\b{e}_i$ (resp.~$-\b{e}_i$), where $i$ is the maximum (resp. the minimum) of~$\pi^{-1}$ in $I$.
+  Let $\sigma \in \f{S}_n$ and $I$ be an interval of~$[n]$ of size at least~$2$.
+  The unique vertex of the up shard polytope~$\SP(\upArc{I})$ (resp.~of the translated down shard polytope~$\SP(\downArc{I})$) that is extreme with respect to the direction $\sigma^{-1}$ is $\b{e}_i$ (resp.~$-\b{e}_i$), where $i$ is the maximum (resp. the minimum) of~$\sigma^{-1}$ in $I$.
 \end{lemma}
 
-Note that this extremal vertex should only depend on the weak rectangulation congruence class of $\pi$.
+Note that this extremal vertex should only depend on the weak rectangulation congruence class of $\sigma$.
 This, in passing, gives us an alternative characterization of the weak rectangulation congruence:
-$\pi
-\weakeq\sigma$ if and only if for any interval $I$ of $[n]$,
-$\arg\max_{j\in I} \pi^{-1}(j)=\arg\max_{j\in I} \sigma^{-1}(j)$, and
-$\arg\min_{j\in I} \pi^{-1}(j)=\arg\min_{j\in I} \sigma^{-1}(j)$.
+$\sigma \weakeq \tau$ if and only if for any interval $I$ of $[n]$,
+$\arg\max_{j\in I} \sigma^{-1}_j=\arg\max_{j\in I} \tau^{-1}_j$, and
+$\arg\min_{j\in I} \sigma^{-1}_j=\arg\min_{j\in I} \tau^{-1}_j$.
 
 The proof of the following lemma actually follows from Loday's realization in~\cref{thm:loday}.
 For the sake of completeness, and because we will reuse the same reasoning in the next section, we give an elementary proof.
@@ -1297,18 +1293,18 @@ For the sake of completeness, and because we will reuse the same reasoning in th
    where $h^T_i$ and $v^T_i$ denote respectively the number of leaves in the horizontal and vertical subtrees of $i$ in the tree $T$.
 \end{lemma}
 \begin{proof}
-  Let $\pi$ be any permutation in $\mathcal{L}(\prec_w^R)$.
-  From \cref{lem:lodaymax}, for an $i\in [n]$, a shard polytope~$\SP(\upArc{I})$ contributes to $\b{e}_i$ if and only if $i$ is the index of the maximum of $\pi^{-1}$ in $I$.
+  Let $\sigma$ be any permutation in $\mathcal{L}(\prec_w^R)$.
+  From \cref{lem:lodaymax}, for an $i\in [n]$, a shard polytope~$\SP(\upArc{I})$ contributes to $\b{e}_i$ if and only if $i$ is the index of the maximum of $\sigma^{-1}$ in $I$.
   We claim that the number of intervals $I$ satisfying this condition is the given product.
 
   We first show that the number of choices for the left endpoint of $I$ is equal to the number $h^T_i$ of leaves in the horizontal subtree of $i$ in $T$.
   Each such leaf determines a left endpoint for $I$, defined as the node of the tree that follows it in an inorder traversal.
   Any such node $\ell$ either lies in the horizontal subtree of $i$, or is $i$ itself.
-  Since the weak poset extends the order induced by $T$, we have that either $\ell=i$ or $\ell\prec_s^R i$, hence $\pi^{-1}(\ell)\leq \pi^{-1}(i)$.
-  Therefore, each such choice of left endpoint for $I$ does not contradict the fact that $i$ is the index of the maximum of $\pi^{-1}$ in $I$.
+  Since the weak poset extends the order induced by $T$, we have that either $\ell=i$ or $\ell\prec_s^R i$, hence $\sigma^{-1}_\ell \leq \sigma^{-1}_i$.
+  Therefore, each such choice of left endpoint for $I$ does not contradict the fact that $i$ is the index of the maximum of $\sigma^{-1}$ in $I$.
   Now consider the leaf of $T$ that is immediately left of the leftmost leaf of the horizontal subtree of $i$.
   This leaf is associated with the node $\ell$ that comes next in inorder traversal, which must be an ancestor of $i$ in $T$.
-  Therefore, we must have $\ell\succ_s i$, and $\pi^{-1}(\ell) > \pi^{-1}(i)$, and we cannot extend $I$ past this index on the left.
+  Therefore, we must have $\ell\succ_s i$, and $\sigma^{-1}_\ell > \sigma^{-1}_i$, and we cannot extend $I$ past this index on the left.
   This shows that there are exactly $h^T_i$ choices, and not more, for the choice of the left endpoint of $I$.
   A symmetric argument shows that there are exactly $v^{T}_i$ choices for the right endpoint of $I$.
   The combined number of choices is thus the product~$h^{T}_i\cdot v^{T}_i$.
@@ -1369,7 +1365,7 @@ The strong poset is a two-dimensional lattice, whose minimum is the root of~$S(R
 
 Let $\mathcal{L}(\prec_s^R)$ be the set of permutations of $\f{S}_n$ corresponding to linear extensions of the strong poset $\prec_s^R$:
 \[
-\mathcal{L}(\prec_s^R) \eqdef \bigset{\pi\in\f{S}_n }{ i\prec_s^R j\implies \pi^{-1}(i) < \pi^{-1}(j)}.
+\mathcal{L}(\prec_s^R) \eqdef \bigset{\sigma\in\f{S}_n }{ i\prec_s^R j\implies \sigma^{-1}_i < \sigma^{-1}_j}.
 \]
 
 N. Reading~\cite{MR2864445} introduced \defn{2-clumped permutations}, defined as the permutations avoiding the vincular patterns $24\underline{51}3$, $42\underline{51}3$, $3\underline{51}24$, and $3\underline{51}42$.
@@ -1503,11 +1499,11 @@ As in \cref{subsec:LodayWeakRectangulotopes}, we need to understand which vertic
 
 \begin{lemma}
   \label{lem:yinminmax}
-  Let $\pi\in\f{S}_n$, let~$I$ and~$J$ be two consecutive intervals of~$[n]$, and let $i \eqdef \arg\max_{k\in I} \pi^{-1}(k)$ and $j \eqdef \arg\min_{k\in J} \pi^{-1}(k)$.
-  The unique vertex of the yin shard polytope~$\SP(\yinArc{I}{J})$ that is extreme with respect to the direction $\pi^{-1}$ is $\b{e}_i-\b{e}_j$ if $\pi^{-1}(i)>\pi^{-1}(j)$, and $\b{0}$ otherwise.
+  Let $\sigma\in\f{S}_n$, let~$I$ and~$J$ be two consecutive intervals of~$[n]$, and let $i \eqdef \arg\max_{k\in I} \sigma^{-1}_k$ and $j \eqdef \arg\min_{k\in J} \sigma^{-1}_k$.
+  The unique vertex of the yin shard polytope~$\SP(\yinArc{I}{J})$ that is extreme with respect to the direction $\sigma^{-1}$ is $\b{e}_i-\b{e}_j$ if $\sigma^{-1}_i > \sigma^{-1}_j$, and $\b{0}$ otherwise.
 \end{lemma}
 
-Note again that by definition, this extremal vertex should only depend on the strong congruence class of $\pi$.
+Note again that by definition, this extremal vertex should only depend on the strong congruence class of $\sigma$.
 
 \begin{lemma}
   \label{lem:yincount}
@@ -1523,20 +1519,20 @@ Note again that by definition, this extremal vertex should only depend on the st
   \end{itemize}  
 \end{lemma}
 \begin{proof}
-  Let $\pi$ be any permutation in~$\mathcal{L}(\prec_s^R)$.
-  From \cref{lem:yinminmax}, for a pair $i<j \in [n]$, there exists a yin arc~$\alpha$ whose shard polytope $\SP(\alpha)$ contributes to $\b{e}_i-\b{e}_j$ if and only if $\pi^{-1}(i)>\pi^{-1}(j)$, hence if $i\succ_s j$.
-  Provided this holds, the set of yin arcs $\alpha$ such that $\SP(\alpha)$ contributes to $\b{e}_i-\b{e}_j$ are defined by pairs of contiguous intervals $I,J$ of $[n]$ with $i\in I$, $j\in J$, such that $i$ is the index of the maximum of $\pi^{-1}$ in $I$, and $j$ is the index of the maximum of $\pi^{-1}$ in $J$.
+  Let $\sigma$ be any permutation in~$\mathcal{L}(\prec_s^R)$.
+  From \cref{lem:yinminmax}, for a pair $i<j \in [n]$, there exists a yin arc~$\alpha$ whose shard polytope $\SP(\alpha)$ contributes to $\b{e}_i-\b{e}_j$ if and only if $\sigma^{-1}_i > \sigma^{-1}_j$, hence if $i\succ_s j$.
+  Provided this holds, the set of yin arcs $\alpha$ such that $\SP(\alpha)$ contributes to $\b{e}_i-\b{e}_j$ are defined by pairs of contiguous intervals $I,J$ of $[n]$ with $i\in I$, $j\in J$, such that $i$ is the index of the maximum of $\sigma^{-1}$ in $I$, and $j$ is the index of the maximum of $\sigma^{-1}$ in $J$.
   We claim that the number of choices of the three endpoints defining such a pair of intervals $I$ and $J$ is the given product.
 
   We first show that the number of choices for the left endpoint of $I$ is equal to the number $h^T_i$ of leaves in the horizontal subtree of $i$ in $T$.
   The proof of this follows the exact same lines as that of \cref{lem:weakCoord}.
   Each leaf determines a left endpoint for $I$, defined as the next node in an inorder traversal.
   Any such node $\ell$ either lies in the horizontal subtree of $i$, or is $i$ itself.
-  Since from \cref{lem:sextw} the strong poset extends the order induced by $T$, we have that either $\ell=i$ or $\ell\prec_s^R i$, hence $\pi^{-1}(\ell)\leq \pi^{-1}(i)$.
-  Therefore, each such choice of left endpoint for $I$ does not contradict the fact that $i$ is the index of the maximum of~$\pi^{-1}$ in $I$.
+  Since from \cref{lem:sextw} the strong poset extends the order induced by $T$, we have that either $\ell=i$ or $\ell\prec_s^R i$, hence $\sigma^{-1}_\ell \leq \sigma^{-1}_i$.
+  Therefore, each such choice of left endpoint for $I$ does not contradict the fact that $i$ is the index of the maximum of~$\sigma^{-1}$ in $I$.
   Now consider the leaf of $T$ that is immediately left of the leftmost leaf of the horizontal subtree of $i$.
   This leaf is associated with the node $\ell$ that comes next in inorder traversal, which must be an ancestor of $i$ in $T$.
-  Therefore, we must have $\ell\succ_s i$, and $\pi^{-1}(\ell) > \pi^{-1}(i)$, and we cannot extend $I$ past this index on the left.
+  Therefore, we must have $\ell\succ_s i$, and $\sigma^{-1}_\ell > \sigma^{-1}_i$, and we cannot extend $I$ past this index on the left.
   This shows that there are exactly $h^T_i$ choices, and not more, for the choice of the left endpoint of $I$.
 
   The rest of the formula comes by symmetric arguments.
@@ -1623,15 +1619,14 @@ A rectangulation~$R$ is \defn{diagonal} if it satisfies the following equivalent
 \item the co-$2$-clumped permutation~$\projDown(R)$ avoids the patterns~$2143$ and~$3142$,
 \end{enumerate}
 
-
 \begin{proposition}
 The weak rectangulation insertion of any permutation~$\sigma$ of~$[n]$ is given by the rectangles~$[w\ell(i, \sigma), wr(i, \sigma)-1] \times [n-wd(i, \sigma)+1, n-wu(i, \sigma)]$ for~$i \in [n]$ where
 \begin{align*}
-w\ell(i, \sigma) & \eqdef \max \; \{0\} \cup \set{j}{j < i \text{ and } \sigma^{-1}(j) < \sigma^{-1}(i)} \\
-wr(i, \sigma) & \eqdef \min \; \{n+1\} \cup \set{j}{i < j \text{ and } \sigma^{-1}(i) < \sigma^{-1}(j)} \\
-wd(i, \sigma) & \eqdef \min \; \{n+1\} \cup \set{j}{i < j \text{ and } \sigma^{-1}(j) < \sigma^{-1}(i)} \\
+w\ell(i, \sigma) & \eqdef \max \; \{0\} \cup \set{j}{j < i \text{ and } \sigma^{-1}_j < \sigma^{-1}_i} \\
+wr(i, \sigma) & \eqdef \min \; \{n+1\} \cup \set{j}{i < j \text{ and } \sigma^{-1}_i < \sigma^{-1}_j} \\
+wd(i, \sigma) & \eqdef \min \; \{n+1\} \cup \set{j}{i < j \text{ and } \sigma^{-1}_j < \sigma^{-1}_i} \\
 \text{and} \qquad
-wu(i, \sigma) & \eqdef \max \; \{0\} \cup \set{j}{j < i \text{ and } \sigma^{-1}(i) < \sigma^{-1}(j)}.
+wu(i, \sigma) & \eqdef \max \; \{0\} \cup \set{j}{j < i \text{ and } \sigma^{-1}_i < \sigma^{-1}_j}.
 \end{align*}
 \end{proposition}
 
