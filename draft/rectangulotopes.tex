@@ -1275,9 +1275,10 @@ We therefore need to understand which vertices of the translates of the shard po
 \end{lemma}
 
 Note that this extremal vertex should only depend on the weak rectangulation congruence class of $\sigma$.
-This, in passing, gives us an alternative characterization of the weak rectangulation congruence:
-$\sigma \weakeq \tau$ if and only if for any interval $I$ of $[n]$,
+This, in passing, gives us alternative characterizations of the sylvester congruence $\frown$ and the weak rectangulation congruence $\weakeq$:
+$\sigma \frown \tau$ if and only if for any interval $I$ of $[n]$,
 $\arg\max_{j\in I} \sigma^{-1}_j=\arg\max_{j\in I} \tau^{-1}_j$, and
+$\sigma \weakeq \tau$ if the previous property holds, and in addition
 $\arg\min_{j\in I} \sigma^{-1}_j=\arg\min_{j\in I} \tau^{-1}_j$.
 
 The proof of the following lemma actually follows from Loday's realization in~\cref{thm:loday}.
@@ -1499,11 +1500,19 @@ As in \cref{subsec:LodayWeakRectangulotopes}, we need to understand which vertic
 
 \begin{lemma}
   \label{lem:yinminmax}
-  Let $\sigma\in\f{S}_n$, let~$I$ and~$J$ be two consecutive intervals of~$[n]$, and let $i \eqdef \arg\max_{k\in I} \sigma^{-1}_k$ and $j \eqdef \arg\min_{k\in J} \sigma^{-1}_k$.
-  The unique vertex of the yin shard polytope~$\SP(\yinArc{I}{J})$ that is extreme with respect to the direction $\sigma^{-1}$ is $\b{e}_i-\b{e}_j$ if $\sigma^{-1}_i > \sigma^{-1}_j$, and $\b{0}$ otherwise.
+  Let $\sigma\in\f{S}_n$, let~$I$ and~$J$ be two consecutive intervals of~$[n]$, and let $i\eqdef \arg\max_{k\in I} \sigma^{-1}_k$ and $j \eqdef \arg\min_{k\in J} \sigma^{-1}_k$ (respectively, for yang arcs, $i\eqdef \arg\min_{k\in I} \sigma^{-1}_k$ and $j \eqdef \arg\max_{k\in J} \sigma^{-1}_k$).
+  The unique vertex of the yin (resp. yang) shard polytope~$\SP(\yinArc{I}{J})$ (resp. $\SP(\yangArc{I}{J})$) that is extreme with respect to the direction $\sigma^{-1}$ is $\b{e}_i-\b{e}_j$ (resp. $\b{e}_j-\b{e}_i$) if $\sigma^{-1}_i > \sigma^{-1}_j$ (resp. $\sigma^{-1}_i < \sigma^{-1}_j$), and $\b{0}$ otherwise.
 \end{lemma}
 
 Note again that by definition, this extremal vertex should only depend on the strong congruence class of $\sigma$.
+This, again, gives us alternative characterizations of the yin congruence $\sim$, the yang congruence $\backsim$, and the strong rectangulation congruence $\strongeq$.
+We have $\sigma \sim \tau$ if and only if for any pair of consecutive intervals $I$ and $J$ of $[n]$, 
+$\arg\max_{k\in I} \sigma^{-1}_k = \arg\max_{k\in I} \tau^{-1}_k$, 
+$\arg\min_{k\in J} \sigma^{-1}_k = \arg\min_{k\in J} \tau^{-1}_k$,
+and, if we let $i$ and $j$ be defined as in Lemma~\ref{lem:yinminmax} as the indices of the maximum in $I$ and the minimum in $J$,
+$\sigma^{-1}_i > \sigma^{-1}_j \Leftrightarrow \tau^{-1}_i > \tau^{-1}_j$.
+A similar statement holds for the yang congruence $\backsim$, by exchanging $\min$ and $\max$, and flipping the sign of the inequality.
+Finally, $\sigma\strongeq\tau$ if both sets of conditions hold.
 
 \begin{lemma}
   \label{lem:yincount}
