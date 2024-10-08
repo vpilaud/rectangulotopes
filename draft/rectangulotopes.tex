@@ -280,7 +280,7 @@ See \cref{fig:quotientopes}\,(right) for an illustration when~$n = 4$.
     \[
     \sum_{i\in [n]} \ell^T_i\cdot r^T_i \cdot \b{e}_i
     \]
-    for all binary trees~$T$ with $n$ internal nodes, where $\ell^T_i$ and $r^T_i$ denote the number of leaves in the left and right subtrees of $i$ in $T$, see~\cite{MR2108555},
+    for all binary trees~$T$ with $n$ internal nodes, where $\ell^T_i$ and $r^T_i$ denote the number of leaves in the left and right subtrees of~$i$ in $T$ (labeled in inorder), see~\cite{MR2108555},
   \item the intersection of the hyperplane defined by $\sum_{i \in [n]} x_i = \binom{n+1}{2}$ with the halfspaces defined by
     \[
     \sum_{i \in I} x_i \le \#\set{J \text{ interval of } [n]}{I \cap J \ne \varnothing}
@@ -354,6 +354,7 @@ Its classes are in bijection with strong rectangulations.
 The corresponding quotientopes will be referred to as the \defn{strong rectangulotopes} and denoted by~$\SRP(n)$.
 Strong rectangulotopes can be obtained as quotientopes~\cite{MR3964495,MR4584712} for the strong rectangulation congruence.
 For~$n = 4$, the strong rectangulation lattice is represented in \cref{fig:strongRectangulationLattice} and the strong rectangulotope is represented in~\cref{fig:strongRectangulotope}.
+Note that, contrarily to what could suggest this $n = 4$ case, the strong rectangulation lattice is not isomorphic to the weak order, and the strong rectangulotope is not combinatorially equivalent to the permutahedron as soon as~$n > 4$.
 
 \begin{figure}
 	\centerline{\includegraphics[scale=1.05]{weakRectangulationLattice}}
@@ -431,7 +432,7 @@ Namely, the skeleton of $\WRP(n)$ (resp.~of $\SRP(n)$) is isomorphic to the flip
 Rectangulotopes enrich the family of natural quotientopes, alongside associahedra, permutreehedra~\cite{MR3856522}, certain brick polytopes~\cite{PilaudSantos-brickPolytopes, PilaudStump-brickPolytopes, Pilaud-brickAlgebra}, and certain graphical zonotopes~\cite{Pilaud-brickAlgebra, Pilaud-acyclicReorientationLattices}, providing instructive examples of application of the theory of lattice congruences to concrete combinatorial objects.
 Our main results are elementary vertex and facet descriptions of both families of quotientopes.
 For vertices, we describe the coordinates of the vertex corresponding to a weak or strong rectangulation with simple product formulas in the spirit of J.-L.~Loday's realization in~\cref{thm:loday}\,(i).
-As mentioned in~\cite{PilaudSantosZiegler}, there is no such formula for arbitrary quotientopes, which makes rectangulotopes join the restricted club of Loday type quotientopes, together with associahedra and permutreehedra~\cite{MR3856522}.
+As mentioned in~\cite{PilaudSantosZiegler}, there is no known such formula for arbitrary quotientopes, which makes rectangulotopes join the restricted club of Loday type quotientopes, together with associahedra and permutreehedra~\cite{MR3856522}.
 For facets, we show that both weak and strong rectangulotopes have $2^n-2$ facets (the maximal possible number of facets of a deformed permutahedron), and provide simple formulas for the right hand side of the inequality corresponding to a given proper nonempty subset of~$[n]$.
 We now give the necessary definitions for precisely stating these vertex and facet descriptions of the weak and strong rectangulotopes.
 
@@ -446,6 +447,7 @@ Hence, in the rectangle~$r$, its bottom--left corner is its source~$s(r)$, while
 Note that since~$R$ is generic, the sources~$\set{s(r)}{r \in R}$ and the targets~$\set{t(r)}{r \in R}$ are disjoint.
 The \defn{source tree}~$S(R)$ (resp.~\defn{target tree}~$T(R)$) is the subgraph of~$D(R)$ induced by the sources~$\set{s(r)}{r \in R}$ (resp.~by the targets~$\set{t(r)}{r \in R}$).
 It is not difficult to check that the source tree~$S(R)$ (resp.~target tree~$T(R)$) is a binary tree, rooted at the bottom--left (resp.~top--right) corner of~$R$, and oriented from (resp.~towards) its root.
+Observe also that $S(R)$ and~$T(R)$ only depend on the weak class of the rectangulation~$R$.
 
 \begin{comment}
 \begin{proof}
@@ -497,9 +499,9 @@ The weak rectangulotope $\WRP (n)$ is realized by the polytope equivalently desc
   where~$S$ and~$T$ are the source and target trees of the rectangulation~$R$, and $h^T_i$ and $v^T_i$ denote the number of leaves in the horizontal and vertical subtrees of $i$ in~$T$,
 \item the intersection of the hyperplane defined by~$\sum_{i \in [n]} x_i = 0$ with the halfspaces defined by
   \[
-  \sum_{i \in S} x_i \le \#\set{I \text{ interval of } [n]}{I \not\subseteq S \text{ and } I \not\subseteq [n] \ssm S}
+  \sum_{i \in X} x_i \le \#\set{I \text{ interval of } [n]}{I \not\subseteq X \text{ and } I \not\subseteq [n] \ssm X}
   \]
-  for all subsets~$\varnothing \ne S \subsetneq [n]$.
+  for all subsets~$\varnothing \ne X \subsetneq [n]$.
   \end{enumerate}
 \end{theorem}
 
@@ -761,8 +763,8 @@ In order to exhibit a similar realization for the strong rectangulotopes, we nee
 %
 Two leaves of the trees $T(R)$ and $S(R)$ are said to be \defn{common leaves} if the edges to their parents lie on the same segment of $R$.
 %
-We denote by ${}^i \!\!\! \raisebox{.03cm}{\verticalPattern} \!\!\! {}_j$ the situation where the rectangles $r_i$ and $r_j$ of inorder labels $i$ and $j$ share a vertical segment containing the right edge of~$r_i$ and the left edge of~$r_j$, and the bottom edge of $r_i$ is below the top edge of~$r_j$.
-Similarly, we denote by~$\; {}^i \!\!\!\!\! \horizontalPattern \!\!\!\!\! \raisebox{-.06cm}{$_j$} \,$ the situation where the rectangles $r_i$ and $r_j$ share a horizontal segment containing the bottom edge of~$r_i$ and the top edge of~$r_j$, and the right edge of~$r_i$ is on the right of the left edge of~$r_j$.
+We denote by ${}^i \!\!\! \raisebox{.03cm}{\verticalPattern} \!\!\! {}_j$ the situation where the rectangles $r_i$ and $r_j$ of inorder labels $i$ and $j$ share a vertical segment containing the right edge of~$r_i$ and the left edge of~$r_j$, and the bottom edge of $r_i$ is strictly below the top edge of~$r_j$.
+Similarly, we denote by~$\; {}^i \!\!\!\!\! \horizontalPattern \!\!\!\!\! \raisebox{-.06cm}{$_j$} \,$ the situation where the rectangles $r_i$ and $r_j$ share a horizontal segment containing the bottom edge of~$r_i$ and the top edge of~$r_j$, and the right edge of~$r_i$ is strictly on the right of the left edge of~$r_j$.
 We use the Iverson bracket $\llbracket \varphi\rrbracket$, which is equal to 1 if $\varphi$ holds, and 0 otherwise.
 
 \begin{theorem}
@@ -788,9 +790,9 @@ The strong rectangulotope~$\SRP (n)$ is realized by the polytope equivalently de
   \end{itemize}
 \item the intersection of the hyperplane defined by~$\sum_{i \in [n]} x_i = 0$ with the halfspaces defined by
   \[
-  \sum_{i \in S} x_i \le \#\set{I,J}{I \not\subseteq S \text{ and } J \not\subseteq [n] \ssm S} + \#\set{I,J}{I \not\subseteq [n] \ssm S \text{ and } J \not\subseteq S}
+  \sum_{i \in X} x_i \le \#\set{I,J}{I \not\subseteq X \text{ and } J \not\subseteq [n] \ssm X} + \#\set{I,J}{I \not\subseteq [n] \ssm X \text{ and } J \not\subseteq X}
   \]
-  for all subsets~$\varnothing \ne S \subsetneq [n]$, where~$I,J$ denote nonempty and consecutive intervals of~$[n]$.
+  for all subsets~$\varnothing \ne X \subsetneq [n]$, where~$I,J$ denote nonempty and consecutive intervals of~$[n]$.
   \end{enumerate}
 \end{theorem}
 
@@ -942,6 +944,7 @@ It remains unclear to us if there is a simple linear formula to compute the coor
 
 This work was initiated at the Workshop on Combinatorics, Algorithms, and Geometry held on March 4--8, 2024 in Dresden, Germany.
 The authors thank Namrata and Torsten M\"utze for the organization and the other participants of the workshop for the stimulating interactions, notably on other combinatorial aspects of rectangulations.
+We are grateful to two anonymous referees for many suggestions on this paper.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1023,7 +1026,7 @@ The corresponding noncrossing arc diagrams are famously known as noncrossing par
 %Moreover, the sets of arcs of the form~$\c{A}_\equiv$ are easily described.
 \vspace{-.1cm}
 \parpic(5cm,2.8cm)(10pt, 90pt)[r][b]{\includegraphics[scale=.5]{subarcOrder}}{
-An arc~$(a, b, A, B)$ is a \defn{subarc} of an arc~$(a', b', A', B')$ if \linebreak $a' \le a < b \le b$ and~$A \subseteq A'$ while~$B \subseteq B'$.
+An arc~$(a, b, A, B)$ is a \defn{subarc} of an arc~$(a', b', A', B')$ if \linebreak $a' \le a < b \le b'$ and~$A \subseteq A'$ while~$B \subseteq B'$.
 An \defn{arc ideal} is a subset of arcs closed by subarcs.
 The map~${\equiv} \mapsto \c{A}_\equiv$ is a bijection between the lattice congruences of the weak Bruhat order and the arc ideals.
 In other words, the lattice of congruences of the weak Bruhat order is distributive, and its poset of join irreducibles is isomorphic to the subarc order, illustrated on the right for~$n = 4$.
@@ -1059,7 +1062,7 @@ The \defn{quotient fan} of a congruence~$\equiv$ of the weak Bruhat order is the
 (These two descriptions are equivalent.)
 By construction, the braid fan refines the quotient fan~$\c{F}_\equiv$, and the dual graph of the quotient fan~$\c{F}_\equiv$ is isomorphic to the cover graph of the quotient~$\f{S}_n/{\equiv}$.
 For instance, \cref{fig:fans}\,(right) represents the \defn{sylvester fan} (the quotient fan of the sylvester congruence of \cref{fig:sylvesterCongruence}\,(middle)) for~$n = 4$, whose dual graph is the cover graph of the Tamari lattice of \cref{fig:sylvesterCongruence}\,(right).
-The maximal cone corresponding to a binary tree~$T$ is given by~$\polytope{C}^T = \set{\b{x} \in \R^n}{x_i \le x_i \text{ for each edge } i \to j \text{ in } T}$.
+The maximal cone corresponding to a binary tree~$T$ is given by~$\polytope{C}^T = \set{\b{x} \in \R^n}{x_i \le x_j \text{ for each edge } i \to j \text{ in } T}$.
 
 It was shown in~\cite[Lem.~23]{MR4328906} that the ray of the braid arrangement corresponding to a nonempty proper subset~$\varnothing \ne J \subsetneq [n]$ is preserved in the quotient fan~$\c{F}_\equiv$ if and only if the arc ideal~$\c{A}_\equiv$ contains the $|J|-1$ down arcs joining two consecutive elements of~$J$ and the~$n-|J|-1$ up arcs joining two consecutive elements of~$[n] \ssm J$.
 An immediate consequence is that all $2^n-2$ rays of the braid arrangement are preserved in the quotient fan~$\c{F}_\equiv$ if and only if the arc ideal~$\c{A}_\equiv$ contains all up arcs and all down arcs (in other words, if it is above the weak rectangulation congruence in the lattice of congruences of the weak Bruhat order).
@@ -1097,7 +1100,7 @@ It was shown in~\cite{MR4584712} that any Minkowski sum of positive scalings of 
 A set function $f:2^{[n]}\mapsto \R$ is said to be \defn{submodular} when $f(X \cup Y) + f(X \cap Y) \le f(X) + f(Y)$ for any~$X, Y \subseteq [n]$.
 By definition, any quotientope is a deformed permutahedron, and can thus be written as
   \[
-  \Bigset{x \in \R^n}{ \sum_{i \in [n]} x_i = f([n]) \text{ and } \sum_{i \in S} x_i \le f(S) \text{ for all } \varnothing \ne S \subseteq [n]},
+  \Bigset{x \in \R^n}{ \sum_{i \in [n]} x_i = f([n]) \text{ and } \sum_{i \in X} x_i \le f(X) \text{ for all } \varnothing \ne X \subseteq [n]},
   \]
 where~$f$ is a submodular set function.
 We will need the following simple result: Given a collection $\polytope{P}_1, \polytope{P}_2,\ldots ,\polytope{P}_k$ of deformed permutahedra defined by submodular set functions $f_1,f_2,\ldots ,f_k$, their Minkowski sum $\sum_i \polytope{P}_i$ is defined by the submodular function $f \eqdef \sum_i f_i$.
@@ -1211,10 +1214,18 @@ These quotientopes are simplices and anti-simplices.
   The up shard polytope $\SP(\upArc{I})$ is a translate of the simplex~$\conv \set{ \b{e}_i }{ i\in I }$.
 \end{lemma}
 
+\begin{proof}
+$\SP(\upArc{I}) = \conv \{\b{0}\} \cup \set{ \b{e}_i - \b{e}_{\max(I)} }{ i \in I \ssm \{\max(I)\} } = \conv \set{ \b{e}_i }{ i\in I } - \b{e}_{\max(I)}$.
+\end{proof}
+
 \begin{lemma}
   \label{lem:antilodaysp}
   The down shard polytope $\SP(\downArc{I})$ is a translate of the negative simplex~$\conv \set{ - \b{e}_i }{ i\in I }$.
 \end{lemma}
+
+\begin{proof}
+$\SP(\downArc{I}) = \conv \{\b{0}\} \cup \set{ \b{e}_{\min(I)} - \b{e}_i }{ i \in I \ssm \{\min(I)\} } = \conv \set{ -\b{e}_i }{ i\in I } + \b{e}_{\min(I)}$.
+\end{proof}
 
 We refer to \cref{fig:shardPolytopes} for examples of up and down shard polytopes.
 
@@ -1242,7 +1253,7 @@ This implies that every nonempty proper subset will define a facet of the weak r
 \begin{lemma}
   The weak rectangulotope $\WRP(n)$ is realized by the following submodular function:
   \[
-  f_{\weakeq}(S) \eqdef \#\bigset{ I\text{ interval of } [n] }{ I \not\subseteq S \text{ and } I \not\subseteq [n]\ssm S }.
+  f_{\weakeq}(X) \eqdef \#\bigset{ I\text{ interval of } [n] }{ I \not\subseteq X \text{ and } I \not\subseteq [n]\ssm X }.
   \]
 \end{lemma}
 
@@ -1250,18 +1261,18 @@ This implies that every nonempty proper subset will define a facet of the weak r
   The submodular function defining the realization of $\WRP(n)$ is the sum of the submodular functions defining the up and down shard polytope in \cref{lem:lodaysp,lem:antilodaysp}.
   The shard polytope~$\SP(\upArc{I})$ of an up arc~$\upArc{I}$ is given by the submodular function
   \[
-  f_{\upArc{I}}(S) \eqdef \llbracket S\cap I\not=\emptyset \rrbracket .
+  f_{\upArc{I}}(X) \eqdef \llbracket X\cap I\not=\emptyset \rrbracket .
   \]
   (Recall that $\llbracket \varphi\rrbracket$ is equal to 1 if $\varphi$ holds, and~$0$ otherwise.)
   Similarly, the shard polytope~$\SP(\downArc{I})$ of a down arc~$\downArc{I}$ is given by the submodular function
   \[
-  f_{\downArc{I}}(S) \eqdef - \llbracket I\subseteq S \rrbracket .
+  f_{\downArc{I}}(X) \eqdef - \llbracket I\subseteq X \rrbracket .
   \]
   Their sum
   \[
-  f_{\weakeq}(S) = \sum_{I\text{ interval of }[n]} f_{\upArc{I}}(S) + f_{\downArc{I}}(S)
+  f_{\weakeq}(X) = \sum_{I\text{ interval of }[n]} f_{\upArc{I}}(X) + f_{\downArc{I}}(X)
   \]
-  is therefore exactly the number of intervals of $I$ that intersect $S$ but are not contained in $S$, hence the number of intervals contained neither in~$S$ nor in its complement.
+  is therefore exactly the number of intervals of $I$ that intersect $X$ but are not contained in $X$, hence the number of intervals contained neither in~$X$ nor in its complement.
 \end{proof}
 
 This proves the second part of Theorem~\ref{thm:weakRectangulotope}.
@@ -1299,6 +1310,7 @@ For the sake of completeness, and because we will reuse the same reasoning in \c
   \]
    where $h^T_i$ and $v^T_i$ denote respectively the number of leaves in the horizontal and vertical subtrees of $i$ in the tree $T$.
 \end{lemma}
+
 \begin{proof}
   Let $\sigma$ be any permutation in $\mathcal{L}(\prec_w^R)$.
   From \cref{lem:lodaymax}, for an $i\in [n]$, a shard polytope~$\SP(\upArc{I})$ contributes to $\b{e}_i$ if and only if $i$ is the index of the maximum of $\sigma^{-1}$ in $I$.
@@ -1307,11 +1319,11 @@ For the sake of completeness, and because we will reuse the same reasoning in \c
   We first show that the number of choices for the left endpoint of $I$ is equal to the number $h^T_i$ of leaves in the horizontal subtree of $i$ in $T$.
   Each such leaf determines a left endpoint for $I$, defined as the node of the tree that follows it in an inorder traversal.
   Any such node $\ell$ either lies in the horizontal subtree of $i$, or is $i$ itself.
-  Since the weak poset extends the order induced by $T$, we have that either $\ell=i$ or $\ell\prec_s^R i$, hence $\sigma^{-1}_\ell \leq \sigma^{-1}_i$.
+  Since the weak poset extends the order induced by $T$, we have that either $\ell=i$ or $\ell\prec_w^R i$, hence $\sigma^{-1}_\ell \leq \sigma^{-1}_i$.
   Therefore, each such choice of left endpoint for $I$ does not contradict the fact that $i$ is the index of the maximum of $\sigma^{-1}$ in $I$.
   Now consider the leaf of $T$ that is immediately left of the leftmost leaf of the horizontal subtree of $i$.
   This leaf is associated with the node $\ell$ that comes next in inorder traversal, which must be an ancestor of $i$ in $T$.
-  Therefore, we must have $\ell\succ_s i$, and $\sigma^{-1}_\ell > \sigma^{-1}_i$, and we cannot extend $I$ past this index on the left.
+  Therefore, we must have $\ell\succ_w i$, and $\sigma^{-1}_\ell > \sigma^{-1}_i$, and we cannot extend $I$ past this index on the left.
   This shows that there are exactly $h^T_i$ choices for the choice of the left endpoint of $I$.
   A symmetric argument shows that there are exactly $v^{T}_i$ choices for the right endpoint of $I$.
   The combined number of choices is thus the product~$h^{T}_i\cdot v^{T}_i$.
@@ -1405,19 +1417,19 @@ Note that there is a bijection between the facets of~$\polytope{C}_s^R$, the cov
 \subsection{Yin and yang arcs}
 \label{subsec:yinYangArcs}
 
-The arc ideal of the weak rectangulation congruence was already considered in~\cite[Exm.~4.11]{Reading-arcDiagrams}.
+The arc ideal of the strong rectangulation congruence was already considered in~\cite[Exm.~4.11]{Reading-arcDiagrams}.
 
 \begin{lemma}[{\cite[Exm.~4.11]{Reading-arcDiagrams}}]
   The strong rectangulation congruence $\strongeq$ on $\f{S}_n$ is defined by the arc ideal composed of arcs that cross the horizontal line at most once.
 \end{lemma}
 \begin{proof}
   We consider the forbidden vincular patterns $24\underline{51}3$, $42\underline{51}3$, $3\underline{51}24$, and $3\underline{51}42$ that define the 2-clumped permutations, the minimal elements of each congruence class of $\strongeq$.
-  We observe that every occurrence of a pattern in a permutation corresponds to an occurrence of an arc that cross the horizontal line at least twice in the arc diagram of the permutation.
+  We observe that every occurrence of a pattern in a permutation corresponds to an occurrence of an arc that crosses the horizontal line at least twice in the arc diagram of the permutation.
   The 2-clumped permutations are therefore the permutations whose arc diagrams are composed only of arcs that cross the horizontal line at most once.
 \end{proof}
 
 We classify these arcs into two families, depending on whether the arcs do not cross the horizontal line from below or from above.
-For two consecutive intervals~$I$ and~$J$ of~$[n]$, the \defn{yin arc}~$\yinArc{I}{J}$ (resp.~\defn{yang arc}~$\yangArc{I}{J}$) is the arc starts at~$\min(I)$ and ends at~$\max(J)$, and goes above (resp.~below) the remaining elements of $I$ and below (resp.~above) the remaining elements of $J$, that is,
+For two consecutive intervals~$I$ and~$J$ of~$[n]$, the \defn{yin arc}~$\yinArc{I}{J}$ (resp.~\defn{yang arc}~$\yangArc{I}{J}$) is the arc that starts at~$\min(I)$ and ends at~$\max(J)$, and goes above (resp.~below) the remaining elements of $I$ and below (resp.~above) the remaining elements of $J$, that is,
 \begin{align*}
 \yinArc{I}{J} & \eqdef \big( \min(I), \max(J), I \ssm \{\min(I)\}, J \ssm \{\max(J)\} \big) \\
 \qquad\text{and}\qquad
@@ -1448,6 +1460,11 @@ These shard polytopes can be described as follows.
   The yang shard polytope $\SP(\yangArc{I}{J})$ is a translate of~$\conv \{\b{0}\} \cup \set{\b{e}_j - \b{e}_i}{i \in I,\; j \in J}$.
 \end{lemma}
 
+\begin{proof}
+$\SP(\yangArc{I}{J}) = \conv \{\b{0}\} \cup \{\b{e}_{\min(I)} - \b{e}_{\max(J)}\} \cup \set{ \b{e}_{\min(I)} - \b{e}_i  + \b{e}_j - \b{e}_{\max(J)}}{ i \in I \ssm \{\min(I)\}, j \in J \ssm \{\max(I)\} } = \conv \{\b{0}\} \cup \set{\b{e}_j - \b{e}_i}{i \in I,\; j \in J} + \b{e}_{\min(I)} - \b{e}_{\max(J)}$.
+\vincent{horrible...}
+\end{proof}
+
 We refer to \cref{fig:shardPolytopes} for examples of yin and yang shard polytopes.
 
 \begin{proposition}
@@ -1472,8 +1489,8 @@ Note again that all rays of the braid fan are preserved in the fan of the strong
 \begin{lemma}
   The strong rectangulotope $\SRP(n)$ is realized by the following submodular function:
   \[
-  f_{\strongeq}(S) \eqdef \# \bigset{ I, J }{ I \not\subseteq [n] \ssm S \text{ and } J \not\subseteq S } +
-  \#\bigset{ I, J }{ I \not\subseteq S \text{ and } J \not\subseteq [n] \ssm S },
+  f_{\strongeq}(X) \eqdef \# \bigset{ I, J }{ I \not\subseteq [n] \ssm X \text{ and } J \not\subseteq X } +
+  \#\bigset{ I, J }{ I \not\subseteq X \text{ and } J \not\subseteq [n] \ssm X },
   \]
   where $I, J$ are pairs of nonempty consecutive intervals of~$[n]$.
 \end{lemma}
@@ -1482,16 +1499,16 @@ Note again that all rays of the braid fan are preserved in the fan of the strong
   The submodular function defining the realization of $\WRP(n)$ is the sum of the submodular functions defining the yin and yang shard polytopes in \cref{lem:yinsp,lem:yangsp}.
   The shard polytope~$\SP(\yinArc{I}{J})$ of a yin arc $\yinArc{I}{J}$ is given by the submodular function
   \[
-  f_{\yinArc{I}{J}}(S) \eqdef \llbracket I \not\subseteq [n] \ssm S \text{ and } J \not\subseteq S \rrbracket .
+  f_{\yinArc{I}{J}}(X) \eqdef \llbracket I \not\subseteq [n] \ssm X \text{ and } J \not\subseteq X \rrbracket .
   \]
   (Recall that $\llbracket \varphi\rrbracket$ is equal to 1 if $\varphi$ holds, and~$0$ otherwise.)
   Similarly, the shard polytope~$\SP(\yangArc{I}{J})$ of a yang arc~$\yangArc{I}{J}$ is given by the submodular function
   \[
-  f_{\yangArc{I}{J}}(S) \eqdef \llbracket I \not\subseteq S \text{ and } J \not\subseteq [n] \ssm S \rrbracket .
+  f_{\yangArc{I}{J}}(X) \eqdef \llbracket I \not\subseteq X \text{ and } J \not\subseteq [n] \ssm X \rrbracket .
   \]
   Their sum
   \[
-  f_{\strongeq}(S) \eqdef \sum_{I,J} f_{\yinArc{I}{J}}(S) + f_{\yangArc{I}{J}}(S)
+  f_{\strongeq}(X) \eqdef \sum_{I,J} f_{\yinArc{I}{J}}(X) + f_{\yangArc{I}{J}}(X)
   \]
   is therefore as claimed.
 \end{proof}
@@ -1531,7 +1548,7 @@ Finally, $\sigma\strongeq\tau$ if both sets of conditions hold.
   \]
   if $i\succ_s j$, and $0$ otherwise, where
   \begin{itemize}
-  \item $h^T_i$ denotes the number of leaves in the horizontal and vertical subtrees of $i$ in~$T$,
+  \item $h^T_i$ denotes the number of leaves in the horizontal subtree of $i$ in~$T$,
   \item $cv^{T,S}_{i,j}$ denotes the number of common leaves of the vertical subtree of $i$ in $T$ and the vertical subtree of $j$ in $S$.
   \end{itemize}  
 \end{lemma}
