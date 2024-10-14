@@ -301,6 +301,7 @@ The goal of this paper is to describe the geometry of the quotientopes for two p
 	\capstart
 	\centerline{\includegraphics[scale=.75]{permutahedronLeft4} \quad \raisebox{-.5cm}{\includegraphics[scale=.75]{associahedron4}}}
 	\caption{The permutahedron~$\Perm(4)$ (left) and the associahedron~$\Asso(4)$ (right). \cite[Fig.~1]{MR3964495} \&~\cite[Fig.~5]{MR4584712}}
+	\vspace{-.4cm}
 	\label{fig:quotientopes}
 \end{figure}
 
@@ -334,6 +335,7 @@ It is simple to check that every weak rectangulation has a diagonal representati
 \begin{figure}
   \includegraphics[width=\textwidth]{rectangulations.pdf}
 	\caption{Four rectangulations. The rightmost rectangulation is not weakly equivalent to any other. The leftmost three are weakly equivalent, but only the first two are strongly equivalent. Only the third one is diagonal.}
+	\vspace{-.5cm}
 	\label{fig:rectequiv}
 \end{figure}
 
@@ -341,6 +343,7 @@ It is simple to check that every weak rectangulation has a diagonal representati
 
 \subsection{Weak and strong rectangulotopes}
 
+\enlargethispage{.2cm}
 Weak and strong rectangulations of size $n$ have been shown to define congruences of the weak Bruhat order on $\f{S}_n$.
 
 The \defn{weak rectangulation congruence}~$\weakeq$ (or \defn{Baxter congruence}) was first explicitly studied by S.~Law and N.~Reading~\cite{MR2871762} and revisited in~\cite[Thm.~1.1 \& Exm.~4.10]{Reading-arcDiagrams} in terms of arc diagrams.
@@ -462,13 +465,13 @@ We complete each node of~$S(R)$ and~$T(R)$ with a vertical (resp.~horizontal) le
 An example is given in~\cref{fig:strongRectangulation}.
 If the rectangulation $R$ is diagonal, we retrieve the well-studied pair of twin binary trees~\cite{MR1417289,MR2914637}, see~\cref{fig:weakRectangulation}.
 
-Recall that the \defn{inorder labeling} of a binary tree~$T$ is the labeling of the nodes of~$T$ such that the label of each node~$t$ of~$T$ is larger than all labels in the left subtree of~$t$ and larger than all labels in the right subtree of~$t$.
+Recall that the \defn{inorder labeling} of a binary tree~$T$ is the labeling of the nodes of~$T$ such that the label of each node~$t$ of~$T$ is larger than all labels in the left subtree of~$t$ and smaller than all labels in the right subtree of~$t$.
 For any rectangle~$r$ of~$R$, the inorder label of the source~$s(r)$ in~$S(R)$ coincides with the inorder label of the target~$t(r)$ in~$T(R)$.
 The inorder can also be retrieved from the above--below and left--right relationships defined before, as the transitive closure of the union of the below and right partial orders.
 This enables to unambiguously label the rectangles of~$R$ by the inorder.
 The resulting labeling coincides with the NW--SE labeling of~\cite{ACFF24}.
 From now on, the labels of the rectangles in a rectangulation are the inorder labels, and the two trees~$T(R)$ and $S(R)$ are defined on the vertex set $[n]$ accordingly.
-For each $i\in [n]$, we refer to its two subtrees in $T(R)$ as the \defn{horizontal} and \defn{vertical subtrees}, and similarly for $S(R)$.
+For each vertex in $T(R)$ (or in~$S(R)$), we refer to its subtree reached by a horizontal (resp.~vertical) edge as its \defn{horizontal} (resp.~\defn{vertical})~\defn{subtree}.
 
 %%%%%%%%%%%%%
 
@@ -765,7 +768,7 @@ Two leaves of the trees $T(R)$ and $S(R)$ are said to be \defn{common leaves} if
 %
 We denote by ${}^i \!\!\! \raisebox{.03cm}{\verticalPattern} \!\!\! {}_j$ the situation where the rectangles $r_i$ and $r_j$ of inorder labels $i$ and $j$ share a vertical segment containing the right edge of~$r_i$ and the left edge of~$r_j$, and the bottom edge of $r_i$ is strictly below the top edge of~$r_j$.
 Similarly, we denote by~$\; {}^i \!\!\!\!\! \horizontalPattern \!\!\!\!\! \raisebox{-.06cm}{$_j$} \,$ the situation where the rectangles $r_i$ and $r_j$ share a horizontal segment containing the bottom edge of~$r_i$ and the top edge of~$r_j$, and the right edge of~$r_i$ is strictly on the right of the left edge of~$r_j$.
-We use the Iverson bracket $\llbracket \varphi\rrbracket$, which is equal to 1 if $\varphi$ holds, and 0 otherwise.
+We use the Iverson bracket $\llbracket \varphi\rrbracket$, which is equal to 1 if $\varphi$ holds, and 0 otherwise, and~$\neg \, \varphi$ for the logical negation of~$\varphi$.
 
 \begin{theorem}
 \label{thm:strongRectangulotope}
@@ -792,7 +795,7 @@ The strong rectangulotope~$\SRP (n)$ is realized by the polytope equivalently de
   \[
   \sum_{i \in X} x_i \le \#\set{I,J}{I \not\subseteq X \text{ and } J \not\subseteq [n] \ssm X} + \#\set{I,J}{I \not\subseteq [n] \ssm X \text{ and } J \not\subseteq X}
   \]
-  for all subsets~$\varnothing \ne X \subsetneq [n]$, where~$I,J$ denote nonempty and consecutive intervals of~$[n]$.
+  for all subsets~$\varnothing \ne X \subsetneq [n]$, where~$I,J$ are nonempty consecutive intervals of~$[n]$, meaning that~$\max(I) = \min(J)-1$.
   \end{enumerate}
 \end{theorem}
 
@@ -926,7 +929,6 @@ The facet inequalities of~$\SRP(4)$ corresponding to each nonempty proper subset
 %\end{example}
 %\end{comment}
 
-\enlargethispage{.2cm}
 We think of the formula of \cref{thm:strongRectangulotope}\,(i) as the analogue of J.-L.-Loday's product formula of \cref{thm:loday}\,(i) for the coordinates of the vertices of the associahedron.
 We note however that our formula is quadratic in~$n$.
 It remains unclear to us if there is a simple linear formula to compute the coordinates of the vertex of~$\SRP(n)$ corresponding to a given strong rectangulation.
@@ -952,7 +954,7 @@ We are grateful to two anonymous referees for many suggestions on this paper.
 \section{Quotientopes}
 \label{sec:quotientopes}
 
-We now briefly recall some results on the weak Bruhat order and its quotients, both from a lattice and geometric perspectives.
+We now briefly recall some results on the weak Bruhat order and its quotients, both from a lattice and geometric perspective.
 We refer to \cite{MR2142177, Reading-arcDiagrams, MR3645056, MR3645055, MR3964495, MR4584712} for details.
 
 %%%%%%%%%%%%%
@@ -1096,7 +1098,6 @@ It was shown in~\cite{MR4584712} that any Minkowski sum of positive scalings of 
 	\label{fig:shardPolytopes}
 \end{figure}
 
-\pagebreak 
 A set function $f:2^{[n]}\mapsto \R$ is said to be \defn{submodular} when $f(X \cup Y) + f(X \cap Y) \le f(X) + f(Y)$ for any~$X, Y \subseteq [n]$.
 By definition, any quotientope is a deformed permutahedron, and can thus be written as
   \[
@@ -1134,6 +1135,7 @@ See \cref{fig:weakPoset}.
 
 %%%%%%%%%%%%%
 
+\pagebreak
 \subsection{The weak rectangulation congruence}
 \label{subsec:weakRectangulationCongruence}
 
@@ -1393,7 +1395,6 @@ The \defn{co-2-clumped permutations} are defined similarly, as permutations avoi
 These two permutation families are equinumerous, see \OEIS{A342141}.
 Reading showed that 2-clumped permutations are in bijection with strong rectangulations.
 
-\pagebreak
 \begin{theorem}[\cite{MR2864445,ACFF24}]
   \label{thm:strongCong}
   The subsets $\mathcal{L}(\prec_s^R)$ of $\f{S}_n$, for all rectangulations $R$ of size~$n$, are equivalence classes of a congruence relation $\strongeq$ on the weak Bruhat order on $\f{S}_n$.
@@ -1492,7 +1493,7 @@ Note again that all rays of the braid fan are preserved in the fan of the strong
   f_{\strongeq}(X) \eqdef \# \bigset{ I, J }{ I \not\subseteq [n] \ssm X \text{ and } J \not\subseteq X } +
   \#\bigset{ I, J }{ I \not\subseteq X \text{ and } J \not\subseteq [n] \ssm X },
   \]
-  where $I, J$ are pairs of nonempty consecutive intervals of~$[n]$.
+  where $I, J$ are nonempty consecutive intervals of~$[n]$.
 \end{lemma}
 
 \begin{proof}
@@ -1528,10 +1529,9 @@ As in \cref{subsec:LodayWeakRectangulotopes}, we need to understand which vertic
   The unique vertex of the yin (resp.~yang) shard polytope~$\SP(\yinArc{I}{J})$ (resp.~$\SP(\yangArc{I}{J})$) that is extreme with respect to the direction $\sigma^{-1}$ is $\b{e}_i-\b{e}_j$ (resp.~$\b{e}_j-\b{e}_i$) if $\sigma^{-1}_i > \sigma^{-1}_j$ (resp.~$\sigma^{-1}_i < \sigma^{-1}_j$), and $\b{0}$ otherwise.
 \end{lemma}
 
-\enlargethispage{.3cm}
 Note again that by definition, this extremal vertex should only depend on the strong congruence class of $\sigma$.
 This, again, gives us alternative characterizations of the yin congruence $\sim$, the yang congruence $\backsim$, and the strong rectangulation congruence $\strongeq$.
-We have $\sigma \sim \tau$ if and only if for any pair of consecutive intervals $I$ and $J$ of $[n]$, 
+We have $\sigma \sim \tau$ if and only if for any two consecutive intervals $I$ and $J$ of $[n]$, 
 $\arg\max_{k\in I} \sigma^{-1}_k = \arg\max_{k\in I} \tau^{-1}_k$ and 
 $\arg\min_{k\in J} \sigma^{-1}_k = \arg\min_{k\in J} \tau^{-1}_k$ (that is, if $\sigma \weakeq \tau$),
 and, if we let $i$ and $j$ be defined as in Lemma~\ref{lem:yinminmax} as the indices of the maximum in $I$ and the minimum in $J$,
