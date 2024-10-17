@@ -1,5 +1,5 @@
 \documentclass{article}
-\usepackage{verbatim,a4wide}
+\usepackage{verbatim,a4wide,bm,amssymb}
 \title{Eur.~J.~Comb. 240426: Response to referees}
 \author{Jean Cardinal \and Vincent Pilaud}
 \begin{document}
@@ -16,19 +16,21 @@ for the given geometric realization? (if there is an answer it could be
 mentioned)
 \end{verbatim}
 
+Done. We have added the explicit direction in the first paragraph of Section 2.4.
+
 \begin{verbatim}
 p2 in Theorem 1 it should be mentioned that "node i" means the ith node in 
 infix order
 \end{verbatim}
 
-Done.
+Done. Thank you for noticing it.
 
 \begin{verbatim}
 bottom p2 "describe the geometry", should it not be "provide an explicit 
 geometric realization" ? (since the geometric realization is not unique)
 \end{verbatim}
 
-?
+Done. It was indeed unclear.
 
 \begin{verbatim}
 p3 the recursive definition of "above" is not ideal. Maybe cut it into 
@@ -36,7 +38,7 @@ defining "directly above" and then "above" (recursively using "directly
 above")
 \end{verbatim}
 
-?
+Done. We unrolled the recursion with the sentence ``there is a sequence~${r = r_0, \dots, r_k = s}$ of rectangles such that the bottom edge of~$r_{i-1}$ lies in the same segment as the top edge of~$r_i$ for all~$i \in [k]$''.
 
 \begin{verbatim}
 p4 when citing Figure 6 it could be mentioned (e.g. in a footnote) that 
@@ -48,14 +50,14 @@ of the permutohedron you would have a geometric realization of the strong
 rectangulotope with more involved vertex coordinates ?)
 \end{verbatim}
 
-Added a remark?
+Done. We have added the following sentence: ``Note that, contrarily to what could suggest this $n = 4$ case, the strong rectangulation lattice is not isomorphic to the weak order, and the strong rectangulotope is not combinatorially equivalent to the permutahedron as soon as~$n > 4$.''
 
 \begin{verbatim}
 p7 Figure 7 caption, you should mention if it is for weak of strong 
 (or both), and what the gray areas mean
 \end{verbatim}
 
-J: These are the flips in strong rectangulations.
+Done. We have added ``strong'' in the caption of Figure 7. We believe that the second sentence of the caption of Figure 7 explains the meaning of the grey areas. We also slightly modified the last paragraph of page 4 to be more precise on the definitions of the weak and strong rectangulation flip graphs.
 
 \begin{verbatim}
 p8 l2 "there is no such formula" -> "there is no known such formula" 
@@ -86,7 +88,7 @@ r_j, and bottom edge of r_i to be aligned with bottom edge of r_j, which
 is not what the drawing suggests
 \end{verbatim}
 
-J: I think this is OK as is.
+Done. We slightly modified the symbols to avoid this problem.
 
 \begin{verbatim}
 For theorem 3 you could comment on what quantities in the vertex coordinates 
@@ -94,14 +96,14 @@ formula depends on the strong type and not just on the weak type (it seems
 to be only the Iverson bracket?)
 \end{verbatim}
 
-J: Good point. The number of common leaves can also change, right?
+Done. We added a the sentence ``Note that the common leaves of~$T(R)$ and~$S(R)$ only depend on the weak class of the rectangulation~$R$'' after the definition of common leaves.
 
 \begin{verbatim}
 p10 l.-2 when you say "quadratic in n" do you mean that the ith coordinate 
 is O(n^2) or just that the sum is over a quadratic set of indices ?
 \end{verbatim}
 
-J: at least the second.
+Done. We meant a quadratic set of indices.
 
 \begin{verbatim}
 p12 second line of paragraph starting with "An arc...", b should be b' in 
@@ -115,7 +117,7 @@ p12 "It has a ray" is a bit vague, maybe give more visual intuition on what
 is a ray (is it a codimension 1 cone? or a union of some?)
 \end{verbatim}
 
-We added a remark.
+Done. A ray is a dimension~$1$ cone. We have modified the sentence just after to explain it properly.
 
 \begin{verbatim}
 p13 l4 x_i\leq x_i should be x_i\leq x_j
@@ -128,27 +130,27 @@ p13 l11 the remark "(in other words, if it is above..." may be too early
 (not sure it follows from something explained before)
 \end{verbatim}
 
-?
+Done. We have delayed this observation to Remark 10.
 
 \begin{verbatim}
 p15 "bijection between the facets" -> "bijection between the facets of 
 dimension 1" (?) also at the end of Section 4.2
 \end{verbatim}
 
-J: No, it is the facets (eg faces of codimension 1) of the cone, as written.
+Our sentence is correct as the facets of a cone are its codimension~$1$ faces.
 
 \begin{verbatim}
 p16 it could be good to give a short proof for Lemma 6 (e.g. explain which 
 translate)
 \end{verbatim}
 
-Todo...
+Done. We added the explicit translation vector in Lemmas 6, 7, and 17.
 
 \begin{verbatim}
 p17 again it would be good to give a short proof of Lemma 10 (or a citation)
 \end{verbatim}
 
-?
+Done.
 
 \begin{verbatim}
 p17 in proof of Lemma 11, \prec_s^R whould be \prec_w^R,   and \succ_s 
@@ -181,7 +183,7 @@ p19 bottom "the up and down shard polytopes" -> "the up shard polytopes
 and the down shard polytopes" (same for "each up and down...")
 \end{verbatim}
 
-?
+We have decided to keep our formulation for brievety.
 
 \begin{verbatim}
 p20 Lemma 20 in the first bullet: "and vertical" should be deleted
@@ -195,7 +197,7 @@ not have any associated yin arc", but this does not appear anymore in the
 statement of Lemma 21 (I do not see well how it relates)
 \end{verbatim}
 
-Todo.
+Done. We have reformulated the last two sentences of the paragraph to make the argument clearer.
 
 \begin{verbatim}
 p21 in the proof of Lemma 21 "the right edge of r_i can not be on the 
@@ -212,7 +214,7 @@ The case of pairs i,j not comparable in the strong order may also have to be
 covered in Lemma 21
 \end{verbatim}
 
-?
+Done. You are right, it was incorrect. We replaced $i \prec_s^R j$ by $i \not\succ_s^R j$ in the hypothesis of Lemma 22. This is actually what the proof shows.
 
 \begin{verbatim}
 p21 after "this concludes the proof of Theorem 3" you could add a remark on 
@@ -238,7 +240,7 @@ said earlier in the paragraph (except that it adds important references).
 Perhaps this paragraph can be revised.
 \end{verbatim}
 
-Todo.
+Done. We reformulated the last sentence to ``They can be obtained from the constructions of [PS19, PPR23]''.
 
 \begin{verbatim}
 Page 8:
@@ -248,7 +250,7 @@ the instances should be "smaller".  ("...smaller than all labels in the right
 subtree...")
 \end{verbatim}
 
-Done.
+Done. Thank you for noticing this.
 
 \begin{verbatim}
 The definition of horizontal and vertical subtrees could be made clearer, 
@@ -258,7 +260,7 @@ that is reached from i by a horizontal edge, but it would be good to say
 that explicitly (or correct my misunderstanding).
 \end{verbatim}
 
-Done.
+Done. This is indeed clearer.
 
 \begin{verbatim}
 Page 10:
@@ -267,7 +269,7 @@ Some readers may appreciate a sentence defining the logical not symbol
 that you use (perhaps in the sentence after defining the Iverson bracket.
 \end{verbatim}
 
-Done. (J:?)
+Done. Just before Theorem~3.
 
 \begin{verbatim}
 In Theorem 3, there needs to be more clarification on "consecutive intervals".  
@@ -280,7 +282,7 @@ should say that explicitly somewhere (or correct my misunderstanding),
 probably right before the statement of Theorem 3.
 \end{verbatim}
 
-Done.
+Done. We have decided to do it directly inside Theorem~3. The meaning is really that $\max(I) = \min(J)-1$.
 
 \begin{verbatim}
 Page 11:
@@ -305,7 +307,7 @@ it is.)  Probably you could say something useful in far fewer words than I
 just used.
 \end{verbatim}
 
-Todo.
+Done. You are right. We replaced our unclear sentence by a formula: ``It has a chamber $\{\boldsymbol{x} \in \mathbb{R}^n \,|\, x_{\sigma_1} \le \dots \le x_{\sigma_n}\}$ for each permutation~$\sigma$ of~$[n]$''.
 
 \begin{verbatim}
 Page 13:
@@ -322,7 +324,7 @@ On page 13, you don't yet know the connection between this congruence and up/dow
 Maybe all of this belongs at the end of Section 3.3.)
 \end{verbatim}
 
-Todo.
+Done. We have delayed this observation to Remark 10.
 
 \begin{verbatim}
 Page 15:  
@@ -330,6 +332,6 @@ Page 15:
 There is a missing head on the arrow to 12 on the right drawing of Figure 13.
 \end{verbatim}
 
-Done.
+Done. Good point!
 
 \end{document}
